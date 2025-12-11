@@ -5,17 +5,17 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const faqs = [
   {
-    question: "What is a TGS & When do you need it?",
+    question: "What is a TGS or TCP",
     answer:
-      "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. You need a TGS whenever your project impacts normal traffic flow, such as during roadworks, construction, or events that require lane closures or detours.",
+      "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. A TCP (Traffic Control Plan) serves a similar purpose, providing specific instructions for managing traffic flow during roadworks, construction, or events that impact normal traffic conditions.",
   },
   {
-    question: "When is a CTMP required?",
+    question: "What is a TMP or CTMP",
     answer:
-      "A CTMP (Construction Traffic Management Plan) is required when construction activities impact public roads, footpaths, or traffic flow. Councils or road authorities typically require a CTMP for major developments, crane lifts, or any works that may disrupt normal traffic or pedestrian movement.",
+      "A TMP (Traffic Management Plan) is a comprehensive document that outlines how traffic will be safely managed during construction or events. A CTMP (Construction Traffic Management Plan) is a specialized TMP required when construction activities impact public roads, footpaths, or traffic flow. Both plans ensure safety and compliance with road authority requirements.",
   },
   {
-    question: "What is a ROL?",
+    question: "What is a ROL",
     answer:
       "A ROL (Road Occupancy Licence) is a permit issued by the relevant road authority that allows you to occupy part of a road or lane for construction, maintenance, or events. You need a ROL whenever your activities require the use of public road space.",
   },

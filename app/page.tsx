@@ -19,11 +19,11 @@ export default function Home() {
       <ServicesSection />
       <WeAreSection />
       <CareerCTASection />
+      <FAQsSection />
       {/* <StatsSection />
       <FleetSection />
       <TestimonialsSection />
       <WhyChooseSection /> */}
-      {/* <FAQsSection /> */}
       <ConnectWithUsSection />
       <IsoCertfied />
     </main>
