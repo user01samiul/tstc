@@ -2,14 +2,16 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const ClientsSection = () => { 
+const ClientsSection = () => {
   const logos = [
-    { src: "/client logos/D&M Logo.png", alt: "D&M Logo" },
-    { src: "/client logos/QMC Logo.jpeg", alt: "QMC Logo" },
-    { src: "/client logos/EMO Civil Logo.avif", alt: "EMO Civil Logo" },
-    { src: "/client logos/Stateline LOGO.png", alt: "Stateline LOGO" },
-    { src: "/client logos/Impact Cranes Logo.png", alt: "Impact Cranes Logo" },
-    { src: "/client logos/TQM Logo.jpeg", alt: "TQM Logo" },
+    { src: "/montage/1. Home Page/Our Clients/1. Client Daracon.png", alt: "Daracon" },
+    { src: "/montage/1. Home Page/Our Clients/2. Client - AOR Cranes.png", alt: "AOR Cranes" },
+    { src: "/montage/1. Home Page/Our Clients/3. Client -AM2PM.webp", alt: "AM2PM" },
+    { src: "/montage/1. Home Page/Our Clients/4. Client - CIP Projects.png", alt: "CIP Projects" },
+    { src: "/montage/1. Home Page/Our Clients/5. Client - Quickflo Plumbing group.png", alt: "Quickflo Plumbing Group" },
+    { src: "/montage/1. Home Page/Our Clients/6. Client - Metway Developemnts.webp", alt: "Metway Developments" },
+    { src: "/montage/1. Home Page/Our Clients/7. Client - STC.webp", alt: "STC" },
+    { src: "/montage/1. Home Page/Our Clients/8. Client - GV.png", alt: "GV" },
   ];
 
   // Duplicate the logos to create a seamless loop

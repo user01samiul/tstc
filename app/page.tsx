@@ -17,11 +17,11 @@ export default function Home() {
       <ClientsSection />
       <ServicesSection />
       <IndustriesSection />
-      <StatsSection />
+      {/* <StatsSection />
       <FleetSection />
       <TestimonialsSection />
-      <WhyChooseSection />
-      <FAQsSection />
+      <WhyChooseSection /> */}
+      {/* <FAQsSection /> */}
       <ConnectWithUsSection />
       <IsoCertfied />
     </main>
