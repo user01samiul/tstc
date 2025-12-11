@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { FaAmbulance } from "react-icons/fa";
 
 const WeAreSection = () => {
   const teamMembers = [
@@ -107,8 +108,24 @@ const WeAreSection = () => {
           </div>
         </div>
 
+        {/* Emergency Response CTA - Simple Modern Banner */}
+        <div className="mt-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8">
+          <div className="max-w-6xl mx-auto text-center">
+            <p className="text-white text-lg md:text-xl mb-6 leading-relaxed">
+              Call our 24/7 Control Room Now! , Need a Traffic Crew Call US, Have Questions for Road Safety Call Us.
+            </p>
+            <a
+              href="tel:0450819004"
+              className="inline-flex items-center justify-center bg-white text-blue-700 px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition-all duration-300 hover:shadow-xl hover:scale-105"
+            >
+              <FaAmbulance className="mr-3 text-2xl" />
+              0450 819 004
+            </a>
+          </div>
+        </div>
+
         {/* Stats or Values Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
           <div className="text-center p-6">
             <div className="text-5xl font-bold text-blue-600 mb-2 font-anton">10+</div>
             <p className="text-gray-700 font-semibold text-lg">Years of Experience</p>

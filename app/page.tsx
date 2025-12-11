@@ -1,6 +1,5 @@
 import ClientsSection from "@/components/ClientsSection";
 import ConnectWithUsSection from "@/components/ConnectWithUsSection";
-import EmergencyResponse from "@/components/EmergencyResponse";
 import FAQsSection from "@/components/FAQSection";
 import FleetSection from "@/components/FleetSection";
 import HeroSection from "@/components/HeroSection";
@@ -19,7 +18,6 @@ export default function Home() {
       <ClientsSection />
       <ServicesSection />
       <WeAreSection />
-      <EmergencyResponse />
       <IndustriesSection />
       {/* <StatsSection />
       <FleetSection />
