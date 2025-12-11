@@ -278,34 +278,22 @@ const About = () => {
             <div className="w-24 h-1 bg-btn mx-auto"></div>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-16 flex flex-wrap justify-center items-center gap-8">
             {[
-              {
-                image: "/footer1.png",
-              },
-              {
-                image: "/footer2.png",
-              },
-              {
-                image: "/AshburtonV1(ISO-45001)Transparent-A.png",
-              },
-              {
-                image: "/certified2.jpeg",
-              },
-              {
-                image: "/certified3.jpeg",
-              },
-            ].map((cert, index) => (
-              <div key={index} className="flex items-center justify-center">
-                <div className="relative w-full max-w-[250px] h-[200px]">
-                  <Image
-                    src={cert.image}
-                    alt="Certification"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+              "/AshburtonV1(ISO-45001)Transparent-A.png",
+              "/certified2.jpeg",
+              "/certified3.jpeg",
+              "/footer1.png",
+              "/footer2.png",
+            ].map((image, index) => (
+              <div key={index} className="relative w-[200px] h-[150px]">
+                <Image
+                  src={image}
+                  alt="Certification"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
             ))}
           </div>
