@@ -217,25 +217,17 @@ const StatCard = ({ value, suffix, label, isVisible, delay }: {
 
   return (
     <div
-      className={`relative group text-center p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-2xl hover:border-blue-400 hover:shadow-xl transition-all duration-500 ${
+      className={`text-center p-6 transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {/* Decorative Circle */}
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/5 rounded-full blur-2xl group-hover:bg-blue-600/10 transition-all duration-500"></div>
-
-      <div className="relative z-10">
-        <div className="text-6xl md:text-7xl font-bold text-blue-600 mb-3 font-anton">
-          {count}{suffix}
-        </div>
-        <p className="text-gray-700 font-semibold text-lg uppercase tracking-wide">
-          {label}
-        </p>
+      <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2 font-anton">
+        {count}{suffix}
       </div>
-
-      {/* Bottom Accent Line */}
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-3/4 transition-all duration-500 rounded-full"></div>
+      <p className="text-gray-700 font-semibold text-lg">
+        {label}
+      </p>
     </div>
   );
 };
