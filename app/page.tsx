@@ -1,5 +1,6 @@
 import ClientsSection from "@/components/ClientsSection";
 import ConnectWithUsSection from "@/components/ConnectWithUsSection";
+import EmergencyResponse from "@/components/EmergencyResponse";
 import FAQsSection from "@/components/FAQSection";
 import FleetSection from "@/components/FleetSection";
 import HeroSection from "@/components/HeroSection";
@@ -8,6 +9,7 @@ import IsoCertfied from "@/components/IsoCertfied";
 import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import WeAreSection from "@/components/WeAreSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
 
 export default function Home() {
@@ -16,6 +18,8 @@ export default function Home() {
       <HeroSection />
       <ClientsSection />
       <ServicesSection />
+      <WeAreSection />
+      <EmergencyResponse />
       <IndustriesSection />
       {/* <StatsSection />
       <FleetSection />

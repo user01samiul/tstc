@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaChevronRight, FaRoad, FaFileAlt, FaUserShield, FaTools, FaAmbulance } from 'react-icons/fa';
-import EmergencyResponse from './EmergencyResponse';
+import { FaChevronRight } from 'react-icons/fa';
 
 const ServicesSection = () => {
   const services = [
@@ -75,13 +74,13 @@ const ServicesSection = () => {
 
               {/* Card Content - Centered */}
               <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-8 text-white">
-                <h3 className="text-2xl md:text-3xl font-bold mb-6 font-anton uppercase">{service.title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 font-opensans">{service.title}</h3>
 
                 <Link
                   href={service.link}
                   className="flex items-center gap-2 text-white hover:text-blue-400 font-semibold transition-colors duration-300 group/link"
                 >
-                  <span className="border-b-2 border-white group-hover/link:border-blue-400 transition-colors">
+                  <span className="border-white group-hover/link:border-blue-400 transition-colors">
                     Learn More
                   </span>
                   <FaChevronRight className="text-sm transition-transform group-hover/link:translate-x-1" />
@@ -90,9 +89,6 @@ const ServicesSection = () => {
             </div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <EmergencyResponse/>
       </div>
     </section>
   );
