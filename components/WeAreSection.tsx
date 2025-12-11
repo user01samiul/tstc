@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaAmbulance } from "react-icons/fa";
+import { FaAmbulance, FaAward, FaClock, FaShieldAlt } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 
 const WeAreSection = () => {
@@ -50,7 +50,7 @@ const WeAreSection = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <section className="py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -152,28 +152,33 @@ const WeAreSection = () => {
         </div>
 
         {/* Stats or Values Section - Modern Animated */}
-        <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
-          <StatCard
-            value={10}
-            suffix="+"
-            label="Years of Experience"
-            isVisible={isVisible}
-            delay={0}
-          />
-          <StatCard
-            value={24}
-            suffix="/7"
-            label="Emergency Response"
-            isVisible={isVisible}
-            delay={200}
-          />
-          <StatCard
-            value={100}
-            suffix="%"
-            label="Safety Focused"
-            isVisible={isVisible}
-            delay={400}
-          />
+        <div ref={statsRef} className="mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <StatCard
+              value={10}
+              suffix="+"
+              label="Years of Experience"
+              icon={<FaAward className="text-5xl text-blue-600" />}
+              isVisible={isVisible}
+              delay={0}
+            />
+            <StatCard
+              value={24}
+              suffix="/7"
+              label="Emergency Response"
+              icon={<FaClock className="text-5xl text-blue-600" />}
+              isVisible={isVisible}
+              delay={200}
+            />
+            <StatCard
+              value={100}
+              suffix="%"
+              label="Safety Focused"
+              icon={<FaShieldAlt className="text-5xl text-blue-600" />}
+              isVisible={isVisible}
+              delay={400}
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -181,10 +186,11 @@ const WeAreSection = () => {
 };
 
 // Animated Stat Card Component
-const StatCard = ({ value, suffix, label, isVisible, delay }: {
+const StatCard = ({ value, suffix, label, icon, isVisible, delay }: {
   value: number;
   suffix: string;
   label: string;
+  icon: React.ReactNode;
   isVisible: boolean;
   delay: number;
 }) => {
@@ -217,15 +223,18 @@ const StatCard = ({ value, suffix, label, isVisible, delay }: {
 
   return (
     <div
-      className={`text-center p-6 transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      className={`flex flex-col items-center justify-center text-center p-10 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-700 aspect-square ${
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2 font-anton">
+      <div className="mb-6">
+        {icon}
+      </div>
+      <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
         {count}{suffix}
       </div>
-      <p className="text-gray-700 font-semibold text-lg">
+      <p className="text-gray-700 font-semibold text-base">
         {label}
       </p>
     </div>

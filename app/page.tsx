@@ -3,7 +3,6 @@ import ConnectWithUsSection from "@/components/ConnectWithUsSection";
 import FAQsSection from "@/components/FAQSection";
 import FleetSection from "@/components/FleetSection";
 import HeroSection from "@/components/HeroSection";
-import IndustriesSection from "@/components/IndustriessSection";
 import IsoCertfied from "@/components/IsoCertfied";
 import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
@@ -18,7 +17,6 @@ export default function Home() {
       <ClientsSection />
       <ServicesSection />
       <WeAreSection />
-      <IndustriesSection />
       {/* <StatsSection />
       <FleetSection />
       <TestimonialsSection />
