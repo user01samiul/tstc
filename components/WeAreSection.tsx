@@ -2,8 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaAmbulance } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
 
 const WeAreSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const statsRef = useRef(null);
+
   const teamMembers = [
     {
       name: "Savanah Armstrong",
@@ -21,6 +25,29 @@ const WeAreSection = () => {
       image: "/team/white-Photoroom (3).png",
     },
   ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
@@ -124,23 +151,92 @@ const WeAreSection = () => {
           </div>
         </div>
 
-        {/* Stats or Values Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
-          <div className="text-center p-6">
-            <div className="text-5xl font-bold text-blue-600 mb-2 font-anton">10+</div>
-            <p className="text-gray-700 font-semibold text-lg">Years of Experience</p>
-          </div>
-          <div className="text-center p-6">
-            <div className="text-5xl font-bold text-blue-600 mb-2 font-anton">24/7</div>
-            <p className="text-gray-700 font-semibold text-lg">Emergency Response</p>
-          </div>
-          <div className="text-center p-6">
-            <div className="text-5xl font-bold text-blue-600 mb-2 font-anton">100%</div>
-            <p className="text-gray-700 font-semibold text-lg">Safety Focused</p>
-          </div>
+        {/* Stats or Values Section - Modern Animated */}
+        <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+          <StatCard
+            value={10}
+            suffix="+"
+            label="Years of Experience"
+            isVisible={isVisible}
+            delay={0}
+          />
+          <StatCard
+            value={24}
+            suffix="/7"
+            label="Emergency Response"
+            isVisible={isVisible}
+            delay={200}
+          />
+          <StatCard
+            value={100}
+            suffix="%"
+            label="Safety Focused"
+            isVisible={isVisible}
+            delay={400}
+          />
         </div>
       </div>
     </section>
+  );
+};
+
+// Animated Stat Card Component
+const StatCard = ({ value, suffix, label, isVisible, delay }: {
+  value: number;
+  suffix: string;
+  label: string;
+  isVisible: boolean;
+  delay: number;
+}) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timeout = setTimeout(() => {
+      const duration = 2000; // Animation duration in ms
+      const steps = 60;
+      const increment = value / steps;
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= value) {
+          setCount(value);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, duration / steps);
+
+      return () => clearInterval(timer);
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [isVisible, value, delay]);
+
+  return (
+    <div
+      className={`relative group text-center p-8 bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-2xl hover:border-blue-400 hover:shadow-xl transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {/* Decorative Circle */}
+      <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/5 rounded-full blur-2xl group-hover:bg-blue-600/10 transition-all duration-500"></div>
+
+      <div className="relative z-10">
+        <div className="text-6xl md:text-7xl font-bold text-blue-600 mb-3 font-anton">
+          {count}{suffix}
+        </div>
+        <p className="text-gray-700 font-semibold text-lg uppercase tracking-wide">
+          {label}
+        </p>
+      </div>
+
+      {/* Bottom Accent Line */}
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:w-3/4 transition-all duration-500 rounded-full"></div>
+    </div>
   );
 };
 
