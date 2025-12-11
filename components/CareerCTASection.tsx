@@ -10,14 +10,14 @@ const CareerCTASection = () => {
             Looking for a role at T&S?
           </h2>
           <p className="text-gray-600 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Allow for a section for employees to apply
+            Join our team of dedicated traffic management professionals. We're always looking for skilled traffic controllers, team leaders, and support staff who are passionate about road safety.
           </p>
           <Link
             href="/career"
             className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
           >
             <FaBriefcase className="mr-3 text-xl" />
-            Straight to Careers
+            View Career Opportunities
           </Link>
         </div>
       </div>
