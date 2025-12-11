@@ -243,7 +243,7 @@ const Footer = () => {
 
         {/* ISO Certification */}
         <div className="mt-12 pt-8 border-t border-gray-300">
-          <h3 className="text-2xl font-bold text-center mb-6 font-anton uppercase text-blue-600">
+          <h3 className="text-2xl font-bold text-center mb-6 font-anton uppercase text-black">
             ISO Certified
           </h3>
           <div className="flex flex-wrap justify-center items-center gap-8">
