@@ -55,9 +55,9 @@ const WeAreSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-anton uppercase">
-            We Are <span className="text-blue-600">T&S Traffic Management</span>
+            We Are <span className="text-btn">T&S Traffic Management</span>
           </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+          <div className="w-24 h-1 bg-btn mx-auto"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
@@ -65,7 +65,7 @@ const WeAreSection = () => {
           <div className="space-y-6">
             <p className="text-lg text-gray-700 leading-relaxed">
               T&S Traffic Control has served NSW roads for over 10 years, our passion for road safety drives everything we do. As a trusted NSW-based traffic management company, we take pride in creating safer environments for road users, workers, and the community. Our mission is simple, to deliver{" "}
-              <span className="font-bold text-blue-600 italic">"A Safe Way Home"</span> for everyone, every day.
+              <span className="font-bold text-btn italic">"A Safe Way Home"</span> for everyone, every day.
             </p>
 
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -79,7 +79,7 @@ const WeAreSection = () => {
             <div className="pt-4">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105"
+                className="inline-flex items-center gap-2 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-btn/30 hover:scale-105"
               >
                 Learn More About Us
               </Link>
@@ -130,8 +130,8 @@ const WeAreSection = () => {
             </div>
 
             {/* Decorative Element */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-btn/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-btn/10 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
 
@@ -147,14 +147,14 @@ const WeAreSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="tel:0450819004"
-                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/30"
+                className="inline-flex items-center justify-center bg-btn hover:bg-btn/90 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-btn/30"
               >
                 <FaAmbulance className="mr-2 text-xl" />
                 Call Emergency Response
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center bg-transparent text-white px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-700 hover:border-blue-600 hover:bg-blue-600/10 transition-all duration-300"
+                className="inline-flex items-center justify-center bg-transparent text-white px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-700 hover:border-btn hover:bg-btn/10 transition-all duration-300"
               >
                 Learn About Our Response
               </Link>
@@ -169,7 +169,7 @@ const WeAreSection = () => {
               value={10}
               suffix="+"
               label="Years of Experience"
-              icon={<FaAward className="text-5xl text-blue-600" />}
+              icon={<FaAward className="text-5xl text-btn" />}
               isVisible={isVisible}
               delay={0}
             />
@@ -177,7 +177,7 @@ const WeAreSection = () => {
               value={24}
               suffix="/7"
               label="Emergency Response"
-              icon={<FaClock className="text-5xl text-blue-600" />}
+              icon={<FaClock className="text-5xl text-btn" />}
               isVisible={isVisible}
               delay={200}
             />
@@ -185,7 +185,7 @@ const WeAreSection = () => {
               value={100}
               suffix="%"
               label="Safety Focused"
-              icon={<FaShieldAlt className="text-5xl text-blue-600" />}
+              icon={<FaShieldAlt className="text-5xl text-btn" />}
               isVisible={isVisible}
               delay={400}
             />
@@ -242,7 +242,7 @@ const StatCard = ({ value, suffix, label, icon, isVisible, delay }: {
       <div className="mb-6">
         {icon}
       </div>
-      <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-3">
+      <div className="text-5xl md:text-6xl font-bold text-btn mb-3">
         {count}{suffix}
       </div>
       <p className="text-gray-700 font-semibold text-base">

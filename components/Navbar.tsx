@@ -40,7 +40,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-1">
             <Link
               href="/"
-              className="px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+              className="px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
             >
               Home
             </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
             <div className="relative">
               <Link
                 href="/about"
-                className="flex items-center px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+                className="flex items-center px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
                 onMouseEnter={() => setOpenSubmenu("about")}
                 onClick={() => setOpenSubmenu(null)}
               >
@@ -67,25 +67,25 @@ const Navbar = () => {
                 >
                   <Link
                     href="/about#our-story"
-                    className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                    className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                   >
                     Our Story
                   </Link>
                   <Link
                     href="/about#our-team"
-                    className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700"
+                    className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn"
                   >
                     Our Team
                   </Link>
                   <Link
                     href="/about#our-fleet"
-                    className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700"
+                    className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn"
                   >
                     Our Fleet
                   </Link>
                   <Link
                     href="/about#accreditations"
-                    className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700"
+                    className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn"
                   >
                     Accreditations
                   </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
             {/* Services Mega Menu */}
             <div className="relative">
               <button
-                className="flex items-center px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+                className="flex items-center px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
                 onMouseEnter={() => setOpenSubmenu("services")}
                 onClick={() => toggleSubmenu("services")}
               >
@@ -114,43 +114,43 @@ const Navbar = () => {
                 >
                   {/* Column 1 */}
                   <div>
-                    <h3 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-2 px-4">
+                    <h3 className="text-xs font-semibold text-btn uppercase tracking-wider mb-2 px-4">
                       Traffic Engineering - Planning & Design
                     </h3>
                     <div className="space-y-1">
                       {/* <Link
                         href="/services#traffic-guidance"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Traffic Guidance Schemes
                       </Link> */}
                       <Link
                         href="/services/traffic-plans"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Traffic Plans
                       </Link>
                       {/* <Link
                         href="/services#construction-plans"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Construction Plans
                       </Link> */}
                       <Link
                         href="/services/traffic-management-plans"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Traffic Management Plans (TMP) (CTMP)
                       </Link>
                       <Link
                         href="/services/swept-path"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Swept Path Analysis (SPA)
                       </Link>
                       <Link
                         href="/services/event-management-plans"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Event Management Plans
                       </Link>
@@ -159,31 +159,31 @@ const Navbar = () => {
 
                   {/* Column 2 */}
                   <div>
-                    <h3 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-2 px-4">
+                    <h3 className="text-xs font-semibold text-btn uppercase tracking-wider mb-2 px-4">
                       Permit Application
                     </h3>
                     <div className="space-y-1">
                       <Link
                         href="/services/permit-application#tf-nsw"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         TfNSW TMC ROL Approval
                       </Link>
                       <Link
                         href="/services/permit-application#council-permits"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Council Permits
                       </Link>
                       <Link
                         href="/services/permit-application#sta-bus"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         STA Bus Approvals
                       </Link>
                       <Link
                         href="/services/permit-application#emergency-approvals"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Emergency Approvals
                       </Link>
@@ -192,19 +192,19 @@ const Navbar = () => {
 
                   {/* Column 3 */}
                   <div>
-                    <h3 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-2 px-4">
+                    <h3 className="text-xs font-semibold text-btn uppercase tracking-wider mb-2 px-4">
                       Traffic Controllers
                     </h3>
                     <div className="space-y-1">
                       <Link
                         href="/services/team-leaders"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         Team Leaders
                       </Link>
                       <Link
                         href="/services/tma-operators"
-                        className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                        className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                       >
                         TMA Operators
                       </Link>
@@ -216,25 +216,25 @@ const Navbar = () => {
 
             {/* <Link
               href="/news"
-              className="px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+              className="px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
             >
               News
             </Link> */}
             <Link
               href="/faqs"
-              className="px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+              className="px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
             >
               FAQ
             </Link>
             <Link
               href="/career"
-              className="px-4 py-3 text-base font-medium hover:text-blue-700 transition-colors duration-200 rounded-lg hover:bg-gray-50"
+              className="px-4 py-3 text-base font-medium hover:text-btn transition-colors duration-200 rounded-lg hover:bg-gray-50"
             >
               Career
             </Link>
             <Link
               href="/contact"
-              className="ml-2 px-6 py-3 text-base font-medium bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors duration-200 shadow-sm hover:shadow-md"
+              className="ml-2 px-6 py-3 text-base font-medium bg-btn text-white rounded-lg hover:bg-btn/90 transition-colors duration-200 shadow-sm hover:shadow-md"
             >
               Contact Us
             </Link>
@@ -300,7 +300,7 @@ const Navbar = () => {
                 <Link
                   href="/"
                   onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
                   Home
                 </Link>
@@ -308,7 +308,7 @@ const Navbar = () => {
                  
                   <button
                     onClick={() => toggleSubmenu("about")}
-                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                   >
                     <span>About Us</span>
                     <ChevronDown
@@ -322,28 +322,28 @@ const Navbar = () => {
                       <Link
                         href="/about#our-story"
                         onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                       >
                         Our Story
                       </Link>
                       <Link
                         href="/about#our-team"
                         onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                       >
                         Our Team
                       </Link>
                       <Link
                         href="/about#our-fleet"
                         onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                       >
                         Our Fleet
                       </Link>
                       <Link
                         href="/about#accreditations"
                         onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                       >
                         Accreditations
                       </Link>
@@ -353,7 +353,7 @@ const Navbar = () => {
                 <div className="space-y-1">
                   <button
                     onClick={() => toggleSubmenu("services")}
-                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                   >
                     <span>Services</span>
                     <ChevronDown
@@ -365,100 +365,100 @@ const Navbar = () => {
                   {openSubmenu === "services" && (
                     <div className="pl-6 space-y-2 mt-1">
                       <div className="space-y-1">
-                        <h4 className="px-4 py-2 text-sm font-semibold text-blue-800">
+                        <h4 className="px-4 py-2 text-sm font-semibold text-btn">
                           Traffic Engineering - Planning & Design
                         </h4>
                         {/* <Link
                           href="/services#traffic-guidance"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Traffic Guidance Schemes
                         </Link> */}
                         <Link
                           href="/services/traffic-plans"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Traffic Plans
                         </Link>
                         {/* <Link
                           href="/services#construction-plans"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Construction Plans
                         </Link> */}
                         <Link
                           href="/services/traffic-management-plans"
-                          className="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-700 rounded"
+                          className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded"
                         >
                           Traffic Management Plans (TMP) (CTMP)
                         </Link>
                         <Link
                           href="/services/swept-path"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Swept Path Analysis (SPA)
                         </Link>
                         <Link
                           href="/services/event-management-plans"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Event Management Plans
                         </Link>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="px-4 py-2 text-sm font-semibold text-blue-800">
+                        <h4 className="px-4 py-2 text-sm font-semibold text-btn">
                           Permit Application
                         </h4>
                         <Link
                           href="/services/permit-application#tf-nsw"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           TfNSW TMC ROL Approval
                         </Link>
                         <Link
                           href="/services/permit-application#council-permits"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Council Permits
                         </Link>
                         <Link
                           href="/services/permit-application#sta-bus"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           STA Bus Approvals
                         </Link>
                         <Link
                           href="/services/permit-application#emergency-approvals"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Emergency Approvals
                         </Link>
                       </div>
                       <div className="space-y-1">
-                        <h4 className="px-4 py-2 text-sm font-semibold text-blue-800">
+                        <h4 className="px-4 py-2 text-sm font-semibold text-btn">
                           Traffic Controllers
                         </h4>
 
                         <Link
                           href="/services/team-leaders"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           Team Leaders
                         </Link>
                         <Link
                           href="/services/tma-operators"
                           onClick={toggleMobileMenu}
-                          className="block px-4 py-2 text-base hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                         >
                           TMA Operators
                         </Link>
@@ -469,21 +469,21 @@ const Navbar = () => {
                 {/* <Link
                   href="/news"
                   onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
                   News
                 </Link> */}
                 <Link
                   href="/faqs"
                   onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
                   FAQ
                 </Link>
                 <Link
                   href="/career"
                   onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
                   Career
                 </Link>
@@ -493,7 +493,7 @@ const Navbar = () => {
               <Link
                 href="/contact"
                 onClick={toggleMobileMenu}
-                className="block w-full px-6 py-3 text-lg font-medium text-center bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors shadow-sm"
+                className="block w-full px-6 py-3 text-lg font-medium text-center bg-btn text-white rounded-lg hover:bg-btn/90 transition-colors shadow-sm"
               >
                 Contact Us
               </Link>

@@ -41,7 +41,7 @@ const ServicesSection = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-24">
-          <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Our Services</span>
+          <span className="text-btn font-semibold tracking-wider uppercase text-sm mb-4 block">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight font-anton uppercase">
             Traffic Management Solutions
           </h2>
@@ -57,7 +57,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group relative h-[380px] overflow-hidden border border-gray-200 hover:border-blue-500 transition-all duration-300 rounded-lg"
+              className="group relative h-[380px] overflow-hidden border border-gray-200 hover:border-btn transition-all duration-300 rounded-lg"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -78,9 +78,9 @@ const ServicesSection = () => {
 
                 <Link
                   href={service.link}
-                  className="flex items-center gap-2 text-white hover:text-blue-400 font-semibold transition-colors duration-300 group/link"
+                  className="flex items-center gap-2 text-white hover:text-btn font-semibold transition-colors duration-300 group/link"
                 >
-                  <span className="border-white group-hover/link:border-blue-400 transition-colors">
+                  <span className="border-white group-hover/link:border-btn transition-colors">
                     Learn More
                   </span>
                   <FaChevronRight className="text-sm transition-transform group-hover/link:translate-x-1" />

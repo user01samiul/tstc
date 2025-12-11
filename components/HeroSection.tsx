@@ -38,11 +38,11 @@ const HeroSection = () => {
           {/* Main Heading */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-anton font-bold tracking-wide">
             SAFE AND EFFICIENT <br />
-            <span className="text-blue-400">TRAFFIC CONTROL</span> SOLUTIONS
+            <span className="text-btn">TRAFFIC CONTROL</span> SOLUTIONS
           </h1>
 
           {/* Slogan */}
-          <p className="text-xl md:text-2xl lg:text-3xl font-anton text-blue-400 italic">
+          <p className="text-xl md:text-2xl lg:text-3xl font-anton text-btn italic">
             "A Safe Way Home"
           </p>
 
@@ -60,7 +60,7 @@ const HeroSection = () => {
           <div className="flex justify-center pt-4">
             <Link
               href="/contact"
-              className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105"
+              className="flex items-center justify-center gap-2 bg-btn hover:bg-btn/90 text-white px-8 py-3 rounded-lg font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-btn/50 hover:scale-105"
             >
               <FaPhoneAlt className="text-base" />
               Contact Us Today
@@ -70,26 +70,26 @@ const HeroSection = () => {
           {/* Feature Icons - Compact */}
           <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
-                <FaHardHat className="text-2xl text-blue-400" />
+              <div className="bg-btn/30 p-3 rounded-full backdrop-blur-sm">
+                <FaHardHat className="text-2xl text-btn" />
               </div>
               <span className="font-medium text-sm">Construction</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
-                <FaTrafficLight className="text-2xl text-blue-400" />
+              <div className="bg-btn/30 p-3 rounded-full backdrop-blur-sm">
+                <FaTrafficLight className="text-2xl text-btn" />
               </div>
               <span className="font-medium text-sm">Traffic Control</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
-                <FaRoad className="text-2xl text-blue-400" />
+              <div className="bg-btn/30 p-3 rounded-full backdrop-blur-sm">
+                <FaRoad className="text-2xl text-btn" />
               </div>
               <span className="font-medium text-sm">Road Safety</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
-              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
-                <FaClock className="text-2xl text-blue-400" />
+              <div className="bg-btn/30 p-3 rounded-full backdrop-blur-sm">
+                <FaClock className="text-2xl text-btn" />
               </div>
               <span className="font-medium text-sm">24/7 Service</span>
             </div>
@@ -100,8 +100,8 @@ const HeroSection = () => {
       {/* Animated Scrolling Indicator */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
         <div className="animate-bounce flex flex-col items-center">
-          <div className="w-6 h-10 border-2 border-blue-400/60 rounded-full flex justify-center">
-            <div className="w-1 h-2 bg-blue-400 rounded-full mt-2 animate-pulse" />
+          <div className="w-6 h-10 border-2 border-btn/60 rounded-full flex justify-center">
+            <div className="w-1 h-2 bg-btn rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>

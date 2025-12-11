@@ -48,7 +48,7 @@ const FAQsSection = () => {
               >
                 <span>{faq.question}</span>
                 <FaChevronDown
-                  className={`text-blue-600 flex-shrink-0 ml-4 transition-transform duration-300 ${
+                  className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                 />

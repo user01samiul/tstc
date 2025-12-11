@@ -37,7 +37,7 @@ const ConnectWithUsSection = () => {
             </div>
             <Link
               href="/contact"
-              className="flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              className="flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-btn/30"
             >
               <FaPhoneAlt className="text-lg" />
               Request a Call Back

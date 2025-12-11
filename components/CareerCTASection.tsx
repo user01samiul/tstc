@@ -14,7 +14,7 @@ const CareerCTASection = () => {
           </p>
           <Link
             href="/career"
-            className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
+            className="inline-flex items-center justify-center bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
           >
             <FaBriefcase className="mr-3 text-xl" />
             View Career Opportunities

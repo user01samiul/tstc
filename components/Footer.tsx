@@ -49,18 +49,18 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold text-blue-600 mb-4 uppercase tracking-wide">
+            <h3 className="text-lg font-semibold text-btn mb-4 uppercase tracking-wide">
               Services
             </h3>
             <div className="space-y-2 text-sm text-gray-600">
-              <h4 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-2">
+              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mb-2">
                 Traffic Engineering - Planning & Design
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/services/traffic-plans"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Traffic Plans
                   </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/traffic-management-plans"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Traffic Management Plans (TMP) (CTMP)
                   </Link>
@@ -76,7 +76,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/swept-path"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Swept Path Analysis (SPA)
                   </Link>
@@ -84,20 +84,20 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/event-management-plans"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Event Management Plans
                   </Link>
                 </li>
               </ul>
-              <h4 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mt-4 mb-2">
+              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
                 Permit Application
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/services/permit-application#tf-nsw"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     TfNSW TMC ROL Approval
                   </Link>
@@ -105,7 +105,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/permit-application#council-permits"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Council Permits
                   </Link>
@@ -113,7 +113,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/permit-application#sta-bus"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     STA Bus Approvals
                   </Link>
@@ -121,20 +121,20 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/permit-application#emergency-approvals"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Emergency Approvals
                   </Link>
                 </li>
               </ul>
-              <h4 className="text-xs font-semibold text-blue-800 uppercase tracking-wider mt-4 mb-2">
+              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
                 Traffic Controllers
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/services/team-leaders"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     Team Leaders
                   </Link>
@@ -142,7 +142,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/services/tma-operators"
-                    className="hover:text-blue-700 transition-colors duration-300"
+                    className="hover:text-btn transition-colors duration-300"
                   >
                     TMA Operators
                   </Link>
@@ -153,14 +153,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-blue-600 mb-4 uppercase tracking-wide">
+            <h3 className="text-lg font-semibold text-btn mb-4 uppercase tracking-wide">
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
                 <Link
                   href="/"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Home
                 </Link>
@@ -168,7 +168,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about#our-story"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Our Story
                 </Link>
@@ -176,7 +176,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about#our-team"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Our Team
                 </Link>
@@ -184,7 +184,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about#our-fleet"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Our Fleet
                 </Link>
@@ -192,7 +192,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about#accreditations"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Accreditations
                 </Link>
@@ -200,7 +200,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/faqs"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   FAQ
                 </Link>
@@ -208,7 +208,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/career"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Career
                 </Link>
@@ -216,7 +216,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-blue-700 transition-colors duration-300"
+                  className="hover:text-btn transition-colors duration-300"
                 >
                   Contact Us
                 </Link>
@@ -269,19 +269,19 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
             <div className="flex items-center gap-3 mb-2">
-              <FaPhoneAlt className="text-blue-600" />
+              <FaPhoneAlt className="text-btn" />
               <a
                 href="tel:+611300008782"
-                className="text-sm text-gray-600 hover:text-blue-700 transition-colors duration-300"
+                className="text-sm text-gray-600 hover:text-btn transition-colors duration-300"
               >
                 +61 1300 008 782
               </a>
             </div>
             <div className="flex items-center gap-3">
-              <FaEnvelope className="text-blue-600" />
+              <FaEnvelope className="text-btn" />
               <a
                 href="mailto:Operations@tstc.com.au"
-                className="text-sm text-gray-600 hover:text-blue-700 transition-colors duration-300"
+                className="text-sm text-gray-600 hover:text-btn transition-colors duration-300"
               >
                 Operations@tstc.com.au
               </a>
@@ -292,7 +292,7 @@ const Footer = () => {
               href="https://au.linkedin.com/company/t-s-traffic-control"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-700 transition-colors duration-300"
+              className="text-gray-600 hover:text-btn transition-colors duration-300"
             >
               <FaLinkedin className="text-2xl" />
             </a>
@@ -300,7 +300,7 @@ const Footer = () => {
               href="https://www.facebook.com/people/TS-Traffic/100090085386224/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-700 transition-colors duration-300"
+              className="text-gray-600 hover:text-btn transition-colors duration-300"
             >
               <FaFacebookF className="text-2xl" />
             </a>
@@ -308,7 +308,7 @@ const Footer = () => {
               href="https://www.instagram.com/ts.traffic/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-700 transition-colors duration-300"
+              className="text-gray-600 hover:text-btn transition-colors duration-300"
             >
               <FaInstagram className="text-2xl" />
             </a>
