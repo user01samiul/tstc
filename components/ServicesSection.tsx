@@ -12,7 +12,7 @@ const ServicesSection = () => {
     },
     {
       title: "Equipment Hire",
-      image: "/montage/1. Home Page/Services We offer/Equipment Hire.HEIC",
+      image: "/montage/1. Home Page/Services We offer/Equipment Hire.png",
       link: "/contact"
     },
     {
@@ -27,12 +27,12 @@ const ServicesSection = () => {
     },
     {
       title: "Event Management",
-      image: "/montage/1. Home Page/Services We offer/Event Management.HEIC",
+      image: "/montage/1. Home Page/Services We offer/Event-management.png",
       link: "/services/event-management-plans"
     },
     {
       title: "Signage Installation",
-      image: "/montage/1. Home Page/Services We offer/Signage Installation.HEIC",
+      image: "/montage/1. Home Page/Services We offer/Signage Installation.png",
       link: "/contact"
     }
   ];
