@@ -6,40 +6,34 @@ import EmergencyResponse from './EmergencyResponse';
 const ServicesSection = () => {
   const services = [
     {
-      title: "Traffic Control Plans",
-      icon: <FaRoad className="text-3xl" />,
-      description: "Traffic Control Plans tailored for safety, compliance and site-specific conditions. Designed for civil, road and infrastructure projects.",
-      link: "/DSC00723.JPG"
-    },
-    {
-      title: "Permit Application",
-      icon: <FaFileAlt className="text-3xl" />,
-      description: "We handle council and RMS permit submissions so your site is approved quickly and without delays.",
-      link: "/DSC00949.JPG"
-    },
-    {
       title: "Accredited Traffic Controllers",
-      icon: <FaUserShield className="text-3xl" />,
-      description: "Certified, fully equipped traffic controllers available for day or night works, road closures, events and more.",
-      link: "/DSC00810.JPG"
+      image: "/montage/1. Home Page/Services We offer/Accredited TC.JPG",
+      link: "/accredited-tfnsw-traffic-controllers"
     },
     {
       title: "Equipment Hire",
-      icon: <FaTools className="text-3xl" />,
-      description: "Short or long-term hire of signs, cones, barriers and traffic control vehicles, delivered directly to site.",
-      link: "/DSC00807 (1).JPG"
+      image: "/montage/1. Home Page/Services We offer/Equipment Hire.HEIC",
+      link: "/contact"
     },
     {
-      title: "Emergency Response",
-      icon: <FaAmbulance className="text-3xl" />,
-      description: "24/7 rapid response teams for urgent traffic control needs including incidents, breakdowns or storm recovery.",
-      link: "/DSC00838.JPG"
+      title: "TMP/ TGS/ TCP",
+      image: "/montage/1. Home Page/Services We offer/TMP & TGS.jpeg",
+      link: "/services/traffic-management-plans"
     },
     {
-      title: "Custom Solutions",
-      icon: <FaRoad className="text-3xl" />,
-      description: "Bespoke traffic management strategies tailored for high-risk, complex or large-scale worksites.",
-      link: "/DSC00847.JPG"
+      title: "Council Permit Applications",
+      image: "/montage/1. Home Page/Services We offer/Council applications.png",
+      link: "/services/permit-application"
+    },
+    {
+      title: "Event Management",
+      image: "/montage/1. Home Page/Services We offer/Event Management.HEIC",
+      link: "/services/event-management-plans"
+    },
+    {
+      title: "Signage Installation",
+      image: "/montage/1. Home Page/Services We offer/Signage Installation.HEIC",
+      link: "/contact"
     }
   ];
 
@@ -50,11 +44,11 @@ const ServicesSection = () => {
         <div className="text-center mb-24">
           <span className="text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 block">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight font-anton uppercase">
-            Australia's Premier Traffic Management Solutions
+            Traffic Management Solutions
           </h2>
           <div className="max-w-3xl mx-auto">
             <p className="text-xl text-gray-600">
-              With over 160 years of combined experience, we deliver fully compliant traffic management plans, permits and on-site control for projects of all sizes across Australia.
+              With over 10 years of experience in the industry, we deliver fully compliant traffic management plans, permits and on-site control for projects of all sizes across Australia.
             </p>
           </div>
         </div>
@@ -62,39 +56,38 @@ const ServicesSection = () => {
         {/* Services Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Link 
-              href={service.link} 
+            <div
               key={service.title}
-              className="group relative h-[420px] overflow-hidden border border-gray-200 hover:border-blue-500 transition-all duration-300"
+              className="group relative h-[380px] overflow-hidden border border-gray-200 hover:border-blue-500 transition-all duration-300 rounded-lg"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src={service.link}
+                  src={service.image}
                   alt={service.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   priority={index < 3}
-                  quality={60}
+                  quality={75}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
               </div>
 
-              {/* Card Content */}
-              <div className="relative z-10 h-full flex flex-col justify-end p-8 text-white">
-                <div className="mb-6 p-4 bg-blue-600 w-14 h-14 flex items-center justify-center">
-                  {service.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-gray-300 mb-6">{service.description}</p>
-                <span className="flex items-center gap-2 text-white hover:text-blue-300 font-medium transition-colors w-fit group/link">
-                  <span className="border-b border-transparent group-hover/link:border-white pb-1 transition-all">
+              {/* Card Content - Centered */}
+              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-8 text-white">
+                <h3 className="text-2xl md:text-3xl font-bold mb-6 font-anton uppercase">{service.title}</h3>
+
+                <Link
+                  href={service.link}
+                  className="flex items-center gap-2 text-white hover:text-blue-400 font-semibold transition-colors duration-300 group/link"
+                >
+                  <span className="border-b-2 border-white group-hover/link:border-blue-400 transition-colors">
                     Learn More
                   </span>
-                  <FaChevronRight className="text-xs transition-transform group-hover/link:translate-x-1" />
-                </span>
+                  <FaChevronRight className="text-sm transition-transform group-hover/link:translate-x-1" />
+                </Link>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
