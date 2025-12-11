@@ -4,7 +4,6 @@ import ConnectWithUsSection from "@/components/ConnectWithUsSection";
 import FAQsSection from "@/components/FAQSection";
 import FleetSection from "@/components/FleetSection";
 import HeroSection from "@/components/HeroSection";
-import IsoCertfied from "@/components/IsoCertfied";
 import ServicesSection from "@/components/ServicesSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -25,7 +24,6 @@ export default function Home() {
       <TestimonialsSection />
       <WhyChooseSection /> */}
       <ConnectWithUsSection />
-      <IsoCertfied />
     </main>
   );
 }

@@ -25,7 +25,7 @@ const Footer = () => {
                 className="object-contain"
               />
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-600 leading-relaxed mb-6">
               We acknowledge Aboriginal Traditional Owners of Country throughout
               the Darug of the Eora Nation. We honour and respect all Elders
               past, present, and emerging and respectfully acknowledge all
@@ -33,6 +33,18 @@ const Footer = () => {
               safe and inclusive workplaces, policies, and services for people
               of all communities and their families.
             </p>
+            <div className="flex gap-4 mt-4">
+              <img
+                src="/footer1.png"
+                alt="Footer 1"
+                className="max-w-[150px] w-full h-auto"
+              />
+              <img
+                src="/footer2.png"
+                alt="Footer 2"
+                className="max-w-[150px] w-full h-auto"
+              />
+            </div>
           </div>
 
           {/* Services */}
@@ -226,6 +238,30 @@ const Footer = () => {
                 </Link>
               </li> */} 
             </ul>
+          </div>
+        </div>
+
+        {/* ISO Certification */}
+        <div className="mt-12 pt-8 border-t border-gray-300">
+          <h3 className="text-2xl font-bold text-center mb-6 font-anton uppercase text-blue-600">
+            ISO Certified
+          </h3>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            <img
+              src="/AshburtonV1(ISO-45001)Transparent-A.png"
+              alt="ISO 45001 Certified"
+              className="max-w-[200px] w-full h-auto"
+            />
+            <img
+              src="/certified2.jpeg"
+              alt="Certified 2"
+              className="max-w-[200px] w-full h-auto"
+            />
+            <img
+              src="/certified3.jpeg"
+              alt="Certified 3"
+              className="max-w-[200px] w-full h-auto"
+            />
           </div>
         </div>
 
