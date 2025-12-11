@@ -1,3 +1,4 @@
+import CareerCTASection from "@/components/CareerCTASection";
 import ClientsSection from "@/components/ClientsSection";
 import ConnectWithUsSection from "@/components/ConnectWithUsSection";
 import FAQsSection from "@/components/FAQSection";
@@ -17,6 +18,7 @@ export default function Home() {
       <ClientsSection />
       <ServicesSection />
       <WeAreSection />
+      <CareerCTASection />
       {/* <StatsSection />
       <FleetSection />
       <TestimonialsSection />

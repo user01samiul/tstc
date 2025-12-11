@@ -135,19 +135,30 @@ const WeAreSection = () => {
           </div>
         </div>
 
-        {/* Emergency Response CTA - Simple Modern Banner */}
-        <div className="mt-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <p className="text-white text-lg md:text-xl mb-6 leading-relaxed">
+        {/* Emergency Response CTA - Modern Banner */}
+        <div className="mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-2xl p-12 border border-gray-800">
+          <div className="max-w-5xl mx-auto text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-anton uppercase tracking-wide">
+              24/7 Emergency Traffic Management Response, Ready Within Hours
+            </h3>
+            <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
               Call our 24/7 Control Room Now! , Need a Traffic Crew Call US, Have Questions for Road Safety Call Us.
             </p>
-            <a
-              href="tel:0450819004"
-              className="inline-flex items-center justify-center bg-white text-blue-700 px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition-all duration-300 hover:shadow-xl hover:scale-105"
-            >
-              <FaAmbulance className="mr-3 text-2xl" />
-              0450 819 004
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="tel:0450819004"
+                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-600/30"
+              >
+                <FaAmbulance className="mr-2 text-xl" />
+                Call Emergency Response
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center bg-transparent text-white px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-700 hover:border-blue-600 hover:bg-blue-600/10 transition-all duration-300"
+              >
+                Learn About Our Response
+              </Link>
+            </div>
           </div>
         </div>
 
