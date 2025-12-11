@@ -5,80 +5,103 @@ import { FaHardHat, FaTrafficLight, FaRoad, FaPhoneAlt, FaClock } from 'react-ic
 
 const HeroSection = () => {
   return (
-    <section className="font-opensans relative min-h-screen w-full overflow-hidden flex items-center justify-center py-26">
-      {/* Background Image with Gradient Overlay */}
+    <section className="font-opensans relative h-screen w-full overflow-hidden flex items-center justify-center">
+      {/* Background Video with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/DSC00732.JPG"
-          alt="Professional traffic control services"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="object-cover w-full h-full"
+        >
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/75" />
       </div>
 
       {/* Centered Content */}
-      <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto text-center text-white">
+      <div className="relative z-10 w-full max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto text-center text-white space-y-4">
+          {/* Company Logo */}
+          <div className="flex justify-center mb-3 animate-fade-in">
+            <Image
+              src="/logo.png"
+              alt="T&S Traffic Solutions Logo"
+              width={160}
+              height={74}
+              className="object-contain drop-shadow-2xl"
+              priority
+            />
+          </div>
+
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 font-anton font-bold">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-anton font-bold tracking-wide">
             SAFE AND EFFICIENT <br />
             <span className="text-blue-400">TRAFFIC CONTROL</span> SOLUTIONS
           </h1>
-          
+
+          {/* Slogan */}
+          <p className="text-xl md:text-2xl lg:text-3xl font-anton text-blue-400 italic">
+            "A Safe Way Home"
+          </p>
+
+          {/* Experts in Road Safety */}
+          <p className="text-lg md:text-xl font-semibold tracking-wide">
+            Experts in Road Safety
+          </p>
+
           {/* Description */}
-          <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
+          <p className="text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed opacity-90">
             From lane closures on Motorways to pedestrian management, we provide reliable and effective traffic control services for projects of all sizes.
           </p>
 
           {/* CTA Button */}
-          <div className="flex justify-center">
-            <Link 
-              href="/contact" 
-              className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+          <div className="flex justify-center pt-4">
+            <Link
+              href="/contact"
+              className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-105"
             >
-              <FaPhoneAlt className="text-xl" />
+              <FaPhoneAlt className="text-base" />
               Contact Us Today
             </Link>
           </div>
 
-          {/* Feature Icons */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-300">
-              <div className="bg-blue-600/20 p-4 rounded-full">
-                <FaHardHat className="text-3xl text-blue-400" />
+          {/* Feature Icons - Compact */}
+          <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
+                <FaHardHat className="text-2xl text-blue-400" />
               </div>
-              <span className="font-medium text-lg">Construction</span>
+              <span className="font-medium text-sm">Construction</span>
             </div>
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-300">
-              <div className="bg-blue-600/20 p-4 rounded-full">
-                <FaTrafficLight className="text-3xl text-blue-400" />
+            <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
+                <FaTrafficLight className="text-2xl text-blue-400" />
               </div>
-              <span className="font-medium text-lg">Traffic Control</span>
+              <span className="font-medium text-sm">Traffic Control</span>
             </div>
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-300">
-              <div className="bg-blue-600/20 p-4 rounded-full">
-                <FaRoad className="text-3xl text-blue-400" />
+            <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
+                <FaRoad className="text-2xl text-blue-400" />
               </div>
-              <span className="font-medium text-lg">Road Safety</span>
+              <span className="font-medium text-sm">Road Safety</span>
             </div>
-            <div className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-300">
-              <div className="bg-blue-600/20 p-4 rounded-full">
-                <FaClock className="text-3xl text-blue-400" />
+            <div className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+              <div className="bg-blue-600/30 p-3 rounded-full backdrop-blur-sm">
+                <FaClock className="text-2xl text-blue-400" />
               </div>
-              <span className="font-medium text-lg">24/7 Service</span>
+              <span className="font-medium text-sm">24/7 Service</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Animated Scrolling Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
         <div className="animate-bounce flex flex-col items-center">
-          {/* <span className="text-sm mb-2">Scroll Down</span> */}
-          <div className="w-8 h-12 border-2 border-blue-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse" />
+          <div className="w-6 h-10 border-2 border-blue-400/60 rounded-full flex justify-center">
+            <div className="w-1 h-2 bg-blue-400 rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>
