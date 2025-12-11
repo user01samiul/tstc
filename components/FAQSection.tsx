@@ -41,7 +41,7 @@ const FAQsSection = () => {
               className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200"
             >
               <button
-                className="w-full flex justify-between items-center p-5 text-left text-gray-900 font-semibold text-base md:text-lg hover:bg-gray-100 transition-colors"
+                className="w-full flex justify-between items-center p-5 text-left text-gray-900 font-semibold text-base md:text-lg hover:bg-gray-100 transition-colors cursor-pointer"
                 onClick={() => toggleFAQ(index)}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-content-${index}`}
@@ -55,24 +55,19 @@ const FAQsSection = () => {
               </button>
               <div
                 id={`faq-content-${index}`}
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}
+                className="grid transition-all duration-300 ease-in-out"
+                style={{
+                  gridTemplateRows: openIndex === index ? '1fr' : '0fr',
+                }}
               >
-                <div className="p-5 pt-0 text-gray-700 leading-relaxed">
-                  <p>{faq.answer}</p>
+                <div className="overflow-hidden">
+                  <div className="p-5 pt-3 text-gray-700 leading-relaxed">
+                    <p>{faq.answer}</p>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-        <div className="text-center">
-          <Link
-            href="/faqs"
-            className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold text-lg hover:bg-blue-700 transition-all duration-300 hover:shadow-xl"
-          >
-            View All FAQs
-          </Link>
         </div>
       </div>
     </section>
