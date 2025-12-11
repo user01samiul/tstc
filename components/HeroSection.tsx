@@ -23,36 +23,24 @@ const HeroSection = () => {
       {/* Centered Content */}
       <div className="relative z-10 w-full max-w-6xl px-6 lg:px-8">
         <div className="mx-auto text-center text-white space-y-4">
-          {/* Company Logo */}
-          <div className="flex justify-center mb-3 animate-fade-in">
-            <Image
-              src="/logo.png"
-              alt="T&S Traffic Solutions Logo"
-              width={160}
-              height={74}
-              className="object-contain drop-shadow-2xl"
-              priority
-            />
-          </div>
-
           {/* Main Heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-anton font-bold tracking-wide">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-anton font-bold tracking-wide">
             SAFE AND EFFICIENT <br />
             <span className="text-btn">TRAFFIC CONTROL</span> SOLUTIONS
           </h1>
 
           {/* Slogan */}
-          <p className="text-xl md:text-2xl lg:text-3xl font-anton text-btn italic">
+          <p className="text-2xl md:text-3xl lg:text-4xl font-anton text-btn italic">
             "A Safe Way Home"
           </p>
 
           {/* Experts in Road Safety */}
-          <p className="text-lg md:text-xl font-semibold tracking-wide">
+          <p className="text-xl md:text-2xl font-semibold tracking-wide">
             Experts in Road Safety
           </p>
 
           {/* Description */}
-          <p className="text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed opacity-90">
+          <p className="text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed opacity-90">
             From lane closures on Motorways to pedestrian management, we provide reliable and effective traffic control services for projects of all sizes.
           </p>
 
@@ -104,6 +92,18 @@ const HeroSection = () => {
             <div className="w-1 h-2 bg-btn rounded-full mt-2 animate-pulse" />
           </div>
         </div>
+      </div>
+
+      {/* Company Logo - Bottom Right */}
+      <div className="absolute bottom-8 right-8 z-10 animate-fade-in">
+        <Image
+          src="/logo.png"
+          alt="T&S Traffic Solutions Logo"
+          width={160}
+          height={74}
+          className="object-contain drop-shadow-2xl"
+          priority
+        />
       </div>
     </section>
   );

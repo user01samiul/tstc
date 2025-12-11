@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ClientsSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const logos = [
     { src: "/montage/1. Home Page/Our Clients/1. Client Daracon.png", alt: "Daracon" },
     { src: "/montage/1. Home Page/Our Clients/2. Client - AOR Cranes.png", alt: "AOR Cranes" },
@@ -17,6 +18,17 @@ const ClientsSection = () => {
   // Duplicate the logos to create a seamless loop
   const duplicatedLogos = [...logos, ...logos];
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -43,21 +55,21 @@ const ClientsSection = () => {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-anton">
+        <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-12 font-anton">
           OUR <span className="text-btn">CLIENTS</span>
         </h2>
 
         <div className="relative overflow-hidden">
-          <div ref={containerRef} className="flex items-center py-4">
+          <div ref={containerRef} className="flex items-center py-2 md:py-4">
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={`${logo.alt}-${index}`}
                 className="flex-shrink-0 mx-0 lg:mx-4 hover:grayscale-0 transition-all duration-300"
                 style={{
-                  width: "180px",
-                  height: "100px",
+                  width: isMobile ? "120px" : "180px",
+                  height: isMobile ? "70px" : "100px",
                   position: "relative",
                 }}
               >
