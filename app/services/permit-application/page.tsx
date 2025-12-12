@@ -52,7 +52,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("tf-nsw")}
                   className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "tf-nsw"
-                      ? "bg-blue-50 text-blue-700"
+                      ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -62,7 +62,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("council-permits")}
                   className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "council-permits"
-                      ? "bg-blue-50 text-blue-700"
+                      ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -72,7 +72,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("sta-bus")}
                   className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "sta-bus"
-                      ? "bg-blue-50 text-blue-700"
+                      ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -82,7 +82,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("emergency-approvals")}
                   className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "emergency-approvals"
-                      ? "bg-blue-50 text-blue-700"
+                      ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -90,8 +90,8 @@ const PermitApplication = () => {
                 </button>
               </nav>
 
-              <div className="mt-8 bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-blue-800 mb-4">
+              <div className="mt-8 bg-btn/10 p-6 rounded-lg">
+                <h3 className="text-lg font-medium text-btn mb-4">
                   Contact Information
                 </h3>
                 <ul className="text-gray-700 mb-4 space-y-2">
@@ -99,7 +99,7 @@ const PermitApplication = () => {
                     <span className="font-semibold">Phone:</span>{" "}
                     <a
                       href="tel:+611300008782"
-                      className="text-blue-700 hover:underline"
+                      className="text-btn hover:underline"
                     >
                       +61 1300 008 782
                     </a>
@@ -108,7 +108,7 @@ const PermitApplication = () => {
                     <span className="font-semibold">Careers Email:</span>{" "}
                     <a
                       href="mailto:HR@Tstc.com.au"
-                      className="text-blue-700 hover:underline"
+                      className="text-btn hover:underline"
                     >
                       HR@Tstc.com.au
                     </a>{" "}
@@ -119,7 +119,7 @@ const PermitApplication = () => {
                 </ul>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-700 hover:bg-blue-800"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-btn hover:bg-btn/90"
                 >
                   Contact Our Team
                 </Link>
@@ -227,8 +227,8 @@ const PermitApplication = () => {
                       </div>
                     </div>
 
-                    <div className="mt-8 bg-blue-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-blue-800 mb-4">
+                    <div className="mt-8 bg-btn/10 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-btn mb-4">
                         Council Approval Timeline
                       </h3>
                       <p>
@@ -383,20 +383,20 @@ const PermitApplication = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-blue-700">
+        <div className="bg-btn">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               <span className="block">
                 Ready to streamline your permit process?
               </span>
-              <span className="block text-blue-200">
+              <span className="block text-white/80">
                 Contact our permit specialists today.
               </span>
             </h2>
             <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-btn bg-white hover:bg-btn/10"
               >
                 Get Started
               </Link>

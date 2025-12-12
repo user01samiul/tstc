@@ -3,11 +3,34 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [currentHash, setCurrentHash] = useState("");
+
+  // Track hash changes for same-page anchor links
+  useEffect(() => {
+    setCurrentHash(window.location.hash);
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const isActive = (path: string) => pathname === path || pathname?.startsWith(path + "#");
+
+  // For anchor links on the same page (like permit-application)
+  const isActiveWithHash = (path: string) => {
+    const [pathPart, hashPart] = path.split("#");
+    if (pathname !== pathPart) return false;
+    if (!hashPart) return true; // No hash specified, just match path
+    return currentHash === `#${hashPart}`;
+  };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -40,7 +63,11 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-2">
             <Link
               href="/"
-              className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-btn transition-all duration-200 rounded-lg hover:bg-gray-50"
+              className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                pathname === "/"
+                  ? "text-btn bg-btn/10"
+                  : "text-gray-700 hover:text-btn hover:bg-gray-50"
+              }`}
             >
               Home
             </Link>
@@ -49,7 +76,11 @@ const Navbar = () => {
             <div className="relative">
               <Link
                 href="/about"
-                className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-btn transition-all duration-200 rounded-lg hover:bg-gray-50"
+                className={`flex items-center px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                  pathname?.startsWith("/about")
+                    ? "text-btn bg-btn/10"
+                    : "text-gray-700 hover:text-btn hover:bg-gray-50"
+                }`}
                 onMouseEnter={() => setOpenSubmenu("about")}
                 onClick={() => setOpenSubmenu(null)}
               >
@@ -67,25 +98,41 @@ const Navbar = () => {
                 >
                   <Link
                     href="/about#our-story"
-                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                    className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      isActive("/about#our-story")
+                        ? "bg-btn/10 text-btn font-semibold"
+                        : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                    }`}
                   >
                     Our Story
                   </Link>
                   <Link
                     href="/about#our-team"
-                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                    className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      isActive("/about#our-team")
+                        ? "bg-btn/10 text-btn font-semibold"
+                        : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                    }`}
                   >
                     Our Team
                   </Link>
                   <Link
                     href="/about#our-approach"
-                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                    className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      isActive("/about#our-approach")
+                        ? "bg-btn/10 text-btn font-semibold"
+                        : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                    }`}
                   >
                     Our Approach
                   </Link>
                   <Link
                     href="/about#accreditations"
-                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                    className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      isActive("/about#accreditations")
+                        ? "bg-btn/10 text-btn font-semibold"
+                        : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                    }`}
                   >
                     Accreditations
                   </Link>
@@ -96,7 +143,11 @@ const Navbar = () => {
             {/* Services Mega Menu */}
             <div className="relative">
               <button
-                className="flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-btn transition-all duration-200 rounded-lg hover:bg-gray-50"
+                className={`flex items-center px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                  pathname?.startsWith("/services") || pathname === "/gallery"
+                    ? "text-btn bg-btn/10"
+                    : "text-gray-700 hover:text-btn hover:bg-gray-50"
+                }`}
                 onMouseEnter={() => setOpenSubmenu("services")}
                 onClick={() => toggleSubmenu("services")}
               >
@@ -120,25 +171,41 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <Link
                         href="/services/traffic-plans"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/traffic-plans")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Traffic Plans
                       </Link>
                       <Link
                         href="/services/traffic-management-plans"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/traffic-management-plans")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Traffic Management Plans
                       </Link>
                       <Link
                         href="/services/swept-path"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/swept-path")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Swept Path Analysis
                       </Link>
                       <Link
                         href="/services/event-management-plans"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/event-management-plans")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Event Management Plans
                       </Link>
@@ -147,31 +214,35 @@ const Navbar = () => {
 
                   {/* Column 2 - Permits */}
                   <div className="space-y-3">
-                    <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20">
+                    <h3 className={`text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 ${
+                      pathname === "/services/permit-application"
+                        ? "text-btn border-btn"
+                        : "text-gray-900 border-btn/20"
+                    }`}>
                       Permit Applications
                     </h3>
                     <div className="space-y-1">
                       <Link
                         href="/services/permit-application#tf-nsw"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
                       >
                         TfNSW TMC ROL
                       </Link>
                       <Link
                         href="/services/permit-application#council-permits"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
                       >
                         Council Permits
                       </Link>
                       <Link
                         href="/services/permit-application#sta-bus"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
                       >
                         STA Bus Approvals
                       </Link>
                       <Link
                         href="/services/permit-application#emergency-approvals"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
                       >
                         Emergency Approvals
                       </Link>
@@ -186,13 +257,21 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <Link
                         href="/services/team-leaders"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/team-leaders")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Team Leaders
                       </Link>
                       <Link
                         href="/services/tma-operators"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/tma-operators")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         TMA Operators
                       </Link>
@@ -207,7 +286,11 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <Link
                         href="/gallery"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/gallery")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Photos
                       </Link>
@@ -222,7 +305,11 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <Link
                         href="/services/signage-installation"
-                        className="block px-3 py-2 text-sm text-gray-700 hover:bg-btn/10 hover:text-btn rounded-lg transition-all duration-200 leading-tight"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 leading-tight ${
+                          isActive("/services/signage-installation")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
                       >
                         Temporary & Permanent Street Signage
                       </Link>
