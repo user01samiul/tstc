@@ -2,24 +2,12 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaRoad, FaChevronDown } from "react-icons/fa";
+import { FaPhoneAlt, FaRoad } from "react-icons/fa";
 
 const About = () => {
-  // State for Our Approach accordion
-  const [openSteps, setOpenSteps] = useState<number[]>([0]);
-
   // Ref for Community slideshow animation
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-
-  // Toggle function for accordion
-  const toggleStep = (stepIndex: number) => {
-    setOpenSteps((prev) =>
-      prev.includes(stepIndex)
-        ? prev.filter((i) => i !== stepIndex)
-        : [...prev, stepIndex]
-    );
-  };
 
   // Community slideshow animation
   useEffect(() => {
@@ -363,77 +351,61 @@ const About = () => {
       {/* Our Approach - 6 Step Process */}
       <section id="our-approach" className="py-24 bg-gradient-to-b from-gray-50 to-white text-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block">
               How We Work
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
               OUR <span className="text-btn">APPROACH</span>
             </h2>
-            <div className="w-24 h-1 bg-btn mx-auto mb-6"></div>
-            <p className="text-gray-700 max-w-3xl mx-auto text-lg">
-              Our proven 6-step process ensures comprehensive traffic management solutions
-            </p>
+            <div className="w-24 h-1 bg-btn mx-auto mb-8"></div>
+
+            {/* Description Text */}
+            <div className="max-w-4xl mx-auto">
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                At <strong>T&S Traffic</strong>, our approach is built on <strong className="text-btn">precision, safety and communication</strong>. Every project follows a proven six-step process: <em>Assess, Address, Design, Discuss, Deliver and Review</em>. This ensures every job is carefully planned, expertly managed, and continuously improved.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                From the first site visit to final handover, we deliver <strong>compliant, efficient and reliable traffic solutions</strong> our clients can trust.
+              </p>
+            </div>
           </div>
 
           {/* 6 Step Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {approachSteps.map((step) => {
-              const isOpen = openSteps.includes(step.number - 1);
-              return (
-                <div
-                  key={step.number}
-                  className="group relative bg-white border border-gray-200 hover:border-btn transition-all duration-300 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1"
-                >
-                  {/* Gradient Background on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-btn/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            {approachSteps.map((step) => (
+              <div
+                key={step.number}
+                className="group relative bg-white border border-gray-200 hover:border-btn transition-all duration-300 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1"
+              >
+                {/* Gradient Background on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-btn/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                  {/* Number Badge */}
-                  <div className="absolute -top-3 -left-3 w-16 h-16 bg-gradient-to-br from-btn to-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold font-anton z-10 shadow-xl border-4 border-white">
-                    {step.number}
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="relative pt-12 px-8 pb-8">
-                    <h3 className="text-2xl font-bold font-anton uppercase mb-6 text-gray-900 group-hover:text-btn transition-colors duration-300">
-                      {step.title}
-                    </h3>
-
-                    {/* Expandable Details (accordion pattern) */}
-                    <div
-                      className={`grid transition-all duration-500 ease-in-out ${
-                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <ul className="space-y-3 text-gray-700 mb-6 pt-2">
-                          {step.bullets.map((point, idx) => (
-                            <li key={idx} className="flex items-start text-sm leading-relaxed">
-                              <span className="text-btn mr-3 flex-shrink-0 font-bold text-lg">
-                                •
-                              </span>
-                              <span className="pt-0.5">{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => toggleStep(step.number - 1)}
-                      className="w-full mt-4 py-3 px-4 bg-gray-50 hover:bg-btn text-gray-700 hover:text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all duration-300 group/btn border border-gray-200 hover:border-btn"
-                    >
-                      <span>{isOpen ? "Hide" : "View"} Details</span>
-                      <FaChevronDown
-                        className={`transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                  </div>
+                {/* Number Badge */}
+                <div className="absolute -top-3 -left-3 w-16 h-16 bg-gradient-to-br from-btn to-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold font-anton z-10 shadow-xl border-4 border-white">
+                  {step.number}
                 </div>
-              );
-            })}
+
+                {/* Card Content */}
+                <div className="relative pt-12 px-8 pb-8">
+                  <h3 className="text-2xl font-bold font-anton uppercase mb-6 text-gray-900 group-hover:text-btn transition-colors duration-300">
+                    {step.title}
+                  </h3>
+
+                  {/* Details Always Visible */}
+                  <ul className="space-y-3 text-gray-700">
+                    {step.bullets.map((point, idx) => (
+                      <li key={idx} className="flex items-start text-sm leading-relaxed">
+                        <span className="text-btn mr-3 flex-shrink-0 font-bold text-lg">
+                          •
+                        </span>
+                        <span className="pt-0.5">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
