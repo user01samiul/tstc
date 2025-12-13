@@ -44,65 +44,51 @@ const PermitApplication = () => {
 
         {/* Overview Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
+          <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Our Permit & Approval Services
+              Approvals & Permits
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-              T&S Traffic Control manages all aspects of permit applications and approvals, allowing you to focus on your project while we handle the paperwork.
+            <p className="text-lg text-gray-600 mb-6">
+              Navigating approvals can be time-consuming — we take care of it for you.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
-              <div className="flex items-start gap-3">
+            <p className="text-lg text-gray-600 mb-6">
+              Our team manages the submission and approval process for:
+            </p>
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Road Occupancy Licences (ROLs)</h3>
-                  <p className="text-gray-600 text-sm">Through TfNSW</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
-              <div className="flex items-start gap-3">
+                <p className="text-lg text-gray-700">
+                  <strong>Road Occupancy Licences (ROLs)</strong> through TfNSW
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Council Permits</h3>
-                  <p className="text-gray-600 text-sm">And local road access approvals</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
-              <div className="flex items-start gap-3">
+                <p className="text-lg text-gray-700">
+                  <strong>Council permits</strong> and local road access approvals
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Bus Approvals</h3>
-                  <p className="text-gray-600 text-sm">STA and transport authority coordination</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
-              <div className="flex items-start gap-3">
+                <p className="text-lg text-gray-700">
+                  <strong>Bus Approvals</strong>
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Police Notifications</h3>
-                  <p className="text-gray-600 text-sm">And event traffic permits</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
-              <div className="flex items-start gap-3">
+                <p className="text-lg text-gray-700">
+                  <strong>Police notifications</strong> and event traffic permits
+                </p>
+              </li>
+              <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Utility & Third-Party Authority Clearances</h3>
-                  <p className="text-gray-600 text-sm">Comprehensive coordination</p>
-                </div>
-              </div>
-            </div>
+                <p className="text-lg text-gray-700">
+                  <strong>Utility and third-party authority clearances</strong>
+                </p>
+              </li>
+            </ul>
+            <p className="text-lg text-gray-600">
+              With established relationships across multiple NSW councils and road authorities, T&S ensures your paperwork is handled efficiently, keeping your project on schedule and compliant.
+            </p>
           </div>
         </div>
 
