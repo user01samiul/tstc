@@ -23,8 +23,8 @@ const ContactUs = () => {
         <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
           <div className="mx-auto text-center text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-anton uppercase">
-              T&S <span className="text-blue-400">SERVICES</span> <br />
-              <span className="text-blue-400">GET IN TOUCH</span>
+              T&S <span className="text-btn">SERVICES</span> <br />
+              <span className="text-btn">GET IN TOUCH</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
               Have questions or need assistance? Reach out to us today!
@@ -32,7 +32,7 @@ const ContactUs = () => {
             <div className="flex justify-center">
               <Link
                 href="tel:+611300008782"
-                className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 font-opensans"
+                className="flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 font-opensans"
               >
                 <FaPhoneAlt className="text-xl" />
                 Call Us Now
@@ -42,8 +42,8 @@ const ContactUs = () => {
         </div>
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
           <div className="animate-bounce flex flex-col items-center">
-            <div className="w-8 h-12 border-2 border-blue-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse" />
+            <div className="w-8 h-12 border-2 border-btn rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-btn rounded-full mt-2 animate-pulse" />
             </div>
           </div>
         </div>
@@ -60,14 +60,14 @@ const ContactUs = () => {
               Reach Out
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              OUR <span className="text-blue-500">CONTACT DETAILS</span>
+              OUR <span className="text-btn">CONTACT DETAILS</span>
             </h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+            <div className="w-24 h-1 bg-btn mx-auto"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-4">
               <div className="flex justify-center">
-                <div className="p-5 bg-blue-500 rounded-full">
+                <div className="p-5 bg-btn rounded-full">
                   <FaPhoneAlt className="text-3xl" />
                 </div>
               </div>
@@ -75,7 +75,7 @@ const ContactUs = () => {
               <p className="text-gray-300 font-opensans">
                 <Link
                   href="tel:+611300008782"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-btn transition-colors"
                 >
                   +61 1300 008 782
                 </Link>
@@ -83,7 +83,7 @@ const ContactUs = () => {
             </div>
             <div className="space-y-4">
               <div className="flex justify-center">
-                <div className="p-5 bg-blue-500 rounded-full">
+                <div className="p-5 bg-btn rounded-full">
                   <FaRoad className="text-3xl" />
                 </div>
               </div>
@@ -91,7 +91,7 @@ const ContactUs = () => {
               <p className="text-gray-300 font-opensans">
                 <Link
                   href="mailto:Operations@tstc.com.au"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-btn transition-colors"
                 >
                   Operations@tstc.com.au
                 </Link>
@@ -99,7 +99,7 @@ const ContactUs = () => {
             </div>
             <div className="space-y-4">
               <div className="flex justify-center">
-                <div className="p-5 bg-blue-500 rounded-full">
+                <div className="p-5 bg-btn rounded-full">
                   <FaHardHat className="text-3xl" />
                 </div>
               </div>
@@ -123,9 +123,9 @@ const ContactUs = () => {
               Our Services
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              EXPLORE OUR <span className="text-blue-500">OTHER SERVICES</span>
+              EXPLORE OUR <span className="text-btn">OTHER SERVICES</span>
             </h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+            <div className="w-24 h-1 bg-btn mx-auto"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -156,15 +156,15 @@ const ContactUs = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group bg-black p-8 text-center border border-gray-800 hover:border-blue-500 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 relative overflow-hidden"
+                className="group bg-black p-8 text-center border border-gray-800 hover:border-btn transition-all duration-500 hover:shadow-lg hover:shadow-btn/20 relative overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#13008e]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-btn/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="flex justify-center mb-6 relative z-10">
-                  <div className="p-5 bg-blue-500 rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
+                  <div className="p-5 bg-btn rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
                     {service.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold relative z-10 group-hover:text-blue-600 transition-colors duration-300 font-opensans">
+                <h3 className="text-xl font-semibold relative z-10 group-hover:text-btn transition-colors duration-300 font-opensans">
                   {service.name}
                 </h3>
                 <p className="text-gray-300 mt-4 relative z-10 font-opensans">

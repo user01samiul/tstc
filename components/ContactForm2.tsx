@@ -69,18 +69,18 @@ const ContactForm2 = () => {
     <section id="contact-form" className="py-24 bg-white text-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
+          <div className="relative h-[500px] border-4 border-btn shadow-xl">
             <img
               src="/DSC00844.JPG"
               alt="Contact Us"
               className="object-cover w-full h-full"
             />
-            <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-btn/20 mix-blend-multiply"></div>
           </div>
           <div className="relative">
-            <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
+            <div className="absolute -left-8 top-0 h-full w-1 bg-btn"></div>
             <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-              CONTACT <span className="text-[#13008e]">US</span>
+              CONTACT <span className="text-btn">US</span>
             </h3>
             <div className="space-y-5 text-gray-600 mb-10 font-opensans">
               <p className="leading-relaxed">
@@ -181,10 +181,10 @@ const ContactForm2 = () => {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`inline-block px-10 py-4 bg-[#13008e] text-white font-bold transition-all duration-300 border border-[#13008e] group relative overflow-hidden font-opensans ${
+                  className={`inline-block px-10 py-4 bg-btn text-white font-bold transition-all duration-300 border border-btn group relative overflow-hidden font-opensans ${
                     isLoading
                       ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-white hover:text-[#13008e]"
+                      : "hover:bg-white hover:text-btn"
                   }`}
                 >
                   <span className="relative z-10">
