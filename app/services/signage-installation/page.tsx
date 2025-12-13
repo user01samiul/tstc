@@ -11,7 +11,7 @@ const SignageInstallation = () => {
       <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center font-opensans">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00847.JPG"
+            src="/DSC02286.webp"
             alt="Signage Installation"
             fill
             className="object-cover"
