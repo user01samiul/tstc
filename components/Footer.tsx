@@ -148,6 +148,32 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
+              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
+                Gallery
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="hover:text-btn transition-colors duration-300"
+                  >
+                    Photos
+                  </Link>
+                </li>
+              </ul>
+              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
+                Signage Installation
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/services/signage-installation"
+                    className="hover:text-btn transition-colors duration-300"
+                  >
+                    Temporary & Permanent Street Signage
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
 
