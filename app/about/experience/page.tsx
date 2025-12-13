@@ -3,9 +3,50 @@
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaRoad } from "react-icons/fa";
+import { FaPhoneAlt, FaRoad, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 const OurExperience = () => {
+  // Slideshow state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const slides = [
+    { src: "/DSC00810.JPG", alt: "Highway Infrastructure Project" },
+    { src: "/DSC00844.JPG", alt: "Road Traffic Management" },
+    { src: "/DSC00850.JPG", alt: "Traffic Control Setup" },
+    { src: "/DSC00717.JPG", alt: "Major Road Works" },
+    { src: "/DSC00836.JPG", alt: "Highway Project NSW" },
+    { src: "/DSC00847.JPG", alt: "Traffic Management Operation" },
+    { src: "/DSC00723.JPG", alt: "Road Infrastructure" },
+    { src: "/DSC00943.JPG", alt: "Traffic Control Project" },
+    { src: "/DSC00809.JPG", alt: "Highway Management" },
+    { src: "/DSC00852.JPG", alt: "Road Works Project" }
+  ];
+
+  // Auto-play slideshow
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <main>
       {/* Hero Section */}
@@ -109,7 +150,7 @@ const OurExperience = () => {
         </div>
       </section>
 
-      {/* Photo Gallery Section */}
+      {/* Photo Gallery Slideshow Section */}
       <section className="py-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
@@ -121,33 +162,100 @@ const OurExperience = () => {
             </h2>
             <div className="w-24 h-1 bg-[#2B7FFF] mx-auto"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/DSC00717.JPG"
-                alt="Infrastructure project"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
+
+          {/* Slideshow Container */}
+          <div
+            className="relative max-w-5xl mx-auto"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            {/* Main Slideshow */}
+            <div className="relative h-[500px] md:h-[600px] border-4 border-[#2B7FFF] shadow-2xl overflow-hidden rounded-lg">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+                  {/* Image Caption */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                    <p className="text-white text-lg font-opensans font-semibold">
+                      {slide.alt}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-[#2B7FFF] text-white p-4 rounded-full transition-all duration-300 hover:scale-110"
+                aria-label="Previous slide"
+              >
+                <FaChevronLeft className="text-2xl" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-[#2B7FFF] text-white p-4 rounded-full transition-all duration-300 hover:scale-110"
+                aria-label="Next slide"
+              >
+                <FaChevronRight className="text-2xl" />
+              </button>
+
+              {/* Slide Counter */}
+              <div className="absolute top-4 right-4 z-20 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                <span className="text-white font-opensans font-semibold">
+                  {currentSlide + 1} / {slides.length}
+                </span>
+              </div>
             </div>
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/DSC00844.JPG"
-                alt="Highway project"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-8">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === currentSlide
+                      ? "w-12 h-3 bg-[#2B7FFF]"
+                      : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/DSC00850.JPG"
-                alt="Road works project"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
+
+            {/* Thumbnail Strip */}
+            <div className="hidden md:grid grid-cols-5 gap-4 mt-8">
+              {slides.slice(0, 5).map((slide, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`relative h-24 rounded-lg overflow-hidden transition-all duration-300 ${
+                    index === currentSlide
+                      ? "ring-4 ring-[#2B7FFF] scale-105"
+                      : "opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={`Thumbnail ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </div>
