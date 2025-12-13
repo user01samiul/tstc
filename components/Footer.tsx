@@ -133,6 +133,14 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
+                    href="/accredited-tfnsw-traffic-controllers"
+                    className="hover:text-btn transition-colors duration-300"
+                  >
+                    TfNSW Accredited Staff
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/services/team-leaders"
                     className="hover:text-btn transition-colors duration-300"
                   >
