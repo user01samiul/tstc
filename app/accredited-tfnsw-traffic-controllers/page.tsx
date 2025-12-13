@@ -22,15 +22,15 @@ const TfNSWAccreditedStaff = () => {
         <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
           <div className="mx-auto text-center text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              AAA <span className="text-blue-400">SERVICES</span>
+              AAA <span className="text-[#2B7FFF]">SERVICES</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed">
               Expert TfNSW accredited staff for safe and professional traffic management
             </p>
             <div className="flex justify-center">
-              <Link 
-                href="/contact" 
-                className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              <Link
+                href="/contact"
+                className="flex items-center justify-center gap-3 bg-[#2B7FFF] hover:bg-[#2B7FFF]/90 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
                 <FaPhoneAlt className="text-xl" />
                 Contact Us Today
@@ -41,8 +41,8 @@ const TfNSWAccreditedStaff = () => {
 
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
           <div className="animate-bounce flex flex-col items-center">
-            <div className="w-8 h-12 border-2 border-blue-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse" />
+            <div className="w-8 h-12 border-2 border-[#2B7FFF] rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-[#2B7FFF] rounded-full mt-2 animate-pulse" />
             </div>
           </div>
         </div>
@@ -56,9 +56,9 @@ const TfNSWAccreditedStaff = () => {
               Our Expertise
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              TFNSW ACCREDITED <span className="text-[#13008e]">STAFF</span>
+              TFNSW ACCREDITED <span className="text-[#2B7FFF]">STAFF</span>
             </h2>
-            <div className="w-24 h-1 bg-[#13008e] mx-auto"></div>
+            <div className="w-24 h-1 bg-[#2B7FFF] mx-auto"></div>
           </div>
           <div className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed space-y-6">
             <p>
@@ -79,9 +79,9 @@ const TfNSWAccreditedStaff = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
+              <div className="absolute -left-8 top-0 h-full w-1 bg-[#2B7FFF]"></div>
               <h3 className="text-3xl md:text-4xl font-bold mb-8">
-                Accredited Traffic <span className="text-[#13008e]">Controllers</span>
+                Accredited Traffic <span className="text-[#2B7FFF]">Controllers</span>
               </h3>
               <div className="space-y-5 text-gray-300 mb-10">
                 <p className="leading-relaxed">
@@ -95,14 +95,14 @@ const TfNSWAccreditedStaff = () => {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden"
+                  className="inline-block px-10 py-4 bg-[#2B7FFF] text-white font-bold hover:bg-white hover:text-[#2B7FFF] transition-all duration-300 border border-[#2B7FFF] group relative overflow-hidden"
                 >
                   <span className="relative z-10">CONTACT US</span>
                   <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
                 </Link>
               </div>
             </div>
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
+            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
               <Image
                 src="https://aaatrafficcontrol.com.au/wp-content/uploads/2023/06/Pod-Truck-Lane-Closure-Night-scaled.jpg"
                 alt="Accredited Traffic Controllers"
@@ -110,7 +110,7 @@ const TfNSWAccreditedStaff = () => {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ const TfNSWAccreditedStaff = () => {
       <section className="py-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
+            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
               <Image
                 src="https://aaatrafficcontrol.com.au/wp-content/uploads/2023/06/Pod-Truck-Lane-Closure-Night-scaled.jpg"
                 alt="Experienced Team Leaders"
@@ -128,12 +128,12 @@ const TfNSWAccreditedStaff = () => {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
             </div>
             <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
+              <div className="absolute -left-8 top-0 h-full w-1 bg-[#2B7FFF]"></div>
               <h3 className="text-3xl md:text-4xl font-bold mb-8">
-                Experienced Team <span className="text-[#13008e]">Leaders</span>
+                Experienced Team <span className="text-[#2B7FFF]">Leaders</span>
               </h3>
               <div className="space-y-5 text-gray-600 mb-10">
                 <p className="leading-relaxed">
@@ -150,7 +150,7 @@ const TfNSWAccreditedStaff = () => {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden"
+                  className="inline-block px-10 py-4 bg-[#2B7FFF] text-white font-bold hover:bg-white hover:text-[#2B7FFF] transition-all duration-300 border border-[#2B7FFF] group relative overflow-hidden"
                 >
                   <span className="relative z-10">CONTACT US</span>
                   <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
@@ -166,9 +166,9 @@ const TfNSWAccreditedStaff = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
+              <div className="absolute -left-8 top-0 h-full w-1 bg-[#2B7FFF]"></div>
               <h3 className="text-3xl md:text-4xl font-bold mb-8">
-                Truck Mounted Attenuator <span className="text-[#13008e]">Operators</span>
+                Truck Mounted Attenuator <span className="text-[#2B7FFF]">Operators</span>
               </h3>
               <div className="space-y-5 text-gray-300 mb-10">
                 <p className="leading-relaxed">
@@ -179,14 +179,14 @@ const TfNSWAccreditedStaff = () => {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden"
+                  className="inline-block px-10 py-4 bg-[#2B7FFF] text-white font-bold hover:bg-white hover:text-[#2B7FFF] transition-all duration-300 border border-[#2B7FFF] group relative overflow-hidden"
                 >
                   <span className="relative z-10">CONTACT US</span>
                   <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
                 </Link>
               </div>
             </div>
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
+            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
               <Image
                 src="https://aaatrafficcontrol.com.au/wp-content/uploads/2023/06/Pod-Truck-Lane-Closure-Night-scaled.jpg"
                 alt="Truck Mounted Attenuator Operators"
@@ -194,7 +194,7 @@ const TfNSWAccreditedStaff = () => {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
             </div>
           </div>
         </div>
@@ -204,7 +204,7 @@ const TfNSWAccreditedStaff = () => {
       <section className="py-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
+            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
               <Image
                 src="https://aaatrafficcontrol.com.au/wp-content/uploads/2023/06/Pod-Truck-Lane-Closure-Night-scaled.jpg"
                 alt="Get in Touch"
@@ -212,12 +212,12 @@ const TfNSWAccreditedStaff = () => {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
             </div>
             <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
+              <div className="absolute -left-8 top-0 h-full w-1 bg-[#2B7FFF]"></div>
               <h3 className="text-3xl md:text-4xl font-bold mb-8">
-                Get in Touch for <span className="text-[#13008e]">Accredited Traffic Solutions</span>
+                Get in Touch for <span className="text-[#2B7FFF]">Accredited Traffic Solutions</span>
               </h3>
               <div className="space-y-5 text-gray-600 mb-10">
                 <p className="leading-relaxed">
@@ -228,7 +228,7 @@ const TfNSWAccreditedStaff = () => {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden"
+                  className="inline-block px-10 py-4 bg-[#2B7FFF] text-white font-bold hover:bg-white hover:text-[#2B7FFF] transition-all duration-300 border border-[#2B7FFF] group relative overflow-hidden"
                 >
                   <span className="relative z-10">GET A QUOTE</span>
                   <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
