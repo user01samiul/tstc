@@ -180,16 +180,6 @@ const Navbar = () => {
                     </h3>
                     <div className="space-y-1">
                       <Link
-                        href="/services"
-                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 font-semibold ${
-                          pathname === "/services"
-                            ? "bg-btn text-white"
-                            : "bg-btn/10 text-btn hover:bg-btn hover:text-white"
-                        }`}
-                      >
-                        View All Services
-                      </Link>
-                      <Link
                         href="/services/traffic-plans"
                         className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
                           isActive("/services/traffic-plans")
@@ -510,13 +500,6 @@ const Navbar = () => {
                   </button>
                   {openSubmenu === "services" && (
                     <div className="pl-6 space-y-2 mt-1">
-                      <Link
-                        href="/services"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
-                      >
-                        📋 View All Services
-                      </Link>
                       <div className="space-y-1">
                         <h4 className="px-4 py-2 text-sm font-semibold text-btn">
                           Traffic Engineering - Planning & Design
