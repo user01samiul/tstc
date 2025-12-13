@@ -5,6 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 const PermitApplication = () => {
   const [activeTab, setActiveTab] = useState("tf-nsw");
@@ -12,10 +13,10 @@ const PermitApplication = () => {
   return (
     <>
       <Head>
-        <title>Permit Application Services | T&S Traffic Solutions</title>
+        <title>Approvals & Permits | T&S Traffic Solutions</title>
         <meta
           name="description"
-          content="Professional permit application services for TfNSW, council permits, STA bus approvals, and emergency approvals."
+          content="Professional permit and approval services for road occupancy licences, council permits, bus approvals, and more across NSW."
         />
       </Head>
 
@@ -33,11 +34,10 @@ const PermitApplication = () => {
           </div>
           <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Permit Application Services
+              Approvals & <span className="text-[#2B7FFF]">Permits</span>
             </h1>
             <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-              Streamlined permit applications for all your traffic management
-              needs.
+              Navigating approvals can be time-consuming — we take care of it for you.
             </p>
           </div>
         </div>
@@ -48,53 +48,67 @@ const PermitApplication = () => {
             {/* Sidebar Navigation */}
             <div className="lg:w-1/4 mb-8 lg:mb-0">
               <nav className="space-y-1">
-                <button
+                <a
+                  href="#tf-nsw"
                   onClick={() => setActiveTab("tf-nsw")}
-                  className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "tf-nsw"
                       ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  TfNSW TMC ROL Approval
-                </button>
-                <button
+                  TfNSW TMC ROL
+                </a>
+                <a
+                  href="#council-permits"
                   onClick={() => setActiveTab("council-permits")}
-                  className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "council-permits"
                       ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   Council Permits
-                </button>
-                <button
+                </a>
+                <a
+                  href="#sta-bus"
                   onClick={() => setActiveTab("sta-bus")}
-                  className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "sta-bus"
                       ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   STA Bus Approvals
-                </button>
-                <button
+                </a>
+                <a
+                  href="#emergency-approvals"
                   onClick={() => setActiveTab("emergency-approvals")}
-                  className={`w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "emergency-approvals"
                       ? "bg-btn/10 text-btn"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
                   Emergency Approvals
-                </button>
+                </a>
               </nav>
 
               <div className="mt-8 bg-btn/10 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-btn mb-4">
+                <h3 className="text-lg font-medium text-btn mb-4 flex items-center gap-2">
+                  <FaEnvelope />
                   Contact Information
                 </h3>
                 <ul className="text-gray-700 mb-4 space-y-2">
+                  <li>
+                    <span className="font-semibold">Permits Email:</span>{" "}
+                    <a
+                      href="mailto:Plans@tstc.com.au"
+                      className="text-btn hover:underline"
+                    >
+                      Plans@tstc.com.au
+                    </a>
+                  </li>
                   <li>
                     <span className="font-semibold">Phone:</span>{" "}
                     <a
@@ -103,18 +117,6 @@ const PermitApplication = () => {
                     >
                       +61 1300 008 782
                     </a>
-                  </li>
-                  <li>
-                    <span className="font-semibold">Careers Email:</span>{" "}
-                    <a
-                      href="mailto:HR@Tstc.com.au"
-                      className="text-btn hover:underline"
-                    >
-                      HR@Tstc.com.au
-                    </a>{" "}
-                    <span className="text-xs text-gray-500">
-                      (Careers page only)
-                    </span>
                   </li>
                 </ul>
                 <Link
@@ -128,53 +130,33 @@ const PermitApplication = () => {
 
             {/* Main Content */}
             <div className="lg:w-3/4">
-              {/* TfNSW TMC ROL Approval */}
+              {/* TfNSW TMC ROL */}
               {activeTab === "tf-nsw" && (
-                <div>
+                <div id="tf-nsw">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    TfNSW TMC ROL Approval
+                    Road Occupancy Licences (ROLs) through TfNSW
                   </h2>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
-                      Transport for NSW (TfNSW) Traffic Management Committee
-                      (TMC) Road Occupancy License (ROL) approvals are essential
-                      for any work that impacts state roads.
+                      Our team manages the complete submission and approval process for Road Occupancy Licences through Transport for NSW (TfNSW).
                     </p>
-
-                    <div className="mt-8 grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                          Our Services Include:
-                        </h3>
-                        <ul className="list-disc pl-5 space-y-2">
-                          <li>Complete ROL application preparation</li>
-                          <li>Traffic Management Plan development</li>
-                          <li>Liaison with TfNSW representatives</li>
-                          <li>Risk assessment and mitigation strategies</li>
-                          <li>Approval tracking and follow-up</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <Image
-                          src="/DSC00845.JPG"
-                          alt="TfNSW Permit Process"
-                          width={500}
-                          height={300}
-                          className="rounded-lg shadow-md"
-                        />
-                      </div>
-                    </div>
 
                     <div className="mt-8 bg-gray-50 p-6 rounded-lg">
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Why Choose Us for Your TfNSW Approvals?
+                        What We Handle
                       </h3>
-                      <p>
-                        With years of experience working directly with TfNSW, we
-                        understand the specific requirements and expectations of
-                        the TMC. Our team maintains excellent relationships with
-                        key contacts, helping to streamline the approval
-                        process.
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Complete ROL application preparation and submission</li>
+                        <li>Traffic Management Plan development and coordination</li>
+                        <li>Liaison with TfNSW Traffic Management Committee representatives</li>
+                        <li>Approval tracking and follow-up communications</li>
+                        <li>Compliance documentation and record keeping</li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <p className="text-gray-600">
+                        With established relationships across NSW road authorities, T&S ensures your paperwork is handled efficiently, keeping your project on schedule and compliant.
                       </p>
                     </div>
                   </div>
@@ -183,127 +165,66 @@ const PermitApplication = () => {
 
               {/* Council Permits */}
               {activeTab === "council-permits" && (
-                <div>
+                <div id="council-permits">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Council Permits
+                    Council Permits & Local Road Access
                   </h2>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
-                      Local council permits are required for any work that
-                      impacts local roads, footpaths, or public spaces. Each
-                      council has its own requirements and processes.
+                      We manage council permit applications and local road access approvals across multiple NSW councils.
                     </p>
 
-                    <div className="mt-8">
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Our Council Permit Services:
+                        Our Services Include
                       </h3>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Comprehensive Coverage:
-                          </h4>
-                          <ul className="list-disc pl-5 space-y-1">
-                            <li>Road occupancy permits</li>
-                            <li>Footpath closures</li>
-                            <li>Hoarding permits</li>
-                            <li>Works zone applications</li>
-                            <li>Parking bay suspensions</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Benefits:
-                          </h4>
-                          <ul className="list-disc pl-5 space-y-1">
-                            <li>
-                              Knowledge of all Australian council requirements
-                            </li>
-                            <li>Fast turnaround times</li>
-                            <li>Direct council relationships</li>
-                            <li>Problem-solving for complex applications</li>
-                          </ul>
-                        </div>
-                      </div>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Council road occupancy permits</li>
+                        <li>Local road access approvals</li>
+                        <li>Footpath closure permits</li>
+                        <li>Works zone applications</li>
+                        <li>Parking bay suspensions</li>
+                        <li>Hoarding and scaffolding permits</li>
+                      </ul>
                     </div>
 
-                    <div className="mt-8 bg-btn/10 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-btn mb-4">
-                        Council Approval Timeline
-                      </h3>
-                      <p>
-                        Standard council permits typically require 10-15
-                        business days for approval. We recommend submitting
-                        applications at least 3 weeks before your planned works
-                        to account for any requests for additional information.
+                    <div className="mt-8">
+                      <p className="text-gray-600">
+                        Our established relationships with councils throughout NSW enable us to navigate each council's unique requirements efficiently, minimizing delays and ensuring compliance.
                       </p>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* STA Bus Approvals */}
+              {/* Bus Approvals */}
               {activeTab === "sta-bus" && (
-                <div>
+                <div id="sta-bus">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    STA Bus Approvals
+                    Bus Approvals
                   </h2>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
-                      Work near bus stops, lanes, or routes requires special
-                      approval from State Transit Authority (STA) to minimize
-                      disruption to public transport services.
+                      We coordinate bus approvals and manage liaison with transport authorities for works affecting bus routes and stops.
                     </p>
 
-                    <div className="mt-8 grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                          STA Approval Process:
-                        </h3>
-                        <ol className="list-decimal pl-5 space-y-2">
-                          <li>Initial assessment of bus impact</li>
-                          <li>Development of bus management plan</li>
-                          <li>Coordination with STA operations team</li>
-                          <li>Submission of required documentation</li>
-                          <li>Implementation of approved measures</li>
-                        </ol>
-                      </div>
-                      <div>
-                        <Image
-                          src="/DSC00862.JPG"
-                          alt="STA Bus Approval Process"
-                          width={500}
-                          height={300}
-                          className="rounded-lg shadow-md"
-                        />
-                      </div>
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        Bus Approval Management
+                      </h3>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Coordination with bus operators for works near bus routes</li>
+                        <li>Temporary bus stop relocations and approvals</li>
+                        <li>Bus lane closure applications</li>
+                        <li>Impact assessments for public transport</li>
+                        <li>Ongoing communication with transport authorities</li>
+                      </ul>
                     </div>
 
                     <div className="mt-8">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Key Considerations:
-                      </h3>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Peak Hours
-                          </h4>
-                          <p>
-                            Work affecting bus operations during peak hours
-                            (6-9am and 3-7pm) requires additional mitigation
-                            measures.
-                          </p>
-                        </div>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Stop Relocations
-                          </h4>
-                          <p>
-                            Temporary bus stop relocations must provide
-                            equivalent accessibility and safety features.
-                          </p>
-                        </div>
-                      </div>
+                      <p className="text-gray-600">
+                        Our team ensures all bus-related approvals are obtained efficiently, minimizing disruption to public transport services while keeping your project moving forward.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -311,69 +232,44 @@ const PermitApplication = () => {
 
               {/* Emergency Approvals */}
               {activeTab === "emergency-approvals" && (
-                <div>
+                <div id="emergency-approvals">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     Emergency Approvals
                   </h2>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
-                      When unexpected situations require immediate traffic
-                      management solutions, we provide rapid response permit
-                      applications for emergency works.
+                      For urgent situations requiring immediate approvals, our team provides rapid response permit services.
                     </p>
 
-                    <div className="mt-8">
-                      <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-                        <Link href="tel:+611300008782">
-                          <h3 className="text-lg font-medium text-red-800">
-                            Emergency Hotline: +61 1300 008 782
-                          </h3>
-                        </Link>
-                        <p className="text-red-700">
-                          Available 24/7 for urgent permit requirements.
-                        </p>
+                    <div className="mt-8 bg-btn/10 border-l-4 border-btn p-6 mb-6">
+                      <div className="flex items-center gap-3 mb-2">
+                        <FaPhoneAlt className="text-btn text-xl" />
+                        <h3 className="text-lg font-medium text-btn">
+                          24/7 Emergency Response
+                        </h3>
                       </div>
-
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Emergency Approval Scenarios:
-                      </h3>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Infrastructure Failures
-                          </h4>
-                          <ul className="list-disc pl-5 space-y-1">
-                            <li>Water main breaks</li>
-                            <li>Gas leaks</li>
-                            <li>Electrical outages</li>
-                            <li>Bridge damage</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900 mb-2">
-                            Natural Events
-                          </h4>
-                          <ul className="list-disc pl-5 space-y-1">
-                            <li>Flood damage repairs</li>
-                            <li>Storm response</li>
-                            <li>Bushfire access</li>
-                            <li>Landslip remediation</li>
-                          </ul>
-                        </div>
-                      </div>
+                      <p className="text-gray-700">
+                        Contact us anytime for urgent permit requirements: <a href="tel:+611300008782" className="font-semibold text-btn hover:underline">+61 1300 008 782</a>
+                      </p>
                     </div>
 
-                    <div className="mt-8 bg-gray-100 p-6 rounded-lg">
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Our Emergency Response Process:
+                        Emergency Services Include
                       </h3>
-                      <ol className="list-decimal pl-5 space-y-2">
-                        <li>Immediate assessment of the situation</li>
-                        <li>Development of emergency traffic plan</li>
-                        <li>Direct contact with approval authorities</li>
-                        <li>Same-day permit acquisition</li>
-                        <li>Implementation of traffic control measures</li>
-                      </ol>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Police notifications for emergency works</li>
+                        <li>Utility and third-party authority clearances</li>
+                        <li>Event traffic permits and special approvals</li>
+                        <li>Rapid response permit applications</li>
+                        <li>Direct liaison with approval authorities</li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <p className="text-gray-600">
+                        Our established relationships and 24-hour response capability ensure critical approvals are obtained quickly, keeping essential works on track.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -403,7 +299,6 @@ const PermitApplication = () => {
             </div>
           </div>
         </div>
-
 
         <ContactForm />
       </div>
