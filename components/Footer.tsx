@@ -241,6 +241,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  href="/about/experience"
+                  className="hover:text-btn transition-colors duration-300"
+                >
+                  Our Experience
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/faqs"
                   className="hover:text-btn transition-colors duration-300"
                 >

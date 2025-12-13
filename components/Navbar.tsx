@@ -136,6 +136,16 @@ const Navbar = () => {
                   >
                     Accreditations
                   </Link>
+                  <Link
+                    href="/about/experience"
+                    className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                      isActive("/about/experience")
+                        ? "bg-btn/10 text-btn font-semibold"
+                        : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                    }`}
+                  >
+                    Our Experience
+                  </Link>
                 </div>
               )}
             </div>
@@ -465,6 +475,13 @@ const Navbar = () => {
                         className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                       >
                         Accreditations
+                      </Link>
+                      <Link
+                        href="/about/experience"
+                        onClick={toggleMobileMenu}
+                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      >
+                        Our Experience
                       </Link>
                     </div>
                   )}
