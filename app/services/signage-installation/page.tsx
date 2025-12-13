@@ -11,7 +11,7 @@ const SignageInstallation = () => {
       <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center font-opensans">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02286.webp"
+            src="/DSC00723.webp"
             alt="Signage Installation"
             fill
             className="object-cover"
@@ -23,7 +23,7 @@ const SignageInstallation = () => {
         <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
           <div className="mx-auto text-center text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-anton">
-              T&S SIGNAGE
+              T&S <span className="text-btn">SIGNAGE</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
               Professional signage installation ensuring safe and efficient traffic control systems
