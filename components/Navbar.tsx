@@ -187,7 +187,7 @@ const Navbar = () => {
                             : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                         }`}
                       >
-                        Traffic Management Plans
+                        Traffic Management Plans (TMP) (CTMP)
                       </Link>
                       <Link
                         href="/services/swept-path"
@@ -197,7 +197,7 @@ const Navbar = () => {
                             : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                         }`}
                       >
-                        Swept Path Analysis
+                        Swept Path Analysis (SPA)
                       </Link>
                       <Link
                         href="/services/event-management-plans"
