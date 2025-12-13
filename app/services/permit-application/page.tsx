@@ -53,7 +53,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("tf-nsw")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "tf-nsw"
-                      ? "bg-btn/10 text-btn"
+                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -64,7 +64,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("council-permits")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "council-permits"
-                      ? "bg-btn/10 text-btn"
+                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -75,7 +75,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("sta-bus")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "sta-bus"
-                      ? "bg-btn/10 text-btn"
+                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -86,7 +86,7 @@ const PermitApplication = () => {
                   onClick={() => setActiveTab("emergency-approvals")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
                     activeTab === "emergency-approvals"
-                      ? "bg-btn/10 text-btn"
+                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
@@ -94,8 +94,8 @@ const PermitApplication = () => {
                 </a>
               </nav>
 
-              <div className="mt-8 bg-btn/10 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-btn mb-4 flex items-center gap-2">
+              <div className="mt-8 bg-[#2B7FFF]/10 p-6 rounded-lg">
+                <h3 className="text-lg font-medium text-[#2B7FFF] mb-4 flex items-center gap-2">
                   <FaEnvelope />
                   Contact Information
                 </h3>
@@ -104,7 +104,7 @@ const PermitApplication = () => {
                     <span className="font-semibold">Permits Email:</span>{" "}
                     <a
                       href="mailto:Plans@tstc.com.au"
-                      className="text-btn hover:underline"
+                      className="text-[#2B7FFF] hover:underline"
                     >
                       Plans@tstc.com.au
                     </a>
@@ -113,7 +113,7 @@ const PermitApplication = () => {
                     <span className="font-semibold">Phone:</span>{" "}
                     <a
                       href="tel:+611300008782"
-                      className="text-btn hover:underline"
+                      className="text-[#2B7FFF] hover:underline"
                     >
                       +61 1300 008 782
                     </a>
@@ -121,7 +121,7 @@ const PermitApplication = () => {
                 </ul>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-btn hover:bg-btn/90"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#2B7FFF] hover:bg-[#2B7FFF]/90"
                 >
                   Contact Our Team
                 </Link>
@@ -241,15 +241,15 @@ const PermitApplication = () => {
                       For urgent situations requiring immediate approvals, our team provides rapid response permit services.
                     </p>
 
-                    <div className="mt-8 bg-btn/10 border-l-4 border-btn p-6 mb-6">
+                    <div className="mt-8 bg-[#2B7FFF]/10 border-l-4 border-[#2B7FFF] p-6 mb-6">
                       <div className="flex items-center gap-3 mb-2">
-                        <FaPhoneAlt className="text-btn text-xl" />
-                        <h3 className="text-lg font-medium text-btn">
+                        <FaPhoneAlt className="text-[#2B7FFF] text-xl" />
+                        <h3 className="text-lg font-medium text-[#2B7FFF]">
                           24/7 Emergency Response
                         </h3>
                       </div>
                       <p className="text-gray-700">
-                        Contact us anytime for urgent permit requirements: <a href="tel:+611300008782" className="font-semibold text-btn hover:underline">+61 1300 008 782</a>
+                        Contact us anytime for urgent permit requirements: <a href="tel:+611300008782" className="font-semibold text-[#2B7FFF] hover:underline">+61 1300 008 782</a>
                       </p>
                     </div>
 
@@ -279,7 +279,7 @@ const PermitApplication = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-btn">
+        <div className="bg-[#2B7FFF]">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               <span className="block">
@@ -292,7 +292,7 @@ const PermitApplication = () => {
             <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-btn bg-white hover:bg-btn/10"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-[#2B7FFF] bg-white hover:bg-[#2B7FFF]/10"
               >
                 Get Started
               </Link>
