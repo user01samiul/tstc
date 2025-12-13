@@ -14,6 +14,8 @@ export async function POST(request: Request) {
     const message = formData.get("message") as string;
     const canDriveManual = formData.get("canDriveManual") as string;
     const hasOwnVehicle = formData.get("hasOwnVehicle") as string;
+    const shiftPreference = formData.get("shiftPreference") as string;
+    const daysAvailable = formData.getAll("daysAvailable[]") as string[];
     const qualifications = formData.getAll("qualifications[]") as string[];
     const files = formData.getAll("files") as File[];
 
@@ -26,7 +28,8 @@ export async function POST(request: Request) {
       !streetAddress ||
       !suburb ||
       !canDriveManual ||
-      !hasOwnVehicle
+      !hasOwnVehicle ||
+      !shiftPreference
     ) {
       return NextResponse.json(
         { error: "All required fields must be filled" },
@@ -56,7 +59,7 @@ export async function POST(request: Request) {
       from: process.env.GMAIL_USER,
       to: "hr@tstc.com.au",
       subject: `New Career Application from ${firstName} ${familyName}`,
-      text: `First Name: ${firstName}\nFamily Name: ${familyName}\nPhone: ${phoneNumber}\nEmail: ${email}\nStreet Address: ${streetAddress}\nSuburb: ${suburb}\nMessage: ${message}\nCan Drive Manual: ${canDriveManual}\nHas Own Vehicle: ${hasOwnVehicle}\nQualifications: ${qualifications.join(", ")}`,
+      text: `First Name: ${firstName}\nFamily Name: ${familyName}\nPhone: ${phoneNumber}\nEmail: ${email}\nStreet Address: ${streetAddress}\nSuburb: ${suburb}\nMessage: ${message}\nCan Drive Manual: ${canDriveManual}\nHas Own Vehicle: ${hasOwnVehicle}\nShift Preference: ${shiftPreference}\nDays Available: ${daysAvailable.join(", ")}\nQualifications: ${qualifications.join(", ")}`,
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #f7f7f9; padding: 32px; border-radius: 12px; max-width: 520px; margin: auto; box-shadow: 0 2px 12px rgba(0,0,0,0.07);">
           <h2 style="color: #1a202c; margin-bottom: 16px;">New Career Application</h2>
@@ -70,6 +73,8 @@ export async function POST(request: Request) {
             <tr><td style="padding: 8px 0; color: #555;"><strong>Message:</strong></td><td style="padding: 8px 0; color: #222;">${message}</td></tr>
             <tr><td style="padding: 8px 0; color: #555;"><strong>Can Drive Manual:</strong></td><td style="padding: 8px 0; color: #222;">${canDriveManual}</td></tr>
             <tr><td style="padding: 8px 0; color: #555;"><strong>Has Own Vehicle:</strong></td><td style="padding: 8px 0; color: #222;">${hasOwnVehicle}</td></tr>
+            <tr><td style="padding: 8px 0; color: #555;"><strong>Shift Preference:</strong></td><td style="padding: 8px 0; color: #222;">${shiftPreference}</td></tr>
+            <tr><td style="padding: 8px 0; color: #555;"><strong>Days Available:</strong></td><td style="padding: 8px 0; color: #222;">${daysAvailable.join(", ")}</td></tr>
             <tr><td style="padding: 8px 0; color: #555;"><strong>Qualifications:</strong></td><td style="padding: 8px 0; color: #222;">${qualifications.join(", ")}</td></tr>
           </table>
           <div style="margin-top: 32px; font-size: 13px; color: #888;">This application was sent via the T&S Traffic Solutions website career form.</div>

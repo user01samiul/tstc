@@ -15,6 +15,8 @@ interface FormData {
   message: string;
   canDriveManual: string;
   hasOwnVehicle: string;
+  shiftPreference: string;
+  daysAvailable: string[];
   qualifications: string[];
 }
 
@@ -29,6 +31,8 @@ const JobOpportunities = () => {
     message: "",
     canDriveManual: "",
     hasOwnVehicle: "",
+    shiftPreference: "",
+    daysAvailable: [],
     qualifications: [],
   };
 
@@ -54,6 +58,16 @@ const JobOpportunities = () => {
     }));
   };
 
+  const handleDaysCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      daysAvailable: checked
+        ? [...prev.daysAvailable, value]
+        : prev.daysAvailable.filter((d) => d !== value),
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -69,6 +83,8 @@ const JobOpportunities = () => {
     submitData.append("message", formData.message);
     submitData.append("canDriveManual", formData.canDriveManual);
     submitData.append("hasOwnVehicle", formData.hasOwnVehicle);
+    submitData.append("shiftPreference", formData.shiftPreference);
+    formData.daysAvailable.forEach((d) => submitData.append("daysAvailable[]", d));
     formData.qualifications.forEach((q) => submitData.append("qualifications[]", q));
 
     if (fileRef.current && fileRef.current.files) {
@@ -462,6 +478,76 @@ const JobOpportunities = () => {
                         />
                         <span className="ml-2">No</span>
                       </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">
+                      Shift Preference
+                    </label>
+                    <div className="mt-2 space-x-4">
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          name="shiftPreference"
+                          value="Day Shift"
+                          checked={formData.shiftPreference === "Day Shift"}
+                          onChange={handleInputChange}
+                          className="form-radio"
+                          required
+                        />
+                        <span className="ml-2">Day Shift</span>
+                      </label>
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          name="shiftPreference"
+                          value="Night Shift"
+                          checked={formData.shiftPreference === "Night Shift"}
+                          onChange={handleInputChange}
+                          className="form-radio"
+                          required
+                        />
+                        <span className="ml-2">Night Shift</span>
+                      </label>
+                      <label className="inline-flex items-center">
+                        <input
+                          type="radio"
+                          name="shiftPreference"
+                          value="Both"
+                          checked={formData.shiftPreference === "Both"}
+                          onChange={handleInputChange}
+                          className="form-radio"
+                          required
+                        />
+                        <span className="ml-2">Both</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium">
+                      Days Available (select all that apply)
+                    </label>
+                    <div className="mt-2 space-y-2">
+                      {[
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday",
+                      ].map((day) => (
+                        <label key={day} className="block">
+                          <input
+                            type="checkbox"
+                            value={day}
+                            checked={formData.daysAvailable.includes(day)}
+                            onChange={handleDaysCheckboxChange}
+                            className="form-checkbox"
+                          />
+                          <span className="ml-2">{day}</span>
+                        </label>
+                      ))}
                     </div>
                   </div>
                   <div>
