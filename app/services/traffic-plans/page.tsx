@@ -2,9 +2,34 @@
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
-import { FaHardHat, FaPhoneAlt, FaRoad, FaTrafficLight } from "react-icons/fa";
+import { FaHardHat, FaPhoneAlt, FaRoad, FaTrafficLight, FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
 
 const TrafficManagementPlan = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "What is a TGS or TCP",
+      answer:
+        "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. A TCP (Traffic Control Plan) serves a similar purpose, providing specific instructions for managing traffic flow during roadworks, construction, or events that impact normal traffic conditions.",
+    },
+    {
+      question: "What is a TMP or CTMP",
+      answer:
+        "A TMP (Traffic Management Plan) is a comprehensive document that outlines how traffic will be safely managed during construction or events. A CTMP (Construction Traffic Management Plan) is a specialized TMP required when construction activities impact public roads, footpaths, or traffic flow. Both plans ensure safety and compliance with road authority requirements.",
+    },
+    {
+      question: "What is a ROL",
+      answer:
+        "A ROL (Road Occupancy Licence) is a permit issued by the relevant road authority that allows you to occupy part of a road or lane for construction, maintenance, or events. You need a ROL whenever your activities require the use of public road space.",
+    },
+  ];
+
   return (
     <main>
       {/* Hero Section (Black Background) */}
@@ -51,37 +76,33 @@ const TrafficManagementPlan = () => {
         </div>
       </section>
 
-      {/* Strategic Planning Section (White Background) */}
+      {/* Traffic Planning Section (White Background) */}
       <section className="py-24 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
             <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Our Strategy
+              Traffic Planning
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton">
-              NOT ALL TMPs ARE{" "}
-              <span className="text-btn">CREATED EQUAL</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
+              TRAFFIC GUIDANCE <span className="text-btn">SCHEMES (TGS)</span>
             </h2>
-            <h3 className="text-2xl font-semibold text-gray-600 mb-6">
-              Strategic Planning for Maximum Safety and Efficiency
-            </h3>
             <div className="w-24 h-1 bg-btn mx-auto"></div>
           </div>
           <div className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed space-y-6 font-opensans">
             <p>
-              At T&S Traffic Control, we recognize that every project has
-              distinct needs, demanding a bespoke traffic management plan (TMP).
-              Our certified professionals collaborate closely with you to
-              understand your project’s unique requirements and develop a
-              comprehensive plan that adheres to Australian Standards, Codes of
-              Practice, and legal regulations.
+              Our in-house design team develops <strong>Traffic Guidance Schemes</strong> that comply with <strong>TfNSW (RMS) and AS1742.3 standards</strong>, ensuring safety and practicality for every site.
             </p>
             <p>
-              Our TMPs form the foundation for safe and efficient project sites,
-              covering every phase from initial assessment to project
-              completion. This holistic approach ensures uninterrupted
-              operations while safeguarding workers and the public.
+              Each TGS is designed with real-world application in mind- balancing the needs of workers, motorists, and pedestrians. We assess traffic volumes, road geometry, and environmental factors to create layouts that are both compliant and efficient.
             </p>
+            <p className="font-semibold text-gray-800">Our TGS services include:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Detailed traffic control plans using professional software</li>
+              <li>Custom designs for roadworks, lane closures, shoulder works, and intersections</li>
+              <li>Multi-stage and long-term layouts for civil and infrastructure projects</li>
+              <li>Night works, event management, and complex staging designs</li>
+              <li>Fast turnarounds for emergency and short-notice works</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -304,37 +325,49 @@ const TrafficManagementPlan = () => {
             <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
               Have Questions?
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
               FREQUENTLY ASKED <span className="text-btn">QUESTIONS</span>
             </h2>
             <div className="w-24 h-1 bg-btn mx-auto"></div>
           </div>
-          <div className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed space-y-6 font-opensans">
-            <p>
-              For additional information on our Traffic Management Plans or
-              other services, visit our FAQ page or contact us directly to
-              discuss your specific needs.
-            </p>
-            <Link
-              href="/faqs"
-              className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden font-opensans"
-            >
-              <span className="relative z-10">VIEW FAQs</span>
-              <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-4 mb-10">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200"
+                >
+                  <button
+                    className="w-full flex justify-between items-center p-5 text-left text-gray-900 font-semibold text-base md:text-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                    onClick={() => toggleFAQ(index)}
+                    aria-expanded={openFaqIndex === index}
+                    aria-controls={`faq-content-${index}`}
+                  >
+                    <span>{faq.question}</span>
+                    <FaChevronDown
+                      className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
+                        openFaqIndex === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    id={`faq-content-${index}`}
+                    className="grid transition-all duration-300 ease-in-out"
+                    style={{
+                      gridTemplateRows: openFaqIndex === index ? '1fr' : '0fr',
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="p-5 pt-3 text-gray-700 leading-relaxed font-opensans">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
-      {/* Download Sample TMP Button (Bottom of Page) */}
-      <section className="py-12 bg-white text-center">
-        <a
-          href="/TSTGS%202562%20-%20Stage%201%20-%20Bore%20Holing%20-%20Lynch%20St,%20Young.pdf"
-          download
-          className="inline-block px-10 py-4 bg-btn text-white font-bold hover:bg-white hover:text-btn transition-all duration-300 border border-btn group relative overflow-hidden font-opensans rounded-lg text-lg shadow-md"
-        >
-          Download a Sample TMP
-          <span className="absolute inset-0 bg-btn/10 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-        </a>
       </section>
       <ContactForm/>
     </main>
