@@ -8,7 +8,7 @@ import { useState } from "react";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 const PermitApplication = () => {
-  const [activeTab, setActiveTab] = useState("tf-nsw");
+  const [activeTab, setActiveTab] = useState("rol");
 
   return (
     <>
@@ -42,22 +42,86 @@ const PermitApplication = () => {
           </div>
         </div>
 
-        {/* Content Section */}
+        {/* Overview Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              Our Permit & Approval Services
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+              T&S Traffic Control manages all aspects of permit applications and approvals, allowing you to focus on your project while we handle the paperwork.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Road Occupancy Licences (ROLs)</h3>
+                  <p className="text-gray-600 text-sm">Through TfNSW</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Council Permits</h3>
+                  <p className="text-gray-600 text-sm">And local road access approvals</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Bus Approvals</h3>
+                  <p className="text-gray-600 text-sm">STA and transport authority coordination</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Police Notifications</h3>
+                  <p className="text-gray-600 text-sm">And event traffic permits</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-[#2B7FFF]/20 rounded-lg p-6 hover:border-[#2B7FFF] transition-all duration-300">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Utility & Third-Party Authority Clearances</h3>
+                  <p className="text-gray-600 text-sm">Comprehensive coordination</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Content Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="lg:flex lg:items-start lg:gap-8">
             {/* Sidebar Navigation */}
             <div className="lg:w-1/4 mb-8 lg:mb-0">
               <nav className="space-y-1">
                 <a
-                  href="#tf-nsw"
-                  onClick={() => setActiveTab("tf-nsw")}
+                  href="#rol"
+                  onClick={() => setActiveTab("rol")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "tf-nsw"
+                    activeTab === "rol"
                       ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  TfNSW TMC ROL
+                  Road Occupancy Licences (ROLs)
                 </a>
                 <a
                   href="#council-permits"
@@ -71,26 +135,37 @@ const PermitApplication = () => {
                   Council Permits
                 </a>
                 <a
-                  href="#sta-bus"
-                  onClick={() => setActiveTab("sta-bus")}
+                  href="#bus-approvals"
+                  onClick={() => setActiveTab("bus-approvals")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "sta-bus"
+                    activeTab === "bus-approvals"
                       ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  STA Bus Approvals
+                  Bus Approvals
                 </a>
                 <a
-                  href="#emergency-approvals"
-                  onClick={() => setActiveTab("emergency-approvals")}
+                  href="#police-notifications"
+                  onClick={() => setActiveTab("police-notifications")}
                   className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "emergency-approvals"
+                    activeTab === "police-notifications"
                       ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
                       : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  Emergency Approvals
+                  Police Notifications
+                </a>
+                <a
+                  href="#utility-clearances"
+                  onClick={() => setActiveTab("utility-clearances")}
+                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                    activeTab === "utility-clearances"
+                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  Utility & Authority Clearances
                 </a>
               </nav>
 
@@ -130,12 +205,13 @@ const PermitApplication = () => {
 
             {/* Main Content */}
             <div className="lg:w-3/4">
-              {/* TfNSW TMC ROL */}
-              {activeTab === "tf-nsw" && (
-                <div id="tf-nsw">
+              {/* Road Occupancy Licences */}
+              {activeTab === "rol" && (
+                <div id="rol">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Road Occupancy Licences (ROLs) through TfNSW
+                    Road Occupancy Licences (ROLs)
                   </h2>
+                  <p className="text-sm text-gray-500 mb-4">Through TfNSW</p>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
                       Our team manages the complete submission and approval process for Road Occupancy Licences through Transport for NSW (TfNSW).
@@ -198,11 +274,12 @@ const PermitApplication = () => {
               )}
 
               {/* Bus Approvals */}
-              {activeTab === "sta-bus" && (
-                <div id="sta-bus">
+              {activeTab === "bus-approvals" && (
+                <div id="bus-approvals">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
                     Bus Approvals
                   </h2>
+                  <p className="text-sm text-gray-500 mb-4">STA and Transport Authority Coordination</p>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
                       We coordinate bus approvals and manage liaison with transport authorities for works affecting bus routes and stops.
@@ -230,15 +307,15 @@ const PermitApplication = () => {
                 </div>
               )}
 
-              {/* Emergency Approvals */}
-              {activeTab === "emergency-approvals" && (
-                <div id="emergency-approvals">
+              {/* Police Notifications */}
+              {activeTab === "police-notifications" && (
+                <div id="police-notifications">
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Emergency Approvals
+                    Police Notifications & Event Traffic Permits
                   </h2>
                   <div className="prose prose-blue max-w-none">
                     <p className="text-lg text-gray-600">
-                      For urgent situations requiring immediate approvals, our team provides rapid response permit services.
+                      We manage all police notifications and event traffic permit applications, ensuring authorities are informed and approvals are obtained for special events and emergency works.
                     </p>
 
                     <div className="mt-8 bg-[#2B7FFF]/10 border-l-4 border-[#2B7FFF] p-6 mb-6">
@@ -255,20 +332,54 @@ const PermitApplication = () => {
 
                     <div className="mt-8 bg-gray-50 p-6 rounded-lg">
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Emergency Services Include
+                        Our Services Include
                       </h3>
                       <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Police notifications for emergency works</li>
-                        <li>Utility and third-party authority clearances</li>
-                        <li>Event traffic permits and special approvals</li>
-                        <li>Rapid response permit applications</li>
-                        <li>Direct liaison with approval authorities</li>
+                        <li>Police notifications for emergency and planned works</li>
+                        <li>Event traffic permits for community and sporting events</li>
+                        <li>Film and production traffic management permits</li>
+                        <li>Special event approvals and road closure notifications</li>
+                        <li>Coordination with emergency services for critical works</li>
                       </ul>
                     </div>
 
                     <div className="mt-8">
                       <p className="text-gray-600">
-                        Our established relationships and 24-hour response capability ensure critical approvals are obtained quickly, keeping essential works on track.
+                        Our established relationships with NSW Police and emergency services ensure timely notifications and approvals, keeping your events and projects compliant and on schedule.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Utility & Authority Clearances */}
+              {activeTab === "utility-clearances" && (
+                <div id="utility-clearances">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                    Utility & Third-Party Authority Clearances
+                  </h2>
+                  <div className="prose prose-blue max-w-none">
+                    <p className="text-lg text-gray-600">
+                      We coordinate all utility and third-party authority clearances, ensuring your works are approved by all relevant stakeholders before commencing.
+                    </p>
+
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        Clearances We Manage
+                      </h3>
+                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Electrical utility clearances (Ausgrid, Endeavour Energy, Essential Energy)</li>
+                        <li>Water and sewerage authority approvals (Sydney Water, Hunter Water, local councils)</li>
+                        <li>Gas utility notifications and approvals (Jemena, APA Group)</li>
+                        <li>Telecommunications and NBN coordination (Telstra, TPG, NBN Co)</li>
+                        <li>Rail authority clearances (Sydney Trains, Transport for NSW)</li>
+                        <li>Private property and easement access approvals</li>
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <p className="text-gray-600">
+                        With comprehensive knowledge of utility and authority requirements across NSW, T&S ensures all necessary clearances are obtained efficiently, preventing costly delays and ensuring full compliance with all stakeholder requirements.
                       </p>
                     </div>
                   </div>
