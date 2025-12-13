@@ -133,6 +133,22 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
+                    href="/services/accredited-tc"
+                    className="hover:text-btn transition-colors duration-300"
+                  >
+                    Accredited TC
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services/24-hour-response"
+                    className="hover:text-btn transition-colors duration-300"
+                  >
+                    24 Hour Response
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/services/team-leaders"
                     className="hover:text-btn transition-colors duration-300"
                   >

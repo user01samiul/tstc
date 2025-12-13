@@ -256,6 +256,26 @@ const Navbar = () => {
                     </h3>
                     <div className="space-y-1">
                       <Link
+                        href="/services/accredited-tc"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/accredited-tc")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
+                      >
+                        Accredited TC
+                      </Link>
+                      <Link
+                        href="/services/24-hour-response"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                          isActive("/services/24-hour-response")
+                            ? "bg-btn/10 text-btn font-semibold"
+                            : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                        }`}
+                      >
+                        24 Hour Response
+                      </Link>
+                      <Link
                         href="/services/team-leaders"
                         className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
                           isActive("/services/team-leaders")
@@ -546,6 +566,20 @@ const Navbar = () => {
                         <h4 className="px-4 py-2 text-sm font-semibold text-btn">
                           Traffic Controllers
                         </h4>
+                        <Link
+                          href="/services/accredited-tc"
+                          onClick={toggleMobileMenu}
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                        >
+                          Accredited TC
+                        </Link>
+                        <Link
+                          href="/services/24-hour-response"
+                          onClick={toggleMobileMenu}
+                          className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                        >
+                          24 Hour Response
+                        </Link>
                         <Link
                           href="/services/team-leaders"
                           onClick={toggleMobileMenu}
