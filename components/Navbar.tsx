@@ -170,7 +170,7 @@ const Navbar = () => {
               </button>
               {openSubmenu === "services" && (
                 <div
-                  className="absolute right-0 mt-2 w-[1050px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 grid grid-cols-5 gap-4"
+                  className="fixed left-1/2 -translate-x-1/2 top-20 w-[1050px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 grid grid-cols-5 gap-4"
                   onMouseLeave={() => setOpenSubmenu(null)}
                 >
                   {/* Column 1 - Traffic Engineering */}
