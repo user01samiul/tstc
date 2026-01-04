@@ -25,7 +25,8 @@ export async function POST(request: Request) {
     // Email options for admin
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: "enquiries@tstc.com.au",
+      // to: "enquiries@tstc.com.au",
+      to: "HR@tstc.com.au",
       subject: `New Contact Form Submission from ${name}`,
       text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nService: ${service}\nMessage: ${message}`,
       html: `
