@@ -10,6 +10,9 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [openNestedSubmenu, setOpenNestedSubmenu] = useState<string | null>(
+    null
+  );
   const [currentHash, setCurrentHash] = useState("");
 
   // Track hash changes for same-page anchor links
@@ -35,11 +38,18 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (isMobileMenuOpen) setOpenSubmenu(null);
+    if (isMobileMenuOpen) {
+      setOpenSubmenu(null);
+      setOpenNestedSubmenu(null);
+    }
   };
 
   const toggleSubmenu = (menu: string) => {
     setOpenSubmenu(openSubmenu === menu ? null : menu);
+  };
+
+  const toggleNestedSubmenu = (menu: string) => {
+    setOpenNestedSubmenu(openNestedSubmenu === menu ? null : menu);
   };
 
   return (
@@ -519,19 +529,21 @@ const Navbar = () => {
                       {/* Traffic Engineering Sub-menu */}
                       <div className="space-y-1">
                         <button
-                          onClick={() => toggleSubmenu("traffic-engineering")}
+                          onClick={() =>
+                            toggleNestedSubmenu("traffic-engineering")
+                          }
                           className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                         >
                           <span>Traffic Engineering & Planning</span>
                           <ChevronDown
                             className={`h-4 w-4 transition-transform ${
-                              openSubmenu === "traffic-engineering"
+                              openNestedSubmenu === "traffic-engineering"
                                 ? "rotate-180"
                                 : ""
                             }`}
                           />
                         </button>
-                        {openSubmenu === "traffic-engineering" && (
+                        {openNestedSubmenu === "traffic-engineering" && (
                           <div className="pl-4 space-y-1">
                             <Link
                               href="/services/traffic-plans"
@@ -568,17 +580,19 @@ const Navbar = () => {
                       {/* Permit Applications Sub-menu */}
                       <div className="space-y-1">
                         <button
-                          onClick={() => toggleSubmenu("permits")}
+                          onClick={() => toggleNestedSubmenu("permits")}
                           className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                         >
                           <span>Permit Applications</span>
                           <ChevronDown
                             className={`h-4 w-4 transition-transform ${
-                              openSubmenu === "permits" ? "rotate-180" : ""
+                              openNestedSubmenu === "permits"
+                                ? "rotate-180"
+                                : ""
                             }`}
                           />
                         </button>
-                        {openSubmenu === "permits" && (
+                        {openNestedSubmenu === "permits" && (
                           <div className="pl-4 space-y-1">
                             <Link
                               href="/services/permit-application#tf-nsw"
@@ -615,17 +629,19 @@ const Navbar = () => {
                       {/* Traffic Controllers Sub-menu */}
                       <div className="space-y-1">
                         <button
-                          onClick={() => toggleSubmenu("controllers")}
+                          onClick={() => toggleNestedSubmenu("controllers")}
                           className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                         >
                           <span>Traffic Controllers</span>
                           <ChevronDown
                             className={`h-4 w-4 transition-transform ${
-                              openSubmenu === "controllers" ? "rotate-180" : ""
+                              openNestedSubmenu === "controllers"
+                                ? "rotate-180"
+                                : ""
                             }`}
                           />
                         </button>
-                        {openSubmenu === "controllers" && (
+                        {openNestedSubmenu === "controllers" && (
                           <div className="pl-4 space-y-1">
                             <Link
                               href="/services/accredited-tc"
