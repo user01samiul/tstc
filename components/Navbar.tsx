@@ -412,16 +412,21 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu - Outside nav for proper z-index stacking */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-[9999]">
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={toggleMobileMenu}
-          />
+      <div className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+      }`}>
+        {/* Overlay */}
+        <div
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${
+            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={toggleMobileMenu}
+        />
 
-          {/* Menu Panel */}
-          <div className="absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl overflow-hidden flex flex-col z-[9999]">
+        {/* Menu Panel */}
+        <div className={`absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl overflow-hidden flex flex-col z-[9999] transition-transform duration-300 ease-out ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}>
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
               <Link href="/" onClick={toggleMobileMenu}>
@@ -731,7 +736,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };
