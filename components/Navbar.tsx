@@ -412,9 +412,13 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu - Outside nav for proper z-index stacking */}
-      <div className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ease-in-out ${
-        isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-      }`}>
+      <div
+        className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen
+            ? "opacity-100 visible"
+            : "opacity-0 invisible pointer-events-none"
+        }`}
+      >
         {/* Overlay */}
         <div
           className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${
@@ -424,316 +428,315 @@ const Navbar = () => {
         />
 
         {/* Menu Panel */}
-        <div className={`absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl overflow-hidden flex flex-col z-[9999] transition-transform duration-300 ease-out ${
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}>
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
-              <Link href="/" onClick={toggleMobileMenu}>
-                <Image
-                  src="/logo.JPG"
-                  alt="T&S Traffic Solutions Logo"
-                  width={120}
-                  height={40}
-                  className="object-contain"
-                />
-              </Link>
-              <button
+        <div
+          className={`absolute top-0 left-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl overflow-hidden flex flex-col z-[9999] transition-transform duration-300 ease-out ${
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+            <Link href="/" onClick={toggleMobileMenu}>
+              <Image
+                src="/logo.JPG"
+                alt="T&S Traffic Solutions Logo"
+                width={120}
+                height={40}
+                className="object-contain"
+              />
+            </Link>
+            <button
+              onClick={toggleMobileMenu}
+              className="p-2 rounded-lg hover:bg-gray-100"
+            >
+              <X className="h-6 w-6 text-gray-700" />
+            </button>
+          </div>
+
+          {/* Menu Items - Scrollable */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden">
+            <nav className="p-4 space-y-2">
+              <Link
+                href="/"
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-lg hover:bg-gray-100"
+                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
               >
-                <X className="h-6 w-6 text-gray-700" />
-              </button>
-            </div>
+                Home
+              </Link>
 
-            {/* Menu Items - Scrollable */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden">
-              <nav className="p-4 space-y-2">
-                <Link
-                  href="/"
-                  onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+              <div className="space-y-1">
+                <button
+                  onClick={() => toggleSubmenu("about")}
+                  className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
-                  Home
-                </Link>
+                  <span>About Us</span>
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform ${
+                      openSubmenu === "about" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSubmenu === "about" && (
+                  <div className="pl-6 space-y-1 mt-1">
+                    <Link
+                      href="/about#our-story"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    >
+                      Our Story
+                    </Link>
+                    <Link
+                      href="/about#our-team"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    >
+                      Our Team
+                    </Link>
+                    <Link
+                      href="/about#our-fleet"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    >
+                      Our Fleet
+                    </Link>
+                    <Link
+                      href="/about#accreditations"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    >
+                      Accreditations
+                    </Link>
+                    <Link
+                      href="/about/experience"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    >
+                      Our Experience
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <div className="space-y-1">
+                <button
+                  onClick={() => toggleSubmenu("services")}
+                  className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                >
+                  <span>Services</span>
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform ${
+                      openSubmenu === "services" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSubmenu === "services" && (
+                  <div className="pl-4 space-y-1 mt-1">
+                    <Link
+                      href="/services"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
+                    >
+                      📋 View All Services
+                    </Link>
 
-                <div className="space-y-1">
-                  <button
-                    onClick={() => toggleSubmenu("about")}
-                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                  >
-                    <span>About Us</span>
-                    <ChevronDown
-                      className={`h-5 w-5 transition-transform ${
-                        openSubmenu === "about" ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {openSubmenu === "about" && (
-                    <div className="pl-6 space-y-1 mt-1">
-                      <Link
-                        href="/about#our-story"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                    {/* Traffic Engineering Sub-menu */}
+                    <div className="space-y-1">
+                      <button
+                        onClick={() =>
+                          toggleNestedSubmenu("traffic-engineering")
+                        }
+                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                       >
-                        Our Story
-                      </Link>
-                      <Link
-                        href="/about#our-team"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                      >
-                        Our Team
-                      </Link>
-                      <Link
-                        href="/about#our-fleet"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                      >
-                        Our Fleet
-                      </Link>
-                      <Link
-                        href="/about#accreditations"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                      >
-                        Accreditations
-                      </Link>
-                      <Link
-                        href="/about/experience"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                      >
-                        Our Experience
-                      </Link>
+                        <span>Traffic Engineering & Planning</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            openNestedSubmenu === "traffic-engineering"
+                              ? "rotate-180"
+                              : ""
+                          }`}
+                        />
+                      </button>
+                      {openNestedSubmenu === "traffic-engineering" && (
+                        <div className="pl-4 space-y-1">
+                          <Link
+                            href="/services/traffic-plans"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Traffic Plans
+                          </Link>
+                          <Link
+                            href="/services/traffic-management-plans"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Traffic Management Plans (TMP) (CTMP)
+                          </Link>
+                          <Link
+                            href="/services/swept-path"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Swept Path Analysis (SPA)
+                          </Link>
+                          <Link
+                            href="/services/event-management-plans"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Event Management Plans
+                          </Link>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <div className="space-y-1">
-                  <button
-                    onClick={() => toggleSubmenu("services")}
-                    className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                  >
-                    <span>Services</span>
-                    <ChevronDown
-                      className={`h-5 w-5 transition-transform ${
-                        openSubmenu === "services" ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {openSubmenu === "services" && (
-                    <div className="pl-4 space-y-1 mt-1">
-                      <Link
-                        href="/services"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
+
+                    {/* Permit Applications Sub-menu */}
+                    <div className="space-y-1">
+                      <button
+                        onClick={() => toggleNestedSubmenu("permits")}
+                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                       >
-                        📋 View All Services
-                      </Link>
-
-                      {/* Traffic Engineering Sub-menu */}
-                      <div className="space-y-1">
-                        <button
-                          onClick={() =>
-                            toggleNestedSubmenu("traffic-engineering")
-                          }
-                          className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                        >
-                          <span>Traffic Engineering & Planning</span>
-                          <ChevronDown
-                            className={`h-4 w-4 transition-transform ${
-                              openNestedSubmenu === "traffic-engineering"
-                                ? "rotate-180"
-                                : ""
-                            }`}
-                          />
-                        </button>
-                        {openNestedSubmenu === "traffic-engineering" && (
-                          <div className="pl-4 space-y-1">
-                            <Link
-                              href="/services/traffic-plans"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Traffic Plans
-                            </Link>
-                            <Link
-                              href="/services/traffic-management-plans"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Traffic Management Plans (TMP) (CTMP)
-                            </Link>
-                            <Link
-                              href="/services/swept-path"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Swept Path Analysis (SPA)
-                            </Link>
-                            <Link
-                              href="/services/event-management-plans"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Event Management Plans
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Permit Applications Sub-menu */}
-                      <div className="space-y-1">
-                        <button
-                          onClick={() => toggleNestedSubmenu("permits")}
-                          className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                        >
-                          <span>Permit Applications</span>
-                          <ChevronDown
-                            className={`h-4 w-4 transition-transform ${
-                              openNestedSubmenu === "permits"
-                                ? "rotate-180"
-                                : ""
-                            }`}
-                          />
-                        </button>
-                        {openNestedSubmenu === "permits" && (
-                          <div className="pl-4 space-y-1">
-                            <Link
-                              href="/services/permit-application#tf-nsw"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              TfNSW TMC ROL
-                            </Link>
-                            <Link
-                              href="/services/permit-application#council-permits"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Council Permits
-                            </Link>
-                            <Link
-                              href="/services/permit-application#sta-bus"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              STA Bus Approvals
-                            </Link>
-                            <Link
-                              href="/services/permit-application#emergency-approvals"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Emergency Approvals
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Traffic Controllers Sub-menu */}
-                      <div className="space-y-1">
-                        <button
-                          onClick={() => toggleNestedSubmenu("controllers")}
-                          className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                        >
-                          <span>Traffic Controllers</span>
-                          <ChevronDown
-                            className={`h-4 w-4 transition-transform ${
-                              openNestedSubmenu === "controllers"
-                                ? "rotate-180"
-                                : ""
-                            }`}
-                          />
-                        </button>
-                        {openNestedSubmenu === "controllers" && (
-                          <div className="pl-4 space-y-1">
-                            <Link
-                              href="/services/accredited-tc"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Accredited TC
-                            </Link>
-                            <Link
-                              href="/services/24-hour-response"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              24 Hour Response
-                            </Link>
-                            <Link
-                              href="/services/team-leaders"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              Team Leaders
-                            </Link>
-                            <Link
-                              href="/services/tma-operators"
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              TMA Operators
-                            </Link>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Gallery Link */}
-                      <Link
-                        href="/gallery"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                      >
-                        Gallery
-                      </Link>
-
-                      {/* Signage Installation Link */}
-                      <Link
-                        href="/services/signage-installation"
-                        onClick={toggleMobileMenu}
-                        className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                      >
-                        Signage Installation
-                      </Link>
+                        <span>Permit Applications</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            openNestedSubmenu === "permits" ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                      {openNestedSubmenu === "permits" && (
+                        <div className="pl-4 space-y-1">
+                          <Link
+                            href="/services/permit-application#tf-nsw"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            TfNSW TMC ROL
+                          </Link>
+                          <Link
+                            href="/services/permit-application#council-permits"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Council Permits
+                          </Link>
+                          <Link
+                            href="/services/permit-application#sta-bus"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            STA Bus Approvals
+                          </Link>
+                          <Link
+                            href="/services/permit-application#emergency-approvals"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Emergency Approvals
+                          </Link>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                {/* <Link
+
+                    {/* Traffic Controllers Sub-menu */}
+                    <div className="space-y-1">
+                      <button
+                        onClick={() => toggleNestedSubmenu("controllers")}
+                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                      >
+                        <span>Traffic Controllers</span>
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform ${
+                            openNestedSubmenu === "controllers"
+                              ? "rotate-180"
+                              : ""
+                          }`}
+                        />
+                      </button>
+                      {openNestedSubmenu === "controllers" && (
+                        <div className="pl-4 space-y-1">
+                          <Link
+                            href="/services/accredited-tc"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Accredited TC
+                          </Link>
+                          <Link
+                            href="/services/24-hour-response"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            24 Hour Response
+                          </Link>
+                          <Link
+                            href="/services/team-leaders"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            Team Leaders
+                          </Link>
+                          <Link
+                            href="/services/tma-operators"
+                            onClick={toggleMobileMenu}
+                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                          >
+                            TMA Operators
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Gallery Link */}
+                    <Link
+                      href="/gallery"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                    >
+                      Gallery
+                    </Link>
+
+                    {/* Signage Installation Link */}
+                    <Link
+                      href="/services/signage-installation"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                    >
+                      Signage Installation
+                    </Link>
+                  </div>
+                )}
+              </div>
+              {/* <Link
                   href="/news"
                   onClick={toggleMobileMenu}
                   className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                 >
                   News
                 </Link> */}
-                <Link
-                  href="/faqs"
-                  onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                >
-                  FAQ
-                </Link>
-                <Link
-                  href="/career"
-                  onClick={toggleMobileMenu}
-                  className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                >
-                  Career
-                </Link>
-              </nav>
-            </div>
-
-            {/* Contact Button - Fixed at Bottom */}
-            <div className="p-4 border-t border-gray-200 flex-shrink-0">
               <Link
-                href="/contact"
+                href="/faqs"
                 onClick={toggleMobileMenu}
-                className="block w-full px-6 py-3 text-base font-semibold text-center bg-btn text-white rounded-lg hover:bg-btn/90 transition-colors shadow-md"
+                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
               >
-                Contact Us
+                FAQ
               </Link>
-            </div>
+              <Link
+                href="/career"
+                onClick={toggleMobileMenu}
+                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+              >
+                Career
+              </Link>
+            </nav>
+          </div>
+
+          {/* Contact Button - Fixed at Bottom */}
+          <div className="p-4 border-t border-gray-200 flex-shrink-0">
+            <Link
+              href="/contact"
+              onClick={toggleMobileMenu}
+              className="block w-full px-6 py-3 text-base font-semibold text-center bg-btn text-white rounded-lg hover:bg-btn/90 transition-colors shadow-md"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>
