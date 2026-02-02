@@ -47,7 +47,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 sm:gap-8 md:gap-12">
             <Link
               href="/courses"
-              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-xl font-medium whitespace-nowrap ${
+              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-2xl font-medium whitespace-nowrap ${
                 isScrolled ? "text-black" : "text-white"
               }`}
             >
@@ -55,7 +55,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/about"
-              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-xl font-medium whitespace-nowrap ${
+              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-2xl font-medium whitespace-nowrap ${
                 isScrolled ? "text-black" : "text-white"
               }`}
             >
@@ -63,7 +63,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/resources"
-              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-xl font-medium whitespace-nowrap ${
+              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-2xl font-medium whitespace-nowrap ${
                 isScrolled ? "text-black" : "text-white"
               }`}
             >
@@ -71,7 +71,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/shop"
-              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-xl font-medium whitespace-nowrap ${
+              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-2xl font-medium whitespace-nowrap ${
                 isScrolled ? "text-black" : "text-white"
               }`}
             >
@@ -79,7 +79,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/contact"
-              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-xl font-medium whitespace-nowrap ${
+              className={`hidden lg:inline hover:opacity-70 transition-opacity text-lg lg:text-2xl font-medium whitespace-nowrap ${
                 isScrolled ? "text-black" : "text-white"
               }`}
             >
