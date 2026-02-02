@@ -1,33 +1,53 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const StatsSection = () => {
+  const [years, setYears] = useState(0);
+  const [teamMembers, setTeamMembers] = useState(0);
   const [projects, setProjects] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const duration = 2000;
-    const startTime = Date.now();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          const duration = 2000;
+          const startTime = Date.now();
 
-    const animateCount = () => {
-      const progress = Math.min(1, (Date.now() - startTime) / duration);
-      setProjects(Math.floor(progress * 12600));
-      if (progress < 1) {
-        requestAnimationFrame(animateCount);
-      }
-    };
+          const animateCount = () => {
+            const progress = Math.min(1, (Date.now() - startTime) / duration);
+            setYears(Math.floor(progress * 10));
+            setTeamMembers(Math.floor(progress * 60));
+            setProjects(Math.floor(progress * 12600));
+            if (progress < 1) {
+              requestAnimationFrame(animateCount);
+            }
+          };
 
-    animateCount();
-  }, []);
+          animateCount();
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
 
   const stats = [
     {
-      value: "10+",
+      value: `${years}+`,
       label: "Years Experience",
       description:
         "Over a decade delivering safe traffic management solutions across NSW",
     },
     {
-      value: "60",
+      value: `${teamMembers}`,
       label: "Team Members",
       description: "Certified traffic controllers and management professionals",
     },
@@ -40,7 +60,10 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
