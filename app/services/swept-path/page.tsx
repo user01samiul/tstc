@@ -1,258 +1,470 @@
 "use client";
-import ContactForm from "@/components/ContactForm";
+
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
+import {
+  FaCheckCircle,
+  FaChevronDown,
+  FaDownload,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import AnimatedSection from "../../components/AnimatedSection";
 
-const TrafficControlManagement = () => {
+const SweptPathAnalysisPage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
+  // SPA Services Features
+  const spaFeatures = [
+    {
+      title: "Access Verification",
+      description:
+        "Comprehensive checks for construction sites and temporary traffic setups to ensure safe vehicle access.",
+    },
+    {
+      title: "Manoeuvre Analysis",
+      description:
+        "Verification of vehicle movements in restricted areas, tight corners, and complex intersections.",
+    },
+    {
+      title: "Design Support",
+      description:
+        "Expert support for detours, entry/exit points, and turning areas to optimise site layout.",
+    },
+    {
+      title: "Compliance Documentation",
+      description:
+        "Professional reports and documentation for approvals and engineering submissions.",
+    },
+  ];
+
+  // What's included
+  const serviceIncludes = [
+    "Detailed vehicle movement simulation",
+    "Compliance with Australian Standards",
+    "Professional CAD drawings and diagrams",
+    "Multiple vehicle type analysis",
+    "Turning radius calculations",
+    "Clearance and conflict identification",
+    "Site access optimisation recommendations",
+    "Supporting documentation for approvals",
+  ];
+
   const faqs = [
     {
-      question: "What is a TGS or TCP",
+      question: "What is Swept Path Analysis?",
       answer:
-        "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. A TCP (Traffic Control Plan) serves a similar purpose, providing specific instructions for managing traffic flow during roadworks, construction, or events that impact normal traffic conditions.",
+        "Swept Path Analysis (SPA) is a technical assessment that simulates and analyses how vehicles navigate through spaces. It shows the path a vehicle's body and wheels take when turning or manoeuvring, helping identify potential conflicts with kerbs, obstacles, or other vehicles. SPA is essential for ensuring safe vehicle access in construction sites, intersections, and tight spaces.",
     },
     {
-      question: "What is a TMP or CTMP",
+      question: "When do I need a Swept Path Analysis?",
       answer:
-        "A TMP (Traffic Management Plan) is a comprehensive document that outlines how traffic will be safely managed during construction or events. A CTMP (Construction Traffic Management Plan) is a specialized TMP required when construction activities impact public roads, footpaths, or traffic flow. Both plans ensure safety and compliance with road authority requirements.",
+        "You need SPA when designing or modifying sites where large vehicles need to access, including construction sites, loading docks, intersections, car parks, and temporary traffic arrangements. It's required for DA submissions, road authority approvals, and ensuring compliance with Australian Standards for vehicle access.",
     },
     {
-      question: "What is a ROL",
+      question: "What vehicles can you analyse?",
       answer:
-        "A ROL (Road Occupancy Licence) is a permit issued by the relevant road authority that allows you to occupy part of a road or lane for construction, maintenance, or events. You need a ROL whenever your activities require the use of public road space.",
+        "We can analyse any vehicle type including heavy rigid trucks, semi-trailers, B-doubles, road trains, buses, emergency vehicles (fire trucks, ambulances), delivery trucks, waste collection vehicles, and construction equipment. We use industry-standard software with comprehensive vehicle libraries.",
+    },
+    {
+      question: "How long does SPA take?",
+      answer:
+        "Standard swept path analysis typically takes 3-5 business days depending on complexity. Simple single-vehicle assessments can be completed faster, while complex multi-vehicle or multi-stage projects may require additional time. We can provide expedited services for urgent projects.",
     },
   ];
 
   return (
-    <main>
-      {/* Hero Section (Black Background) */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center font-opensans">
+    <div className="font-sans overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/DSC00723.JPG"
-            alt="Traffic Control Management and Planning"
+            alt="Swept Path Analysis"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-anton uppercase">
-              T&S SERVICES <br />
-              <span className="text-btn">SWEPT PATH ANALYSIS</span>
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div className="text-center text-white space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
+              SWEPT PATH <br />
+              <span className="text-btn">ANALYSIS (SPA)</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
-              Accurate swept path analysis to ensure safe vehicle movement through your project
+            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+              Accurate vehicle movement analysis ensuring safe access and
+              compliance
             </p>
-            <div className="flex justify-center">
+            <div className="pt-6">
               <Link
                 href="/contact"
-                className="flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 font-opensans"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
               >
                 <FaPhoneAlt className="text-xl" />
-                Contact Us Today
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="animate-bounce flex flex-col items-center">
-            <div className="w-8 h-12 border-2 border-btn rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-btn rounded-full mt-2 animate-pulse" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Swept Path Analysis Section (White Background) */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              SPA
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              SWEPT PATH <span className="text-btn">ANALYSIS</span>
-            </h2>
-            <div className="w-24 h-1 bg-btn mx-auto"></div>
-          </div>
-          <div className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed space-y-6 font-opensans">
-            <p>
-              Our planning team provides accurate Swept Path Analysis to ensure heavy vehicles and machinery can safely move through work zones, intersections, and tight environments.
-            </p>
-            <p>
-              Using industry-standard modelling software, we simulate vehicle movements to confirm access, turning space, and safety before works begin.
-            </p>
-            <p className="font-semibold text-gray-800">Our SPA services include:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Access checks for construction sites and temporary traffic setups</li>
-              <li>Verification of vehicle manoeuvres in restricted areas</li>
-              <li>Design support for detours, entry/exit points, and turning areas</li>
-              <li>Documentation for approvals and engineering submissions</li>
-            </ul>
-            <p>
-              With a precise and experienced design team, we deliver clear swept path reports that help clients reduce risk, avoid delays, and maintain safe vehicle movement on site.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed SPA Services (Black Background, Right Side Image) */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-btn"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                PROFESSIONAL{" "}
-                <span className="text-btn">SPA SERVICES</span>
-              </h3>
-              <div className="space-y-5 text-gray-300 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  T&S Traffic Control provides professional swept path analysis
-                  services to ensure your project's vehicle movements are safe
-                  and compliant. Swept path analysis is essential for assessing
-                  how vehicles—especially large or articulated ones—navigate
-                  through constrained sites, intersections, or construction zones.
-                </p>
-                <p className="leading-relaxed">
-                  Using advanced software, our experienced team simulates and
-                  analyses the turning paths of various vehicles based on their
-                  dimensions and your site layout. This process helps identify
-                  potential conflicts, clearance issues, and optimises site
-                  access for construction, delivery, or emergency vehicles.
-                </p>
-                <p className="leading-relaxed">
-                  Our swept path analysis service includes detailed diagrams and
-                  recommendations to ensure compliance with Australian Standards
-                  and local authority requirements. We help you minimise risk,
-                  avoid costly design changes, and ensure the safety of all road
-                  users and workers.
-                </p>
-              </div>
-            </div>
-            <div className="relative h-[500px] border-4 border-btn shadow-xl">
-              <Image
-                src="/DSC00717.JPG"
-                alt="Swept Path Analysis"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-btn/20 mix-blend-multiply"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Get in Touch Section (White Background, Left Side Image) */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-btn shadow-xl">
-              <Image
-                src="/DSC00949.JPG"
-                alt="Get in Touch"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-btn/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-btn"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                CONTACT US FOR{" "}
-                <span className="text-btn">SWEPT PATH ANALYSIS</span>
-              </h3>
-              <div className="space-y-5 text-gray-600 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  Ready to ensure your project's vehicle movements are safe and
-                  compliant? Contact T&S Traffic Control today to discuss your
-                  swept path analysis requirements.
-                </p>
-                <p className="leading-relaxed">
-                  Our team is ready to deliver clear, accurate swept path reports
-                  that help you reduce risk and maintain safe operations.
-                </p>
-              </div>
-              <Link
-                href="/contact"
-                className="inline-block px-10 py-4 bg-btn text-white font-bold hover:bg-white hover:text-btn transition-all duration-300 border border-btn group relative overflow-hidden font-opensans"
-              >
-                <span className="relative z-10">GET A QUOTE</span>
-                <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
+                Get In Touch
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section (White Background) */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Have Questions?
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              FREQUENTLY ASKED <span className="text-btn">QUESTIONS</span>
-            </h2>
-            <div className="w-24 h-1 bg-btn mx-auto"></div>
-          </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-4 mb-10">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 rounded-lg overflow-hidden border border-gray-200"
-                >
-                  <button
-                    className="w-full flex justify-between items-center p-5 text-left text-gray-900 font-semibold text-base md:text-lg hover:bg-gray-100 transition-colors cursor-pointer"
-                    onClick={() => toggleFAQ(index)}
-                    aria-expanded={openFaqIndex === index}
-                    aria-controls={`faq-content-${index}`}
-                  >
-                    <span>{faq.question}</span>
-                    <FaChevronDown
-                      className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                        openFaqIndex === index ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
+      {/* Introduction Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Content */}
+              <div className="space-y-8 animate-element">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Professional SPA <br />
+                    <span className="text-btn">Services</span>
+                  </h2>
+                </div>
+
+                {/* Image - Mobile Only */}
+                <div className="relative animate-element lg:hidden">
                   <div
-                    id={`faq-content-${index}`}
-                    className="grid transition-all duration-300 ease-in-out"
+                    className="relative w-full aspect-[4/5] overflow-hidden"
                     style={{
-                      gridTemplateRows: openFaqIndex === index ? '1fr' : '0fr',
+                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
                     }}
                   >
-                    <div className="overflow-hidden">
-                      <div className="p-5 pt-3 text-gray-700 leading-relaxed font-opensans">
-                        <p>{faq.answer}</p>
-                      </div>
-                    </div>
+                    <Image
+                      src="/sami/traffic-plan1.png"
+                      alt="Swept Path Analysis Services"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
                   </div>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Our planning team provides{" "}
+                    <strong className="text-gray-900">
+                      accurate Swept Path Analysis
+                    </strong>{" "}
+                    to ensure heavy vehicles and machinery can safely move
+                    through work zones, intersections, and tight environments.
+                  </p>
+                  <p>
+                    Using{" "}
+                    <strong className="text-gray-900">
+                      industry-standard modelling software
+                    </strong>
+                    , we simulate vehicle movements to confirm access, turning
+                    space, and safety before works begin.
+                  </p>
+                  <p>
+                    With a precise and experienced design team, we deliver clear
+                    swept path reports that help clients{" "}
+                    <strong className="text-gray-900">
+                      reduce risk, avoid delays
+                    </strong>
+                    , and maintain safe vehicle movement on site.
+                  </p>
+                </div>
+
+                <div className="pt-4">
+                  <a
+                    href="/montage/3. Services We Offer/Traffic Planning/SPA.pdf"
+                    download="SPA-Sample.pdf"
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-3 rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 cursor-pointer"
+                  >
+                    <FaDownload className="text-lg" />
+                    Download Sample SPA
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: Image - Desktop Only */}
+              <div className="relative animate-element hidden lg:block">
+                <div
+                  className="relative w-full aspect-[4/5] overflow-hidden"
+                  style={{
+                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                  }}
+                >
+                  <Image
+                    src="/sami/traffic-plan1.png"
+                    alt="Swept Path Analysis Services"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* SPA Services Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Our SPA <span className="text-btn">Services Include</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
+              {spaFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
+                    <FaCheckCircle className="text-2xl text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
+                    {feature.title}
+                  </h3>
+                  <div className="w-12 h-px bg-btn mb-4"></div>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "#8E8E95" }}
+                  >
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-      <ContactForm/>
-    </main>
+        </section>
+      </AnimatedSection>
+
+      {/* Visual Divider Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00949.JPG"
+                  alt="Vehicle Analysis"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      ANALYSIS
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/sami/traffic-plan1.png"
+                  alt="Simulation"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      SIMULATION
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/3.webp"
+                  alt="Documentation"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      REPORTS
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* What's Included Section */}
+      <AnimatedSection direction="right">
+        <section
+          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#151623" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                What's Included In <span className="text-btn">Our SPA</span>
+              </h2>
+              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+                Comprehensive swept path analysis with professional
+                documentation
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {serviceIncludes.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <FaCheckCircle className="text-2xl text-btn" />
+                      </div>
+                      <p className="text-white text-base leading-relaxed pt-0.5">
+                        {item}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* CTA Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Image */}
+              <div className="relative animate-element order-2 lg:order-1">
+                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    src="/DSC00811.JPG"
+                    alt="Get Your SPA Today"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Content */}
+              <div className="space-y-8 animate-element order-1 lg:order-2">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Need Swept Path <br />
+                    <span className="text-btn">Analysis?</span>
+                  </h2>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Ready to ensure your project's vehicle movements are safe
+                    and compliant?{" "}
+                    <strong className="text-gray-900">
+                      Contact T&S Traffic Control
+                    </strong>{" "}
+                    today to discuss your swept path analysis requirements.
+                  </p>
+                  <p>
+                    Our team is ready to deliver clear, accurate swept path
+                    reports that help you reduce risk and maintain safe
+                    operations on site.
+                  </p>
+                </div>
+
+                <div className="pt-6">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Get A Quote
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* FAQ Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Frequently Asked <span className="text-btn">Questions</span>
+              </h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg overflow-hidden"
+                  >
+                    <button
+                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={openFaqIndex === index}
+                      aria-controls={`faq-content-${index}`}
+                    >
+                      <span>{faq.question}</span>
+                      <FaChevronDown
+                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
+                          openFaqIndex === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-content-${index}`}
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{
+                        gridTemplateRows:
+                          openFaqIndex === index ? "1fr" : "0fr",
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <div
+                          className="p-6 pt-0 leading-relaxed"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          <p>{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+    </div>
   );
 };
 
-export default TrafficControlManagement;
+export default SweptPathAnalysisPage;

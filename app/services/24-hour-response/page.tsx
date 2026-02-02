@@ -1,38 +1,107 @@
 "use client";
 
-import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaClock, FaHeadset, FaShieldAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaCheckCircle, FaChevronDown, FaClock, FaHeadset, FaShieldAlt } from "react-icons/fa";
+import { useState } from "react";
+import AnimatedSection from "../../components/AnimatedSection";
 
-const TwentyFourHourResponse = () => {
+const TwentyFourHourResponsePage = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // Response Services
+  const responseServices = [
+    {
+      title: "Rapid Deployment",
+      description:
+        "Quick response teams ready to deploy to any location across NSW at a moment's notice, equipped and prepared for immediate works.",
+    },
+    {
+      title: "Central Control Centre",
+      description:
+        "Dedicated operations centre coordinating all emergency and scheduled works efficiently, maintaining communication with crews and clients.",
+    },
+    {
+      title: "Emergency Works",
+      description:
+        "Immediate traffic management for urgent road repairs, incidents, and emergency situations requiring fast, professional response.",
+    },
+    {
+      title: "Night Shift Operations",
+      description:
+        "Full traffic management capabilities for after-hours and night works, ensuring safe operations during low-traffic periods.",
+    },
+  ];
+
+  // Response Capabilities
+  const responseCapabilities = [
+    "24/7 emergency response teams",
+    "Central operations and dispatch centre",
+    "Night shift and after-hours coverage",
+    "Rapid crew mobilization across NSW",
+    "Complete equipment and vehicle fleet",
+    "Incident and emergency works support",
+    "Continuous client communication",
+    "Coordinated multi-site management",
+  ];
+
+  const faqs = [
+    {
+      question: "How quickly can you respond to emergency works?",
+      answer:
+        "Our 24-hour response teams can typically deploy within 1-2 hours for emergency situations in metropolitan Sydney, and within 2-4 hours for regional NSW locations. Our central control centre coordinates rapid mobilization of crews and equipment to ensure the fastest possible response to your urgent traffic management needs.",
+    },
+    {
+      question: "What types of emergency works do you cover?",
+      answer:
+        "We provide traffic management for all emergency situations including urgent road repairs, incident management, utility emergencies, after-hours works, storm damage response, and any situation requiring immediate traffic control. Our crews are equipped to handle both planned after-hours works and unexpected emergency scenarios.",
+    },
+    {
+      question: "Do you charge extra for after-hours or emergency response?",
+      answer:
+        "After-hours and emergency works may attract additional rates to cover crew availability and rapid deployment requirements. However, we maintain transparent pricing and will provide clear costings upfront. Contact our 24/7 control centre on 1300 008 782 to discuss your specific requirements and obtain pricing.",
+    },
+    {
+      question: "Can you handle multiple emergency sites simultaneously?",
+      answer:
+        "Yes, our central control centre is designed to coordinate multiple crews across different locations simultaneously. We maintain adequate personnel and equipment resources to respond to multiple emergency situations at once, ensuring all clients receive prompt, professional service regardless of demand.",
+    },
+  ];
+
   return (
-    <main>
+    <div className="font-sans overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center font-opensans">
+      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/montage/2. About Us/Our Values/Taj Safety Check.JPG"
-            alt="24 Hour Response"
+            alt="24 Hour Emergency Response"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-anton uppercase">
-              24 HOUR <span className="text-[#2B7FFF]">RESPONSE</span>
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div className="text-center text-white space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
+              24 HOUR EMERGENCY <br />
+              <span className="text-btn">RESPONSE</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
+            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
               Around the clock support for your traffic management needs
             </p>
-            <div className="flex justify-center">
+            <div className="pt-6">
               <a
                 href="tel:+611300008782"
-                className="flex items-center justify-center gap-3 bg-[#2B7FFF] hover:bg-[#2B7FFF]/90 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 font-opensans"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
               >
                 <FaPhoneAlt className="text-xl" />
                 Call 24/7: 1300 008 782
@@ -40,214 +109,360 @@ const TwentyFourHourResponse = () => {
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="animate-bounce flex flex-col items-center">
-            <div className="w-8 h-12 border-2 border-[#2B7FFF] rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-[#2B7FFF] rounded-full mt-2 animate-pulse" />
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* Main Content Section */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Always Available
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              CONTINUOUS SUPPORT <span className="text-[#2B7FFF]">DAY & NIGHT</span>
-            </h2>
-            <div className="w-24 h-1 bg-[#2B7FFF] mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-4 bg-[#2B7FFF] rounded-full">
-                  <FaClock className="text-white text-4xl" />
+      {/* Introduction Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Content */}
+              <div className="space-y-8 animate-element">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Continuous Support <br />
+                    <span className="text-btn">Day & Night</span>
+                  </h2>
                 </div>
-                <div className="p-4 bg-[#2B7FFF] rounded-full">
-                  <FaHeadset className="text-white text-4xl" />
+
+                {/* Image - Mobile Only */}
+                <div className="relative animate-element lg:hidden">
+                  <div
+                    className="relative w-full aspect-[4/5] overflow-hidden"
+                    style={{
+                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                    }}
+                  >
+                    <Image
+                      src="/DSC02286.webp"
+                      alt="24 Hour Response Team"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    <strong className="text-gray-900">T&S Traffic Control</strong>{" "}
+                    operates around the clock to ensure continuous support for our
+                    clients and the community. Our dedicated{" "}
+                    <strong className="text-gray-900">
+                      24-hour response team
+                    </strong>{" "}
+                    and central{" "}
+                    <strong className="text-gray-900">Control Centre</strong>{" "}
+                    manage all day and night shift operations with precision and
+                    efficiency.
+                  </p>
+                  <p>
+                    Through our{" "}
+                    <strong className="text-gray-900">
+                      well-maintained communication systems
+                    </strong>{" "}
+                    and coordinated response procedures, we're able to deploy
+                    resources rapidly and effectively, ensuring your traffic
+                    management needs are met any time, day or night.
+                  </p>
+                  <p>
+                    Whether it's planned after-hours works or unexpected emergency
+                    situations, our team is ready to respond with{" "}
+                    <strong className="text-gray-900">
+                      professional, reliable service
+                    </strong>
+                    .
+                  </p>
                 </div>
               </div>
-              <div className="text-gray-600 text-lg leading-relaxed space-y-4 font-opensans">
-                <p>
-                  <strong>T&S Traffic Control</strong> operates around the clock to ensure continuous support for our clients and the community. Our dedicated <strong>24-hour response team</strong> and central <strong>Control Centre</strong> manage all day and night shift operations with precision and efficiency.
-                </p>
-                <p>
-                  Through our well-maintained communication systems and coordinated response procedures, we're able to deploy resources rapidly and effectively, ensuring your traffic management needs are met any time, day or night.
-                </p>
+
+              {/* Right: Image - Desktop Only */}
+              <div className="relative animate-element hidden lg:block">
+                <div
+                  className="relative w-full aspect-[4/5] overflow-hidden"
+                  style={{
+                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                  }}
+                >
+                  <Image
+                    src="/DSC02286.webp"
+                    alt="24 Hour Response Team"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                  />
+                </div>
               </div>
             </div>
-
-            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
-              <Image
-                src="/montage/3. Services We Offer/Acreditted TC/Standard TC.JPG"
-                alt="24 Hour Response Team"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
-      {/* Our Capabilities Section */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-white font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              What We Provide
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              EMERGENCY RESPONSE <span className="text-[#2B7FFF]">CAPABILITIES</span>
-            </h2>
-            <div className="w-24 h-1 bg-[#2B7FFF] mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="group bg-black p-8 text-center border border-gray-800 hover:border-[#2B7FFF] transition-all duration-500 hover:shadow-lg hover:shadow-[#2B7FFF]/20 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#2B7FFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="flex justify-center mb-6 relative z-10">
-                <div className="p-5 bg-[#2B7FFF] rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
-                  <FaClock className="text-3xl text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10 group-hover:text-[#2B7FFF] transition-colors duration-300 font-anton uppercase">
-                Rapid Deployment
-              </h3>
-              <p className="text-gray-300 font-opensans leading-relaxed relative z-10">
-                Quick response teams ready to deploy to any location across NSW at a moment's notice.
+      {/* Response Services Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Emergency Response <span className="text-btn">Capabilities</span>
+              </h2>
+              <p
+                className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
+                style={{ color: "#8E8E95" }}
+              >
+                Rapid deployment and professional management for all emergency works
               </p>
             </div>
 
-            <div className="group bg-black p-8 text-center border border-gray-800 hover:border-[#2B7FFF] transition-all duration-500 hover:shadow-lg hover:shadow-[#2B7FFF]/20 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#2B7FFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="flex justify-center mb-6 relative z-10">
-                <div className="p-5 bg-[#2B7FFF] rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
-                  <FaHeadset className="text-3xl text-white" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
+              {responseServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
+                    {index === 0 && <FaClock className="text-2xl text-white" />}
+                    {index === 1 && <FaHeadset className="text-2xl text-white" />}
+                    {index === 2 && <FaShieldAlt className="text-2xl text-white" />}
+                    {index === 3 && <FaClock className="text-2xl text-white" />}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
+                    {service.title}
+                  </h3>
+                  <div className="w-12 h-px bg-btn mb-4"></div>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "#8E8E95" }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Visual Divider Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/montage/1. Home Page/Services We offer/Accredited TC.JPG"
+                  alt="Emergency Response"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      RESPONSIVE
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10 group-hover:text-[#2B7FFF] transition-colors duration-300 font-anton uppercase">
-                Central Control Centre
-              </h3>
-              <p className="text-gray-300 font-opensans leading-relaxed relative z-10">
-                Dedicated operations centre coordinating all emergency and scheduled works efficiently.
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/montage/2. About Us/Our Values/Taj Safety Check.JPG"
+                  alt="Professional Team"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      RELIABLE
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/montage/3. Services We Offer/Site Risk Assesment/Team Photo.JPG"
+                  alt="24/7 Operations"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      AVAILABLE
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Response Capabilities Section */}
+      <AnimatedSection direction="right">
+        <section
+          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#151623" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                What We <span className="text-btn">Provide</span>
+              </h2>
+              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+                Comprehensive emergency response services available anytime
               </p>
             </div>
 
-            <div className="group bg-black p-8 text-center border border-gray-800 hover:border-[#2B7FFF] transition-all duration-500 hover:shadow-lg hover:shadow-[#2B7FFF]/20 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#2B7FFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="flex justify-center mb-6 relative z-10">
-                <div className="p-5 bg-[#2B7FFF] rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
-                  <FaShieldAlt className="text-3xl text-white" />
-                </div>
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {responseCapabilities.map((capability, index) => (
+                  <div
+                    key={index}
+                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <FaCheckCircle className="text-2xl text-btn" />
+                      </div>
+                      <p className="text-white text-base leading-relaxed pt-0.5">
+                        {capability}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-bold mb-4 relative z-10 group-hover:text-[#2B7FFF] transition-colors duration-300 font-anton uppercase">
-                Emergency Works
-              </h3>
-              <p className="text-gray-300 font-opensans leading-relaxed relative z-10">
-                Immediate traffic management for urgent road repairs, incidents, and emergency situations.
-              </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Photo Gallery Section */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Our Work
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              RESPONSE TEAM IN <span className="text-[#2B7FFF]">ACTION</span>
-            </h2>
-            <div className="w-24 h-1 bg-[#2B7FFF] mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/montage/1. Home Page/Services We offer/Accredited TC.JPG"
-                alt="24 hour response team"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/montage/2. About Us/Our Values/Taj Safety Check.JPG"
-                alt="Emergency response operations"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative h-[400px] border-4 border-[#2B7FFF] shadow-xl overflow-hidden group">
-              <Image
-                src="/montage/3. Services We Offer/Site Risk Assesment/Team Photo.JPG"
-                alt="Control centre operations"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
       {/* CTA Section */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-[#2B7FFF] shadow-xl">
-              <Image
-                src="/montage/3. Services We Offer/Acreditted TC/Standard TC.JPG"
-                alt="Contact 24/7"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#2B7FFF]/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#2B7FFF]"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                NEED EMERGENCY <span className="text-[#2B7FFF]">TRAFFIC MANAGEMENT?</span>
-              </h3>
-              <div className="space-y-5 text-gray-300 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  Our 24-hour response team is standing by to assist with your emergency traffic management needs. Whether it's urgent road repairs, incident management, or after-hours works, we're here to help.
-                </p>
-                <p className="leading-relaxed">
-                  Call us now to speak with our Control Centre and discuss your immediate requirements. We'll have a team on-site fast.
-                </p>
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Image */}
+              <div className="relative animate-element order-2 lg:order-1">
+                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    src="/DSC00949.JPG"
+                    alt="Contact 24/7"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
-              <a
-                href="tel:+611300008782"
-                className="inline-block px-10 py-4 bg-[#2B7FFF] text-white font-bold hover:bg-white hover:text-[#2B7FFF] transition-all duration-300 border border-[#2B7FFF] group relative overflow-hidden font-opensans"
-              >
-                <span className="relative z-10 flex items-center gap-3">
-                  <FaPhoneAlt />
-                  CALL 1300 008 782
-                </span>
-                <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-              </a>
+
+              {/* Right: Content */}
+              <div className="space-y-8 animate-element order-1 lg:order-2">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Need Emergency <br />
+                    <span className="text-btn">Traffic Management?</span>
+                  </h2>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Our{" "}
+                    <strong className="text-gray-900">
+                      24-hour response team
+                    </strong>{" "}
+                    is standing by to assist with your emergency traffic
+                    management needs. Whether it's urgent road repairs, incident
+                    management, or after-hours works, we're here to help.
+                  </p>
+                  <p>
+                    Call us now to speak with our{" "}
+                    <strong className="text-gray-900">Control Centre</strong> and
+                    discuss your immediate requirements. We'll have a team on-site
+                    fast.
+                  </p>
+                </div>
+
+                <div className="pt-6">
+                  <a
+                    href="tel:+611300008782"
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  >
+                    <FaPhoneAlt className="text-xl" />
+                    Call 1300 008 782
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedSection>
 
-      <ContactForm />
-    </main>
+      {/* FAQ Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Frequently Asked <span className="text-btn">Questions</span>
+              </h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg overflow-hidden"
+                  >
+                    <button
+                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={openFaqIndex === index}
+                      aria-controls={`faq-content-${index}`}
+                    >
+                      <span>{faq.question}</span>
+                      <FaChevronDown
+                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
+                          openFaqIndex === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-content-${index}`}
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{
+                        gridTemplateRows: openFaqIndex === index ? "1fr" : "0fr",
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <div
+                          className="p-6 pt-0 leading-relaxed"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          <p>{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+    </div>
   );
 };
 
-export default TwentyFourHourResponse;
+export default TwentyFourHourResponsePage;

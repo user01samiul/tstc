@@ -1,406 +1,490 @@
 "use client";
 
-import ContactForm from "@/components/ContactForm";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaChevronDown,
+  FaEnvelope,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import AnimatedSection from "../../components/AnimatedSection";
 
-const PermitApplication = () => {
-  const [activeTab, setActiveTab] = useState("rol");
+const PermitApplicationPage = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // Permit Services
+  const permitServices = [
+    {
+      title: "Road Occupancy Licences (ROLs)",
+      description:
+        "Complete ROL application preparation and submission through Transport for NSW (TfNSW), including Traffic Management Plan coordination and compliance documentation.",
+    },
+    {
+      title: "Council Permits",
+      description:
+        "Council road occupancy permits, local road access approvals, footpath closures, works zones, and parking bay suspensions across NSW councils.",
+    },
+    {
+      title: "Bus Approvals",
+      description:
+        "Coordination with bus operators and transport authorities for works affecting bus routes, temporary bus stop relocations, and bus lane closures.",
+    },
+    {
+      title: "Police & Event Permits",
+      description:
+        "Police notifications for emergency and planned works, event traffic permits, and coordination with emergency services for critical projects.",
+    },
+  ];
+
+  // What We Handle
+  const servicesWeHandle = [
+    "Complete application preparation and submission",
+    "Traffic Management Plan coordination",
+    "Liaison with TfNSW and council representatives",
+    "Approval tracking and follow-up communications",
+    "Compliance documentation and record keeping",
+    "Footpath and parking bay suspensions",
+    "Hoarding and scaffolding permits",
+    "Utility and third-party authority clearances",
+  ];
+
+  const faqs = [
+    {
+      question: "What is a Road Occupancy Licence (ROL)?",
+      answer:
+        "A Road Occupancy Licence (ROL) is a permit issued by Transport for NSW (TfNSW) that allows you to occupy part of a classified road for construction, maintenance, or events. ROLs are required for works on state roads and major highways, and must be obtained before works can commence.",
+    },
+    {
+      question: "How long does the permit approval process take?",
+      answer:
+        "Approval timeframes vary depending on the authority and complexity of works. TfNSW ROLs typically take 10-15 business days for standard applications. Council permits range from 5-10 business days. Complex or high-risk applications may require additional time. We work to expedite all applications and keep you informed throughout the process.",
+    },
+    {
+      question: "Do you handle urgent or emergency permit applications?",
+      answer:
+        "Yes, we provide 24/7 emergency permit services for urgent works. Our established relationships with road authorities enable us to fast-track applications when required. Contact us anytime on 1300 008 782 for urgent permit requirements.",
+    },
+    {
+      question: "What councils do you work with?",
+      answer:
+        "We have established relationships with councils throughout NSW, including all Sydney metropolitan councils and regional councils. Our team understands each council's unique requirements and submission processes, enabling efficient applications regardless of location.",
+    },
+  ];
 
   return (
-    <>
-      <Head>
-        <title>Approvals & Permits | T&S Traffic Solutions</title>
-        <meta
-          name="description"
-          content="Professional permit and approval services for road occupancy licences, council permits, bus approvals, and more across NSW."
-        />
-      </Head>
+    <div className="font-sans overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[350px] md:min-h-[400px] w-full flex items-center justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/DSC00732.JPG"
+            alt="Permit Application Services"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
 
-      <div className="bg-white">
-        {/* Hero Section */}
-        <div className="relative bg-gray-900">
-          <div className="absolute inset-0">
-            <Image
-              src="/DSC00732.JPG"
-              alt="Permit Application Services"
-              fill
-              className="object-cover opacity-50"
-              priority
-            />
-          </div>
-          <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Approvals & <span className="text-[#2B7FFF]">Permits</span>
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 text-center">
+          <div className="text-white space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight font-anton uppercase">
+              PERMIT <span className="text-btn">APPLICATIONS</span>
             </h1>
-            <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-              Navigating approvals can be time-consuming — we take care of it for you.
+            <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              Navigating approvals can be time-consuming — we take care of it
+              for you
             </p>
-          </div>
-        </div>
-
-        {/* Overview Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Approvals & Permits
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Navigating approvals can be time-consuming — we take care of it for you.
-            </p>
-            <p className="text-lg text-gray-600 mb-6">
-              Our team manages the submission and approval process for:
-            </p>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">
-                  <strong>Road Occupancy Licences (ROLs)</strong> through TfNSW
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">
-                  <strong>Council permits</strong> and local road access approvals
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">
-                  <strong>Bus Approvals</strong>
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">
-                  <strong>Police notifications</strong> and event traffic permits
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-[#2B7FFF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-lg text-gray-700">
-                  <strong>Utility and third-party authority clearances</strong>
-                </p>
-              </li>
-            </ul>
-            <p className="text-lg text-gray-600">
-              With established relationships across multiple NSW councils and road authorities, T&S ensures your paperwork is handled efficiently, keeping your project on schedule and compliant.
-            </p>
-          </div>
-        </div>
-
-        {/* Detailed Content Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="lg:flex lg:items-start lg:gap-8">
-            {/* Sidebar Navigation */}
-            <div className="lg:w-1/4 mb-8 lg:mb-0">
-              <nav className="space-y-1">
-                <a
-                  href="#rol"
-                  onClick={() => setActiveTab("rol")}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "rol"
-                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Road Occupancy Licences (ROLs)
-                </a>
-                <a
-                  href="#council-permits"
-                  onClick={() => setActiveTab("council-permits")}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "council-permits"
-                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Council Permits
-                </a>
-                <a
-                  href="#bus-approvals"
-                  onClick={() => setActiveTab("bus-approvals")}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "bus-approvals"
-                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Bus Approvals
-                </a>
-                <a
-                  href="#police-notifications"
-                  onClick={() => setActiveTab("police-notifications")}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "police-notifications"
-                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Police Notifications
-                </a>
-                <a
-                  href="#utility-clearances"
-                  onClick={() => setActiveTab("utility-clearances")}
-                  className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                    activeTab === "utility-clearances"
-                      ? "bg-[#2B7FFF]/10 text-[#2B7FFF]"
-                      : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Utility & Authority Clearances
-                </a>
-              </nav>
-
-              <div className="mt-8 bg-[#2B7FFF]/10 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-[#2B7FFF] mb-4 flex items-center gap-2">
-                  <FaEnvelope />
-                  Contact Information
-                </h3>
-                <ul className="text-gray-700 mb-4 space-y-2">
-                  <li>
-                    <span className="font-semibold">Permits Email:</span>{" "}
-                    <a
-                      href="mailto:Plans@tstc.com.au"
-                      className="text-[#2B7FFF] hover:underline"
-                    >
-                      Plans@tstc.com.au
-                    </a>
-                  </li>
-                  <li>
-                    <span className="font-semibold">Phone:</span>{" "}
-                    <a
-                      href="tel:+611300008782"
-                      className="text-[#2B7FFF] hover:underline"
-                    >
-                      +61 1300 008 782
-                    </a>
-                  </li>
-                </ul>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#2B7FFF] hover:bg-[#2B7FFF]/90"
-                >
-                  Contact Our Team
-                </Link>
-              </div>
-            </div>
-
-            {/* Main Content */}
-            <div className="lg:w-3/4">
-              {/* Road Occupancy Licences */}
-              {activeTab === "rol" && (
-                <div id="rol">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Road Occupancy Licences (ROLs)
-                  </h2>
-                  <p className="text-sm text-gray-500 mb-4">Through TfNSW</p>
-                  <div className="prose prose-blue max-w-none">
-                    <p className="text-lg text-gray-600">
-                      Our team manages the complete submission and approval process for Road Occupancy Licences through Transport for NSW (TfNSW).
-                    </p>
-
-                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        What We Handle
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Complete ROL application preparation and submission</li>
-                        <li>Traffic Management Plan development and coordination</li>
-                        <li>Liaison with TfNSW Traffic Management Committee representatives</li>
-                        <li>Approval tracking and follow-up communications</li>
-                        <li>Compliance documentation and record keeping</li>
-                      </ul>
-                    </div>
-
-                    <div className="mt-8">
-                      <p className="text-gray-600">
-                        With established relationships across NSW road authorities, T&S ensures your paperwork is handled efficiently, keeping your project on schedule and compliant.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Council Permits */}
-              {activeTab === "council-permits" && (
-                <div id="council-permits">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Council Permits & Local Road Access
-                  </h2>
-                  <div className="prose prose-blue max-w-none">
-                    <p className="text-lg text-gray-600">
-                      We manage council permit applications and local road access approvals across multiple NSW councils.
-                    </p>
-
-                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Our Services Include
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Council road occupancy permits</li>
-                        <li>Local road access approvals</li>
-                        <li>Footpath closure permits</li>
-                        <li>Works zone applications</li>
-                        <li>Parking bay suspensions</li>
-                        <li>Hoarding and scaffolding permits</li>
-                      </ul>
-                    </div>
-
-                    <div className="mt-8">
-                      <p className="text-gray-600">
-                        Our established relationships with councils throughout NSW enable us to navigate each council's unique requirements efficiently, minimizing delays and ensuring compliance.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Bus Approvals */}
-              {activeTab === "bus-approvals" && (
-                <div id="bus-approvals">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Bus Approvals
-                  </h2>
-                  <p className="text-sm text-gray-500 mb-4">STA and Transport Authority Coordination</p>
-                  <div className="prose prose-blue max-w-none">
-                    <p className="text-lg text-gray-600">
-                      We coordinate bus approvals and manage liaison with transport authorities for works affecting bus routes and stops.
-                    </p>
-
-                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Bus Approval Management
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Coordination with bus operators for works near bus routes</li>
-                        <li>Temporary bus stop relocations and approvals</li>
-                        <li>Bus lane closure applications</li>
-                        <li>Impact assessments for public transport</li>
-                        <li>Ongoing communication with transport authorities</li>
-                      </ul>
-                    </div>
-
-                    <div className="mt-8">
-                      <p className="text-gray-600">
-                        Our team ensures all bus-related approvals are obtained efficiently, minimizing disruption to public transport services while keeping your project moving forward.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Police Notifications */}
-              {activeTab === "police-notifications" && (
-                <div id="police-notifications">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Police Notifications & Event Traffic Permits
-                  </h2>
-                  <div className="prose prose-blue max-w-none">
-                    <p className="text-lg text-gray-600">
-                      We manage all police notifications and event traffic permit applications, ensuring authorities are informed and approvals are obtained for special events and emergency works.
-                    </p>
-
-                    <div className="mt-8 bg-[#2B7FFF]/10 border-l-4 border-[#2B7FFF] p-6 mb-6">
-                      <div className="flex items-center gap-3 mb-2">
-                        <FaPhoneAlt className="text-[#2B7FFF] text-xl" />
-                        <h3 className="text-lg font-medium text-[#2B7FFF]">
-                          24/7 Emergency Response
-                        </h3>
-                      </div>
-                      <p className="text-gray-700">
-                        Contact us anytime for urgent permit requirements: <a href="tel:+611300008782" className="font-semibold text-[#2B7FFF] hover:underline">+61 1300 008 782</a>
-                      </p>
-                    </div>
-
-                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Our Services Include
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Police notifications for emergency and planned works</li>
-                        <li>Event traffic permits for community and sporting events</li>
-                        <li>Film and production traffic management permits</li>
-                        <li>Special event approvals and road closure notifications</li>
-                        <li>Coordination with emergency services for critical works</li>
-                      </ul>
-                    </div>
-
-                    <div className="mt-8">
-                      <p className="text-gray-600">
-                        Our established relationships with NSW Police and emergency services ensure timely notifications and approvals, keeping your events and projects compliant and on schedule.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Utility & Authority Clearances */}
-              {activeTab === "utility-clearances" && (
-                <div id="utility-clearances">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    Utility & Third-Party Authority Clearances
-                  </h2>
-                  <div className="prose prose-blue max-w-none">
-                    <p className="text-lg text-gray-600">
-                      We coordinate all utility and third-party authority clearances, ensuring your works are approved by all relevant stakeholders before commencing.
-                    </p>
-
-                    <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                        Clearances We Manage
-                      </h3>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Electrical utility clearances (Ausgrid, Endeavour Energy, Essential Energy)</li>
-                        <li>Water and sewerage authority approvals (Sydney Water, Hunter Water, local councils)</li>
-                        <li>Gas utility notifications and approvals (Jemena, APA Group)</li>
-                        <li>Telecommunications and NBN coordination (Telstra, TPG, NBN Co)</li>
-                        <li>Rail authority clearances (Sydney Trains, Transport for NSW)</li>
-                        <li>Private property and easement access approvals</li>
-                      </ul>
-                    </div>
-
-                    <div className="mt-8">
-                      <p className="text-gray-600">
-                        With comprehensive knowledge of utility and authority requirements across NSW, T&S ensures all necessary clearances are obtained efficiently, preventing costly delays and ensuring full compliance with all stakeholder requirements.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="bg-[#2B7FFF]">
-          <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              <span className="block">
-                Ready to streamline your permit process?
-              </span>
-              <span className="block text-white/80">
-                Contact our permit specialists today.
-              </span>
-            </h2>
-            <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div className="pt-6">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-[#2B7FFF] bg-white hover:bg-[#2B7FFF]/10"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
               >
-                Get Started
+                <FaPhoneAlt className="text-xl" />
+                Get In Touch
               </Link>
             </div>
           </div>
         </div>
+      </section>
 
-        <ContactForm />
-      </div>
-    </>
+      {/* Introduction Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Content */}
+              <div className="space-y-8 animate-element">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Approvals & Permits <br />
+                    <span className="text-btn">Managed For You</span>
+                  </h2>
+                </div>
+
+                {/* Image - Mobile Only */}
+                <div className="relative animate-element lg:hidden">
+                  <div
+                    className="relative w-full aspect-[4/5] overflow-hidden"
+                    style={{
+                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                    }}
+                  >
+                    <Image
+                      src="/3.webp"
+                      alt="Permit Application Services"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Our team manages the{" "}
+                    <strong className="text-gray-900">
+                      complete submission and approval process
+                    </strong>{" "}
+                    for Road Occupancy Licences (ROLs), council permits, bus
+                    approvals, police notifications, and utility clearances.
+                  </p>
+                  <p>
+                    With{" "}
+                    <strong className="text-gray-900">
+                      established relationships across multiple NSW councils and
+                      road authorities
+                    </strong>
+                    , T&S ensures your paperwork is handled efficiently, keeping
+                    your project on schedule and compliant.
+                  </p>
+                  <p>
+                    From initial application to final approval, we handle all
+                    liaison, tracking, and documentation so you can focus on
+                    your project.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right: Image - Desktop Only */}
+              <div className="relative animate-element hidden lg:block">
+                <div
+                  className="relative w-full aspect-[4/5] overflow-hidden"
+                  style={{
+                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                  }}
+                >
+                  <Image
+                    src="/3.webp"
+                    alt="Permit Application Services"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Permit Services Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Permits & Approvals <span className="text-btn">We Manage</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
+              {permitServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
+                    <FaCheckCircle className="text-2xl text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
+                    {service.title}
+                  </h3>
+                  <div className="w-12 h-px bg-btn mb-4"></div>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "#8E8E95" }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Visual Divider Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00949.JPG"
+                  alt="Applications"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      APPLICATIONS
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00862.JPG"
+                  alt="Approvals"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      APPROVALS
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00732.JPG"
+                  alt="Compliance"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      COMPLIANCE
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* What We Handle Section */}
+      <AnimatedSection direction="right">
+        <section
+          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#151623" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                What We <span className="text-btn">Handle</span>
+              </h2>
+              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+                Comprehensive permit management from application to approval
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {servicesWeHandle.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <FaCheckCircle className="text-2xl text-btn" />
+                      </div>
+                      <p className="text-white text-base leading-relaxed pt-0.5">
+                        {item}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info Card */}
+            <div className="max-w-2xl mx-auto mt-16 animate-element">
+              <div className="bg-transparent rounded-2xl p-8 border-2 border-dashed border-btn">
+                <div className="text-center">
+                  <FaEnvelope className="text-4xl text-btn mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-white mb-6 font-anton uppercase">
+                    Contact Our Permit Team
+                  </h3>
+                  <div className="space-y-3 text-white mb-6">
+                    <p>
+                      <span className="font-semibold">Permits Email:</span>{" "}
+                      <a
+                        href="mailto:Plans@tstc.com.au"
+                        className="text-btn hover:underline"
+                      >
+                        Plans@tstc.com.au
+                      </a>
+                    </p>
+                    <p>
+                      <span className="font-semibold">Phone:</span>{" "}
+                      <a
+                        href="tel:+611300008782"
+                        className="text-btn hover:underline"
+                      >
+                        1300 008 782
+                      </a>
+                    </p>
+                  </div>
+                  <p className="text-gray-400 text-sm">
+                    Available 24/7 for emergency permit requirements
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* CTA Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Image */}
+              <div className="relative animate-element order-2 lg:order-1">
+                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    src="/DSC00726.JPG"
+                    alt="Streamline Your Permits"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Content */}
+              <div className="space-y-8 animate-element order-1 lg:order-2">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Streamline Your <br />
+                    <span className="text-btn">Permit Process</span>
+                  </h2>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Ready to streamline your permit process?{" "}
+                    <strong className="text-gray-900">
+                      Contact our permit specialists
+                    </strong>{" "}
+                    today and let us handle all approvals, tracking, and
+                    documentation for your project.
+                  </p>
+                  <p>
+                    With established relationships across NSW road authorities
+                    and councils, we ensure efficient processing and keep your
+                    project on schedule.
+                  </p>
+                </div>
+
+                <div className="pt-6">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Get Started
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* FAQ Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Frequently Asked <span className="text-btn">Questions</span>
+              </h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg overflow-hidden"
+                  >
+                    <button
+                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={openFaqIndex === index}
+                      aria-controls={`faq-content-${index}`}
+                    >
+                      <span>{faq.question}</span>
+                      <FaChevronDown
+                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
+                          openFaqIndex === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-content-${index}`}
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{
+                        gridTemplateRows:
+                          openFaqIndex === index ? "1fr" : "0fr",
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <div
+                          className="p-6 pt-0 leading-relaxed"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          <p>{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+    </div>
   );
 };
 
-export default PermitApplication;
+export default PermitApplicationPage;

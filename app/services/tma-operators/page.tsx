@@ -1,341 +1,461 @@
 "use client";
 
-import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
-import { FaHardHat, FaPhoneAlt, FaRoad, FaTrafficLight } from "react-icons/fa";
+import { FaPhoneAlt, FaCheckCircle, FaChevronDown, FaTruck, FaShieldAlt, FaCertificate } from "react-icons/fa";
+import { useState } from "react";
+import AnimatedSection from "../../components/AnimatedSection";
 
-const TrafficControllers = () => {
+const TMAOperatorsPage = () => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // TMA Operator Services
+  const tmaServices = [
+    {
+      title: "Impact Protection",
+      description:
+        "Skilled TMA operators providing critical impact protection for work crews on high-speed roads, freeways, and complex traffic environments.",
+    },
+    {
+      title: "Mobile Operations",
+      description:
+        "Expert operation of mobile lane closures and rolling roadblocks for works requiring continuous traffic management along highway corridors.",
+    },
+    {
+      title: "TfNSW Compliance",
+      description:
+        "All TMA operators hold current TfNSW TMA accreditation, Heavy Rigid licenses, and complete regular competency assessments.",
+    },
+    {
+      title: "Safety Coordination",
+      description:
+        "Professional coordination with traffic controllers, project teams, and emergency services to ensure safe operations in high-risk work zones.",
+    },
+  ];
+
+  // TMA Operator Requirements
+  const tmaRequirements = [
+    "Current TfNSW TMA operator accreditation",
+    "Heavy Rigid (HR) driver's license",
+    "Traffic control (Yellow or Blue Card)",
+    "Extensive experience on high-speed roads",
+    "Emergency response training",
+    "Clear communication and coordination skills",
+    "Understanding of TMA deployment procedures",
+    "Commitment to safety and professionalism",
+  ];
+
+  const faqs = [
+    {
+      question: "What is a Truck-Mounted Attenuator (TMA)?",
+      answer:
+        "A Truck-Mounted Attenuator (TMA) is a specialized safety device mounted on the rear of a truck that absorbs impact energy if a vehicle collides with the work zone. TMAs are required for works on high-speed roads (speeds above 80 km/h) to provide critical protection for workers and reduce the severity of rear-end collisions. They're essential for freeway and highway works.",
+    },
+    {
+      question: "What qualifications do TMA operators need?",
+      answer:
+        "TMA operators must hold a Heavy Rigid (HR) driver's license, current TfNSW TMA operator accreditation, and traffic control accreditation (Yellow or Blue Card). They undergo specialized training in TMA deployment, emergency procedures, and high-speed road operations. All our TMA operators have extensive experience and regular competency assessments.",
+    },
+    {
+      question: "When is a TMA required for my project?",
+      answer:
+        "TMAs are generally required for works on roads with speed limits above 80 km/h, including freeways, highways, and motorways. They're mandated by TfNSW for specific work types and conditions outlined in the TCAWS manual. If your project involves high-speed roads or has been identified as requiring impact protection, a TMA will be necessary. We can assess your requirements.",
+    },
+    {
+      question: "Can you provide TMA operators for emergency works?",
+      answer:
+        "Yes, our 24/7 operations include TMA operator availability for emergency and urgent works on high-speed roads. Our experienced TMA operators can deploy rapidly to provide impact protection for incident management, emergency repairs, and after-hours works. Call 1300 008 782 for immediate TMA operator requirements.",
+    },
+  ];
+
   return (
-    <main>
-      {/* Hero Section (Black Background) */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center font-opensans">
+    <div className="font-sans overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/DSC00810.JPG"
-            alt="Accredited Traffic Controllers"
+            alt="TMA Operators"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
-        <div className="relative z-10 w-full max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-anton uppercase">
-              T&S <span className="text-blue-400">SERVICES</span> <br />
-              <span className="text-blue-400">
-                ACCREDITED TRAFFIC CONTROLLERS
-              </span>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
+          <div className="text-center text-white space-y-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
+              TRUCK-MOUNTED ATTENUATOR <br />
+              <span className="text-btn">OPERATORS (TMA)</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed font-opensans">
-              Expert, TfNSW-accredited traffic controllers ensuring safety and
-              efficiency for your project
+            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+              Skilled operators providing critical impact protection for high-speed road works
             </p>
-            <div className="flex justify-center">
+            <div className="pt-6">
               <Link
                 href="/contact"
-                className="flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 font-opensans"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
               >
                 <FaPhoneAlt className="text-xl" />
-                Contact Us Today
+                Get In Touch
               </Link>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="animate-bounce flex flex-col items-center">
-            <div className="w-8 h-12 border-2 border-blue-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse" />
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* TfNSW Accredited Staff Section (White Background) */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-black font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Our Expertise
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              TfNSW ACCREDITED <span className="text-[#13008e]">STAFF</span>
-            </h2>
-            <h3 className="text-2xl font-semibold text-gray-600 mb-6 font-opensans">
-              Highly Skilled Professionals for Safe Traffic Management
-            </h3>
-            <div className="w-24 h-1 bg-[#13008e] mx-auto"></div>
-          </div>
-          <div className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed space-y-6 font-opensans">
-            <p>
-              At T&S Traffic Solutions, our team of TfNSW-accredited
-              professionals—including Traffic Controllers, Team Leaders, TMA
-              drivers, and spotters—delivers exceptional traffic management with
-              expertise and precision across various project types.
-            </p>
-            <p>
-              Committed to excellence, our staff receive ongoing training to
-              stay current with industry standards and best practices. Whether
-              managing a large construction site or a minor roadwork project,
-              T&S Traffic Solutions ensures professional, reliable service every
-              time.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Introduction Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Content */}
+              <div className="space-y-8 animate-element">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Accredited TMA Operators <br />
+                    <span className="text-btn">For High-Speed Roads</span>
+                  </h2>
+                </div>
 
-      {/* Accredited Traffic Controllers Section (Black Background, Right Side Image) */}
-      <section id="traffic-controllers" className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-blue-500"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                ACCREDITED TRAFFIC{" "}
-                <span className="text-blue-500">CONTROLLERS</span>
-              </h3>
-              <div className="space-y-5 text-gray-300 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  Our TfNSW-accredited traffic controllers are dedicated
-                  professionals trained to provide safe and efficient traffic
-                  management. Equipped with cutting-edge tools and current
-                  qualifications, they excel in scenarios ranging from small
-                  roadworks to major infrastructure projects.
-                </p>
-                <p className="leading-relaxed">
-                  At T&S Traffic Solutions, we prioritize hiring and training
-                  skilled controllers to ensure safety and minimal disruption.
-                  Our team stays ahead of industry trends, delivering confident
-                  and compliant traffic management for your project.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-block px-10 py-4 bg-blue-500 text-white font-bold hover:bg-white hover:text-blue-500 transition-all duration-300 border border-blue-500 group relative overflow-hidden font-opensans"
-                >
-                  <span className="relative z-10">CONTACT US</span>
-                  <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-                </Link>
-              </div>
-            </div>
-            <div className="relative h-[500px] border-4 border-blue-500 shadow-xl">
-              <Image
-                src="/DSC00717.JPG"
-                alt="Accredited Traffic Controllers"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experienced Team Leaders Section (White Background, Left Side Image) */}
-      <section id="team-leaders" className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
-              <Image
-                src="/DSC00844.JPG"
-                alt="Experienced Team Leaders"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                EXPERIENCED TEAM <span className="text-[#13008e]">LEADERS</span>
-              </h3>
-              <div className="space-y-5 text-gray-600 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  Our TfNSW-accredited team leaders bring extensive expertise to
-                  manage traffic control for projects of all scales. They
-                  oversee operations, ensuring safety, efficiency, and adherence
-                  to the highest standards.
-                </p>
-                <p className="leading-relaxed">
-                  Collaborating closely with clients, our leaders customize
-                  traffic management plans to meet specific project
-                  requirements. They ensure controllers are briefed, equipment
-                  is ready, and projects are executed flawlessly with ongoing
-                  support.
-                </p>
-                <p className="leading-relaxed">
-                  At T&S Traffic Solutions, we are proud of our leaders’ ability
-                  to deliver safe, timely, and efficient project outcomes,
-                  giving you confidence in every phase of your project.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden font-opensans"
-                >
-                  <span className="relative z-10">CONTACT US</span>
-                  <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Truck Mounted Attenuator Operators Section (Black Background, Right Side Image) */}
-      <section id="tma-operators" className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-blue-500"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                TRUCK MOUNTED ATTENUATOR{" "}
-                <span className="text-blue-500">OPERATORS</span>
-              </h3>
-              <div className="space-y-5 text-gray-300 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  T&S Traffic Solutions employs only the most skilled Truck
-                  Mounted Attenuator (TMA) operators, each with at least two
-                  years of experience and TfNSW accreditation. Holding Heavy
-                  Rigid licenses, our operators are equipped to manage complex
-                  traffic control scenarios with precision.
-                </p>
-                <p className="leading-relaxed">
-                  With our expert TMA operators, your work site will remain safe
-                  and fully compliant with all regulations. Contact us at 1300 008 782 to discuss your traffic management needs.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-block px-10 py-4 bg-blue-500 text-white font-bold hover:bg-white hover:text-blue-500 transition-all duration-300 border border-blue-500 group relative overflow-hidden font-opensans"
-                >
-                  <span className="relative z-10">CONTACT US</span>
-                  <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-                </Link>
-              </div>
-            </div>
-            <div className="relative h-[500px] border-4 border-blue-500 shadow-xl">
-              <Image
-                src="/DSC00943.JPG"
-                alt="Truck Mounted Attenuator Operators"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Other Services Section (Black Background) */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-white font-bold tracking-widest uppercase text-sm mb-4 block font-opensans">
-              Our Services
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight font-anton uppercase">
-              EXPLORE OUR <span className="text-blue-500">OTHER SERVICES</span>
-            </h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Traffic Management Plans",
-                icon: <FaHardHat className="text-3xl" />,
-                description:
-                  "Customized plans designed to ensure safety and efficiency, tailored to your project’s unique requirements.",
-              },
-              {
-                name: "Permit Applications",
-                icon: <FaTrafficLight className="text-3xl" />,
-                description:
-                  "Streamlined permit application services for hassle-free project compliance with councils and authorities.",
-              },
-              {
-                name: "Equipment Hire",
-                icon: <FaRoad className="text-3xl" />,
-                description:
-                  "Access a wide range of high-quality traffic management equipment, including signs, barriers, and more.",
-              },
-              {
-                name: "Emergency Response",
-                icon: <FaPhoneAlt className="text-3xl" />,
-                description:
-                  "Our 24/7 emergency response service addresses unexpected traffic issues with rapid deployment and expertise.",
-              },
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="group bg-black p-8 text-center border border-gray-800 hover:border-[#13008e] transition-all duration-500 hover:shadow-lg hover:shadow-[#13008e]/20 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="flex justify-center mb-6 relative z-10">
-                  <div className="p-5 bg-blue-500 rounded-full group-hover:rotate-[15deg] transition-transform duration-500">
-                    {service.icon}
+                {/* Image - Mobile Only */}
+                <div className="relative animate-element lg:hidden">
+                  <div
+                    className="relative w-full aspect-[4/5] overflow-hidden"
+                    style={{
+                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                    }}
+                  >
+                    <Image
+                      src="/DSC00723.JPG"
+                      alt="TMA Operations"
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold relative z-10 group-hover:text-[#13008e] transition-colors duration-300 font-opensans">
-                  {service.name}
-                </h3>
-                <p className="text-gray-300 mt-4 relative z-10 font-opensans">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Get in Touch Section (White Background, Left Side Image) */}
-      <section className="py-24 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] border-4 border-[#13008e] shadow-xl">
-              <Image
-                src="/DSC00850.JPG"
-                alt="Get in Touch"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#13008e]/20 mix-blend-multiply"></div>
-            </div>
-            <div className="relative">
-              <div className="absolute -left-8 top-0 h-full w-1 bg-[#13008e]"></div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-8 font-anton uppercase">
-                CONTACT US FOR{" "}
-                <span className="text-[#13008e]">
-                  TRAFFIC MANAGEMENT SOLUTIONS
-                </span>
-              </h3>
-              <div className="space-y-5 text-gray-600 mb-10 font-opensans">
-                <p className="leading-relaxed">
-                  Ready to enhance your project’s safety with our accredited
-                  traffic controllers? Contact T&S Traffic Solutions to discuss
-                  how our expert team can meet your traffic management needs.
-                </p>
-                <p className="leading-relaxed">
-                  Have questions? Reach out at +61 1300 008 782 to explore our
-                  services.
-                </p>
-                <Link
-                  href="/contact"
-                  className="inline-block px-10 py-4 bg-[#13008e] text-white font-bold hover:bg-white hover:text-[#13008e] transition-all duration-300 border border-[#13008e] group relative overflow-hidden font-opensans"
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
                 >
-                  <span className="relative z-10">GET A QUOTE</span>
-                  <span className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 z-0"></span>
-                </Link>
+                  <p>
+                    Our{" "}
+                    <strong className="text-gray-900">
+                      TfNSW-accredited TMA operators
+                    </strong>{" "}
+                    provide critical impact protection for works on freeways,
+                    highways, and high-speed roads across NSW. Each operator holds
+                    a Heavy Rigid license and specialized TMA accreditation.
+                  </p>
+                  <p>
+                    With{" "}
+                    <strong className="text-gray-900">
+                      extensive experience in high-risk traffic environments
+                    </strong>
+                    , our TMA operators understand the complexities of freeway
+                    works, mobile operations, and emergency response situations.
+                  </p>
+                  <p>
+                    From stationary shadow vehicles to mobile lane closures, our
+                    TMA operators deliver{" "}
+                    <strong className="text-gray-900">
+                      professional, safety-focused service
+                    </strong>{" "}
+                    that protects workers and maintains traffic flow.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right: Image - Desktop Only */}
+              <div className="relative animate-element hidden lg:block">
+                <div
+                  className="relative w-full aspect-[4/5] overflow-hidden"
+                  style={{
+                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                  }}
+                >
+                  <Image
+                    src="/DSC00723.JPG"
+                    alt="TMA Operations"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <ContactForm />
-    </main>
+        </section>
+      </AnimatedSection>
+
+      {/* TMA Services Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                TMA Operator <span className="text-btn">Services</span>
+              </h2>
+              <p
+                className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
+                style={{ color: "#8E8E95" }}
+              >
+                Professional impact protection for high-speed road works
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
+              {tmaServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
+                    {index === 0 && <FaShieldAlt className="text-2xl text-white" />}
+                    {index === 1 && <FaTruck className="text-2xl text-white" />}
+                    {index === 2 && <FaCertificate className="text-2xl text-white" />}
+                    {index === 3 && <FaCheckCircle className="text-2xl text-white" />}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
+                    {service.title}
+                  </h3>
+                  <div className="w-12 h-px bg-btn mb-4"></div>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "#8E8E95" }}
+                  >
+                    {service.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Visual Divider Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00810.JPG"
+                  alt="Protection"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      PROTECTION
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00723.JPG"
+                  alt="Expertise"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      EXPERTISE
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div className="relative aspect-square overflow-hidden rounded-lg group">
+                <Image
+                  src="/DSC00847.JPG"
+                  alt="Safety"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-white text-2xl font-bold font-anton uppercase">
+                      SAFETY
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* TMA Requirements Section */}
+      <AnimatedSection direction="right">
+        <section
+          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#151623" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                TMA Operator <span className="text-btn">Qualifications</span>
+              </h2>
+              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+                Fully licensed and accredited professionals for high-risk operations
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {tmaRequirements.map((requirement, index) => (
+                  <div
+                    key={index}
+                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <FaCheckCircle className="text-2xl text-btn" />
+                      </div>
+                      <p className="text-white text-base leading-relaxed pt-0.5">
+                        {requirement}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* CTA Section */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              {/* Left: Image */}
+              <div className="relative animate-element order-2 lg:order-1">
+                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    src="/DSC00810.JPG"
+                    alt="Contact Us"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Content */}
+              <div className="space-y-8 animate-element order-1 lg:order-2">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6"></div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Need TMA Operators <br />
+                    <span className="text-btn">For Your Project?</span>
+                  </h2>
+                </div>
+
+                <div
+                  className="space-y-6 text-lg leading-relaxed"
+                  style={{ color: "#8E8E95" }}
+                >
+                  <p>
+                    Partner with{" "}
+                    <strong className="text-gray-900">
+                      T&S Traffic Control
+                    </strong>{" "}
+                    for experienced TMA operators who provide critical impact
+                    protection and ensure safe operations on high-speed roads.
+                  </p>
+                  <p>
+                    Our qualified TMA operators are ready to support your freeway,
+                    highway, and motorway projects. Contact us today to discuss
+                    your requirements or request a quote.
+                  </p>
+                </div>
+
+                <div className="pt-6">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                  >
+                    Get A Quote
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* FAQ Section */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Frequently Asked <span className="text-btn">Questions</span>
+              </h2>
+            </div>
+
+            <div className="max-w-4xl mx-auto animate-element">
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg overflow-hidden"
+                  >
+                    <button
+                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                      onClick={() => toggleFAQ(index)}
+                      aria-expanded={openFaqIndex === index}
+                      aria-controls={`faq-content-${index}`}
+                    >
+                      <span>{faq.question}</span>
+                      <FaChevronDown
+                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
+                          openFaqIndex === index ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      id={`faq-content-${index}`}
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{
+                        gridTemplateRows: openFaqIndex === index ? "1fr" : "0fr",
+                      }}
+                    >
+                      <div className="overflow-hidden">
+                        <div
+                          className="p-6 pt-0 leading-relaxed"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          <p>{faq.answer}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+    </div>
   );
 };
 
-export default TrafficControllers;
+export default TMAOperatorsPage;

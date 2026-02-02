@@ -11,9 +11,19 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [openNestedSubmenu, setOpenNestedSubmenu] = useState<string | null>(
-    null
+    null,
   );
   const [currentHash, setCurrentHash] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Track hash changes for same-page anchor links
   useEffect(() => {
@@ -54,14 +64,20 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white text-gray-800 border-b border-gray-200 sticky top-0 z-40 font-sans shadow-sm">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-40 font-sans transition-all duration-300 ${
+          isScrolled
+            ? "bg-white border-b border-gray-200"
+            : "bg-transparent border-b border-transparent"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/logo.JPG"
+                  src="/removed-logo.png"
                   alt="T&S Traffic Solutions Logo"
                   width={100}
                   height={46}
@@ -78,7 +94,9 @@ const Navbar = () => {
                 className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
                   pathname === "/"
                     ? "text-btn bg-btn/10"
-                    : "text-gray-700 hover:text-btn hover:bg-gray-50"
+                    : isScrolled
+                      ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                      : "text-white hover:text-btn hover:bg-white/10"
                 }`}
               >
                 Home
@@ -91,7 +109,9 @@ const Navbar = () => {
                   className={`flex items-center px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
                     pathname?.startsWith("/about")
                       ? "text-btn bg-btn/10"
-                      : "text-gray-700 hover:text-btn hover:bg-gray-50"
+                      : isScrolled
+                        ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                        : "text-white hover:text-btn hover:bg-white/10"
                   }`}
                   onMouseEnter={() => setOpenSubmenu("about")}
                   onClick={() => setOpenSubmenu(null)}
@@ -168,7 +188,9 @@ const Navbar = () => {
                   className={`flex items-center px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
                     pathname?.startsWith("/services") || pathname === "/gallery"
                       ? "text-btn bg-btn/10"
-                      : "text-gray-700 hover:text-btn hover:bg-gray-50"
+                      : isScrolled
+                        ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                        : "text-white hover:text-btn hover:bg-white/10"
                   }`}
                   onMouseEnter={() => setOpenSubmenu("services")}
                   onClick={() => toggleSubmenu("services")}
@@ -375,19 +397,27 @@ const Navbar = () => {
 
               <Link
                 href="/faqs"
-                className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-btn transition-all duration-200 rounded-lg hover:bg-gray-50"
+                className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                    : "text-white hover:text-btn hover:bg-white/10"
+                }`}
               >
                 FAQ
               </Link>
               <Link
                 href="/career"
-                className="px-4 py-2.5 text-sm font-semibold text-gray-700 hover:text-btn transition-all duration-200 rounded-lg hover:bg-gray-50"
+                className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                    : "text-white hover:text-btn hover:bg-white/10"
+                }`}
               >
                 Career
               </Link>
               <Link
                 href="/contact"
-                className="ml-3 px-6 py-2.5 text-sm font-semibold bg-btn text-white rounded-lg hover:bg-btn/90 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
+                className="ml-3 px-6 py-2.5 text-sm font-semibold bg-btn text-white rounded-full hover:bg-btn/90 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
               >
                 Contact Us
               </Link>
@@ -397,7 +427,7 @@ const Navbar = () => {
             <div className="lg:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                className="p-2 rounded-full bg-white hover:bg-gray-100 transition-colors duration-200"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? (
@@ -437,7 +467,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
             <Link href="/" onClick={toggleMobileMenu}>
               <Image
-                src="/logo.JPG"
+                src="/removed-logo.png"
                 alt="T&S Traffic Solutions Logo"
                 width={120}
                 height={40}
@@ -733,7 +763,7 @@ const Navbar = () => {
             <Link
               href="/contact"
               onClick={toggleMobileMenu}
-              className="block w-full px-6 py-3 text-base font-semibold text-center bg-btn text-white rounded-lg hover:bg-btn/90 transition-colors shadow-md"
+              className="block w-full px-6 py-3 text-base font-semibold text-center bg-btn text-white rounded-full hover:bg-btn/90 transition-colors shadow-md"
             >
               Contact Us
             </Link>

@@ -1,254 +1,183 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaAmbulance, FaAward, FaClock, FaShieldAlt } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { FaArrowRight, FaPhone } from "react-icons/fa";
 
 const WeAreSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const statsRef = useRef(null);
-
-  const teamMembers = [
+  const coreValues = [
     {
-      name: "Savanah Armstrong",
-      role: "Client Relations Manager / HSEQ Officer",
-      image: "/team/white-Photoroom (4).png",
+      title: "Safety First",
+      description:
+        "Every decision we make prioritizes the safety of road users, workers, and the community.",
     },
     {
-      name: "Taj Rahman",
-      role: "Managing Director",
-      image: "/team/white-Photoroom (2).png",
+      title: "Professional Excellence",
+      description:
+        "Our team maintains the highest standards through continuous training and development.",
     },
     {
-      name: "Saadat Ahmed",
-      role: "Managing Director",
-      image: "/team/white-Photoroom (3).png",
+      title: "Reliable Service",
+      description:
+        "24/7 availability with rapid response times for emergency traffic management needs.",
+    },
+    {
+      title: "Local Expertise",
+      description:
+        "Over 10 years serving NSW with deep knowledge of local regulations and requirements.",
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
-  }, []);
+  const emergencyContent = {
+    title: "24/7 Emergency Response",
+    description:
+      "Need immediate traffic management? Our control room is ready around the clock. We respond within hours to keep your project moving safely.",
+    phone: "0450819004",
+    phoneDisplay: "Call Now: 0450 819 004",
+    ctaText: "Contact Us",
+    ctaLink: "/contact",
+    image: "/team/white-Photoroom (2).png",
+    imageAlt: "Emergency Response Team",
+    showImage: true, // Set to false to hide image completely
+  };
 
   return (
-    <section className="py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-anton uppercase">
-            We Are <span className="text-btn">T&S Traffic Management</span>
-          </h2>
-          <div className="w-24 h-1 bg-btn mx-auto"></div>
-        </div>
+    <section className="relative py-20 md:py-24 overflow-hidden bg-white">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/50"></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Text Content */}
-          <div className="space-y-6">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              T&S Traffic Control has served NSW roads for over 10 years, our passion for road safety drives everything we do. As a trusted NSW-based traffic management company, we take pride in creating safer environments for road users, workers, and the community. Our mission is simple, to deliver{" "}
-              <span className="font-bold text-btn italic">"A Safe Way Home"</span> for everyone, every day.
-            </p>
-
-            <p className="text-lg text-gray-700 leading-relaxed">
-              We believe that excellence begins with education. Our team is committed to ongoing training and professional development, ensuring we stay at the forefront of industry standards, safety practices, and innovative solutions. This dedication to learning allows us to continuously improve our services and deliver the highest level of safety and efficiency to our clients.
-            </p>
-
-            <p className="text-lg text-gray-700 leading-relaxed">
-              At the heart of T&S Traffic Control is our people. We value our team's expertise, integrity, and commitment to quality, knowing that their passion and professionalism are what set us apart. By fostering a culture of respect, collaboration, and growth, we're able to deliver tailored traffic management solutions that exceed client expectations and keep NSW moving safely.
-            </p>
-
-            <div className="pt-4">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-btn/30 hover:scale-105"
-              >
-                Learn More About Us
-              </Link>
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
+          {/* Left: Content */}
+          <div className="order-1 lg:order-1 space-y-8">
+            <div>
+              <div className="w-16 h-1 bg-btn mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                We Are <span className="text-btn">T&S Traffic Management</span>
+              </h2>
             </div>
+
+            <p
+              className="text-lg sm:text-xl leading-relaxed"
+              style={{ color: "#8E8E95" }}
+            >
+              For over 10 years, our passion for road safety has driven
+              everything we do. As a trusted NSW-based traffic management
+              company, we deliver{" "}
+              <span className="font-bold text-btn italic">
+                &quot;A Safe Way Home&quot;
+              </span>{" "}
+              for everyone, every day.
+            </p>
+
+            <p className="text-base sm:text-lg leading-relaxed text-gray-600">
+              Excellence begins with education. Our team is committed to ongoing
+              training and professional development, ensuring we stay at the
+              forefront of industry standards, safety practices, and innovative
+              solutions.
+            </p>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:shadow-xl hover:gap-4 group"
+            >
+              Discover Our Story
+              <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
 
-          {/* Team Photo Grid */}
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              {/* Large Image - Spanning 2 rows */}
-              <div className="col-span-2 relative h-[280px] rounded-lg overflow-hidden shadow-xl">
-                <Image
-                  src={teamMembers[0].image}
-                  alt={teamMembers[0].name}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-xl font-bold">{teamMembers[0].name}</h4>
-                    <p className="text-sm">{teamMembers[0].role}</p>
-                  </div>
+          {/* Right: Image with organic shape */}
+          <div className="relative order-2 lg:order-2">
+            <div
+              className="relative w-full aspect-[4/5] overflow-hidden shadow-2xl"
+              style={{
+                borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+              }}
+            >
+              <Image
+                src="/montage/1. Home Page/Services We offer/Equipment Hire.png"
+                alt="T&S Traffic Management Operations"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            {/* Decorative blob */}
+            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-btn/10 rounded-full blur-3xl -z-10"></div>
+          </div>
+        </div>
+
+        {/* Core Values Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {coreValues.map((value, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-xl border border-gray-200 hover:border-btn/40 hover:shadow-lg transition-all duration-300 group"
+            >
+              <div className="w-10 h-1 bg-btn mb-4 group-hover:w-16 transition-all duration-300"></div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {value.title}
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "#8E8E95" }}
+              >
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Emergency CTA Banner */}
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+          {/* Background with gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
+
+          <div className="relative z-10 px-8 py-12 md:py-16 lg:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              {/* Left: Text Content */}
+              <div className="text-white space-y-6">
+                <h3 className="text-3xl md:text-4xl font-bold leading-tight font-anton uppercase">
+                  {emergencyContent.title}
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed">
+                  {emergencyContent.description}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <a
+                    href={`tel:${emergencyContent.phone}`}
+                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-bold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-btn/50"
+                  >
+                    <FaPhone className="text-lg" />
+                    {emergencyContent.phoneDisplay}
+                  </a>
+                  <Link
+                    href={emergencyContent.ctaLink}
+                    className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-full font-semibold text-base border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all duration-300"
+                  >
+                    {emergencyContent.ctaText}
+                  </Link>
                 </div>
               </div>
 
-              {/* Two smaller images */}
-              {teamMembers.slice(1).map((member, index) => (
-                <div
-                  key={index}
-                  className="relative h-[220px] rounded-lg overflow-hidden shadow-xl"
-                >
+              {/* Right: Team Image - Hidden on mobile */}
+              {emergencyContent.showImage && (
+                <div className="hidden lg:block relative h-[350px] rounded-2xl overflow-hidden">
                   <Image
-                    src={member.image}
-                    alt={member.name}
+                    src={emergencyContent.image}
+                    alt={emergencyContent.imageAlt}
                     fill
                     className="object-cover"
-                    priority
+                    sizes="50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h4 className="text-lg font-bold">{member.name}</h4>
-                      <p className="text-xs">{member.role}</p>
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-              ))}
+              )}
             </div>
-
-            {/* Decorative Element */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-btn/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-btn/10 rounded-full blur-3xl -z-10"></div>
-          </div>
-        </div>
-
-        {/* Emergency Response CTA - Modern Banner */}
-        <div className="mt-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-2xl p-12 border border-gray-800">
-          <div className="max-w-5xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-anton uppercase tracking-wide">
-              24/7 Emergency Traffic Management Response, Ready Within Hours
-            </h3>
-            <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
-              Call our 24/7 Control Room Now! , Need a Traffic Crew Call US, Have Questions for Road Safety Call Us.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a
-                href="tel:0450819004"
-                className="inline-flex items-center justify-center bg-btn hover:bg-btn/90 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-btn/30"
-              >
-                <FaAmbulance className="mr-2 text-xl" />
-                Call Emergency Response
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center bg-transparent text-white px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-700 hover:border-btn hover:bg-btn/10 transition-all duration-300"
-              >
-                Learn About Our Response
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats or Values Section - Modern Animated */}
-        <div ref={statsRef} className="mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <StatCard
-              value={10}
-              suffix="+"
-              label="Years of Experience"
-              icon={<FaAward className="text-5xl text-btn" />}
-              isVisible={isVisible}
-              delay={0}
-            />
-            <StatCard
-              value={24}
-              suffix="/7"
-              label="Emergency Response"
-              icon={<FaClock className="text-5xl text-btn" />}
-              isVisible={isVisible}
-              delay={200}
-            />
-            <StatCard
-              value={100}
-              suffix="%"
-              label="Safety Focused"
-              icon={<FaShieldAlt className="text-5xl text-btn" />}
-              isVisible={isVisible}
-              delay={400}
-            />
           </div>
         </div>
       </div>
     </section>
-  );
-};
-
-// Animated Stat Card Component
-const StatCard = ({ value, suffix, label, icon, isVisible, delay }: {
-  value: number;
-  suffix: string;
-  label: string;
-  icon: React.ReactNode;
-  isVisible: boolean;
-  delay: number;
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const timeout = setTimeout(() => {
-      const duration = 2000; // Animation duration in ms
-      const steps = 60;
-      const increment = value / steps;
-      let current = 0;
-
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, duration / steps);
-
-      return () => clearInterval(timer);
-    }, delay);
-
-    return () => clearTimeout(timeout);
-  }, [isVisible, value, delay]);
-
-  return (
-    <div
-      className={`flex flex-col items-center justify-center text-center p-10 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-700 aspect-square ${
-        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <div className="mb-6">
-        {icon}
-      </div>
-      <div className="text-5xl md:text-6xl font-bold text-btn mb-3">
-        {count}{suffix}
-      </div>
-      <p className="text-gray-700 font-semibold text-base">
-        {label}
-      </p>
-    </div>
   );
 };
 

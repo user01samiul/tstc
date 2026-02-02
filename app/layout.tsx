@@ -1,30 +1,29 @@
-import type { Metadata } from "next";
-import { Anton, Open_Sans } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
 import Navbar from "../components/Navbar";
-import Footer from "@/components/Footer";
+import FloatingContactButton from "./components/FloatingContactButton";
+import Footer from "./components/Footer";
+import "./globals.css";
 
-const anton = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-anton",
-  display: "swap",
+const helveticaNow = localFont({
+  src: [
+    {
+      path: "../public/font/HelveticaNowDisplay-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/font/HelveticaNowDisplay-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/font/HelveticaNowDisplay-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-helvetica-now",
 });
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "800"],
-  variable: "--font-open-sans",
-  display: "swap",
-});
-
-export const metadata: Metadata = {
-  title: "T&S Traffic Control",
-  description: "Traffic management and control services",
-  icons: {
-    icon: "/removed-logo.png"
-  }
-};
 
 export default function RootLayout({
   children,
@@ -33,10 +32,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${anton.variable} ${openSans.variable} antialiased`}>
+      <body className={`${helveticaNow.variable} font-anton antialiased`}>
         <Navbar />
         {children}
         <Footer />
+        <FloatingContactButton />
       </body>
     </html>
   );

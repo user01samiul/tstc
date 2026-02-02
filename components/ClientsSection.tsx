@@ -5,13 +5,34 @@ import { useEffect, useRef, useState } from "react";
 const ClientsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const logos = [
-    { src: "/montage/1. Home Page/Our Clients/1. Client Daracon.png", alt: "Daracon" },
-    { src: "/montage/1. Home Page/Our Clients/2. Client - AOR Cranes.png", alt: "AOR Cranes" },
-    { src: "/montage/1. Home Page/Our Clients/3. Client -AM2PM.webp", alt: "AM2PM" },
-    { src: "/montage/1. Home Page/Our Clients/4. Client - CIP Projects.png", alt: "CIP Projects" },
-    { src: "/montage/1. Home Page/Our Clients/5. Client - Quickflo Plumbing group.png", alt: "Quickflo Plumbing Group" },
-    { src: "/montage/1. Home Page/Our Clients/6. Client - Metway Developemnts.webp", alt: "Metway Developments" },
-    { src: "/montage/1. Home Page/Our Clients/7. Client - STC.webp", alt: "STC" },
+    {
+      src: "/montage/1. Home Page/Our Clients/1. Client Daracon.png",
+      alt: "Daracon",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/2. Client - AOR Cranes.png",
+      alt: "AOR Cranes",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/3. Client -AM2PM.webp",
+      alt: "AM2PM",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/4. Client - CIP Projects.png",
+      alt: "CIP Projects",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/5. Client - Quickflo Plumbing group.png",
+      alt: "Quickflo Plumbing Group",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/6. Client - Metway Developemnts.webp",
+      alt: "Metway Developments",
+    },
+    {
+      src: "/montage/1. Home Page/Our Clients/7. Client - STC.webp",
+      alt: "STC",
+    },
     { src: "/montage/1. Home Page/Our Clients/8. Client - GV.png", alt: "GV" },
   ];
 
@@ -25,9 +46,9 @@ const ClientsSection = () => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -68,8 +89,8 @@ const ClientsSection = () => {
                 key={`${logo.alt}-${index}`}
                 className="flex-shrink-0 mx-0 lg:mx-4 hover:grayscale-0 transition-all duration-300"
                 style={{
-                  width: isMobile ? "120px" : "180px",
-                  height: isMobile ? "70px" : "100px",
+                  width: isMobile ? "100px" : "140px",
+                  height: isMobile ? "60px" : "80px",
                   position: "relative",
                 }}
               >
