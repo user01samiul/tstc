@@ -4,16 +4,16 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'aaatrafficcontrol.com.au',
+        protocol: "https",
+        hostname: "aaatrafficcontrol.com.au",
       },
       {
-        protocol: 'https',
-        hostname: 'placehold.co',
+        protocol: "https",
+        hostname: "placehold.co",
       },
       {
-        protocol: 'https',
-        hostname: 'www.datocms-assets.com',
+        protocol: "https",
+        hostname: "www.datocms-assets.com",
       },
     ],
   },
