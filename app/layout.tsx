@@ -4,7 +4,7 @@ import FloatingContactButton from "./components/FloatingContactButton";
 import Footer from "./components/Footer";
 import "./globals.css";
 
-// --- Next.js Metadata API for SEO ---
+// --- Next.js SEO ---
 export const metadata = {
   title: {
     default: "T&S Traffic Control | Traffic Management Solutions Sydney & NSW",
