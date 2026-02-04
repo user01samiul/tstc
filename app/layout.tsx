@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import FloatingContactButton from "./components/FloatingContactButton";
 import Footer from "./components/Footer";
 import "./globals.css";
-import { icons } from "lucide-react";
 
 // --- Next.js Metadata API for SEO ---
 export const metadata = {
@@ -48,7 +47,7 @@ export const metadata = {
   },
   icons: {
     icon: "/logo.png",
-  }
+  },
 };
 
 const helveticaNow = localFont({

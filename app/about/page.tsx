@@ -1,5 +1,3 @@
-"use client";
-
 // --- Next.js Metadata API for About Page SEO ---
 export const metadata = {
   title: "About Us | T&S Traffic Control - Our Story & Team",
