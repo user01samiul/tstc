@@ -1,5 +1,6 @@
 // --- Next.js Metadata API for About Page SEO ---
 export const metadata = {
+  metadataBase: new URL("https://www.tstrafficcontrol.com.au"),
   title: "About Us | T&S Traffic Control - Our Story & Team",
   description:
     "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions. Discover our story, approach, and community involvement.",
