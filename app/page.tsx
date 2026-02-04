@@ -1,4 +1,38 @@
 // import CareerCTASection from "@/components/CareerCTASection";
+
+// --- Next.js Metadata API for Home Page SEO ---
+export const metadata = {
+  title: "Home | T&S Traffic Control - Sydney Traffic Management Experts",
+  description:
+    "Welcome to T&S Traffic Control. We provide expert traffic management, planning, and safety solutions for construction, events, and roadworks across Sydney and NSW. Accredited, experienced, and community-focused.",
+  openGraph: {
+    title: "Home | T&S Traffic Control - Sydney Traffic Management Experts",
+    description:
+      "Welcome to T&S Traffic Control. We provide expert traffic management, planning, and safety solutions for construction, events, and roadworks across Sydney and NSW.",
+    url: "https://www.tstrafficcontrol.com.au/",
+    siteName: "T&S Traffic Control",
+    images: [
+      {
+        url: "/montage/2. About Us/Our Communities/Regents park logo.webp",
+        width: 1200,
+        height: 630,
+        alt: "T&S Traffic Control - Sydney Traffic Management",
+      },
+    ],
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Home | T&S Traffic Control - Sydney Traffic Management Experts",
+    description:
+      "Welcome to T&S Traffic Control. We provide expert traffic management, planning, and safety solutions for construction, events, and roadworks across Sydney and NSW.",
+    images: ["/montage/2. About Us/Our Communities/Regents park logo.webp"],
+  },
+  alternates: {
+    canonical: "https://www.tstrafficcontrol.com.au/",
+  },
+};
 // import ClientsSection from "@/components/ClientsSection";
 // import ConnectWithUsSection from "@/components/ConnectWithUsSection";
 // import FAQsSection from "@/components/FAQSection";

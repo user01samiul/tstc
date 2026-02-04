@@ -1,5 +1,39 @@
 "use client";
 
+// --- Next.js Metadata API for About Page SEO ---
+export const metadata = {
+  title: "About Us | T&S Traffic Control - Our Story & Team",
+  description:
+    "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions. Discover our story, approach, and community involvement.",
+  openGraph: {
+    title: "About Us | T&S Traffic Control - Our Story & Team",
+    description:
+      "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions.",
+    url: "https://www.tstrafficcontrol.com.au/about",
+    siteName: "T&S Traffic Control",
+    images: [
+      {
+        url: "/montage/2. About Us/Our Communities/Regents park logo.webp",
+        width: 1200,
+        height: 630,
+        alt: "T&S Traffic Control - About Us",
+      },
+    ],
+    locale: "en_AU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | T&S Traffic Control - Our Story & Team",
+    description:
+      "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions.",
+    images: ["/montage/2. About Us/Our Communities/Regents park logo.webp"],
+  },
+  alternates: {
+    canonical: "https://www.tstrafficcontrol.com.au/about",
+  },
+};
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaPhoneAlt } from "react-icons/fa";
