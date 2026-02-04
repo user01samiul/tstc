@@ -12,10 +12,10 @@ export const metadata = {
     siteName: "T&S Traffic Control",
     images: [
       {
-        url: "/montage/2. About Us/Our Communities/Regents park logo.webp",
-        width: 1200,
-        height: 630,
-        alt: "T&S Traffic Control - About Us",
+        url: "/logo.png",
+        width: 240,
+        height: 80,
+        alt: "T&S Traffic Control Logo",
       },
     ],
     locale: "en_AU",
@@ -26,7 +26,7 @@ export const metadata = {
     title: "About Us | T&S Traffic Control - Our Story & Team",
     description:
       "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions.",
-    images: ["/montage/2. About Us/Our Communities/Regents park logo.webp"],
+    images: ["/logo.png"],
   },
   alternates: {
     canonical: "https://www.tstc.com.au/about",

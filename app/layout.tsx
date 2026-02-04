@@ -33,10 +33,10 @@ export const metadata = {
     siteName: "T&S Traffic Control",
     images: [
       {
-        url: "/open-GH.png",
-        width: 1200,
-        height: 630,
-        alt: "T&S Traffic Control - Sydney Traffic Management",
+        url: "/logo.png",
+        width: 240,
+        height: 80,
+        alt: "T&S Traffic Control Logo",
       },
     ],
     locale: "en_AU",
