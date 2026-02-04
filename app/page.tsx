@@ -50,7 +50,7 @@ export const metadata = {
 //       <HeroSection />
 //       <ClientsSection />
 //       <ServicesSection />
-// <WeAreSection /> 
+// <WeAreSection />
 // <CareerCTASection />
 //       <FAQsSection />
 //       {/* <StatsSection />
