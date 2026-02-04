@@ -110,7 +110,7 @@ export default function Services() {
       <section className="relative min-h-[350px] md:min-h-[400px] w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00810.JPG"
+            src="/montage/3. Services We Offer/Acreditted TC/1.png"
             alt="Services Hero"
             fill
             className="object-cover"
