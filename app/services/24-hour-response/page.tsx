@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { FaPhoneAlt, FaCheckCircle, FaChevronDown, FaClock, FaHeadset, FaShieldAlt } from "react-icons/fa";
 import { useState } from "react";
+import { FaClock, FaHeadset, FaPhoneAlt, FaShieldAlt } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 
 const TwentyFourHourResponsePage = () => {
@@ -149,9 +148,11 @@ const TwentyFourHourResponsePage = () => {
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
-                    <strong className="text-gray-900">T&S Traffic Control</strong>{" "}
-                    operates around the clock to ensure continuous support for our
-                    clients and the community. Our dedicated{" "}
+                    <strong className="text-gray-900">
+                      T&S Traffic Control
+                    </strong>{" "}
+                    operates around the clock to ensure continuous support for
+                    our clients and the community. Our dedicated{" "}
                     <strong className="text-gray-900">
                       24-hour response team
                     </strong>{" "}
@@ -170,8 +171,8 @@ const TwentyFourHourResponsePage = () => {
                     management needs are met any time, day or night.
                   </p>
                   <p>
-                    Whether it's planned after-hours works or unexpected emergency
-                    situations, our team is ready to respond with{" "}
+                    Whether it's planned after-hours works or unexpected
+                    emergency situations, our team is ready to respond with{" "}
                     <strong className="text-gray-900">
                       professional, reliable service
                     </strong>
@@ -209,13 +210,15 @@ const TwentyFourHourResponsePage = () => {
             <div className="text-center mb-16 animate-element">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Emergency Response <span className="text-btn">Capabilities</span>
+                Emergency Response{" "}
+                <span className="text-btn">Capabilities</span>
               </h2>
               <p
                 className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
                 style={{ color: "#8E8E95" }}
               >
-                Rapid deployment and professional management for all emergency works
+                Rapid deployment and professional management for all emergency
+                works
               </p>
             </div>
 
@@ -227,8 +230,12 @@ const TwentyFourHourResponsePage = () => {
                 >
                   <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
                     {index === 0 && <FaClock className="text-2xl text-white" />}
-                    {index === 1 && <FaHeadset className="text-2xl text-white" />}
-                    {index === 2 && <FaShieldAlt className="text-2xl text-white" />}
+                    {index === 1 && (
+                      <FaHeadset className="text-2xl text-white" />
+                    )}
+                    {index === 2 && (
+                      <FaShieldAlt className="text-2xl text-white" />
+                    )}
                     {index === 3 && <FaClock className="text-2xl text-white" />}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
@@ -305,39 +312,34 @@ const TwentyFourHourResponsePage = () => {
 
       {/* Response Capabilities Section */}
       <AnimatedSection direction="right">
-        <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-[#181c2a]">
+          <div className="max-w-3xl mx-auto animate-element">
+            <div className="text-center mb-10">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                 What We <span className="text-btn">Provide</span>
               </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+              <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed text-gray-300">
                 Comprehensive emergency response services available anytime
               </p>
             </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Vertical Stepper Style */}
+            <div className="relative pl-8">
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-btn/30 rounded-full" />
+              <ul className="space-y-8">
                 {responseCapabilities.map((capability, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
+                  <li key={index} className="relative flex items-start">
+                    <span className="absolute -left-8 top-1 w-8 h-8 rounded-full bg-btn text-white flex items-center justify-center font-bold text-lg shadow-md border-4 border-[#181c2a]">
+                      {index + 1}
+                    </span>
+                    <div className="flex-1 bg-white/5 rounded-lg px-6 py-4">
+                      <span className="text-white text-base leading-relaxed font-medium">
                         {capability}
-                      </p>
+                      </span>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </section>
@@ -386,9 +388,9 @@ const TwentyFourHourResponsePage = () => {
                   </p>
                   <p>
                     Call us now to speak with our{" "}
-                    <strong className="text-gray-900">Control Centre</strong> and
-                    discuss your immediate requirements. We'll have a team on-site
-                    fast.
+                    <strong className="text-gray-900">Control Centre</strong>{" "}
+                    and discuss your immediate requirements. We'll have a team
+                    on-site fast.
                   </p>
                 </div>
 
@@ -401,61 +403,6 @@ const TwentyFourHourResponsePage = () => {
                     Call 1300 008 782
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows: openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

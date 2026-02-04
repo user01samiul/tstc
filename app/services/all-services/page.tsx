@@ -4,77 +4,121 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  FaCertificate,
-  FaCheckCircle,
+  FaClipboardList,
+  FaCog,
+  FaFileAlt,
+  FaHardHat,
   FaPhoneAlt,
-  FaShieldAlt,
-  FaTruck,
+  FaRoad,
 } from "react-icons/fa";
-import AnimatedSection from "../../components/AnimatedSection";
+import AnimatedSection from "./../../../components/AnimatedSection";
 
-const TMAOperatorsPage = () => {
+const ServicesPage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  // TMA Operator Services
-  const tmaServices = [
+  // Services categories
+  const planningServices = [
     {
-      title: "Impact Protection",
+      icon: FaFileAlt,
+      title: "Traffic Guidance Schemes",
       description:
-        "Skilled TMA operators providing critical impact protection for work crews on high-speed roads, freeways, and complex traffic environments.",
+        "Detailed TGS designs compliant with TfNSW (RMS) and AS1742.3 standards, tailored to your site conditions.",
+      features: [
+        "Professional CAD software designs",
+        "Multi-stage and long-term layouts",
+        "Night works and event management",
+        "Fast turnaround for emergency works",
+      ],
     },
     {
-      title: "Mobile Operations",
+      icon: FaClipboardList,
+      title: "Traffic Management Plans",
       description:
-        "Expert operation of mobile lane closures and rolling roadblocks for works requiring continuous traffic management along highway corridors.",
+        "Comprehensive TMP documentation outlining methodology, risk controls, and stakeholder communication procedures.",
+      features: [
+        "Full TMP documentation and risk assessments",
+        "Impact analysis and mitigation strategies",
+        "Pedestrian and cyclist management",
+        "Council and TfNSW coordination",
+      ],
     },
     {
-      title: "TfNSW Compliance",
+      icon: FaRoad,
+      title: "Swept Path Analysis",
       description:
-        "All TMA operators hold current TfNSW TMA accreditation, Heavy Rigid licenses, and complete regular competency assessments.",
-    },
-    {
-      title: "Safety Coordination",
-      description:
-        "Professional coordination with traffic controllers, project teams, and emergency services to ensure safe operations in high-risk work zones.",
+        "Accurate SPA using industry-standard software to ensure safe vehicle movements through work zones.",
+      features: [
+        "Access checks for construction sites",
+        "Vehicle manoeuvre verification",
+        "Design support for detours and turning areas",
+        "Documentation for approvals",
+      ],
     },
   ];
 
-  // TMA Operator Requirements
-  const tmaRequirements = [
-    "Current TfNSW TMA operator accreditation",
-    "Heavy Rigid (HR) driver's license",
-    "Traffic control (Yellow or Blue Card)",
-    "Extensive experience on high-speed roads",
-    "Emergency response training",
-    "Clear communication and coordination skills",
-    "Understanding of TMA deployment procedures",
-    "Commitment to safety and professionalism",
+  const implementationServices = [
+    {
+      icon: FaHardHat,
+      title: "On-Site Implementation",
+      description:
+        "Professional traffic control crews delivering safe, compliant setups across NSW.",
+      features: [
+        "Qualified TCPs and TGSs",
+        "Full equipment supply and installation",
+        "24/7 availability for emergency works",
+        "Daily site audits and reporting",
+      ],
+    },
+    {
+      icon: FaCog,
+      title: "Permit Applications",
+      description:
+        "Complete permit application services for TfNSW, councils, and other road authorities.",
+      features: [
+        "TfNSW TMC ROL applications",
+        "Council permit submissions",
+        "STA bus approvals",
+        "Emergency approval coordination",
+      ],
+    },
+    {
+      icon: FaFileAlt,
+      title: "Fleet & Equipment Hire",
+      description:
+        "Modern traffic control equipment and signage hire for self-managed projects.",
+      features: [
+        "VMS boards and arrow boards",
+        "Traffic control signage",
+        "Barriers and delineation",
+        "Delivery and pickup services",
+      ],
+    },
   ];
 
   const faqs = [
     {
-      question: "What is a Truck-Mounted Attenuator (TMA)?",
+      question: "What is a TGS or TCP?",
       answer:
-        "A Truck-Mounted Attenuator (TMA) is a specialized safety device mounted on the rear of a truck that absorbs impact energy if a vehicle collides with the work zone. TMAs are required for works on high-speed roads (speeds above 80 km/h) to provide critical protection for workers and reduce the severity of rear-end collisions. They're essential for freeway and highway works.",
+        "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. A TCP (Traffic Control Plan) serves a similar purpose, providing specific instructions for managing traffic flow during roadworks, construction, or events that impact normal traffic conditions.",
     },
     {
-      question: "What qualifications do TMA operators need?",
+      question: "What is a TMP or CTMP?",
       answer:
-        "TMA operators must hold a Heavy Rigid (HR) driver's license, current TfNSW TMA operator accreditation, and traffic control accreditation (Yellow or Blue Card). They undergo specialized training in TMA deployment, emergency procedures, and high-speed road operations. All our TMA operators have extensive experience and regular competency assessments.",
+        "A TMP (Traffic Management Plan) is a comprehensive document that outlines how traffic will be safely managed during construction or events. A CTMP (Construction Traffic Management Plan) is a specialized TMP required when construction activities impact public roads, footpaths, or traffic flow. Both plans ensure safety and compliance with road authority requirements.",
     },
     {
-      question: "When is a TMA required for my project?",
+      question: "What is a ROL?",
       answer:
-        "TMAs are generally required for works on roads with speed limits above 80 km/h, including freeways, highways, and motorways. They're mandated by TfNSW for specific work types and conditions outlined in the TCAWS manual. If your project involves high-speed roads or has been identified as requiring impact protection, a TMA will be necessary. We can assess your requirements.",
+        "A ROL (Road Occupancy Licence) is a permit issued by the relevant road authority that allows you to occupy part of a road or lane for construction, maintenance, or events. You need a ROL whenever your activities require the use of public road space.",
     },
     {
-      question: "Can you provide TMA operators for emergency works?",
+      question: "Do you provide 24/7 services?",
       answer:
-        "Yes, our 24/7 operations include TMA operator availability for emergency and urgent works on high-speed roads. Our experienced TMA operators can deploy rapidly to provide impact protection for incident management, emergency repairs, and after-hours works. Call 1300 008 782 for immediate TMA operator requirements.",
+        "Yes, T&S Traffic Control provides 24/7 traffic management services across NSW. We understand that roadworks and construction often occur outside standard business hours, and our team is ready to respond to emergency and after-hours requirements.",
     },
   ];
 
@@ -85,8 +129,8 @@ const TMAOperatorsPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00717.JPG"
-            alt="TMA Operators"
+            src="/DSC00726.JPG"
+            alt="Services We Offer"
             fill
             className="object-cover"
             priority
@@ -98,12 +142,11 @@ const TMAOperatorsPage = () => {
         <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
           <div className="text-center text-white space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
-              TRUCK-MOUNTED ATTENUATOR <br />
-              <span className="text-btn">OPERATORS (TMA)</span>
+              COMPLETE TRAFFIC <br />
+              <span className="text-btn">MANAGEMENT SOLUTIONS</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Skilled operators providing critical impact protection for
-              high-speed road works
+              From design and planning to on-site implementation and compliance
             </p>
             <div className="pt-6">
               <Link
@@ -128,8 +171,8 @@ const TMAOperatorsPage = () => {
                 <div>
                   <div className="w-16 h-1 bg-btn mb-6"></div>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Accredited TMA Operators <br />
-                    <span className="text-btn">For High-Speed Roads</span>
+                    Services Built For <br />
+                    <span className="text-btn">Your Success</span>
                   </h2>
                 </div>
 
@@ -142,8 +185,8 @@ const TMAOperatorsPage = () => {
                     }}
                   >
                     <Image
-                      src="/DSC00723.JPG"
-                      alt="TMA Operations"
+                      src="/DSC00844.JPG"
+                      alt="T&S Traffic Control Services"
                       fill
                       className="object-cover"
                       sizes="100vw"
@@ -156,30 +199,26 @@ const TMAOperatorsPage = () => {
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
-                    Our{" "}
+                    At{" "}
                     <strong className="text-gray-900">
-                      TfNSW-accredited TMA operators
-                    </strong>{" "}
-                    provide critical impact protection for works on freeways,
-                    highways, and high-speed roads across NSW. Each operator
-                    holds a Heavy Rigid license and specialized TMA
-                    accreditation.
-                  </p>
-                  <p>
-                    With{" "}
-                    <strong className="text-gray-900">
-                      extensive experience in high-risk traffic environments
+                      T&S Traffic Control
                     </strong>
-                    , our TMA operators understand the complexities of freeway
-                    works, mobile operations, and emergency response situations.
+                    , we provide a complete range of traffic management services
+                    - from initial design and planning to on-site implementation
+                    and compliance.
                   </p>
                   <p>
-                    From stationary shadow vehicles to mobile lane closures, our
-                    TMA operators deliver{" "}
+                    Whether it's a one-day utility job or a multi-stage
+                    infrastructure project, our team delivers{" "}
                     <strong className="text-gray-900">
-                      professional, safety-focused service
+                      safe, efficient, and fully compliant solutions
                     </strong>{" "}
-                    that protects workers and maintains traffic flow.
+                    tailored to your site conditions.
+                  </p>
+                  <p>
+                    We work closely with builders, civil contractors, utility
+                    providers, and local councils across NSW to keep worksites
+                    safe and traffic flowing smoothly.
                   </p>
                 </div>
               </div>
@@ -193,8 +232,8 @@ const TMAOperatorsPage = () => {
                   }}
                 >
                   <Image
-                    src="/DSC00723.JPG"
-                    alt="TMA Operations"
+                    src="/DSC00844.JPG"
+                    alt="T&S Traffic Control Services"
                     fill
                     className="object-cover"
                     sizes="50vw"
@@ -206,51 +245,58 @@ const TMAOperatorsPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* TMA Services Section */}
+      {/* Planning & Design Services Section */}
       <AnimatedSection direction="right">
         <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-element">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                TMA Operator <span className="text-btn">Services</span>
+                Planning & <span className="text-btn">Design Services</span>
               </h2>
               <p
                 className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
                 style={{ color: "#8E8E95" }}
               >
-                Professional impact protection for high-speed road works
+                Our in-house design team develops compliant traffic management
+                plans that balance safety, efficiency, and real-world
+                practicality.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
-              {tmaServices.map((service, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
+              {planningServices.map((service, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
-                    {index === 0 && (
-                      <FaShieldAlt className="text-2xl text-white" />
-                    )}
-                    {index === 1 && <FaTruck className="text-2xl text-white" />}
-                    {index === 2 && (
-                      <FaCertificate className="text-2xl text-white" />
-                    )}
-                    {index === 3 && (
-                      <FaCheckCircle className="text-2xl text-white" />
-                    )}
+                  <div className="w-16 h-16 bg-btn rounded-full flex items-center justify-center mb-6">
+                    <service.icon className="text-3xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
                     {service.title}
                   </h3>
                   <div className="w-12 h-px bg-btn mb-4"></div>
                   <p
-                    className="text-base leading-relaxed"
+                    className="text-base mb-6 leading-relaxed"
                     style={{ color: "#8E8E95" }}
                   >
                     {service.description}
                   </p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start text-sm leading-relaxed"
+                        style={{ color: "#8E8E95" }}
+                      >
+                        <span className="text-btn mr-3 flex-shrink-0 font-bold text-lg">
+                          •
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -265,45 +311,45 @@ const TMAOperatorsPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00810.JPG"
-                  alt="Protection"
+                  src="/DSC00717.JPG"
+                  alt="Traffic Planning"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-white text-2xl font-bold font-anton uppercase">
-                      PROTECTION
+                      PLANNING
                     </h3>
                   </div>
                 </div>
               </div>
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00723.JPG"
-                  alt="Expertise"
+                  src="/DSC00850.JPG"
+                  alt="Implementation"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-white text-2xl font-bold font-anton uppercase">
-                      EXPERTISE
+                      IMPLEMENTATION
                     </h3>
                   </div>
                 </div>
               </div>
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00847.JPG"
-                  alt="Safety"
+                  src="/DSC00836.JPG"
+                  alt="Compliance"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-white text-2xl font-bold font-anton uppercase">
-                      SAFETY
+                      COMPLIANCE
                     </h3>
                   </div>
                 </div>
@@ -313,30 +359,54 @@ const TMAOperatorsPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* TMA Requirements Section */}
+      {/* Implementation Services Section */}
       <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-[#181c2a]">
-          <div className="max-w-3xl mx-auto animate-element">
-            <div className="text-center mb-10">
+        <section
+          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#151623" }}
+        >
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
-                TMA Operator <span className="text-btn">Qualifications</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                Implementation &{" "}
+                <span className="text-btn">Support Services</span>
               </h2>
-              <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed text-gray-300">
-                Fully licensed and accredited professionals for high-risk
-                operations
+              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
+                Professional on-site delivery, permit management, and equipment
+                hire services across NSW.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {tmaRequirements.map((requirement, index) => (
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-element">
+              {implementationServices.map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 rounded-xl p-6 flex items-center gap-4"
+                  className="bg-transparent rounded-2xl p-8 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300 hover:shadow-lg"
                 >
-                  <FaCheckCircle className="text-btn text-2xl flex-shrink-0" />
-                  <span className="text-white text-base leading-relaxed">
-                    {requirement}
-                  </span>
+                  <div className="w-16 h-16 bg-btn rounded-full flex items-center justify-center mb-6">
+                    <service.icon className="text-3xl text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4 font-anton uppercase">
+                    {service.title}
+                  </h3>
+                  <div className="w-12 h-px bg-btn mb-4"></div>
+                  <p className="text-base mb-6 leading-relaxed text-gray-400">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-3">
+                    {service.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start text-sm leading-relaxed text-gray-400"
+                      >
+                        <span className="text-btn mr-3 flex-shrink-0 font-bold text-lg">
+                          •
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -353,8 +423,8 @@ const TMAOperatorsPage = () => {
               <div className="relative animate-element order-2 lg:order-1">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
-                    src="/DSC00810.JPG"
-                    alt="Contact Us"
+                    src="/DSC00732.JPG"
+                    alt="Partner with T&S"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -367,8 +437,8 @@ const TMAOperatorsPage = () => {
                 <div>
                   <div className="w-16 h-1 bg-btn mb-6"></div>
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Need TMA Operators <br />
-                    <span className="text-btn">For Your Project?</span>
+                    Ready To Get <br />
+                    <span className="text-btn">Started?</span>
                   </h2>
                 </div>
 
@@ -377,17 +447,17 @@ const TMAOperatorsPage = () => {
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
-                    Partner with{" "}
+                    Whether you need a simple traffic plan or a comprehensive
+                    traffic management solution for a major project,{" "}
                     <strong className="text-gray-900">
-                      T&S Traffic Control
-                    </strong>{" "}
-                    for experienced TMA operators who provide critical impact
-                    protection and ensure safe operations on high-speed roads.
+                      T&S Traffic Control is here to help
+                    </strong>
+                    .
                   </p>
                   <p>
-                    Our qualified TMA operators are ready to support your
-                    freeway, highway, and motorway projects. Contact us today to
-                    discuss your requirements or request a quote.
+                    Our team is ready to deliver safe, efficient, and fully
+                    compliant solutions tailored to your site conditions.
+                    Contact us today to discuss your specific requirements.
                   </p>
                 </div>
 
@@ -408,4 +478,4 @@ const TMAOperatorsPage = () => {
   );
 };
 
-export default TMAOperatorsPage;
+export default ServicesPage;

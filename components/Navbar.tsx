@@ -184,7 +184,8 @@ const Navbar = () => {
 
               {/* Services Mega Menu */}
               <div className="relative">
-                <button
+                <Link
+                  href="/services"
                   className={`flex items-center px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
                     pathname?.startsWith("/services") || pathname === "/gallery"
                       ? "text-btn bg-btn/10"
@@ -193,7 +194,7 @@ const Navbar = () => {
                         : "text-white hover:text-btn hover:bg-white/10"
                   }`}
                   onMouseEnter={() => setOpenSubmenu("services")}
-                  onClick={() => toggleSubmenu("services")}
+                  onClick={() => setOpenSubmenu(null)}
                 >
                   Services
                   <ChevronDown
@@ -201,7 +202,7 @@ const Navbar = () => {
                       openSubmenu === "services" ? "rotate-180" : ""
                     }`}
                   />
-                </button>
+                </Link>
                 {openSubmenu === "services" && (
                   <div
                     className="fixed left-1/2 -translate-x-1/2 top-20 w-[1050px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 grid grid-cols-5 gap-4"
@@ -214,9 +215,9 @@ const Navbar = () => {
                       </h3>
                       <div className="space-y-1">
                         <Link
-                          href="/services"
+                          href="/services/all-services"
                           className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 font-semibold ${
-                            pathname === "/services"
+                            pathname === "/services/all-services"
                               ? "bg-btn text-white"
                               : "bg-btn/10 text-btn hover:bg-btn hover:text-white"
                           }`}

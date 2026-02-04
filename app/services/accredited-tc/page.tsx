@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaCheckCircle, FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
+import { FaCheckCircle, FaPhoneAlt } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 
 const AccreditedTCPage = () => {
@@ -56,7 +56,8 @@ const AccreditedTCPage = () => {
         "Yes, all our traffic controllers hold current TfNSW accreditations (Blue Card or Yellow Card). They undergo regular training, site-specific inductions, and are equipped with full PPE and uniforms. Our personnel are experienced professionals committed to maintaining the highest standards of safety and professionalism.",
     },
     {
-      question: "What's the difference between TCs, Team Leaders, and TMA Operators?",
+      question:
+        "What's the difference between TCs, Team Leaders, and TMA Operators?",
       answer:
         "Traffic Controllers (TCs) manage traffic flow and implement traffic control plans on-site. Team Leaders coordinate multiple TCs and oversee site operations. TMA Operators hold Heavy Rigid licenses and specialized TfNSW accreditation to operate Truck-Mounted Attenuators on high-speed roads. We match the right personnel to your project requirements.",
     },
@@ -211,7 +212,8 @@ const AccreditedTCPage = () => {
                 className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
                 style={{ color: "#8E8E95" }}
               >
-                Professional traffic control personnel for every project requirement
+                Professional traffic control personnel for every project
+                requirement
               </p>
             </div>
 
@@ -298,39 +300,31 @@ const AccreditedTCPage = () => {
 
       {/* Personnel Benefits Section */}
       <AnimatedSection direction="right">
-        <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-[#181c2a]">
+          <div className="max-w-3xl mx-auto animate-element">
+            <div className="text-center mb-10">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                 What Our Personnel <span className="text-btn">Bring</span>
               </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                Fully equipped, trained, and committed professionals on every site
+              <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed text-gray-300">
+                Fully equipped, trained, and committed professionals on every
+                site
               </p>
             </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/5 rounded-xl p-8">
+              <ul className="space-y-4">
                 {personnelBenefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
-                        {benefit}
-                      </p>
-                    </div>
-                  </div>
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="mt-1">
+                      <FaCheckCircle className="text-btn text-lg" />
+                    </span>
+                    <span className="text-white text-base leading-relaxed">
+                      {benefit}
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </section>
@@ -391,61 +385,6 @@ const AccreditedTCPage = () => {
                     Get A Quote
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows: openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

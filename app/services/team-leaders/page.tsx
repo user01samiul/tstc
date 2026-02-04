@@ -2,8 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhoneAlt, FaCheckCircle, FaChevronDown, FaUserTie, FaClipboardCheck, FaHeadset } from "react-icons/fa";
 import { useState } from "react";
+import {
+  FaCheckCircle,
+  FaClipboardCheck,
+  FaHeadset,
+  FaPhoneAlt,
+  FaUserTie,
+} from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 
 const TeamLeadersPage = () => {
@@ -96,7 +102,8 @@ const TeamLeadersPage = () => {
               <span className="text-btn">TEAM LEADERS</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Experienced leaders coordinating operations and ensuring compliance
+              Experienced leaders coordinating operations and ensuring
+              compliance
             </p>
             <div className="pt-6">
               <Link
@@ -162,14 +169,15 @@ const TeamLeadersPage = () => {
                     <strong className="text-gray-900">
                       strong leadership and communication skills
                     </strong>
-                    , our Team Leaders act as the primary point of contact between
-                    site operations, clients, and authorities, ensuring projects
-                    run smoothly and safely.
+                    , our Team Leaders act as the primary point of contact
+                    between site operations, clients, and authorities, ensuring
+                    projects run smoothly and safely.
                   </p>
                   <p>
-                    From implementing Traffic Management Plans to conducting site
-                    audits and managing emergency situations, our Team Leaders
-                    provide the expertise and oversight your project needs.
+                    From implementing Traffic Management Plans to conducting
+                    site audits and managing emergency situations, our Team
+                    Leaders provide the expertise and oversight your project
+                    needs.
                   </p>
                 </div>
               </div>
@@ -209,7 +217,8 @@ const TeamLeadersPage = () => {
                 className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
                 style={{ color: "#8E8E95" }}
               >
-                Comprehensive coordination and oversight for safe, compliant operations
+                Comprehensive coordination and oversight for safe, compliant
+                operations
               </p>
             </div>
 
@@ -220,10 +229,18 @@ const TeamLeadersPage = () => {
                   className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
-                    {index === 0 && <FaUserTie className="text-2xl text-white" />}
-                    {index === 1 && <FaClipboardCheck className="text-2xl text-white" />}
-                    {index === 2 && <FaCheckCircle className="text-2xl text-white" />}
-                    {index === 3 && <FaHeadset className="text-2xl text-white" />}
+                    {index === 0 && (
+                      <FaUserTie className="text-2xl text-white" />
+                    )}
+                    {index === 1 && (
+                      <FaClipboardCheck className="text-2xl text-white" />
+                    )}
+                    {index === 2 && (
+                      <FaCheckCircle className="text-2xl text-white" />
+                    )}
+                    {index === 3 && (
+                      <FaHeadset className="text-2xl text-white" />
+                    )}
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
                     {service.title}
@@ -299,36 +316,44 @@ const TeamLeadersPage = () => {
 
       {/* Team Leader Capabilities Section */}
       <AnimatedSection direction="right">
-        <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
+        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-[#181c2a]">
+          <div className="max-w-3xl mx-auto animate-element">
+            <div className="text-center mb-10">
               <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                 Team Leader <span className="text-btn">Capabilities</span>
               </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                Qualified professionals with the skills and experience to lead your project
+              <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed text-gray-300">
+                Qualified professionals with the skills and experience to lead
+                your project
               </p>
             </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white/5 rounded-xl p-8 border-l-4 border-btn relative overflow-hidden">
+              {/* Subtle background pattern */}
+              <svg
+                className="absolute right-0 top-0 w-40 h-40 opacity-10 text-btn pointer-events-none"
+                viewBox="0 0 100 100"
+                fill="none"
+              >
+                <circle cx="80" cy="20" r="20" fill="currentColor" />
+                <rect
+                  x="10"
+                  y="70"
+                  width="40"
+                  height="10"
+                  rx="5"
+                  fill="currentColor"
+                />
+              </svg>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
                 {teamLeaderCapabilities.map((capability, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
-                        {capability}
-                      </p>
-                    </div>
+                  <div key={index} className="flex items-center gap-4">
+                    <span className="w-8 h-8 rounded-full bg-btn text-white flex items-center justify-center font-bold text-base shadow-md">
+                      {index + 1}
+                    </span>
+                    <span className="text-white text-base leading-relaxed">
+                      {capability}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -393,61 +418,6 @@ const TeamLeadersPage = () => {
                     Get A Quote
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows: openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

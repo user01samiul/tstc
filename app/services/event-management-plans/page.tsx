@@ -1,11 +1,11 @@
 "use client";
 
+import VisualDividerSection from "@/app/components/VisualDividerSection";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
   FaCheckCircle,
-  FaChevronDown,
   FaChevronLeft,
   FaChevronRight,
   FaDownload,
@@ -13,7 +13,6 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
-import VisualDividerSection from "@/app/components/VisualDividerSection";
 
 const EventManagementPlansPage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -525,62 +524,6 @@ const EventManagementPlansPage = () => {
                     Get A Quote
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows:
-                          openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

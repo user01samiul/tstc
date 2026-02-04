@@ -4,10 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  FaCheckCircle,
-  FaChevronDown,
+  FaCarSide,
   FaDownload,
+  FaDraftingCompass,
+  FaExclamationTriangle,
+  FaFileAlt,
+  FaFileSignature,
   FaPhoneAlt,
+  FaRoute,
+  FaSyncAlt,
+  FaTruckMoving,
 } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 
@@ -232,7 +238,7 @@ const SweptPathAnalysisPage = () => {
                   className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
-                    <FaCheckCircle className="text-2xl text-white" />
+                    <FaCarSide className="text-2xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
                     {feature.title}
@@ -324,23 +330,33 @@ const SweptPathAnalysisPage = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {serviceIncludes.map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
+            <div className="max-w-5xl mx-auto animate-element">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                {serviceIncludes.map((item, index) => {
+                  const icons = [
+                    <FaCarSide className="text-white text-2xl" />,
+                    <FaFileAlt className="text-white text-2xl" />,
+                    <FaDraftingCompass className="text-white text-2xl" />,
+                    <FaTruckMoving className="text-white text-2xl" />,
+                    <FaSyncAlt className="text-white text-2xl" />,
+                    <FaExclamationTriangle className="text-white text-2xl" />,
+                    <FaRoute className="text-white text-2xl" />,
+                    <FaFileSignature className="text-white text-2xl" />,
+                  ];
+                  return (
+                    <div
+                      key={index}
+                      className="bg-white/5 rounded-2xl p-8 flex flex-col items-center justify-center shadow-md hover:bg-btn/10 transition-all duration-300"
+                    >
+                      <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-full bg-btn/80">
+                        {icons[index]}
                       </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
+                      <p className="text-white text-base text-center leading-relaxed">
                         {item}
                       </p>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -356,7 +372,7 @@ const SweptPathAnalysisPage = () => {
               <div className="relative animate-element order-2 lg:order-1">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
-                    src="/DSC00811.JPG"
+                    src="/DSC00723.JPG"
                     alt="Get Your SPA Today"
                     fill
                     className="object-cover"
@@ -402,62 +418,6 @@ const SweptPathAnalysisPage = () => {
                     Get A Quote
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows:
-                          openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

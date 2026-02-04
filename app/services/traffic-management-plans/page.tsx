@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaCheckCircle, FaChevronDown, FaPhoneAlt } from "react-icons/fa";
+import { FaCheckCircle, FaPhoneAlt } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 import VisualDividerSection from "../../components/VisualDividerSection";
 
@@ -84,7 +84,7 @@ const TrafficManagementPlansPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00810.JPG"
+            src="/DSC00732.JPG"
             alt="Traffic Management Plans"
             fill
             className="object-cover"
@@ -300,18 +300,15 @@ const TrafficManagementPlansPage = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="max-w-3xl mx-auto animate-element">
+              <div className="relative pl-8">
                 {tmpBenefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
+                  <div key={index} className="relative mb-12 last:mb-0">
+                    <div className="absolute -left-6 top-0 w-8 h-8 rounded-full bg-btn flex items-center justify-center shadow-lg">
+                      <FaCheckCircle className="text-white text-xl" />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-white text-lg leading-relaxed font-medium">
                         {benefit}
                       </p>
                     </div>
@@ -378,62 +375,6 @@ const TrafficManagementPlansPage = () => {
                     Get A Quote
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* FAQ Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Frequently Asked <span className="text-btn">Questions</span>
-              </h2>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-lg overflow-hidden"
-                  >
-                    <button
-                      className="w-full flex justify-between items-center p-6 text-left text-gray-900 font-semibold text-lg hover:bg-gray-50 transition-colors cursor-pointer"
-                      onClick={() => toggleFAQ(index)}
-                      aria-expanded={openFaqIndex === index}
-                      aria-controls={`faq-content-${index}`}
-                    >
-                      <span>{faq.question}</span>
-                      <FaChevronDown
-                        className={`text-btn flex-shrink-0 ml-4 transition-transform duration-300 ${
-                          openFaqIndex === index ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <div
-                      id={`faq-content-${index}`}
-                      className="grid transition-all duration-300 ease-in-out"
-                      style={{
-                        gridTemplateRows:
-                          openFaqIndex === index ? "1fr" : "0fr",
-                      }}
-                    >
-                      <div className="overflow-hidden">
-                        <div
-                          className="p-6 pt-0 leading-relaxed"
-                          style={{ color: "#8E8E95" }}
-                        >
-                          <p>{faq.answer}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

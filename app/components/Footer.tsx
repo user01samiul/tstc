@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-white text-gray-800 py-12 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Acknowledgment */}
           <div className="col-span-1 md:col-span-2">
             <div className="mb-6">
@@ -47,152 +47,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold text-btn mb-4 uppercase tracking-wide">
-              Services
-            </h3>
-            <div className="space-y-2 text-sm text-gray-600">
-              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mb-2">
-                Traffic Engineering - Planning & Design
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/services/traffic-plans"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Traffic Plans
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/traffic-management-plans"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Traffic Management Plans (TMP) (CTMP)
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/swept-path"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Swept Path Analysis (SPA)
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/event-management-plans"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Event Management Plans
-                  </Link>
-                </li>
-              </ul>
-              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
-                Permit Application
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/services/permit-application#tf-nsw"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    TfNSW TMC ROL Approval
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/permit-application#council-permits"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Council Permits
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/permit-application#sta-bus"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    STA Bus Approvals
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/permit-application#emergency-approvals"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Emergency Approvals
-                  </Link>
-                </li>
-              </ul>
-              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
-                Traffic Controllers
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/services/accredited-tc"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Accredited TC
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/24-hour-response"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    24 Hour Response
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/team-leaders"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Team Leaders
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/tma-operators"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    TMA Operators
-                  </Link>
-                </li>
-              </ul>
-              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
-                Gallery
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/gallery"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Photos
-                  </Link>
-                </li>
-              </ul>
-              <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
-                Signage Installation
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/services/signage-installation"
-                    className="hover:text-btn transition-colors duration-300"
-                  >
-                    Temporary & Permanent Street Signage
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold text-btn mb-4 uppercase tracking-wide">
@@ -205,6 +59,14 @@ const Footer = () => {
                   className="hover:text-btn transition-colors duration-300"
                 >
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="hover:text-btn transition-colors duration-300"
+                >
+                  Services
                 </Link>
               </li>
               <li>
