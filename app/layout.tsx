@@ -6,6 +6,7 @@ import "./globals.css";
 
 // --- Next.js SEO ---
 export const metadata = {
+  metadataBase: new URL("https://www.tstc.com.au/"),
   title: {
     default: "T&S Traffic Control | Traffic Management Solutions Sydney & NSW",
     template: "%s | T&S Traffic Control",
@@ -28,7 +29,7 @@ export const metadata = {
     title: "T&S Traffic Control | Traffic Management Solutions Sydney & NSW",
     description:
       "T&S Traffic Control provides expert traffic management, planning, and safety solutions across Sydney and NSW. Accredited, experienced, and community-focused.",
-    url: "https://www.tstrafficcontrol.com.au/",
+    url: "https://www.tstc.com.au/",
     siteName: "T&S Traffic Control",
     images: [
       {
@@ -43,7 +44,7 @@ export const metadata = {
   },
 
   alternates: {
-    canonical: "https://www.tstrafficcontrol.com.au/",
+    canonical: "https://www.tstc.com.au/",
   },
   icons: {
     icon: "/logo.png",

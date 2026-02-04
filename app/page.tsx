@@ -9,7 +9,7 @@ export const metadata = {
     title: "Home | T&S Traffic Control - Sydney Traffic Management Experts",
     description:
       "Welcome to T&S Traffic Control. We provide expert traffic management, planning, and safety solutions for construction, events, and roadworks across Sydney and NSW.",
-    url: "https://www.tstrafficcontrol.com.au/",
+    url: "https://www.tstc.com.au/",
     siteName: "T&S Traffic Control",
     images: [
       {
@@ -30,7 +30,7 @@ export const metadata = {
     images: ["/montage/2. About Us/Our Communities/Regents park logo.webp"],
   },
   alternates: {
-    canonical: "https://www.tstrafficcontrol.com.au/",
+    canonical: "https://www.tstc.com.au/",
   },
 };
 // import ClientsSection from "@/components/ClientsSection";

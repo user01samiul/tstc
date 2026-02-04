@@ -1,6 +1,6 @@
 // --- Next.js Metadata API for About Page SEO ---
 export const metadata = {
-  metadataBase: new URL("https://www.tstrafficcontrol.com.au"),
+  metadataBase: new URL("https://www.tstc.com.au/"),
   title: "About Us | T&S Traffic Control - Our Story & Team",
   description:
     "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions. Discover our story, approach, and community involvement.",
@@ -8,7 +8,7 @@ export const metadata = {
     title: "About Us | T&S Traffic Control - Our Story & Team",
     description:
       "Learn about T&S Traffic Control, our mission, values, and the experienced team behind Sydney's trusted traffic management solutions.",
-    url: "https://www.tstrafficcontrol.com.au/about",
+    url: "https://www.tstc.com.au/about",
     siteName: "T&S Traffic Control",
     images: [
       {
@@ -29,7 +29,7 @@ export const metadata = {
     images: ["/montage/2. About Us/Our Communities/Regents park logo.webp"],
   },
   alternates: {
-    canonical: "https://www.tstrafficcontrol.com.au/about",
+    canonical: "https://www.tstc.com.au/about",
   },
 };
 
