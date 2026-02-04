@@ -169,7 +169,7 @@ export default function Services() {
                         {service.description}
                       </p>
                       <div className="relative z-10 mt-4">
-                        <span className="inline-block px-4 py-1.5 text-sm font-semibold bg-btn text-white hover:bg-btn/90 transition-colors duration-200 shadow-none focus:outline-none focus:ring-2 focus:ring-btn/40 cursor-pointer">
+                        <span className="inline-block px-4 py-1.5 text-sm font-semibold bg-btn text-white rounded-full hover:bg-btn/90 transition-colors duration-200 shadow-none focus:outline-none focus:ring-2 focus:ring-btn/40 cursor-pointer">
                           View Details
                         </span>
                       </div>
