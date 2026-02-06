@@ -6,7 +6,8 @@
       "Bash(mkdir:*)",
       "Bash(npx shadcn@latest add tabs)",
       "Bash(npm i:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }
