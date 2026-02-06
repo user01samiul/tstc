@@ -124,9 +124,6 @@ const TMAOperatorsPage = () => {
           <div className="absolute inset-0 bg-black/55"></div>
         </div>
 
-        {/* Diagonal accent */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-white z-10" style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}></div>
-
         <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 min-h-screen flex items-center">
           <div className="w-full py-32">
             <div className="max-w-3xl mx-auto text-center">
