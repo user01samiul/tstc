@@ -71,7 +71,7 @@ const ContactUs = () => {
       <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00810.JPG"
+            src="/DSC02286.webp"
             alt="Contact Us"
             fill
             className="object-cover"
