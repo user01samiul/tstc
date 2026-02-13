@@ -77,7 +77,7 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/removed-logo.png"
+                  src={isScrolled ? "/removed-logo.png" : "/ts-logo-white.png"}
                   alt="T&S Traffic Solutions Logo"
                   width={100}
                   height={46}
