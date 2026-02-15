@@ -185,7 +185,7 @@ const ServicesPage = () => {
                     }}
                   >
                     <Image
-                      src="/DSC00844.JPG"
+                      src="/3.webp"
                       alt="T&S Traffic Control Services"
                       fill
                       className="object-cover"
@@ -232,7 +232,7 @@ const ServicesPage = () => {
                   }}
                 >
                   <Image
-                    src="/DSC00844.JPG"
+                    src="/3.webp"
                     alt="T&S Traffic Control Services"
                     fill
                     className="object-cover"
@@ -311,7 +311,7 @@ const ServicesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-element">
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00717.JPG"
+                  src="/montage/1. Home Page/Services We offer/TMP & TGS.jpeg"
                   alt="Traffic Planning"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -326,7 +326,7 @@ const ServicesPage = () => {
               </div>
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00850.JPG"
+                  src="/DSC00949.JPG"
                   alt="Implementation"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
@@ -341,7 +341,7 @@ const ServicesPage = () => {
               </div>
               <div className="relative aspect-square overflow-hidden rounded-lg group">
                 <Image
-                  src="/DSC00836.JPG"
+                  src="/DSC02286.webp"
                   alt="Compliance"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
