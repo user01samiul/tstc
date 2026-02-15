@@ -259,7 +259,7 @@ const TrafficManagementPlansPage = () => {
       {/* Visual Divider Section */}
       <AnimatedSection direction="left">
         <VisualDividerSection
-          title="Our TGS"
+          title="Our TMP"
           titleHighlight="Capabilities"
           description="Professional traffic guidance scheme design across all project types"
           items={[
