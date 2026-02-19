@@ -6,6 +6,7 @@ import { useState } from "react";
 import {
   FaBolt,
   FaCheckCircle,
+  FaChevronDown,
   FaDraftingCompass,
   FaDownload,
   FaLayerGroup,
@@ -20,6 +21,7 @@ const TrafficPlansPage = () => {
     src: string;
     pdfPath: string;
   } | null>(null);
+  const [expandedPlan, setExpandedPlan] = useState<number | null>(0);
 
   // Traffic Plan Gallery - Images with corresponding PDF files (matched serially)
   const trafficPlanGallery = [
@@ -264,12 +266,12 @@ const TrafficPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* ── PLAN GALLERY: document card grid ── */}
+      {/* ── PLAN GALLERY: accordion list ── */}
       <AnimatedSection direction="right">
         <section className="py-20 md:py-28 px-5 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            {/* Header – left aligned with count */}
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 animate-element">
+            {/* Header */}
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 animate-element">
               <div>
                 <div className="w-16 h-1 bg-btn mb-6" />
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight font-anton uppercase">
@@ -285,95 +287,99 @@ const TrafficPlansPage = () => {
               </span>
             </div>
 
-            {/* Top row – 2 large cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5 animate-element">
-              {trafficPlanGallery.slice(0, 2).map((plan, i) => (
-                <div
-                  key={i}
-                  onClick={() => openLightbox(plan.image, plan.pdfPath)}
-                  className="group cursor-pointer bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                >
-                  {/* Image area */}
-                  <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
-                    {/* Number badge */}
-                    <div className="absolute top-4 left-4 z-10 w-9 h-9 bg-btn text-white text-xs font-bold font-mono flex items-center justify-center">
-                      {String(i + 1).padStart(2, "0")}
-                    </div>
-                    <Image
-                      src={plan.image}
-                      alt={plan.title}
-                      fill
-                      className="object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-[#0f1120]/0 group-hover:bg-[#0f1120]/25 transition-all duration-300 flex items-end justify-center pb-6">
-                      <span className="opacity-0 group-hover:opacity-100 text-white text-sm font-semibold bg-[#0f1120]/80 px-4 py-2 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                        View Full Size
-                      </span>
-                    </div>
-                  </div>
-                  {/* Card footer */}
-                  <div className="px-5 py-4 flex items-center justify-between border-t border-gray-100">
-                    <p className="font-semibold text-gray-900 text-sm leading-tight">
-                      {plan.title}
-                    </p>
-                    <a
-                      href={plan.pdfPath}
-                      download
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-btn border border-btn hover:bg-btn hover:text-white transition-all duration-300 whitespace-nowrap"
+            {/* Accordion rows */}
+            <div className="border-t border-gray-100 animate-element">
+              {trafficPlanGallery.map((plan, i) => {
+                const isOpen = expandedPlan === i;
+                return (
+                  <div key={i} className="border-b border-gray-100">
+                    {/* Row header */}
+                    <button
+                      onClick={() =>
+                        setExpandedPlan(isOpen ? null : i)
+                      }
+                      className="w-full flex items-center gap-5 sm:gap-8 py-6 px-2 text-left hover:bg-gray-50 transition-colors duration-200 group cursor-pointer"
                     >
-                      <FaDownload />
-                      PDF
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+                      {/* Number */}
+                      <span
+                        className={`font-anton leading-none flex-shrink-0 transition-colors duration-300 select-none w-14 text-right ${isOpen ? "text-btn" : "text-gray-200 group-hover:text-gray-300"}`}
+                        style={{ fontSize: "2.75rem" }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
 
-            {/* Bottom row – 3 smaller cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 animate-element">
-              {trafficPlanGallery.slice(2).map((plan, i) => (
-                <div
-                  key={i}
-                  onClick={() => openLightbox(plan.image, plan.pdfPath)}
-                  className="group cursor-pointer bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                >
-                  {/* Image area */}
-                  <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
-                    {/* Number badge */}
-                    <div className="absolute top-3 left-3 z-10 w-8 h-8 bg-btn text-white text-xs font-bold font-mono flex items-center justify-center">
-                      {String(i + 3).padStart(2, "0")}
-                    </div>
-                    <Image
-                      src={plan.image}
-                      alt={plan.title}
-                      fill
-                      className="object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-[#0f1120]/0 group-hover:bg-[#0f1120]/25 transition-all duration-300 flex items-end justify-center pb-4">
-                      <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-semibold bg-[#0f1120]/80 px-3 py-1.5 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                        View Full Size
+                      {/* Title */}
+                      <span
+                        className={`flex-1 font-bold text-lg sm:text-xl transition-colors duration-200 ${isOpen ? "text-gray-900" : "text-gray-600 group-hover:text-gray-900"}`}
+                      >
+                        {plan.title}
                       </span>
-                    </div>
+
+                      {/* Thumbnail – hidden on mobile */}
+                      <div className="relative w-20 h-14 bg-gray-100 overflow-hidden flex-shrink-0 hidden sm:block">
+                        <Image
+                          src={plan.image}
+                          alt={plan.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+
+                      {/* PDF download */}
+                      <a
+                        href={plan.pdfPath}
+                        download
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-btn border border-btn hover:bg-btn hover:text-white transition-all duration-200 whitespace-nowrap flex-shrink-0 hidden sm:flex"
+                      >
+                        <FaDownload />
+                        PDF
+                      </a>
+
+                      {/* Expand icon */}
+                      <FaChevronDown
+                        className={`text-gray-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-btn" : ""}`}
+                      />
+                    </button>
+
+                    {/* Expanded panel */}
+                    {isOpen && (
+                      <div className="px-2 pb-8">
+                        {/* Mobile download */}
+                        <div className="mb-4 sm:hidden">
+                          <a
+                            href={plan.pdfPath}
+                            download
+                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-btn border border-btn"
+                          >
+                            <FaDownload />
+                            Download PDF
+                          </a>
+                        </div>
+                        {/* Plan image */}
+                        <div
+                          className="relative w-full max-w-4xl aspect-[4/3] bg-gray-50 overflow-hidden cursor-pointer border border-gray-100 group"
+                          onClick={() =>
+                            openLightbox(plan.image, plan.pdfPath)
+                          }
+                        >
+                          <Image
+                            src={plan.image}
+                            alt={plan.title}
+                            fill
+                            className="object-contain"
+                          />
+                          <div className="absolute inset-0 bg-[#0f1120]/0 group-hover:bg-[#0f1120]/20 transition-all duration-300 flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 text-white text-sm font-semibold bg-[#0f1120]/80 px-5 py-2.5 transition-all duration-300">
+                              View Full Size
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  {/* Card footer */}
-                  <div className="px-4 py-3 flex items-center justify-between border-t border-gray-100">
-                    <p className="font-semibold text-gray-900 text-xs leading-tight">
-                      {plan.title}
-                    </p>
-                    <a
-                      href={plan.pdfPath}
-                      download
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-btn border border-btn hover:bg-btn hover:text-white transition-all duration-300 whitespace-nowrap ml-2"
-                    >
-                      <FaDownload className="text-[10px]" />
-                      PDF
-                    </a>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
