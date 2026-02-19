@@ -3,42 +3,56 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaCheckCircle, FaPhoneAlt } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaClipboardList,
+  FaPhoneAlt,
+  FaRoad,
+  FaShieldAlt,
+  FaUsers,
+} from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
-import VisualDividerSection from "../../components/VisualDividerSection";
 
 const TrafficManagementPlansPage = () => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
+  const [activeStep, setActiveStep] = useState(0);
 
   // TMP Process Steps
   const tmpProcess = [
     {
       step: "01",
       title: "Consultation",
+      icon: <FaUsers className="text-3xl" />,
       description:
         "Thorough assessment of your project's scope, site layout, and safety requirements.",
+      detail:
+        "We meet with your team to understand the full scope — project duration, site access, stakeholder requirements, and any authority-specific conditions. This ensures the TMP we produce is right first time.",
     },
     {
       step: "02",
       title: "Custom Design",
+      icon: <FaClipboardList className="text-3xl" />,
       description:
         "Expert planning using advanced tools to create clear, compliant TMPs including signage and traffic flow strategies.",
+      detail:
+        "Our planners develop a comprehensive document covering methodology, risk controls, communication procedures, traffic staging, detour management, and pedestrian/cyclist provisions — tailored to your project.",
     },
     {
       step: "03",
       title: "Implementation",
+      icon: <FaRoad className="text-3xl" />,
       description:
         "Professional setup and ongoing management with real-time adjustments to keep your site safe.",
+      detail:
+        "We support your team through implementation, providing on-site guidance, coordinating with road authorities, and making real-time plan adjustments as site conditions evolve.",
     },
     {
       step: "04",
       title: "Compliance",
+      icon: <FaShieldAlt className="text-3xl" />,
       description:
         "All plans developed in accordance with TCAWS Manual and Australian Standards.",
+      detail:
+        "Every TMP is reviewed against TfNSW's TCAWS manual and relevant Australian Standards, ensuring your project meets all regulatory requirements and can proceed without costly delays.",
     },
   ];
 
@@ -54,34 +68,21 @@ const TrafficManagementPlansPage = () => {
     "24/7 support for ongoing project requirements",
   ];
 
-  const faqs = [
+  const photos = [
+    { src: "/DSC00949.JPG", label: "Site Planning" },
+    { src: "/DSC02286.webp", label: "On-Site Safety" },
+    { src: "/DSC00732.JPG", label: "Traffic Control" },
     {
-      question: "What is a TMP or CTMP?",
-      answer:
-        "A TMP (Traffic Management Plan) is a comprehensive document that outlines how traffic will be safely managed during construction or events. A CTMP (Construction Traffic Management Plan) is a specialized TMP required when construction activities impact public roads, footpaths, or traffic flow. Both plans ensure safety and compliance with road authority requirements.",
-    },
-    {
-      question: "Do I need a TMP for my project?",
-      answer:
-        "If your project impacts public roads, footpaths, or traffic flow, you'll typically need a TMP. This includes construction sites, roadworks, utility works, and events. Most councils and road authorities require an approved TMP before works can commence, especially for larger or more complex projects.",
-    },
-    {
-      question: "What's included in a TMP?",
-      answer:
-        "A TMP includes detailed methodology, risk controls, communication procedures, traffic staging plans, detour management, pedestrian/cyclist provisions, signage requirements, and coordination with authorities. It outlines how traffic impacts will be managed from project start to completion.",
-    },
-    {
-      question: "How long does TMP preparation take?",
-      answer:
-        "Standard TMP preparation typically takes 5-7 business days depending on project complexity. For urgent works, we can provide expedited services. Complex multi-stage projects or those requiring extensive stakeholder consultation may require additional time.",
+      src: "/montage/3. Services We Offer/Event Management/Marathon Taper.png",
+      label: "Project Management",
     },
   ];
 
   return (
     <div className="font-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-        {/* Background Image */}
+      {/* ─── HERO: Full-width with angled overlay ─── */}
+      <section className="relative min-h-screen overflow-hidden flex items-end">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/DSC00732.JPG"
@@ -90,68 +91,76 @@ const TrafficManagementPlansPage = () => {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          {/* Dark gradient — stronger at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0f1120] via-[#0f1120]/70 to-[#0f1120]/20" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
-          <div className="text-center text-white space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
-              TRAFFIC MANAGEMENT <br />
-              <span className="text-btn">PLANS (TMP)</span>
+        {/* Content anchored to bottom */}
+        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pb-20 pt-40">
+          <div className="max-w-3xl">
+            {/* Label */}
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="w-10 h-px bg-btn" />
+              <span className="text-btn text-sm font-semibold tracking-widest uppercase">
+                Traffic Engineering
+              </span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-none font-anton uppercase text-white mb-6">
+              TRAFFIC
+              <br />
+              MANAGEMENT
+              <br />
+              <span className="text-btn">PLANS</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Comprehensive traffic management plans ensuring safety,
-              compliance, and efficiency
+
+            <p className="text-gray-300 text-xl leading-relaxed mb-10 max-w-xl">
+              Comprehensive TMPs developed to{" "}
+              <strong className="text-white">TfNSW TCAWS</strong> standards —
+              keeping your project safe, compliant, and on schedule.
             </p>
-            <div className="pt-6">
+
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
               >
-                <FaPhoneAlt className="text-xl" />
-                Get In Touch
+                <FaPhoneAlt />
+                Get A Free Quote
+              </Link>
+              <Link
+                href="/services/permit-application"
+                className="inline-flex items-center gap-3 border border-white/30 hover:border-btn text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              >
+                Permit Applications →
               </Link>
             </div>
           </div>
         </div>
+
+        {/* Angled bottom cut */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-24 bg-white z-10"
+          style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }}
+        />
       </section>
 
-      {/* Introduction Section */}
+      {/* ─── INTRO: Wide text + side photo mosaic ─── */}
       <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+        <section className="py-24 px-5 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Left: Content */}
               <div className="space-y-8 animate-element">
                 <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                  <div className="w-16 h-1 bg-btn mb-6" />
+                  <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
                     Comprehensive TMPs <br />
                     <span className="text-btn">For Every Project</span>
                   </h2>
                 </div>
-
-                {/* Image - Mobile Only */}
-                <div className="relative animate-element lg:hidden">
-                  <div
-                    className="relative w-full aspect-[4/5] overflow-hidden"
-                    style={{
-                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                    }}
-                  >
-                    <Image
-                      src="/DSC00949.JPG"
-                      alt="Traffic Management Plan Services"
-                      fill
-                      className="object-cover"
-                      sizes="100vw"
-                    />
-                  </div>
-                </div>
-
                 <div
-                  className="space-y-6 text-lg leading-relaxed"
+                  className="space-y-5 text-lg leading-relaxed"
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
@@ -180,136 +189,48 @@ const TrafficManagementPlansPage = () => {
                     to the public.
                   </p>
                 </div>
-              </div>
 
-              {/* Right: Image - Desktop Only */}
-              <div className="relative animate-element hidden lg:block">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
-                  <Image
-                    src="/DSC00949.JPG"
-                    alt="Traffic Management Plan Services"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* TMP Process Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Our TMP <span className="text-btn">Process</span>
-              </h2>
-              <p
-                className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
-                style={{ color: "#8E8E95" }}
-              >
-                A systematic approach to delivering safe, compliant traffic
-                management plans
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
-              {tmpProcess.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-btn rounded-full flex items-center justify-center">
-                        <span className="text-white text-2xl font-bold font-anton">
-                          {item.step}
-                        </span>
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3 font-anton uppercase">
-                        {item.title}
-                      </h3>
-                      <div className="w-12 h-px bg-btn mb-3"></div>
-                      <p
-                        className="text-base leading-relaxed"
-                        style={{ color: "#8E8E95" }}
-                      >
-                        {item.description}
+                {/* Quick stats */}
+                <div className="grid grid-cols-3 gap-6 pt-4">
+                  {[
+                    { value: "5–7", unit: "days", label: "Standard delivery" },
+                    { value: "24/7", unit: "", label: "Project support" },
+                    { value: "100%", unit: "", label: "TCAWS compliant" },
+                  ].map((s, i) => (
+                    <div
+                      key={i}
+                      className="text-center p-4 rounded-xl bg-gray-50"
+                    >
+                      <p className="text-3xl font-bold text-btn font-anton">
+                        {s.value}
+                        <span className="text-lg">{s.unit}</span>
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1 uppercase tracking-wide font-semibold">
+                        {s.label}
                       </p>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+              </div>
 
-      {/* Visual Divider Section */}
-      <AnimatedSection direction="left">
-        <VisualDividerSection
-          title="Our TMP"
-          titleHighlight="Capabilities"
-          description="Professional traffic guidance scheme design across all project types"
-          items={[
-            {
-              src: "/DSC00949.JPG",
-              alt: "Professional Design",
-              label: "PLANNING",
-            },
-            {
-              src: "/DSC02286.webp",
-              alt: "Compliance",
-              label: "COMPLIANCE",
-            },
-            {
-              src: "/DSC00732.JPG",
-              alt: "Safety",
-              label: "SAFETY",
-            },
-          ]}
-        />
-      </AnimatedSection>
-
-      {/* TMP Benefits Section */}
-      <AnimatedSection direction="right">
-        <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                The Benefits Of <span className="text-btn">Our TMPs</span>
-              </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                Comprehensive traffic management planning that delivers real
-                results
-              </p>
-            </div>
-
-            <div className="max-w-3xl mx-auto animate-element">
-              <div className="relative pl-8">
-                {tmpBenefits.map((benefit, index) => (
-                  <div key={index} className="relative mb-12 last:mb-0">
-                    <div className="absolute -left-6 top-0 w-8 h-8 rounded-full bg-btn flex items-center justify-center shadow-lg">
-                      <FaCheckCircle className="text-white text-xl" />
-                    </div>
-                    <div className="ml-4">
-                      <p className="text-white text-lg leading-relaxed font-medium">
-                        {benefit}
+              {/* Right: Photo mosaic grid */}
+              <div className="animate-element grid grid-cols-2 gap-4">
+                {photos.map((photo, i) => (
+                  <div
+                    key={i}
+                    className="relative overflow-hidden rounded-2xl shadow-lg aspect-[4/3]"
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.label}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                    />
+                    {/* Label */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <p className="text-white text-xs font-bold uppercase tracking-widest">
+                        {photo.label}
                       </p>
                     </div>
                   </div>
@@ -320,62 +241,235 @@ const TrafficManagementPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* CTA Section */}
-      <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+      {/* ─── INTERACTIVE PROCESS ─── */}
+      <AnimatedSection direction="right">
+        <section className="py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-              {/* Left: Image */}
-              <div className="relative animate-element order-2 lg:order-1">
-                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6" />
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Our TMP <span className="text-btn">Process</span>
+              </h2>
+              <p
+                className="mt-4 text-lg max-w-2xl mx-auto"
+                style={{ color: "#8E8E95" }}
+              >
+                A systematic approach to delivering safe, compliant traffic
+                management plans
+              </p>
+            </div>
+
+            <div className="animate-element grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+              {/* Step selector — left */}
+              <div className="lg:col-span-2 space-y-3">
+                {tmpProcess.map((item, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveStep(i)}
+                    className={`w-full text-left p-5 rounded-xl border-2 transition-all duration-300 cursor-pointer ${
+                      activeStep === i
+                        ? "border-btn bg-white shadow-lg"
+                        : "border-transparent bg-white/60 hover:bg-white hover:border-gray-200"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${
+                          activeStep === i
+                            ? "bg-btn text-white"
+                            : "bg-gray-100 text-gray-500"
+                        }`}
+                      >
+                        <span className="font-bold text-sm font-anton">
+                          {item.step}
+                        </span>
+                      </div>
+                      <div>
+                        <p
+                          className={`font-bold font-anton uppercase text-lg ${activeStep === i ? "text-gray-900" : "text-gray-600"}`}
+                        >
+                          {item.title}
+                        </p>
+                        <p
+                          className="text-sm mt-0.5"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Detail panel — right */}
+              <div className="lg:col-span-3">
+                <div
+                  className="rounded-2xl p-10 h-full min-h-[380px] flex flex-col justify-between relative overflow-hidden"
+                  style={{ backgroundColor: "#0f1120" }}
+                >
+                  {/* Grid bg */}
+                  <div
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+                      backgroundSize: "35px 35px",
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <div className="text-btn mb-6">
+                      {tmpProcess[activeStep].icon}
+                    </div>
+                    <div className="w-12 h-px bg-btn mb-6" />
+                    <h3 className="text-3xl font-bold text-white font-anton uppercase mb-4">
+                      {tmpProcess[activeStep].title}
+                    </h3>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      {tmpProcess[activeStep].detail}
+                    </p>
+                  </div>
+
+                  {/* Step counter */}
+                  <div className="relative z-10 mt-8 flex items-center gap-2">
+                    {tmpProcess.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveStep(i)}
+                        className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
+                          i === activeStep ? "bg-btn w-8" : "bg-white/20 w-4"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* ─── BENEFITS: Two-column with large image ─── */}
+      <AnimatedSection direction="left">
+        <section className="py-24 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left: benefits list */}
+              <div className="animate-element space-y-8">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6" />
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    The Benefits Of <br />
+                    <span className="text-btn">Our TMPs</span>
+                  </h2>
+                  <p className="mt-4 text-lg" style={{ color: "#8E8E95" }}>
+                    Comprehensive traffic management planning that delivers real
+                    results
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  {tmpBenefits.map((benefit, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-4 p-4 rounded-xl border border-gray-100 hover:border-btn hover:shadow-sm transition-all duration-200"
+                    >
+                      <div className="w-7 h-7 rounded-full bg-btn flex-shrink-0 flex items-center justify-center mt-0.5">
+                        <FaCheckCircle className="text-white text-sm" />
+                      </div>
+                      <p className="text-gray-800 text-base leading-relaxed font-medium">
+                        {benefit}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: stacked image with accent */}
+              <div className="animate-element relative">
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/DSC00811.JPG"
-                    alt="Get Your TMP Today"
+                    src="/sami/traffic-plan2.png"
+                    alt="Traffic Management Planning"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1120]/60 to-transparent" />
                 </div>
-              </div>
-
-              {/* Right: Content */}
-              <div className="space-y-8 animate-element order-1 lg:order-2">
-                <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Ready For A Safe <br />
-                    <span className="text-btn">Project?</span>
-                  </h2>
-                </div>
-
+                {/* Floating accent */}
                 <div
-                  className="space-y-6 text-lg leading-relaxed"
-                  style={{ color: "#8E8E95" }}
+                  className="absolute -top-6 -left-6 rounded-2xl p-6 shadow-2xl"
+                  style={{ backgroundColor: "#0f1120" }}
                 >
-                  <p>
-                    Partner with{" "}
-                    <strong className="text-gray-900">
-                      T&S Traffic Control
-                    </strong>{" "}
-                    for expertly crafted Traffic Management Plans that keep your
-                    project safe, compliant, and on schedule.
+                  <p className="text-btn text-4xl font-bold font-anton">TMP</p>
+                  <p className="text-white text-xs font-semibold mt-1 uppercase tracking-wider">
+                    TCAWS Compliant
                   </p>
-                  <p>
-                    Our team is ready to support you from planning through to
-                    completion. Contact us today to discuss your requirements or
-                    request a quote.
-                  </p>
-                </div>
-
-                <div className="pt-6">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
-                  >
-                    Get A Quote
-                  </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* ─── CTA: Full-width dark banner ─── */}
+      <AnimatedSection direction="right">
+        <section
+          className="relative py-28 px-5 sm:px-6 lg:px-8 overflow-hidden"
+          style={{ backgroundColor: "#0f1120" }}
+        >
+          {/* Grid bg */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+          {/* Ghost text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+            <span
+              className="text-[15vw] font-black font-anton text-white uppercase leading-none"
+              style={{ opacity: 0.025, letterSpacing: "-0.05em" }}
+            >
+              TMP
+            </span>
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto text-center animate-element">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <div className="w-8 h-px bg-btn" />
+              <span className="text-btn text-sm font-semibold tracking-widest uppercase">
+                Ready to Start?
+              </span>
+              <div className="w-8 h-px bg-btn" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight font-anton uppercase mb-6">
+              Ready For A Safe <br />
+              <span className="text-btn">Project?</span>
+            </h2>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+              Partner with{" "}
+              <strong className="text-white">T&S Traffic Control</strong> for
+              expertly crafted Traffic Management Plans that keep your project
+              safe, compliant, and on schedule. Our team is ready from planning
+              through to completion.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+              >
+                <FaPhoneAlt />
+                Get A Quote
+              </Link>
+              <Link
+                href="/services/traffic-plans"
+                className="inline-flex items-center justify-center gap-3 border border-white/30 hover:border-btn text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+              >
+                View TGS Plans →
+              </Link>
             </div>
           </div>
         </section>
