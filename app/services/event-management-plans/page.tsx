@@ -1,29 +1,28 @@
 "use client";
 
-import VisualDividerSection from "@/app/components/VisualDividerSection";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
-  FaCheckCircle,
-  FaChevronLeft,
-  FaChevronRight,
+  FaBriefcase,
   FaDownload,
+  FaFilm,
+  FaFlag,
+  FaHeart,
+  FaMusic,
   FaPhoneAlt,
+  FaRunning,
   FaTimes,
+  FaTrophy,
+  FaUsers,
 } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
 
 const EventManagementPlansPage = () => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
-  // Event Portfolio Gallery
   const eventPortfolio = [
     {
       image: "/sami/02- Haldon St Central Plan.png",
@@ -37,16 +36,6 @@ const EventManagementPlansPage = () => {
     },
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % eventPortfolio.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + eventPortfolio.length) % eventPortfolio.length,
-    );
-  };
-
   const handleDownload = (pdfPath: string, fileName: string) => {
     const link = document.createElement("a");
     link.href = pdfPath;
@@ -56,70 +45,78 @@ const EventManagementPlansPage = () => {
     document.body.removeChild(link);
   };
 
-  // Event Management Services
-  const eventServices = [
-    {
-      title: "Event Planning",
-      description:
-        "Comprehensive traffic management planning for all event types including community, charity, sporting, and large-scale public gatherings.",
-    },
-    {
-      title: "Route Management",
-      description:
-        "Expert route-based and precinct event management with real-time tactical adjustments and operational support.",
-    },
-    {
-      title: "Safety Coordination",
-      description:
-        "Mission-critical safety management prioritising participants, community, and general public throughout your event.",
-    },
-    {
-      title: "Turnkey Solutions",
-      description:
-        "Complete event solutions including equipment, security, hostile vehicle mitigation, and event branding coordination.",
-    },
-  ];
+  const openLightbox = (image: string, pdf: string, title: string) => {
+    setSelectedImage(image);
+    setSelectedPdf(pdf);
+    setSelectedTitle(title);
+    document.body.style.overflow = "hidden";
+  };
 
-  // Event Types We Support
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    setSelectedPdf(null);
+    setSelectedTitle(null);
+    document.body.style.overflow = "unset";
+  };
+
   const eventTypes = [
-    "Community events and festivals",
-    "Charity runs and fundraisers",
-    "Film and production shoots",
-    "Sporting events and marathons",
-    "Large-scale public gatherings",
-    "Street parades and processions",
-    "Concert and entertainment venues",
-    "Corporate events and activations",
+    { icon: <FaRunning className="text-2xl" />, name: "Marathons & Fun Runs" },
+    { icon: <FaUsers className="text-2xl" />, name: "Community Festivals" },
+    { icon: <FaHeart className="text-2xl" />, name: "Charity Events" },
+    { icon: <FaFilm className="text-2xl" />, name: "Film & Production Shoots" },
+    { icon: <FaTrophy className="text-2xl" />, name: "Sporting Events" },
+    { icon: <FaFlag className="text-2xl" />, name: "Street Parades" },
+    { icon: <FaMusic className="text-2xl" />, name: "Concerts & Venues" },
+    { icon: <FaBriefcase className="text-2xl" />, name: "Corporate Activations" },
   ];
 
-  const faqs = [
+  const tickerItems = [
+    "MARATHONS", "·", "COMMUNITY EVENTS", "·", "FILM SHOOTS", "·",
+    "SPORTING EVENTS", "·", "PARADES", "·", "CONCERTS", "·",
+    "FESTIVALS", "·", "CORPORATE EVENTS", "·",
+    // Duplicate for seamless loop
+    "MARATHONS", "·", "COMMUNITY EVENTS", "·", "FILM SHOOTS", "·",
+    "SPORTING EVENTS", "·", "PARADES", "·", "CONCERTS", "·",
+    "FESTIVALS", "·", "CORPORATE EVENTS", "·",
+  ];
+
+  const howWeWork = [
     {
-      question: "What types of events do you manage?",
-      answer:
-        "We manage traffic for all event types including community events, charity runs, sporting events, film shoots, large-scale public gatherings, street parades, concerts, and corporate events. Our experienced team adapts to each event's unique requirements, whether it's a small community festival or a major city-wide event.",
+      num: "01",
+      title: "Consultation",
+      desc: "We meet with your team to understand event scope, crowd sizes, site layout, and authority requirements.",
     },
     {
-      question: "How far in advance should I book event traffic management?",
-      answer:
-        "We recommend booking as early as possible, ideally 3-6 months in advance for major events. This allows adequate time for planning, permit applications, stakeholder coordination, and approvals. However, we can accommodate shorter timeframes for smaller events or urgent requirements.",
+      num: "02",
+      title: "Plan Development",
+      desc: "We develop a comprehensive Event Management Plan covering all traffic, pedestrian, and public safety aspects.",
     },
     {
-      question: "Do you provide equipment for events?",
-      answer:
-        "Yes, we provide complete turnkey solutions including all required traffic management equipment such as barriers, signage, VMS boards, security fencing, and hostile vehicle mitigation. We also coordinate with suppliers for event branding, lighting, and other specialized requirements.",
+      num: "03",
+      title: "Permits & Approvals",
+      desc: "We liaise with councils, TfNSW, police, and emergency services to secure all necessary approvals.",
     },
     {
-      question: "Can you help with event permits and approvals?",
-      answer:
-        "Absolutely. We assist with the entire permit application process including traffic management plans, risk assessments, and coordination with councils, TfNSW, police, and emergency services. Our established relationships with authorities help streamline the approval process.",
+      num: "04",
+      title: "On-Day Operations",
+      desc: "Our team staffs operations centres, manages real-time adjustments, and keeps your event running safely.",
     },
   ];
 
   return (
     <div className="font-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-        {/* Background Image */}
+      {/* Ticker keyframe */}
+      <style>{`
+        @keyframes tickerMove {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .ticker-animate { animation: tickerMove 30s linear infinite; }
+      `}</style>
+
+      {/* ─── HERO: Left-to-right gradient + ticker ─── */}
+      <section className="relative min-h-screen flex flex-col">
+        {/* Full photo */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/montage/3. Services We Offer/Event Management/marathon-event.png"
@@ -128,68 +125,125 @@ const EventManagementPlansPage = () => {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          {/* Gradient: opaque on left, transparent on right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0f1120] via-[#0f1120]/75 to-[#0f1120]/15" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
-          <div className="text-center text-white space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
-              EVENT MANAGEMENT <br />
-              <span className="text-btn">PLANS</span>
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
-              Comprehensive traffic management solutions for safe, successful
-              events across NSW
-            </p>
-            <div className="pt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
-              >
-                <FaPhoneAlt className="text-xl" />
-                Get In Touch
-              </Link>
+        {/* Content */}
+        <div className="relative z-10 flex-1 flex items-center">
+          <div className="w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-36 pb-16">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-3 mb-8">
+                <div className="w-10 h-px bg-btn" />
+                <span className="text-btn text-sm font-semibold tracking-widest uppercase">
+                  Event Management
+                </span>
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-anton uppercase leading-none text-white mb-8">
+                EVENT
+                <br />
+                MANAGEMENT
+                <br />
+                <span className="text-btn">PLANS</span>
+              </h1>
+
+              <p className="text-gray-300 text-xl leading-relaxed mb-10 max-w-xl">
+                From community festivals to major city events — safe, compliant,
+                and expertly managed traffic solutions across NSW.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+                >
+                  <FaPhoneAlt />
+                  Plan Your Event
+                </Link>
+                <a
+                  href="#portfolio"
+                  className="inline-flex items-center gap-3 border border-white/30 hover:border-btn text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+                >
+                  View Our Plans →
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Animated event types ticker at bottom */}
+        <div className="relative z-10 bg-btn py-3 overflow-hidden flex-shrink-0">
+          <div className="flex whitespace-nowrap ticker-animate">
+            {tickerItems.map((item, i) => (
+              <span
+                key={i}
+                className={`text-white text-xs font-bold tracking-widest uppercase px-4 ${
+                  item === "·" ? "opacity-30" : ""
+                }`}
+              >
+                {item}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Introduction Section */}
+      {/* ─── INTRO: Tall portrait photo + floating stats, text right ─── */}
       <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+        <section className="py-24 px-5 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-              {/* Left: Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+              {/* Left: Photo with floating stat cards */}
+              <div className="animate-element relative">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl">
+                  <Image
+                    src="/montage/3. Services We Offer/Event Management/eff-fight-night.png"
+                    alt="Event Operations"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1120]/60 to-transparent" />
+                </div>
+
+                {/* Floating stat — top right */}
+                <div
+                  className="absolute top-6 -right-4 sm:-right-6 rounded-2xl p-5 shadow-2xl text-center min-w-[110px] z-10"
+                  style={{ backgroundColor: "#0f1120" }}
+                >
+                  <p className="text-btn text-3xl font-bold font-anton">24/7</p>
+                  <p className="text-white text-xs uppercase tracking-wider mt-1 font-semibold">
+                    Operations
+                  </p>
+                </div>
+
+                {/* Floating stat — bottom left */}
+                <div
+                  className="absolute -bottom-5 left-6 rounded-2xl p-5 shadow-2xl min-w-[150px] z-10"
+                  style={{ backgroundColor: "#0f1120" }}
+                >
+                  <p className="text-btn text-3xl font-bold font-anton">100%</p>
+                  <p className="text-white text-xs uppercase tracking-wider mt-1 font-semibold">
+                    Compliant EMPs
+                  </p>
+                </div>
+              </div>
+
+              {/* Right: Content */}
               <div className="space-y-8 animate-element">
                 <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Expert Event Traffic <br />
+                  <div className="w-16 h-1 bg-btn mb-6" />
+                  <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
+                    Expert Event Traffic
+                    <br />
                     <span className="text-btn">Management</span>
                   </h2>
                 </div>
 
-                {/* Image - Mobile Only */}
-                <div className="relative animate-element lg:hidden">
-                  <div
-                    className="relative w-full aspect-[4/5] overflow-hidden"
-                    style={{
-                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                    }}
-                  >
-                    <Image
-                      src="/montage/3. Services We Offer/Event Management/marathon-event.png"
-                      alt="Event Management Services"
-                      fill
-                      className="object-cover"
-                      sizes="100vw"
-                    />
-                  </div>
-                </div>
-
                 <div
-                  className="space-y-6 text-lg leading-relaxed"
+                  className="space-y-5 text-lg leading-relaxed"
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
@@ -210,29 +264,13 @@ const EventManagementPlansPage = () => {
                     .
                   </p>
                   <p>
-                    We are trusted to manage precinct and route-based events on
-                    a mission-critical basis, prioritising the safety of
-                    participants, the community, and the general public with the
-                    highest standards of professionalism.
+                    We manage precinct and route-based events on a
+                    mission-critical basis, prioritising the safety of{" "}
+                    <strong className="text-gray-900">
+                      participants, the community, and the general public
+                    </strong>
+                    .
                   </p>
-                </div>
-              </div>
-
-              {/* Right: Image - Desktop Only */}
-              <div className="relative animate-element hidden lg:block">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
-                  <Image
-                    src="/montage/3. Services We Offer/Event Management/marathon-event.png"
-                    alt="Event Management Services"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                  />
                 </div>
               </div>
             </div>
@@ -240,35 +278,124 @@ const EventManagementPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* Event Services Section */}
+      {/* ─── HOW WE WORK: Vertical timeline ─── */}
       <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+        <section className="py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Our Event <span className="text-btn">Services</span>
-              </h2>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
-              {eventServices.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
-                    <FaCheckCircle className="text-2xl text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
-                    {service.title}
-                  </h3>
-                  <div className="w-12 h-px bg-btn mb-4"></div>
+              {/* Left: Sticky heading + photo */}
+              <div className="animate-element lg:sticky lg:top-32 space-y-8">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6" />
+                  <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
+                    How We Manage
+                    <br />
+                    <span className="text-btn">Your Event</span>
+                  </h2>
                   <p
-                    className="text-base leading-relaxed"
+                    className="mt-5 text-lg leading-relaxed"
                     style={{ color: "#8E8E95" }}
                   >
-                    {service.description}
+                    A seamless end-to-end service — from first consultation
+                    through to on-day operations.
+                  </p>
+                </div>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
+                  <Image
+                    src="/montage/3. Services We Offer/Event Management/fire-truck.png"
+                    alt="Event Operations"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Vertical timeline */}
+              <div className="animate-element relative pl-2">
+                {/* Connecting line */}
+                <div className="absolute left-9 top-7 bottom-7 w-px bg-gray-200" />
+
+                <div className="space-y-2">
+                  {howWeWork.map((item, i) => (
+                    <div key={i} className="relative flex gap-7 pb-10 last:pb-0">
+                      {/* Numbered node */}
+                      <div className="flex-shrink-0 w-14 h-14 rounded-full bg-btn border-4 border-white shadow-md flex items-center justify-center z-10">
+                        <span className="text-white text-sm font-bold font-anton">
+                          {item.num}
+                        </span>
+                      </div>
+
+                      {/* Step content */}
+                      <div className="flex-1 pt-3">
+                        <h3 className="text-xl font-bold text-gray-900 font-anton uppercase mb-2">
+                          {item.title}
+                        </h3>
+                        <p
+                          className="text-base leading-relaxed"
+                          style={{ color: "#8E8E95" }}
+                        >
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* ─── EVENT TYPES: Dark icon grid ─── */}
+      <AnimatedSection direction="left">
+        <section
+          className="relative py-24 px-5 sm:px-6 lg:px-8 overflow-hidden"
+          style={{ backgroundColor: "#0f1120" }}
+        >
+          {/* Blueprint grid bg */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+          {/* Ghost text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+            <span
+              className="text-[18vw] font-black font-anton text-white uppercase leading-none"
+              style={{ opacity: 0.025, letterSpacing: "-0.05em" }}
+            >
+              EVENTS
+            </span>
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-element">
+              <div className="w-16 h-1 bg-btn mx-auto mb-6" />
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+                Event Types{" "}
+                <span className="text-btn">We Support</span>
+              </h2>
+              <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                Comprehensive traffic management for all event types across NSW
+              </p>
+            </div>
+
+            <div className="animate-element grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {eventTypes.map((type, i) => (
+                <div
+                  key={i}
+                  className="group flex flex-col items-center gap-4 p-6 rounded-2xl border border-white/10 hover:border-btn hover:bg-btn/10 transition-all duration-300 text-center cursor-default"
+                >
+                  <div className="w-12 h-12 rounded-full bg-btn/20 group-hover:bg-btn flex items-center justify-center text-btn group-hover:text-white transition-all duration-300">
+                    {type.icon}
+                  </div>
+                  <p className="text-white text-sm font-semibold leading-snug">
+                    {type.name}
                   </p>
                 </div>
               ))}
@@ -277,254 +404,186 @@ const EventManagementPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* Event Portfolio Section */}
+      {/* ─── PORTFOLIO: Side-by-side blueprint cards ─── */}
       <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+        <section id="portfolio" className="py-24 px-5 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Our Event <span className="text-btn">Portfolio</span>
+              <div className="w-16 h-1 bg-btn mx-auto mb-6" />
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+                Sample Event{" "}
+                <span className="text-btn">Plans</span>
               </h2>
               <p
-                className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
+                className="mt-4 text-lg max-w-2xl mx-auto"
                 style={{ color: "#8E8E95" }}
               >
-                Professional event management plans showcasing our expertise
+                Click any plan to view full size and download
               </p>
             </div>
 
-            {/* Carousel */}
-            <div className="relative max-w-5xl mx-auto animate-element">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-lg">
-                <Image
-                  src={eventPortfolio[currentSlide].image}
-                  alt={eventPortfolio[currentSlide].title}
-                  fill
-                  className="object-contain cursor-pointer"
-                  onClick={() =>
-                    setSelectedImage(eventPortfolio[currentSlide].image)
-                  }
-                />
-              </div>
-
-              <p
-                className="text-center mt-4 text-sm"
-                style={{ color: "#8E8E95" }}
-              >
-                Click image to view full size and download
-              </p>
-
-              {/* Navigation Arrows */}
-              {eventPortfolio.length > 1 && (
-                <>
-                  <button
-                    onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
-                    aria-label="Previous slide"
+            <div className="animate-element grid grid-cols-1 md:grid-cols-2 gap-8">
+              {eventPortfolio.map((plan, i) => (
+                <div
+                  key={i}
+                  className="group cursor-pointer"
+                  onClick={() => openLightbox(plan.image, plan.pdf, plan.title)}
+                >
+                  {/* Blueprint-style dark frame */}
+                  <div
+                    className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl"
+                    style={{ backgroundColor: "#0f1120" }}
                   >
-                    <FaChevronLeft className="text-xl" />
-                  </button>
-                  <button
-                    onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
-                    aria-label="Next slide"
-                  >
-                    <FaChevronRight className="text-xl" />
-                  </button>
-                </>
-              )}
-
-              {/* Dots Indicator */}
-              {eventPortfolio.length > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                  {eventPortfolio.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                        currentSlide === index ? "bg-btn w-8" : "bg-gray-300"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
+                    <div
+                      className="absolute inset-0 opacity-[0.06]"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+                        backgroundSize: "22px 22px",
+                      }}
                     />
-                  ))}
+                    <Image
+                      src={plan.image}
+                      alt={plan.title}
+                      fill
+                      className="object-contain p-3 group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-btn/0 group-hover:bg-btn/10 transition-all duration-300">
+                      <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white text-gray-900 px-5 py-2.5 rounded-full font-semibold text-sm">
+                        Click to enlarge
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title + download */}
+                  <div className="mt-4 flex items-center justify-between px-1">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 font-anton uppercase">
+                        {plan.title}
+                      </h3>
+                      <p className="text-sm mt-0.5" style={{ color: "#8E8E95" }}>
+                        Event Management Plan
+                      </p>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDownload(plan.pdf, `${plan.title}.pdf`);
+                      }}
+                      className="flex items-center gap-2 bg-gray-100 hover:bg-btn hover:text-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300"
+                    >
+                      <FaDownload />
+                      PDF
+                    </button>
+                  </div>
                 </div>
-              )}
+              ))}
             </div>
           </div>
         </section>
       </AnimatedSection>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={closeLightbox}
         >
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedImage(null);
-            }}
-            className="absolute top-6 right-6 md:top-8 md:right-8 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all duration-300 cursor-pointer z-10"
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-50 p-3 bg-white/10 hover:bg-btn text-white rounded-full transition-all duration-300 cursor-pointer"
             aria-label="Close"
           >
             <FaTimes className="text-2xl" />
           </button>
 
+          {selectedPdf && selectedTitle && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDownload(selectedPdf, `${selectedTitle}.pdf`);
+              }}
+              className="absolute bottom-6 left-6 z-50 flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-100 text-gray-900 rounded-full font-semibold transition-all duration-300 shadow-2xl cursor-pointer"
+            >
+              <FaDownload />
+              Download PDF
+            </button>
+          )}
+
           <div
-            className="relative w-full h-full flex items-center justify-center"
+            className="relative w-full max-w-6xl h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-full max-w-7xl max-h-[90vh]">
-              <Image
-                src={selectedImage}
-                alt="Event Plan"
-                fill
-                className="object-contain"
-              />
-            </div>
+            <Image
+              src={selectedImage}
+              alt="Event Plan"
+              fill
+              className="object-contain"
+            />
           </div>
-
-          <button
-            onClick={() => {
-              const currentItem = eventPortfolio.find(
-                (item) => item.image === selectedImage,
-              );
-              if (currentItem) {
-                handleDownload(currentItem.pdf, `${currentItem.title}.pdf`);
-              }
-            }}
-            className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-white hover:bg-gray-100 text-gray-900 px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2 cursor-pointer"
-          >
-            <FaDownload />
-            Download PDF
-          </button>
         </div>
       )}
 
-      {/* Event Types Section */}
+      {/* ─── CTA: Full-bleed background photo, centred content ─── */}
       <AnimatedSection direction="left">
-        <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                Event Types <span className="text-btn">We Support</span>
-              </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                Comprehensive traffic management for all event types across NSW
-              </p>
-            </div>
-
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {eventTypes.map((type, index) => (
-                  <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
-                        {type}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <section className="relative py-32 px-5 sm:px-6 lg:px-8 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/montage/3. Services We Offer/Event Management/Marathon Taper.png"
+              alt="Plan Your Event"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[#0f1120]/82" />
           </div>
-        </section>
-      </AnimatedSection>
+          {/* Grid overlay */}
+          <div
+            className="absolute inset-0 z-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
 
-      {/* Visual Divider Section */}
-      <AnimatedSection direction="left">
-        <VisualDividerSection
-          title="Our TGS"
-          titleHighlight="Capabilities"
-          description="Professional traffic guidance scheme design across all project types"
-          items={[
-            {
-              src: "/DSC00949.JPG",
-              alt: "Professional Design",
-              label: "PLANNING",
-            },
-            {
-              src: "/montage/3. Services We Offer/Event Management/eff-fight-night.png",
-              alt: "Compliance",
-              label: "COMPLIANCE",
-            },
-            {
-              src: "/DSC00732.JPG",
-              alt: "Safety",
-              label: "SAFETY",
-            },
-          ]}
-        />
-      </AnimatedSection>
+          <div className="relative z-10 max-w-4xl mx-auto text-center animate-element">
+            <div className="inline-flex items-center gap-2 mb-6">
+              <div className="w-8 h-px bg-btn" />
+              <span className="text-btn text-sm font-semibold tracking-widest uppercase">
+                Ready To Start?
+              </span>
+              <div className="w-8 h-px bg-btn" />
+            </div>
 
-      {/* CTA Section */}
-      <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-              {/* Left: Image */}
-              <div className="relative animate-element order-2 lg:order-1">
-                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
-                  <Image
-                    src="/montage/3. Services We Offer/Event Management/fire-truck.png"
-                    alt="Plan Your Event"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-anton uppercase leading-tight mb-6">
+              Ready For A
+              <br />
+              <span className="text-btn">Successful Event?</span>
+            </h2>
 
-              {/* Right: Content */}
-              <div className="space-y-8 animate-element order-1 lg:order-2">
-                <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Ready For A Successful <br />
-                    <span className="text-btn">Event?</span>
-                  </h2>
-                </div>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+              Partner with{" "}
+              <strong className="text-white">T&S Traffic Control</strong> for
+              expertly managed event traffic solutions. From planning through to
+              on-day operations — we keep your event safe, compliant, and
+              running on schedule.
+            </p>
 
-                <div
-                  className="space-y-6 text-lg leading-relaxed"
-                  style={{ color: "#8E8E95" }}
-                >
-                  <p>
-                    Partner with{" "}
-                    <strong className="text-gray-900">
-                      T&S Traffic Control
-                    </strong>{" "}
-                    for expertly managed event traffic solutions that keep your
-                    event safe, compliant, and successful.
-                  </p>
-                  <p>
-                    Our professional team is ready to deliver reliable, turnkey
-                    traffic management for your event. Contact us today to
-                    discuss your requirements or request a quote.
-                  </p>
-                </div>
-
-                <div className="pt-6">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
-                  >
-                    Get A Quote
-                  </Link>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+              >
+                <FaPhoneAlt />
+                Get A Quote
+              </Link>
+              <Link
+                href="/services/traffic-management-plans"
+                className="inline-flex items-center justify-center gap-3 border border-white/30 hover:border-btn text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              >
+                View TMPs →
+              </Link>
             </div>
           </div>
         </section>
