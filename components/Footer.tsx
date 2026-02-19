@@ -225,7 +225,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/about#our-fleet"
+                  href="/fleet"
                   className="hover:text-btn transition-colors duration-300"
                 >
                   Our Fleet

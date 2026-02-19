@@ -523,7 +523,7 @@ const Navbar = () => {
                       Our Team
                     </Link>
                     <Link
-                      href="/about#our-fleet"
+                      href="/fleet"
                       onClick={toggleMobileMenu}
                       className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
                     >
