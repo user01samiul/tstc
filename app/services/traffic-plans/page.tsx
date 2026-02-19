@@ -4,28 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import {
+  FaBolt,
   FaCheckCircle,
-  FaChevronLeft,
-  FaChevronRight,
+  FaDraftingCompass,
   FaDownload,
-  FaFileAlt,
+  FaLayerGroup,
   FaPhoneAlt,
+  FaRulerCombined,
   FaTimes,
 } from "react-icons/fa";
 import AnimatedSection from "../../components/AnimatedSection";
-import VisualDividerSection from "../../components/VisualDividerSection";
 
 const TrafficPlansPage = () => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedImage, setSelectedImage] = useState<{
     src: string;
     pdfPath: string;
   } | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const toggleFAQ = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
 
   // Traffic Plan Gallery - Images with corresponding PDF files (matched serially)
   const trafficPlanGallery = [
@@ -80,35 +74,28 @@ const TrafficPlansPage = () => {
     }
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % trafficPlanGallery.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) =>
-        (prev - 1 + trafficPlanGallery.length) % trafficPlanGallery.length,
-    );
-  };
-
   // Key features of TGS services
   const tgsFeatures = [
     {
+      icon: <FaDraftingCompass />,
       title: "Professional Design",
       description:
         "Detailed traffic control plans using professional CAD software, compliant with TfNSW (RMS) and AS1742.3 standards.",
     },
     {
+      icon: <FaRulerCombined />,
       title: "Custom Solutions",
       description:
         "Tailored designs for roadworks, lane closures, shoulder works, and intersections based on your specific site conditions.",
     },
     {
+      icon: <FaLayerGroup />,
       title: "Multi-Stage Layouts",
       description:
         "Complex, long-term layouts for civil and infrastructure projects requiring multiple traffic staging phases.",
     },
     {
+      icon: <FaBolt />,
       title: "Specialist Works",
       description:
         "Night works, event management, and emergency traffic management designs with fast turnaround times.",
@@ -127,104 +114,120 @@ const TrafficPlansPage = () => {
     "Design revisions and ongoing support",
   ];
 
-  const faqs = [
-    {
-      question: "What is a TGS or TCP?",
-      answer:
-        "A TGS (Traffic Guidance Scheme) is a detailed plan that outlines how traffic will be managed around a worksite or event. A TCP (Traffic Control Plan) serves a similar purpose, providing specific instructions for managing traffic flow during roadworks, construction, or events that impact normal traffic conditions.",
-    },
-    {
-      question: "Do I need a TGS for my project?",
-      answer:
-        "If your works impact public roads, footpaths, or traffic flow, you'll typically need a TGS. This includes roadworks, construction sites, utility works, events, and maintenance activities. Most councils and road authorities require an approved TGS before works can commence.",
-    },
-    {
-      question: "How long does it take to get a TGS designed?",
-      answer:
-        "Standard TGS designs typically take 3-5 business days. For urgent or emergency works, we offer expedited services with turnaround times as fast as 24 hours. Complex multi-stage projects may require additional time depending on scope and stakeholder requirements.",
-    },
-    {
-      question: "Can you help with permit applications?",
-      answer:
-        "Yes, we provide complete permit application services. Once your TGS is designed, we can assist with submitting applications to TfNSW, local councils, and other road authorities. We handle all required documentation and liaise with authorities on your behalf.",
-    },
-  ];
-
   return (
     <div className="font-sans overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      {/* ── HERO: full-bleed photo, bottom-anchored content + stats strip ── */}
+      <section className="relative h-screen min-h-[640px] flex flex-col justify-end overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0">
           <Image
             src="/DSC00947.JPG"
             alt="Traffic Guidance Schemes"
             fill
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          {/* Gradient: dark from bottom, lighter toward top */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/25" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">
-          <div className="text-center text-white space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-anton uppercase">
-              TRAFFIC GUIDANCE <br />
+        {/* Main content — bottom-left */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="pb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-px bg-btn" />
+              <span className="text-btn text-sm font-semibold uppercase tracking-widest">
+                Traffic Engineering
+              </span>
+            </div>
+
+            <h1
+              className="font-anton uppercase text-white leading-none mb-6"
+              style={{ fontSize: "clamp(3rem, 8vw, 6.5rem)" }}
+            >
+              TRAFFIC GUIDANCE
+              <br />
               <span className="text-btn">SCHEMES (TGS)</span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+
+            <p className="text-gray-300 text-lg max-w-2xl leading-relaxed mb-8">
               Professional TGS designs compliant with TfNSW and AS1742.3
-              standards
+              standards — tailored for every site condition.
             </p>
-            <div className="pt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
-              >
-                <FaPhoneAlt className="text-xl" />
-                Get In Touch
-              </Link>
-            </div>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
+            >
+              <FaPhoneAlt />
+              Get In Touch
+            </Link>
+          </div>
+
+          {/* Stats strip */}
+          <div className="border-t border-white/20 grid grid-cols-3 divide-x divide-white/20">
+            {[
+              { value: "TfNSW", label: "Compliant" },
+              { value: "48 hr", label: "Fast Turnaround" },
+              { value: "AS1742.3", label: "Certified Standard" },
+            ].map((stat) => (
+              <div key={stat.label} className="py-6 px-4 sm:px-8 text-center">
+                <p className="text-white font-bold text-xl sm:text-2xl font-anton">
+                  {stat.value}
+                </p>
+                <p className="text-gray-400 text-sm mt-1">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Introduction Section */}
+      {/* ── INTRO: blueprint-framed plan + text ── */}
       <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
+        <section className="py-20 md:py-28 px-5 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-              {/* Left: Content */}
-              <div className="space-y-8 animate-element">
-                <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Compliant TGS Designs <br />
-                    <span className="text-btn">For Every Site</span>
-                  </h2>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left: technical-frame image */}
+              <div className="animate-element">
+                <div className="relative border-2 border-gray-200 rounded-sm p-4 bg-gray-50">
+                  {/* Corner markers */}
+                  <div className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-btn z-10" />
+                  <div className="absolute top-2 right-2 w-5 h-5 border-t-2 border-r-2 border-btn z-10" />
+                  <div className="absolute bottom-2 left-2 w-5 h-5 border-b-2 border-l-2 border-btn z-10" />
+                  <div className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-btn z-10" />
 
-                {/* Image - Mobile Only */}
-                <div className="relative animate-element lg:hidden">
-                  <div
-                    className="relative w-full aspect-[4/5] overflow-hidden"
-                    style={{
-                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                    }}
-                  >
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src="/sami/traffic-plan1.png"
                       alt="TGS Design Services"
                       fill
                       className="object-cover"
-                      sizes="100vw"
+                      sizes="50vw"
                     />
                   </div>
+
+                  {/* Frame label bar */}
+                  <div className="mt-3 flex items-center justify-between text-xs text-gray-400 font-mono px-1">
+                    <span>TGS-2024-001</span>
+                    <span>AS1742.3 COMPLIANT</span>
+                    <span>TSTC</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: text */}
+              <div className="space-y-8 animate-element">
+                <div>
+                  <div className="w-16 h-1 bg-btn mb-6" />
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                    Compliant TGS Designs
+                    <br />
+                    <span className="text-btn">For Every Site</span>
+                  </h2>
                 </div>
 
                 <div
-                  className="space-y-6 text-lg leading-relaxed"
+                  className="space-y-5 text-lg leading-relaxed"
                   style={{ color: "#8E8E95" }}
                 >
                   <p>
@@ -239,7 +242,7 @@ const TrafficPlansPage = () => {
                     , ensuring safety and practicality for every site.
                   </p>
                   <p>
-                    Each TGS is designed with real-world application in mind -{" "}
+                    Each TGS is designed with real-world application in mind —
                     balancing the needs of workers, motorists, and pedestrians.
                     We assess traffic volumes, road geometry, and environmental
                     factors to create layouts that are both{" "}
@@ -256,102 +259,121 @@ const TrafficPlansPage = () => {
                   </p>
                 </div>
               </div>
-
-              {/* Right: Image - Desktop Only */}
-              <div className="relative animate-element hidden lg:block">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
-                  <Image
-                    src="/sami/traffic-plan1.png"
-                    alt="TGS Design Services"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                  />
-                </div>
-              </div>
             </div>
+          </div>
+        </section>
+      </AnimatedSection>
 
-            {/* Traffic Plan Gallery Carousel */}
-            <div className="mt-20 animate-element">
-              <div className="text-center mb-12">
-                <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-                <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+      {/* ── PLAN GALLERY: document card grid ── */}
+      <AnimatedSection direction="right">
+        <section className="py-20 md:py-28 px-5 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            {/* Header – left aligned with count */}
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 animate-element">
+              <div>
+                <div className="w-16 h-1 bg-btn mb-6" />
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight font-anton uppercase">
                   Sample TGS <span className="text-btn">Designs</span>
-                </h3>
-                <p
-                  className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed"
-                  style={{ color: "#8E8E95" }}
-                >
+                </h2>
+                <p className="mt-4 text-gray-500 text-lg max-w-xl leading-relaxed">
                   Browse our portfolio of traffic guidance schemes and download
                   detailed plans
                 </p>
               </div>
+              <span className="font-mono text-sm text-gray-400 lg:pb-2 flex-shrink-0">
+                {trafficPlanGallery.length} plans available
+              </span>
+            </div>
 
-              {/* Carousel */}
-              <div className="relative max-w-5xl mx-auto">
-                {/* Main Image */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-2xl">
-                  <Image
-                    src={trafficPlanGallery[currentSlide].image}
-                    alt={trafficPlanGallery[currentSlide].title}
-                    fill
-                    className="object-contain bg-gray-100 cursor-pointer"
-                    onClick={() =>
-                      openLightbox(
-                        trafficPlanGallery[currentSlide].image,
-                        trafficPlanGallery[currentSlide].pdfPath,
-                      )
-                    }
-                  />
-                </div>
-
-                {/* Title */}
-                <div className="text-center mt-6">
-                  <h4 className="text-xl font-semibold text-gray-900">
-                    {trafficPlanGallery[currentSlide].title}
-                  </h4>
-                  <p className="text-sm mt-2" style={{ color: "#8E8E95" }}>
-                    Click image to view full size and download
-                  </p>
-                </div>
-
-                {/* Navigation Buttons */}
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-btn hover:text-white text-gray-900 rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="Previous slide"
+            {/* Top row – 2 large cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5 animate-element">
+              {trafficPlanGallery.slice(0, 2).map((plan, i) => (
+                <div
+                  key={i}
+                  onClick={() => openLightbox(plan.image, plan.pdfPath)}
+                  className="group cursor-pointer bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
                 >
-                  <FaChevronLeft className="text-xl" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 hover:bg-btn hover:text-white text-gray-900 rounded-full shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
-                  aria-label="Next slide"
-                >
-                  <FaChevronRight className="text-xl" />
-                </button>
-
-                {/* Dots Indicator */}
-                <div className="flex justify-center gap-2 mt-6">
-                  {trafficPlanGallery.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        currentSlide === index
-                          ? "bg-btn w-8"
-                          : "bg-gray-300 hover:bg-gray-400"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
+                  {/* Image area */}
+                  <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
+                    {/* Number badge */}
+                    <div className="absolute top-4 left-4 z-10 w-9 h-9 bg-btn text-white text-xs font-bold font-mono flex items-center justify-center">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <Image
+                      src={plan.image}
+                      alt={plan.title}
+                      fill
+                      className="object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500"
                     />
-                  ))}
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-[#0f1120]/0 group-hover:bg-[#0f1120]/25 transition-all duration-300 flex items-end justify-center pb-6">
+                      <span className="opacity-0 group-hover:opacity-100 text-white text-sm font-semibold bg-[#0f1120]/80 px-4 py-2 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        View Full Size
+                      </span>
+                    </div>
+                  </div>
+                  {/* Card footer */}
+                  <div className="px-5 py-4 flex items-center justify-between border-t border-gray-100">
+                    <p className="font-semibold text-gray-900 text-sm leading-tight">
+                      {plan.title}
+                    </p>
+                    <a
+                      href={plan.pdfPath}
+                      download
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-btn border border-btn hover:bg-btn hover:text-white transition-all duration-300 whitespace-nowrap"
+                    >
+                      <FaDownload />
+                      PDF
+                    </a>
+                  </div>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* Bottom row – 3 smaller cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 animate-element">
+              {trafficPlanGallery.slice(2).map((plan, i) => (
+                <div
+                  key={i}
+                  onClick={() => openLightbox(plan.image, plan.pdfPath)}
+                  className="group cursor-pointer bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
+                >
+                  {/* Image area */}
+                  <div className="relative aspect-[4/3] bg-gray-50 overflow-hidden">
+                    {/* Number badge */}
+                    <div className="absolute top-3 left-3 z-10 w-8 h-8 bg-btn text-white text-xs font-bold font-mono flex items-center justify-center">
+                      {String(i + 3).padStart(2, "0")}
+                    </div>
+                    <Image
+                      src={plan.image}
+                      alt={plan.title}
+                      fill
+                      className="object-contain p-2 group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-[#0f1120]/0 group-hover:bg-[#0f1120]/25 transition-all duration-300 flex items-end justify-center pb-4">
+                      <span className="opacity-0 group-hover:opacity-100 text-white text-xs font-semibold bg-[#0f1120]/80 px-3 py-1.5 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        View Full Size
+                      </span>
+                    </div>
+                  </div>
+                  {/* Card footer */}
+                  <div className="px-4 py-3 flex items-center justify-between border-t border-gray-100">
+                    <p className="font-semibold text-gray-900 text-xs leading-tight">
+                      {plan.title}
+                    </p>
+                    <a
+                      href={plan.pdfPath}
+                      download
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold text-btn border border-btn hover:bg-btn hover:text-white transition-all duration-300 whitespace-nowrap ml-2"
+                    >
+                      <FaDownload className="text-[10px]" />
+                      PDF
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -371,7 +393,6 @@ const TrafficPlansPage = () => {
             <FaTimes className="text-2xl" />
           </button>
 
-          {/* Download Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -398,36 +419,45 @@ const TrafficPlansPage = () => {
         </div>
       )}
 
-      {/* TGS Features Section */}
-      <AnimatedSection direction="right">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-gray-50">
+      {/* ── FEATURES: numbered cards with ghost number ── */}
+      <AnimatedSection direction="left">
+        <section className="py-20 md:py-28 px-5 sm:px-6 lg:px-8 bg-gray-50">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
+              <div className="w-16 h-1 bg-btn mx-auto mb-6" />
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Our TGS <span className="text-btn">Services Include</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-element">
-              {tgsFeatures.map((feature, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-element">
+              {tgsFeatures.map((feature, i) => (
                 <div
-                  key={index}
-                  className="bg-white rounded-lg p-8 hover:shadow-xl transition-all duration-300"
+                  key={i}
+                  className="relative bg-white p-8 rounded-sm border-b-4 border-btn shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden"
                 >
-                  <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6">
-                    <FaFileAlt className="text-2xl text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 font-anton uppercase">
-                    {feature.title}
-                  </h3>
-                  <div className="w-12 h-px bg-btn mb-4"></div>
-                  <p
-                    className="text-base leading-relaxed"
-                    style={{ color: "#8E8E95" }}
+                  {/* Ghost number */}
+                  <div
+                    className="absolute top-4 right-4 font-anton leading-none text-gray-100 group-hover:text-btn/8 transition-colors duration-300 select-none"
+                    style={{ fontSize: "5rem" }}
                   >
-                    {feature.description}
-                  </p>
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 bg-btn rounded-full flex items-center justify-center mb-6 text-white text-xl">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 font-anton uppercase">
+                      {feature.title}
+                    </h3>
+                    <div className="w-8 h-px bg-btn mb-4" />
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#8E8E95" }}
+                    >
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -435,62 +465,60 @@ const TrafficPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* Visual Divider Section */}
-      <AnimatedSection direction="left">
-        <VisualDividerSection
-          title="Our TGS"
-          titleHighlight="Capabilities"
-          description="Professional traffic guidance scheme design across all project types"
-          items={[
-            {
-              src: "/sami/traffic-plan2.png",
-              alt: "Professional Design",
-              label: "DESIGN",
-            },
-            {
-              src: "/DSC00949.JPG",
-              alt: "Compliance",
-              label: "COMPLIANCE",
-            },
-            {
-              src: "/DSC02286.webp",
-              alt: "Safety",
-              label: "SAFETY",
-            },
-          ]}
-        />
-      </AnimatedSection>
-
-      {/* What's Included Section */}
+      {/* ── WHAT'S INCLUDED: two-column dark layout ── */}
       <AnimatedSection direction="right">
         <section
-          className="py-20 md:py-24 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
+          className="relative py-20 md:py-28 px-5 sm:px-6 lg:px-8"
+          style={{ backgroundColor: "#0f1120" }}
         >
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 animate-element">
-              <div className="w-16 h-1 bg-btn mx-auto mb-6"></div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                What's Included In <span className="text-btn">Our Service</span>
-              </h2>
-              <p className="mt-6 text-lg max-w-3xl mx-auto leading-relaxed text-gray-400">
-                Comprehensive TGS design services with full documentation and
-                support
-              </p>
-            </div>
+          {/* Blueprint grid */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+              opacity: 0.03,
+            }}
+          />
+          <div className="relative max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Left: heading + plan preview */}
+              <div className="animate-element">
+                <div className="w-16 h-1 bg-btn mb-6" />
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+                  What's Included In{" "}
+                  <span className="text-btn">Our Service</span>
+                </h2>
+                <p className="text-gray-400 text-lg leading-relaxed mb-10">
+                  Comprehensive TGS design services with full documentation and
+                  support
+                </p>
+                {/* Plan preview image */}
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-white/10">
+                  <Image
+                    src="/sami/traffic-plan4.png"
+                    alt="TGS Plan Detail"
+                    fill
+                    className="object-contain bg-white"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
 
-            <div className="max-w-4xl mx-auto animate-element">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {serviceIncludes.map((item, index) => (
+              {/* Right: numbered checklist */}
+              <div className="animate-element divide-y divide-white/10">
+                {serviceIncludes.map((item, i) => (
                   <div
-                    key={index}
-                    className="bg-transparent rounded-2xl p-6 border-2 border-dashed border-white/30 hover:border-btn transition-all duration-300"
+                    key={i}
+                    className="flex items-start gap-5 py-5 group"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <FaCheckCircle className="text-2xl text-btn" />
-                      </div>
-                      <p className="text-white text-base leading-relaxed pt-0.5">
+                    <span className="font-mono text-xs font-bold text-btn/50 group-hover:text-btn transition-colors duration-300 mt-1 flex-shrink-0 w-6">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex items-start gap-3 flex-1">
+                      <FaCheckCircle className="text-btn flex-shrink-0 text-sm mt-1" />
+                      <p className="text-gray-300 text-base leading-relaxed group-hover:text-white transition-colors duration-300">
                         {item}
                       </p>
                     </div>
@@ -502,67 +530,56 @@ const TrafficPlansPage = () => {
         </section>
       </AnimatedSection>
 
-      {/* CTA Section */}
-      <AnimatedSection direction="left">
-        <section className="py-20 md:py-24 px-5 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-              {/* Left: Image */}
-              <div className="relative animate-element order-2 lg:order-1">
-                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
-                  <Image
-                    src="/sami/traffic-plan3.png"
-                    alt="Get Your TGS Today"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+      {/* ── CTA: full-bleed photo overlay ── */}
+      <section className="relative py-28 px-5 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/sami/traffic-plan3.png"
+            alt="Get Your TGS"
+            fill
+            className="object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: "#0f1120", opacity: 0.9 }}
+          />
+        </div>
+        {/* Blueprint grid */}
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(#4a9eff 1px, transparent 1px), linear-gradient(90deg, #4a9eff 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            opacity: 0.04,
+          }}
+        />
 
-              {/* Right: Content */}
-              <div className="space-y-8 animate-element order-1 lg:order-2">
-                <div>
-                  <div className="w-16 h-1 bg-btn mb-6"></div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                    Need A TGS For <br />
-                    <span className="text-btn">Your Project?</span>
-                  </h2>
-                </div>
-
-                <div
-                  className="space-y-6 text-lg leading-relaxed"
-                  style={{ color: "#8E8E95" }}
-                >
-                  <p>
-                    Whether you're planning roadworks, a construction project,
-                    or a special event,{" "}
-                    <strong className="text-gray-900">
-                      T&S Traffic Control
-                    </strong>{" "}
-                    can design a compliant TGS tailored to your specific site
-                    conditions.
-                  </p>
-                  <p>
-                    Our experienced team delivers fast turnaround times without
-                    compromising on quality or compliance. Contact us today to
-                    discuss your TGS requirements and get your project moving.
-                  </p>
-                </div>
-
-                <div className="pt-6">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105"
-                  >
-                    Get A Quote
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="w-16 h-1 bg-btn mx-auto mb-6" />
+          <h2
+            className="font-anton uppercase text-white leading-tight mb-6"
+            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
+          >
+            NEED A TGS FOR
+            <br />
+            <span className="text-btn">YOUR PROJECT?</span>
+          </h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+            Whether you're planning roadworks, a construction project, or a
+            special event,{" "}
+            <strong className="text-white">T&amp;S Traffic Control</strong> can
+            design a compliant TGS tailored to your specific site conditions.
+            Fast turnaround, quality guaranteed.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-3 bg-btn hover:bg-btn/90 text-white px-12 py-5 rounded-full font-semibold text-xl transition-all duration-300 hover:scale-105"
+          >
+            Get A Quote
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
