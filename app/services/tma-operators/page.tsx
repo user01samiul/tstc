@@ -28,7 +28,7 @@ const TMAOperatorsPage = () => {
       description:
         "Skilled TMA operators providing critical impact protection for work crews on high-speed roads, freeways, and complex traffic environments.",
       icon: <FaShieldAlt className="text-3xl" />,
-      image: "/DSC00810.JPG",
+      image: "/DSC00732.JPG",
     },
     {
       title: "Mobile Operations",
@@ -42,14 +42,14 @@ const TMAOperatorsPage = () => {
       description:
         "All TMA operators hold current TfNSW TMA accreditation, Heavy Rigid licenses, and complete regular competency assessments.",
       icon: <FaCertificate className="text-3xl" />,
-      image: "/DSC00847.JPG",
+      image: "/DSC00862.JPG",
     },
     {
       title: "Safety Coordination",
       description:
         "Professional coordination with traffic controllers, project teams, and emergency services to ensure safe operations in high-risk work zones.",
       icon: <FaCheckCircle className="text-3xl" />,
-      image: "/DSC00717.JPG",
+      image: "/DSC00943.JPG",
     },
   ];
 
@@ -312,7 +312,7 @@ const TMAOperatorsPage = () => {
       <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/DSC00810.JPG"
+            src="/montage/4. Career/Our Experience/Brighton Asphalt.png"
             alt="TMA Operations"
             fill
             className="object-cover"
@@ -432,7 +432,7 @@ const TMAOperatorsPage = () => {
             {/* Left: Image */}
             <div className="relative h-[400px] lg:h-auto lg:min-h-[500px]">
               <Image
-                src="/DSC00810.JPG"
+                src="/DSC00726.JPG"
                 alt="Contact for TMA Services"
                 fill
                 className="object-cover"
