@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { PRE_CON_SECTIONS } from "@/lib/preConstructionSections";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -205,111 +206,58 @@ const Navbar = () => {
                 </Link>
                 {openSubmenu === "services" && (
                   <div
-                    className="fixed left-1/2 -translate-x-1/2 top-20 w-[1050px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 grid grid-cols-5 gap-4"
+                    className="fixed left-1/2 -translate-x-1/2 top-20 w-[1180px] bg-white rounded-xl shadow-2xl border border-gray-100 p-6 grid grid-cols-6 gap-4"
                     onMouseLeave={() => setOpenSubmenu(null)}
                   >
-                    {/* Column 1 - Traffic Engineering */}
-                    <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20">
-                        Traffic Engineering & Planning
-                      </h3>
-                      <div className="space-y-1">
-                        <Link
-                          href="/services/all-services"
-                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 font-semibold ${
-                            pathname === "/services/all-services"
-                              ? "bg-btn text-white"
-                              : "bg-btn/10 text-btn hover:bg-btn hover:text-white"
-                          }`}
-                        >
-                          View All Services
-                        </Link>
-                        <Link
-                          href="/services/traffic-plans"
-                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                            isActive("/services/traffic-plans")
-                              ? "bg-btn/10 text-btn font-semibold"
-                              : "text-gray-700 hover:bg-btn/10 hover:text-btn"
-                          }`}
-                        >
-                          Traffic Plans
-                        </Link>
-                        <Link
-                          href="/services/traffic-management-plans"
-                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                            isActive("/services/traffic-management-plans")
-                              ? "bg-btn/10 text-btn font-semibold"
-                              : "text-gray-700 hover:bg-btn/10 hover:text-btn"
-                          }`}
-                        >
-                          Traffic Management Plans (TMP) (CTMP)
-                        </Link>
-                        <Link
-                          href="/services/swept-path"
-                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                            isActive("/services/swept-path")
-                              ? "bg-btn/10 text-btn font-semibold"
-                              : "text-gray-700 hover:bg-btn/10 hover:text-btn"
-                          }`}
-                        >
-                          Swept Path Analysis (SPA)
-                        </Link>
-                        <Link
-                          href="/services/event-management-plans"
-                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                            isActive("/services/event-management-plans")
-                              ? "bg-btn/10 text-btn font-semibold"
-                              : "text-gray-700 hover:bg-btn/10 hover:text-btn"
-                          }`}
-                        >
-                          Event Management Plans
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Column 2 - Permits */}
-                    <div className="space-y-3">
-                      <h3
-                        className={`text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 ${
-                          pathname === "/services/permit-application"
+                    {/* Column 1 - Pre Construction Planning (spans 2) */}
+                    <div className="space-y-3 col-span-2">
+                      <Link
+                        href="/services/pre-construction-planning"
+                        className={`block text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 ${
+                          pathname === "/services/pre-construction-planning"
                             ? "text-btn border-btn"
-                            : "text-gray-900 border-btn/20"
+                            : "text-gray-900 border-btn/20 hover:text-btn"
                         }`}
                       >
-                        Permit Applications
-                      </h3>
-                      <div className="space-y-1">
-                        <Link
-                          href="/services/permit-application#tf-nsw"
-                          className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
-                        >
-                          TfNSW TMC ROL
-                        </Link>
-                        <Link
-                          href="/services/permit-application#council-permits"
-                          className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
-                        >
-                          Council Permits
-                        </Link>
-                        <Link
-                          href="/services/permit-application#sta-bus"
-                          className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
-                        >
-                          STA Bus Approvals
-                        </Link>
-                        <Link
-                          href="/services/permit-application#emergency-approvals"
-                          className="block px-3 py-2 text-sm rounded-lg transition-all duration-200 text-gray-700 hover:bg-btn/10 hover:text-btn"
-                        >
-                          Emergency Approvals
-                        </Link>
+                        Pre Construction Planning
+                      </Link>
+                      <Link
+                        href="/services/all-services"
+                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 font-semibold ${
+                          pathname === "/services/all-services"
+                            ? "bg-btn text-white"
+                            : "bg-btn/10 text-btn hover:bg-btn hover:text-white"
+                        }`}
+                      >
+                        View All Services
+                      </Link>
+                      <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                        {PRE_CON_SECTIONS.map((s) => {
+                          const href = `/services/pre-construction-planning#${s.id}`;
+                          const isLong = (s.navLabel ?? s.label).length > 28;
+                          return (
+                            <Link
+                              key={s.id}
+                              href={href}
+                              className={`block px-2.5 py-1.5 rounded-lg leading-tight transition-all duration-200 ${
+                                isLong ? "text-xs" : "text-sm"
+                              } ${
+                                isActiveWithHash(href)
+                                  ? "bg-btn/10 text-btn font-semibold"
+                                  : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                              }`}
+                            >
+                              {s.navLabel ?? s.label}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
 
-                    {/* Column 3 - Traffic Controllers */}
+                    {/* Column 3 - Temporary Traffic Management Services */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20">
-                        Traffic Controllers
+                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight">
+                        Temporary Traffic Management Services
                       </h3>
                       <div className="space-y-1">
                         <Link
@@ -389,6 +337,25 @@ const Navbar = () => {
                           }`}
                         >
                           Temporary & Permanent Street Signage
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Column 6 - Event & Crowd Management */}
+                    <div className="space-y-3">
+                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight">
+                        Event & Crowd Management
+                      </h3>
+                      <div className="space-y-1">
+                        <Link
+                          href="/services/event-crowd-management"
+                          className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 leading-tight ${
+                            isActive("/services/event-crowd-management")
+                              ? "bg-btn/10 text-btn font-semibold"
+                              : "text-gray-700 hover:bg-btn/10 hover:text-btn"
+                          }`}
+                        >
+                          Event & Crowd Management
                         </Link>
                       </div>
                     </div>
@@ -568,111 +535,51 @@ const Navbar = () => {
                       📋 View All Services
                     </Link>
 
-                    {/* Traffic Engineering Sub-menu */}
+                    {/* Pre Construction Planning Sub-menu */}
                     <div className="space-y-1">
                       <button
-                        onClick={() =>
-                          toggleNestedSubmenu("traffic-engineering")
-                        }
+                        onClick={() => toggleNestedSubmenu("pre-construction")}
                         className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                       >
-                        <span>Traffic Engineering & Planning</span>
+                        <span>Pre Construction Planning</span>
                         <ChevronDown
                           className={`h-4 w-4 transition-transform ${
-                            openNestedSubmenu === "traffic-engineering"
+                            openNestedSubmenu === "pre-construction"
                               ? "rotate-180"
                               : ""
                           }`}
                         />
                       </button>
-                      {openNestedSubmenu === "traffic-engineering" && (
+                      {openNestedSubmenu === "pre-construction" && (
                         <div className="pl-4 space-y-1">
                           <Link
-                            href="/services/traffic-plans"
+                            href="/services/pre-construction-planning"
                             onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                           >
-                            Traffic Plans
+                            Overview
                           </Link>
-                          <Link
-                            href="/services/traffic-management-plans"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            Traffic Management Plans (TMP) (CTMP)
-                          </Link>
-                          <Link
-                            href="/services/swept-path"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            Swept Path Analysis (SPA)
-                          </Link>
-                          <Link
-                            href="/services/event-management-plans"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            Event Management Plans
-                          </Link>
+                          {PRE_CON_SECTIONS.map((s) => (
+                            <Link
+                              key={s.id}
+                              href={`/services/pre-construction-planning#${s.id}`}
+                              onClick={toggleMobileMenu}
+                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            >
+                              {s.label}
+                            </Link>
+                          ))}
                         </div>
                       )}
                     </div>
 
-                    {/* Permit Applications Sub-menu */}
-                    <div className="space-y-1">
-                      <button
-                        onClick={() => toggleNestedSubmenu("permits")}
-                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
-                      >
-                        <span>Permit Applications</span>
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform ${
-                            openNestedSubmenu === "permits" ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      {openNestedSubmenu === "permits" && (
-                        <div className="pl-4 space-y-1">
-                          <Link
-                            href="/services/permit-application#tf-nsw"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            TfNSW TMC ROL
-                          </Link>
-                          <Link
-                            href="/services/permit-application#council-permits"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            Council Permits
-                          </Link>
-                          <Link
-                            href="/services/permit-application#sta-bus"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            STA Bus Approvals
-                          </Link>
-                          <Link
-                            href="/services/permit-application#emergency-approvals"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                          >
-                            Emergency Approvals
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Traffic Controllers Sub-menu */}
+                    {/* Temporary Traffic Management Services Sub-menu */}
                     <div className="space-y-1">
                       <button
                         onClick={() => toggleNestedSubmenu("controllers")}
                         className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                       >
-                        <span>Traffic Controllers</span>
+                        <span>Temporary Traffic Management Services</span>
                         <ChevronDown
                           className={`h-4 w-4 transition-transform ${
                             openNestedSubmenu === "controllers"
@@ -731,6 +638,15 @@ const Navbar = () => {
                       className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
                     >
                       Signage Installation
+                    </Link>
+
+                    {/* Event & Crowd Management Link */}
+                    <Link
+                      href="/services/event-crowd-management"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                    >
+                      Event & Crowd Management
                     </Link>
                   </div>
                 )}
