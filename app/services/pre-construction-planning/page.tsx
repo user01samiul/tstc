@@ -5,19 +5,25 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   FaBolt,
+  FaCamera,
   FaCarSide,
+  FaChartLine,
   FaCheckCircle,
   FaClipboardCheck,
   FaClipboardList,
   FaDraftingCompass,
+  FaFileAlt,
   FaFileSignature,
   FaLayerGroup,
   FaPhoneAlt,
+  FaProjectDiagram,
   FaRoad,
   FaRoute,
   FaRulerCombined,
   FaShieldAlt,
+  FaTrafficLight,
   FaUsers,
+  FaWrench,
 } from "react-icons/fa";
 import AnimatedSection from "@/components/AnimatedSection";
 import { PRE_CON_SECTIONS } from "@/lib/preConstructionSections";
@@ -814,35 +820,141 @@ const PreConstructionPlanningPage = () => {
               </AnimatedSection>
             </section>
 
-            {/* §7 Traffic Modelling CAD - blank */}
+            {/* §7 Traffic Modelling CAD */}
             <section
               id="traffic-modelling-cad"
               className="scroll-mt-24 py-12 border-t border-gray-100"
             >
-              <SectionHeading
-                eyebrow="Section 07"
-                title={
-                  <>
-                    Traffic <span className="text-btn">Modelling (CAD)</span>
-                  </>
-                }
-              />
+              <AnimatedSection direction="right">
+                <SectionHeading
+                  eyebrow="Section 07"
+                  title={
+                    <>
+                      Traffic <span className="text-btn">Modelling (CAD)</span>
+                    </>
+                  }
+                />
+                <div className="grid lg:grid-cols-2 gap-10 items-start">
+                  <div className="space-y-5 text-gray-600 leading-relaxed">
+                    <p>
+                      CAD-based traffic flow modelling validates site staging,
+                      lane widths, queue formations, and detour capacity before
+                      a single sign goes up. We model real vehicle types and
+                      traffic volumes against your site geometry — exposing
+                      conflicts that flat paper plans miss.
+                    </p>
+                    <p>
+                      The output is a CAD-precise visual that engineers,
+                      authorities, and your project team can interrogate
+                      together: who goes where, how heavy vehicles negotiate
+                      each phase, and where pedestrians fit in alongside
+                      construction vehicles.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3 pt-4">
+                      {[
+                        { icon: <FaProjectDiagram />, label: "Pre-staging validation" },
+                        { icon: <FaCarSide />, label: "Heavy vehicle conflict analysis" },
+                        { icon: <FaLayerGroup />, label: "Detour capacity verification" },
+                        { icon: <FaDraftingCompass />, label: "Stakeholder visual handovers" },
+                      ].map((f) => (
+                        <div
+                          key={f.label}
+                          className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 border border-gray-100"
+                        >
+                          <span className="text-btn">{f.icon}</span>
+                          <span className="text-sm font-semibold text-gray-800">
+                            {f.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                    <Image
+                      src="/sami/traffic-plan2.png"
+                      alt="CAD traffic modelling output"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+                <SeeAlso
+                  links={[
+                    { id: "traffic-staging-cad", label: "CAD staging plans" },
+                    { id: "sidra", label: "SIDRA analysis" },
+                  ]}
+                />
+              </AnimatedSection>
             </section>
 
-            {/* §8 SIDRA - blank */}
+            {/* §8 SIDRA */}
             <section
               id="sidra"
               className="scroll-mt-24 py-12 border-t border-gray-100"
             >
-              <SectionHeading
-                eyebrow="Section 08"
-                title={
-                  <>
-                    SIDRA Traffic{" "}
-                    <span className="text-btn">Modelling / Analysis</span>
-                  </>
-                }
-              />
+              <AnimatedSection direction="left">
+                <SectionHeading
+                  eyebrow="Section 08"
+                  title={
+                    <>
+                      SIDRA Traffic{" "}
+                      <span className="text-btn">Modelling / Analysis</span>
+                    </>
+                  }
+                />
+                <p className="text-gray-600 leading-relaxed mb-10 max-w-4xl">
+                  For projects that touch signalised or unsignalised
+                  intersections, we run SIDRA Intersection — the industry
+                  analysis tool used by TfNSW and councils to assess capacity,
+                  queue length, level of service, and signal phasing impacts.
+                  The output is a defensible report your development
+                  application can be approved against.
+                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    {
+                      icon: <FaChartLine />,
+                      title: "Level of Service",
+                      desc: "LOS calculations across all approaches, peak-hour and off-peak.",
+                    },
+                    {
+                      icon: <FaRoute />,
+                      title: "Queue & Delay",
+                      desc: "95th-percentile queue length forecasts and average delay per movement.",
+                    },
+                    {
+                      icon: <FaTrafficLight />,
+                      title: "Signal Optimisation",
+                      desc: "Phase timing review with recommendations to lift throughput.",
+                    },
+                    {
+                      icon: <FaClipboardList />,
+                      title: "Pre vs. Post Comparison",
+                      desc: "Before/after development modelling to support DA submissions.",
+                    },
+                  ].map((c) => (
+                    <div
+                      key={c.title}
+                      className="p-5 rounded-xl border border-gray-200 hover:border-btn/40 transition-colors"
+                    >
+                      <div className="text-btn text-2xl mb-3">{c.icon}</div>
+                      <h4 className="font-bold text-gray-900 mb-2 text-sm">
+                        {c.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {c.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <SeeAlso
+                  links={[
+                    { id: "traffic-modelling-cad", label: "CAD traffic modelling" },
+                    { id: "application-management", label: "TfNSW & Council application management" },
+                  ]}
+                />
+              </AnimatedSection>
             </section>
 
             {/* §9 Risk Assessment */}
@@ -891,35 +1003,122 @@ const PreConstructionPlanningPage = () => {
               </AnimatedSection>
             </section>
 
-            {/* §10 Dilapidation - blank */}
+            {/* §10 Dilapidation Report */}
             <section
               id="dilapidation"
               className="scroll-mt-24 py-12 border-t border-gray-100"
             >
-              <SectionHeading
-                eyebrow="Section 10"
-                title={
-                  <>
-                    Dilapidation <span className="text-btn">Report</span>
-                  </>
-                }
-              />
+              <AnimatedSection direction="right">
+                <SectionHeading
+                  eyebrow="Section 10"
+                  title={
+                    <>
+                      Dilapidation <span className="text-btn">Report</span>
+                    </>
+                  }
+                />
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+                  <div className="relative h-[380px] rounded-xl overflow-hidden shadow-lg">
+                    <Image
+                      src="/DSC00836.JPG"
+                      alt="Pre-condition site survey"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="space-y-5 text-gray-600 leading-relaxed">
+                    <p>
+                      Before site works begin, we conduct a comprehensive
+                      photographic and written record of the road, kerb,
+                      footpath, and adjacent property condition. The report
+                      establishes the existing-condition baseline — protecting
+                      your project against false damage claims and giving
+                      authorities documented assurance.
+                    </p>
+                    <ul className="space-y-2.5 pt-2">
+                      {[
+                        { icon: <FaCamera />, text: "Geo-tagged photographic evidence at every key point" },
+                        { icon: <FaRoad />, text: "Roadway and pavement surface defect mapping" },
+                        { icon: <FaClipboardCheck />, text: "Kerb, gutter, and footpath condition log" },
+                        { icon: <FaFileAlt />, text: "Adjacent property facade and boundary record" },
+                        { icon: <FaCheckCircle />, text: "Council-ready report format with index and summary" },
+                      ].map((item) => (
+                        <li key={item.text} className="flex gap-3 items-start">
+                          <span className="text-btn flex-shrink-0 mt-0.5">
+                            {item.icon}
+                          </span>
+                          <span className="text-sm">{item.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </AnimatedSection>
             </section>
 
-            {/* §11 Temporary Barriers - blank */}
+            {/* §11 Temporary Barrier Design Statements */}
             <section
               id="temporary-barriers"
               className="scroll-mt-24 py-12 border-t border-gray-100"
             >
-              <SectionHeading
-                eyebrow="Section 11"
-                title={
-                  <>
-                    Temporary Barrier{" "}
-                    <span className="text-btn">Design Statements</span>
-                  </>
-                }
-              />
+              <AnimatedSection direction="left">
+                <SectionHeading
+                  eyebrow="Section 11"
+                  title={
+                    <>
+                      Temporary Barrier{" "}
+                      <span className="text-btn">Design Statements</span>
+                    </>
+                  }
+                />
+                <div className="grid lg:grid-cols-2 gap-10 items-start">
+                  <div className="space-y-5 text-gray-600 leading-relaxed">
+                    <p>
+                      For works in crash-prone zones or speed environments
+                      above 60 km/h, TfNSW requires an engineering statement
+                      certifying that the selected temporary barriers will
+                      safely contain and redirect a vehicle impact. We prepare
+                      that statement against TfNSW QA Specifications and
+                      AS/NZS 3845.
+                    </p>
+                    <p>
+                      Each statement is signed off with site-specific
+                      calculations — barrier type, working width, anchor
+                      details, and the worker safety zone behind the
+                      installation — so the document satisfies permit
+                      reviewers the first time around.
+                    </p>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {[
+                      { icon: <FaShieldAlt />, title: "Barrier Selection", desc: "Concrete, water-filled, or steel — matched to speed environment and exposure." },
+                      { icon: <FaRulerCombined />, title: "Working Width", desc: "Deflection calculations to define safe stand-off distance for workers." },
+                      { icon: <FaWrench />, title: "Anchor & Connection", desc: "Detailed anchorage, connection, and end-treatment specification." },
+                      { icon: <FaFileSignature />, title: "Compliance Sign-off", desc: "Engineer-signed statement ready for TfNSW or council submission." },
+                    ].map((c) => (
+                      <div
+                        key={c.title}
+                        className="p-5 rounded-xl bg-gray-50 border border-gray-100"
+                      >
+                        <div className="text-btn text-xl mb-2">{c.icon}</div>
+                        <h4 className="font-bold text-gray-900 mb-1.5 text-sm">
+                          {c.title}
+                        </h4>
+                        <p className="text-xs text-gray-600 leading-relaxed">
+                          {c.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <SeeAlso
+                  links={[
+                    { id: "risk-assessment", label: "Risk Assessment" },
+                    { id: "tmp", label: "Traffic Management Plans" },
+                  ]}
+                />
+              </AnimatedSection>
             </section>
 
             {/* §12 Swept Path */}

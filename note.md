@@ -43,20 +43,24 @@ These pages still resolve at their original URLs but are no longer linked from t
 | 4 | Pre Construction Planning and Staging | `#staging` | Populated | `construction-plans/page.tsx` |
 | 5 | Traffic Management Plans (TMPs) | `#tmp` | Populated | `traffic-management-plans/page.tsx` |
 | 6 | Traffic Staging Plans – Design (CAD) | `#traffic-staging-cad` | Populated (thin) | derived from `traffic-plans` Multi-Stage Layouts |
-| 7 | Traffic Modelling (CAD) | `#traffic-modelling-cad` | **BLANK — title only** | **No source content found** |
-| 8 | SIDRA Traffic Modelling / Analysis | `#sidra` | **BLANK — title only** | **No source content found** |
+| 7 | Traffic Modelling (CAD) | `#traffic-modelling-cad` | Populated (original copy + `/sami/traffic-plan2.png`) | Written from scratch |
+| 8 | SIDRA Traffic Modelling / Analysis | `#sidra` | Populated (original copy, 4-card grid) | Written from scratch |
 | 9 | Risk Assessment | `#risk-assessment` | Populated | `site-risk-assessments/page.tsx` |
-| 10 | Dilapidation Report | `#dilapidation` | **BLANK — title only** | **No source content found** |
-| 11 | Temporary Barrier Design Statements | `#temporary-barriers` | **BLANK — title only** | **No source content found** |
+| 10 | Dilapidation Report | `#dilapidation` | Populated (original copy + `/DSC00836.JPG`) | Written from scratch |
+| 11 | Temporary Barrier Design Statements | `#temporary-barriers` | Populated (original copy, 4-card grid) | Written from scratch |
 | 12 | Swept Path Analysis | `#swept-path` | Populated | `swept-path/page.tsx` |
 | 13 | TfNSW and Council Application Management | `#application-management` | Populated | `permit-application/page.tsx` |
 | 14 | Bus and Police Approvals | `#bus-police-approvals` | Populated | `permit-application/page.tsx` |
 
-**Action item for client:** Provide copy for the 4 BLANK sections (#7 Traffic Modelling CAD, #8 SIDRA, #10 Dilapidation, #11 Temporary Barriers) before launch.
+**Update (later):** The 4 previously-blank sections (#7 Traffic Modelling CAD, #8 SIDRA, #10 Dilapidation, #11 Temporary Barriers) are now populated with original copy written from scratch by analysing the project context and standard NSW traffic-engineering practice. Client should review the text for accuracy and replace if needed with authoritative copy.
 
-## Bug fixes after initial implementation
+## Bug fixes / iterations after initial implementation
 
 - **Sticky left-rail TOC was scrolling with the page** — caused by `overflow-x-hidden` on the page's outer wrapper, which creates a scroll container that breaks `position: sticky` on descendants. Fixed by removing `overflow-x-hidden` from this page's root `<div>` only.
+- **Mobile hero too short** — bumped `min-h-[60vh] md:min-h-[70vh]` to `min-h-screen` with `py-24 md:py-20` so hero now fills the full viewport on every screen size.
+- **Mobile "Jump to section" UI redesign** — replaced the dull `<details>` accordion with a horizontal sticky pill strip (numbered, auto-scrolling active pill into view, top progress bar). Then redesigned again as a **floating circular FAB with circular progress ring + slide-from-left drawer** — reclaims all vertical real estate while showing scroll progress at-a-glance.
+- **Navbar rename** — "Traffic Controllers" column renamed to **"Temporary Traffic Management Services"** (desktop + mobile). Sub-links and routes unchanged.
+- **New nav column** — added 6th column **"Event & Crowd Management"** to the desktop mega menu and a new entry in the mobile drawer, linked to a new page (see below).
 
 ## Verification
 
@@ -67,6 +71,16 @@ These pages still resolve at their original URLs but are no longer linked from t
   3. Open mobile drawer → confirm only one "Pre Construction Planning" accordion in place of the two old ones
   4. Scroll the new page → confirm desktop sticky TOC stays fixed, active-section highlight tracks scroll
   5. Direct-URL test old pages — `/services/traffic-plans`, `/services/traffic-management-plans`, `/services/swept-path`, `/services/event-management-plans`, `/services/permit-application` must all still load
+
+## Additional page created later
+
+**`app/services/event-crowd-management/page.tsx`** — full client page with hero, intro, crowd marshalling section, event-types grid (8 event types), "On the day" 4-card grid, 4-photo gallery, and CTA. Copy written from scratch. Photos used from `/montage/3. Services We Offer/Event Management/`:
+- `Marathon Taper.png`
+- `marathon-event.png` (also hero background)
+- `eff-fight-night.png`
+- `fire-truck.png`
+
+Linked from desktop navbar column 6 and mobile drawer.
 
 ## Decisions taken without asking
 
