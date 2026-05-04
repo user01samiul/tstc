@@ -301,10 +301,10 @@ const EventCrowdManagementPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative aspect-square rounded-xl overflow-hidden order-2 lg:order-1">
                 <Image
-                  src="/montage/3. Services We Offer/Event Management/fire-truck.png"
-                  alt="Emergency vehicle access at event"
+                  src="/sami/TSTGS2901 - Pre Ramadan Day - Sadaqa.png"
+                  alt="Event traffic and crowd management plan"
                   fill
-                  className="object-cover"
+                  className="object-contain bg-gray-100"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

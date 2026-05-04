@@ -360,10 +360,10 @@ const AccreditedTCPage = () => {
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/montage/3. Services We Offer/Acreditted TC/3.png"
+            src="/DSC00732.JPG"
             alt="Professional Traffic Control"
             fill
-            className="object-cover"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
