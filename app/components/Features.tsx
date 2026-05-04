@@ -1,4 +1,26 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const projectSlides = [
+  {
+    label: "Traffic control operations",
+    images: [
+      "/montage/1. Home Page/Services We offer/Accredited TC.JPG",
+      "/montage/3. Services We Offer/Acreditted TC/1.png",
+      "/montage/3. Services We Offer/Acreditted TC/3.png",
+    ],
+  },
+  {
+    label: "Traffic planning and equipment",
+    images: [
+      "/montage/1. Home Page/Services We offer/TMP & TGS.jpeg",
+      "/montage/1. Home Page/Services We offer/Council applications.png",
+      "/montage/1. Home Page/Services We offer/Event-management.png",
+    ],
+  },
+];
 
 export default function Features() {
   const features = [
@@ -34,35 +56,60 @@ export default function Features() {
     },
   ];
 
+  const [activeSlides, setActiveSlides] = useState([0, 1]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlides((current) =>
+        current.map(
+          (slideIndex, galleryIndex) =>
+            (slideIndex + 1) % projectSlides[galleryIndex].images.length
+        )
+      );
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section className="py-6 md:py-16 px-5 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left Side - Image with Square Shape */}
-          <div className="relative order-2 lg:order-1 animate-element">
-            <div
-              className="relative w-full aspect-square overflow-hidden rounded-lg"
-              style={{
-                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <Image
-                src="/montage/1. Home Page/Services We offer/Accredited TC.JPG"
-                alt="Traffic Management Solutions"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-stretch">
+          {/* Left Side - Project Image Sliders */}
+          <div className="relative order-2 lg:order-1 animate-element grid grid-rows-2 gap-5 h-full">
+            {projectSlides.map((gallery, galleryIndex) => (
+              <div
+                key={gallery.label}
+                className="relative min-h-[260px] overflow-hidden rounded-lg"
+                style={{
+                  boxShadow: "0 20px 60px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                {gallery.images.map((src, imageIndex) => (
+                  <Image
+                    key={src}
+                    src={src}
+                    alt={gallery.label}
+                    fill
+                    className={`object-cover transition-opacity duration-700 ${
+                      activeSlides[galleryIndex] === imageIndex
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={galleryIndex === 0 && imageIndex === 0}
+                  />
+                ))}
+              </div>
+            ))}
           </div>
 
           {/* Right Side - Title and Features */}
-          <div className="order-1 lg:order-2 space-y-12">
+          <div className="order-1 lg:order-2 space-y-10">
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold text-black leading-[1.15] animate-element">
-              With over 10 years of experience in the industry, we deliver fully
-              compliant traffic management plans, permits and on-site control
-              for projects of all sizes across Australia.
+              Compliant traffic plans, permits and on-site control for projects
+              across Australia.
             </h2>
 
             {/* Features Grid */}
