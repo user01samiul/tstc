@@ -213,7 +213,7 @@ const Navbar = () => {
                     <div className="space-y-3 col-span-2">
                       <Link
                         href="/services/pre-construction-planning"
-                        className={`block text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 ${
+                        className={`flex items-end text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 leading-tight min-h-[3rem] ${
                           pathname === "/services/pre-construction-planning"
                             ? "text-btn border-btn"
                             : "text-gray-900 border-btn/20 hover:text-btn"
@@ -256,7 +256,7 @@ const Navbar = () => {
 
                     {/* Column 3 - Temporary Traffic Management Services */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight">
+                      <h3 className="flex items-end text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight min-h-[3rem]">
                         Temporary Traffic Management Services
                       </h3>
                       <div className="space-y-1">
@@ -305,7 +305,7 @@ const Navbar = () => {
 
                     {/* Column 4 - Gallery */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20">
+                      <h3 className="flex items-end text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight min-h-[3rem]">
                         Gallery
                       </h3>
                       <div className="space-y-1">
@@ -324,7 +324,7 @@ const Navbar = () => {
 
                     {/* Column 5 - Signage Installation */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20">
+                      <h3 className="flex items-end text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight min-h-[3rem]">
                         Signage Installation
                       </h3>
                       <div className="space-y-1">
@@ -343,7 +343,7 @@ const Navbar = () => {
 
                     {/* Column 6 - Event & Crowd Management */}
                     <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight">
+                      <h3 className="flex items-end text-sm font-bold text-gray-900 mb-3 pb-2 border-b-2 border-btn/20 leading-tight min-h-[3rem]">
                         Event & Crowd Management
                       </h3>
                       <div className="space-y-1">
