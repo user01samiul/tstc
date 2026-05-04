@@ -35,8 +35,8 @@ const WeAreSection = () => {
     phoneDisplay: "Call Now: 0450 819 004",
     ctaText: "Contact Us",
     ctaLink: "/contact",
-    image: "/team/white-Photoroom (2).png",
-    imageAlt: "Emergency Response Team",
+    image: "/ts-logo-white.png",
+    imageAlt: "T&S Traffic Control logo",
     showImage: true, // Set to false to hide image completely
   };
 
@@ -158,17 +158,16 @@ const WeAreSection = () => {
                 </div>
               </div>
 
-              {/* Right: Team Image - Hidden on mobile */}
+              {/* Right: Brand Icon - Hidden on mobile */}
               {emergencyContent.showImage && (
-                <div className="hidden lg:block relative h-[350px] rounded-2xl overflow-hidden">
+                <div className="hidden lg:flex relative h-[350px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 items-center justify-center p-12">
                   <Image
                     src={emergencyContent.image}
                     alt={emergencyContent.imageAlt}
                     fill
-                    className="object-cover"
+                    className="object-contain p-12"
                     sizes="50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
               )}
             </div>
