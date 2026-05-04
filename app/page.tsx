@@ -63,7 +63,7 @@ export const metadata = {
 // }
 
 import ClientsSection from "@/components/ClientsSection";
-import FleetSection from "@/components/FleetSection";
+// import FleetSection from "@/components/FleetSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import WeAreSection from "@/components/WeAreSection";
@@ -93,9 +93,9 @@ export default function Home() {
         <WeAreSection />
       </AnimatedSection>
 
-      <AnimatedSection direction="right">
+      {/* <AnimatedSection direction="right">
         <FleetSection />
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       <AnimatedSection direction="left">
         <TestimonialsSection />
