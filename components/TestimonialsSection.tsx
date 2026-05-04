@@ -147,7 +147,7 @@ const TestimonialsSection = () => {
             type="button"
             aria-label="Previous testimonials"
             onClick={showPrevious}
-            className="absolute -left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-all hover:bg-white hover:text-[#151623] sm:-left-5 lg:-left-4 lg:h-12 lg:w-12"
+            className="absolute -left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-all hover:bg-white hover:text-[#151623] sm:-left-5 lg:-left-16 lg:h-12 lg:w-12 xl:-left-20"
           >
             <FaChevronLeft />
           </button>
@@ -208,7 +208,7 @@ const TestimonialsSection = () => {
             type="button"
             aria-label="Next testimonials"
             onClick={showNext}
-            className="absolute -right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-all hover:bg-white hover:text-[#151623] sm:-right-5 lg:-right-4 lg:h-12 lg:w-12"
+            className="absolute -right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-all hover:bg-white hover:text-[#151623] sm:-right-5 lg:-right-16 lg:h-12 lg:w-12 xl:-right-20"
           >
             <FaChevronRight />
           </button>
