@@ -86,12 +86,12 @@ const WeAreSection = () => {
             </Link>
           </div>
 
-          {/* Right: Image with organic shape */}
+          {/* Right: Image */}
           <div className="relative order-2 lg:order-2">
             <div
-              className="relative w-full aspect-[4/5] overflow-hidden shadow-2xl"
+              className="relative w-full aspect-[4/3] lg:h-full lg:max-h-[520px] overflow-hidden rounded-lg"
               style={{
-                borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
+                boxShadow: "0 20px 60px rgba(0, 0, 0, 0.1)",
               }}
             >
               <Image
@@ -102,8 +102,6 @@ const WeAreSection = () => {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            {/* Decorative blob */}
-            <div className="absolute -bottom-6 -right-6 w-40 h-40 bg-btn/10 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
 
