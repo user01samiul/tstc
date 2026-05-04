@@ -65,7 +65,7 @@ const AccreditedTCPage = () => {
       description:
         "Highly trained professionals ensuring safe and efficient traffic management for all project scales, equipped with current TfNSW accreditation.",
       icon: <FaUserShield className="text-3xl" />,
-      image: "/montage/3. Services We Offer/Acreditted TC/2.JPG",
+      image: "/montage/3. Services We Offer/Acreditted TC/1.png",
     },
     {
       title: "Team Leaders & Supervisors",
