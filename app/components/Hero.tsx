@@ -25,7 +25,7 @@ export default function Hero() {
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight font-anton tracking-wide">
               SAFE AND EFFICIENT <br />
-              <span className="text-btn">TRAFFIC CONTROL</span> SOLUTIONS
+              <span className="text-btn">TRAFFIC MANAGEMENT</span> SOLUTIONS
             </h1>
 
             {/* Slogan */}
@@ -62,27 +62,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Bottom Navigation */}
-          <nav className="flex justify-center gap-4 sm:gap-8 pb-4">
-            <Link
-              href="/services"
-              className="text-xs sm:text-sm font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase"
-            >
-              Services
-            </Link>
-            <Link
-              href="/about"
-              className="text-xs sm:text-sm font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase"
-            >
-              About us
-            </Link>
-            <Link
-              href="/contact"
-              className="text-xs sm:text-sm font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase"
-            >
-              Contact
-            </Link>
-          </nav>
         </div>
       </section>
 
@@ -110,7 +89,8 @@ export default function Hero() {
               {/* Main Heading */}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight font-anton tracking-wide">
                 SAFE AND EFFICIENT <br />
-                <span className="text-btn">TRAFFIC CONTROL</span> SOLUTIONS
+                <span className="text-btn">TRAFFIC MANAGEMENT</span> <br />
+                SOLUTIONS
               </h1>
 
               {/* Slogan */}
@@ -148,27 +128,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Bottom Navigation - Professional Links */}
-          <nav className="flex justify-center gap-12 pb-8">
-            <Link
-              href="/services"
-              className="text-base font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase text-sm"
-            >
-              Services
-            </Link>
-            <Link
-              href="/about"
-              className="text-base font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase text-sm"
-            >
-              About us
-            </Link>
-            <Link
-              href="/contact"
-              className="text-base font-medium text-white/90 hover:text-white transition-all border-b border-white/30 hover:border-white pb-0.5 tracking-wide uppercase text-sm"
-            >
-              Contact
-            </Link>
-          </nav>
         </div>
       </section>
     </>
