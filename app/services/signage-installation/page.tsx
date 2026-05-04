@@ -129,12 +129,7 @@ const SignageInstallationPage = () => {
 
                 {/* Image - Mobile Only */}
                 <div className="relative animate-element lg:hidden">
-                  <div
-                    className="relative w-full aspect-[4/5] overflow-hidden"
-                    style={{
-                      borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                    }}
-                  >
+                  <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg">
                     <Image
                       src="/DSC00850.JPG"
                       alt="Professional Signage Installation"
@@ -175,12 +170,7 @@ const SignageInstallationPage = () => {
 
               {/* Right: Image - Desktop Only */}
               <div className="relative animate-element hidden lg:block">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg">
                   <Image
                     src="/DSC00850.JPG"
                     alt="Professional Signage Installation"

@@ -201,12 +201,7 @@ const JobOpportunities = () => {
 
               {/* Right: Image */}
               <div className="relative animate-element">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
+                <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
                     src="/montage/4. Career/Career/Ute pic 2.png"
                     alt="Working with T&S"

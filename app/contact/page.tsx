@@ -109,12 +109,7 @@ const ContactUs = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
               {/* Left: Image */}
               <div className="relative animate-element order-2 lg:order-1">
-                <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    borderRadius: "40% 60% 60% 40% / 60% 40% 60% 40%",
-                  }}
-                >
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg">
                   <Image
                     src="/DSC00844.JPG"
                     alt="Contact Us"
