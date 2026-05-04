@@ -34,6 +34,30 @@ const ClientsSection = () => {
       alt: "STC",
     },
     { src: "/montage/1. Home Page/Our Clients/8. Client - GV.png", alt: "GV" },
+    {
+      src: "/client logos/QMC Logo.jpeg",
+      alt: "QMC Group",
+    },
+    {
+      src: "/client logos/EMO Civil Logo.avif",
+      alt: "EMO Civil",
+    },
+    {
+      src: "/client logos 2/Abergilde.png",
+      alt: "Abergilde",
+    },
+    {
+      src: "/client logos 2/FDC.gif",
+      alt: "FDC",
+    },
+    {
+      src: "/client logos 2/hacer_group_logo.jpeg",
+      alt: "Hacer Group",
+    },
+    {
+      src: "/client logos 2/Impact Cranes Logo.png",
+      alt: "Impact Cranes",
+    },
   ];
 
   // Duplicate the logos to create a seamless loop
