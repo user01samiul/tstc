@@ -221,16 +221,6 @@ const Navbar = () => {
                       >
                         Pre Construction Planning
                       </Link>
-                      <Link
-                        href="/services/all-services"
-                        className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 font-semibold ${
-                          pathname === "/services/all-services"
-                            ? "bg-btn text-white"
-                            : "bg-btn/10 text-btn hover:bg-btn hover:text-white"
-                        }`}
-                      >
-                        View All Services
-                      </Link>
                       <div className="grid grid-cols-2 gap-x-3 gap-y-1">
                         {PRE_CON_SECTIONS.map((s) => {
                           const href = `/services/pre-construction-planning#${s.id}`;
@@ -358,6 +348,19 @@ const Navbar = () => {
                           Event & Crowd Management
                         </Link>
                       </div>
+                    </div>
+
+                    <div className="col-span-6 flex justify-start pt-4 border-t border-gray-100">
+                      <Link
+                        href="/services/all-services"
+                        className={`inline-flex items-center px-5 py-2 text-sm rounded-full transition-all duration-200 font-semibold ${
+                          pathname === "/services/all-services"
+                            ? "bg-blue-700 text-white"
+                            : "bg-blue-600 text-white hover:bg-blue-700"
+                        }`}
+                      >
+                        View All Services
+                      </Link>
                     </div>
                   </div>
                 )}
