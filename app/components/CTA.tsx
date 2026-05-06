@@ -8,8 +8,8 @@ export default function CTA() {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/DSC00810.JPG"
-          alt="Traffic control background"
+          src="/DSC00947.JPG"
+          alt="Traffic management team consultation background"
           fill
           className="object-cover opacity-50"
           quality={100}
