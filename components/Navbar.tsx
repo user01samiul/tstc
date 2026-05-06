@@ -7,6 +7,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PRE_CON_SECTIONS } from "@/lib/preConstructionSections";
 
+const MOBILE_SUBMENU_STORAGE_KEY = "tstc-mobile-open-submenu";
+const MOBILE_NESTED_SUBMENU_STORAGE_KEY = "tstc-mobile-open-nested-submenu";
+
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -47,20 +50,62 @@ const Navbar = () => {
     return currentHash === `#${hashPart}`;
   };
 
+  const loadPersistedMobileNav = () => {
+    const savedSubmenu = localStorage.getItem(MOBILE_SUBMENU_STORAGE_KEY);
+    const savedNestedSubmenu = localStorage.getItem(
+      MOBILE_NESTED_SUBMENU_STORAGE_KEY,
+    );
+
+    setOpenSubmenu(
+      savedSubmenu === "about" || savedSubmenu === "services"
+        ? savedSubmenu
+        : null,
+    );
+    setOpenNestedSubmenu(
+      savedNestedSubmenu === "pre-construction" ||
+        savedNestedSubmenu === "controllers"
+        ? savedNestedSubmenu
+        : null,
+    );
+  };
+
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (isMobileMenuOpen) {
-      setOpenSubmenu(null);
-      setOpenNestedSubmenu(null);
+    const nextOpen = !isMobileMenuOpen;
+    setIsMobileMenuOpen(nextOpen);
+    if (nextOpen) {
+      loadPersistedMobileNav();
     }
   };
 
   const toggleSubmenu = (menu: string) => {
-    setOpenSubmenu(openSubmenu === menu ? null : menu);
+    const nextSubmenu = openSubmenu === menu ? null : menu;
+    setOpenSubmenu(nextSubmenu);
+
+    if (nextSubmenu) {
+      localStorage.setItem(MOBILE_SUBMENU_STORAGE_KEY, nextSubmenu);
+      if (nextSubmenu !== "services") {
+        setOpenNestedSubmenu(null);
+        localStorage.removeItem(MOBILE_NESTED_SUBMENU_STORAGE_KEY);
+      }
+    } else {
+      setOpenNestedSubmenu(null);
+      localStorage.removeItem(MOBILE_SUBMENU_STORAGE_KEY);
+      localStorage.removeItem(MOBILE_NESTED_SUBMENU_STORAGE_KEY);
+    }
   };
 
   const toggleNestedSubmenu = (menu: string) => {
-    setOpenNestedSubmenu(openNestedSubmenu === menu ? null : menu);
+    const nextNestedSubmenu = openNestedSubmenu === menu ? null : menu;
+    setOpenNestedSubmenu(nextNestedSubmenu);
+
+    if (nextNestedSubmenu) {
+      localStorage.setItem(
+        MOBILE_NESTED_SUBMENU_STORAGE_KEY,
+        nextNestedSubmenu,
+      );
+    } else {
+      localStorage.removeItem(MOBILE_NESTED_SUBMENU_STORAGE_KEY);
+    }
   };
 
   return (
