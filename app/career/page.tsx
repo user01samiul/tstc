@@ -128,7 +128,7 @@ const JobOpportunities = () => {
       <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC00810.JPG"
+            src="/new_photos_May_2026/DSC05337.jpg"
             alt="Career Opportunities"
             fill
             className="object-cover"
@@ -203,7 +203,7 @@ const JobOpportunities = () => {
               <div className="relative animate-element">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
-                    src="/montage/4. Career/Career/Ute pic 2.png"
+                    src="/new_photos_May_2026/DSC05412.jpg"
                     alt="Working with T&S"
                     fill
                     className="object-cover"
@@ -225,7 +225,7 @@ const JobOpportunities = () => {
               <div className="relative animate-element order-2 lg:order-1">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
-                    src="/DSC00844.JPG"
+                    src="/new_photos_May_2026/DSC05428.jpg"
                     alt="Employment Opportunities"
                     fill
                     className="object-cover"
