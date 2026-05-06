@@ -1020,7 +1020,7 @@ const PreConstructionPlanningPage = () => {
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
                   <div className="relative h-[380px] rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/DSC00836.JPG"
+                      src="/new_photos_May_2026/DSC05475.jpg"
                       alt="Pre-condition site survey"
                       fill
                       className="object-cover"

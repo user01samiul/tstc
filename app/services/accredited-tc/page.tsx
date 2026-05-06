@@ -131,7 +131,7 @@ const AccreditedTCPage = () => {
       <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/montage/3. Services We Offer/Acreditted TC/1.png"
+            src="/new_photos_May_2026/DSC05440.jpg"
             alt="Accredited Traffic Control Personnel"
             fill
             className="object-cover"
