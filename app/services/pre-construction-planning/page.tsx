@@ -307,7 +307,7 @@ const PreConstructionPlanningPage = () => {
       <section className="relative min-h-screen w-full flex items-center justify-center py-24 md:py-20">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02286.webp"
+            src="/3.webp"
             alt="Pre Construction Planning"
             fill
             className="object-cover"
