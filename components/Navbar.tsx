@@ -37,7 +37,12 @@ const Navbar = () => {
     };
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [pathname]);
+
+  const setHashFromHref = (href: string) => {
+    const hashIndex = href.indexOf("#");
+    setCurrentHash(hashIndex >= 0 ? href.slice(hashIndex) : "");
+  };
 
   const isActive = (path: string) =>
     pathname === path || pathname?.startsWith(path + "#");
@@ -176,8 +181,9 @@ const Navbar = () => {
                   >
                     <Link
                       href="/about#our-story"
+                      onClick={() => setHashFromHref("/about#our-story")}
                       className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                        isActive("/about#our-story")
+                        isActiveWithHash("/about#our-story")
                           ? "bg-btn/10 text-btn font-semibold"
                           : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                       }`}
@@ -186,8 +192,9 @@ const Navbar = () => {
                     </Link>
                     <Link
                       href="/about#our-team"
+                      onClick={() => setHashFromHref("/about#our-team")}
                       className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                        isActive("/about#our-team")
+                        isActiveWithHash("/about#our-team")
                           ? "bg-btn/10 text-btn font-semibold"
                           : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                       }`}
@@ -196,8 +203,9 @@ const Navbar = () => {
                     </Link>
                     <Link
                       href="/about#our-approach"
+                      onClick={() => setHashFromHref("/about#our-approach")}
                       className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                        isActive("/about#our-approach")
+                        isActiveWithHash("/about#our-approach")
                           ? "bg-btn/10 text-btn font-semibold"
                           : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                       }`}
@@ -206,8 +214,9 @@ const Navbar = () => {
                     </Link>
                     <Link
                       href="/about#accreditations"
+                      onClick={() => setHashFromHref("/about#accreditations")}
                       className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                        isActive("/about#accreditations")
+                        isActiveWithHash("/about#accreditations")
                           ? "bg-btn/10 text-btn font-semibold"
                           : "text-gray-700 hover:bg-btn/10 hover:text-btn"
                       }`}
@@ -216,6 +225,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       href="/about/experience"
+                      onClick={() => setCurrentHash("")}
                       className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
                         isActive("/about/experience")
                           ? "bg-btn/10 text-btn font-semibold"
@@ -258,6 +268,7 @@ const Navbar = () => {
                     <div className="space-y-3 col-span-2">
                       <Link
                         href="/services/pre-construction-planning"
+                        onClick={() => setCurrentHash("")}
                         className={`flex items-end text-sm font-bold mb-3 pb-2 border-b-2 transition-all duration-200 leading-tight min-h-[3rem] ${
                           pathname === "/services/pre-construction-planning"
                             ? "text-btn border-btn"
@@ -274,6 +285,7 @@ const Navbar = () => {
                             <Link
                               key={s.id}
                               href={href}
+                              onClick={() => setHashFromHref(href)}
                               className={`block px-2.5 py-1.5 rounded-lg leading-tight transition-all duration-200 ${
                                 isLong ? "text-xs" : "text-sm"
                               } ${
@@ -541,36 +553,71 @@ const Navbar = () => {
                   <div className="pl-6 space-y-1 mt-1">
                     <Link
                       href="/about#our-story"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      onClick={() => {
+                        setHashFromHref("/about#our-story");
+                        toggleMobileMenu();
+                      }}
+                      className={`block px-4 py-2 text-base rounded-lg transition-colors ${
+                        isActiveWithHash("/about#our-story")
+                          ? "bg-btn/10 text-btn font-semibold"
+                          : "hover:bg-btn/5 hover:text-btn"
+                      }`}
                     >
                       Our Story
                     </Link>
                     <Link
                       href="/about#our-team"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      onClick={() => {
+                        setHashFromHref("/about#our-team");
+                        toggleMobileMenu();
+                      }}
+                      className={`block px-4 py-2 text-base rounded-lg transition-colors ${
+                        isActiveWithHash("/about#our-team")
+                          ? "bg-btn/10 text-btn font-semibold"
+                          : "hover:bg-btn/5 hover:text-btn"
+                      }`}
                     >
                       Our Team
                     </Link>
                     <Link
                       href="/fleet"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      onClick={() => {
+                        setCurrentHash("");
+                        toggleMobileMenu();
+                      }}
+                      className={`block px-4 py-2 text-base rounded-lg transition-colors ${
+                        pathname === "/fleet"
+                          ? "bg-btn/10 text-btn font-semibold"
+                          : "hover:bg-btn/5 hover:text-btn"
+                      }`}
                     >
                       Our Fleet
                     </Link>
                     <Link
                       href="/about#accreditations"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      onClick={() => {
+                        setHashFromHref("/about#accreditations");
+                        toggleMobileMenu();
+                      }}
+                      className={`block px-4 py-2 text-base rounded-lg transition-colors ${
+                        isActiveWithHash("/about#accreditations")
+                          ? "bg-btn/10 text-btn font-semibold"
+                          : "hover:bg-btn/5 hover:text-btn"
+                      }`}
                     >
                       Accreditations
                     </Link>
                     <Link
                       href="/about/experience"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-base hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                      onClick={() => {
+                        setCurrentHash("");
+                        toggleMobileMenu();
+                      }}
+                      className={`block px-4 py-2 text-base rounded-lg transition-colors ${
+                        isActive("/about/experience")
+                          ? "bg-btn/10 text-btn font-semibold"
+                          : "hover:bg-btn/5 hover:text-btn"
+                      }`}
                     >
                       Our Experience
                     </Link>
@@ -599,7 +646,11 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <button
                         onClick={() => toggleNestedSubmenu("pre-construction")}
-                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                        className={`w-full flex justify-between items-center px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                          pathname === "/services/pre-construction-planning"
+                            ? "bg-btn/10 text-btn"
+                            : "text-btn hover:bg-btn/5"
+                        }`}
                       >
                         <span>Pre Construction Planning</span>
                         <ChevronDown
@@ -614,21 +665,40 @@ const Navbar = () => {
                         <div className="pl-4 space-y-1">
                           <Link
                             href="/services/pre-construction-planning"
-                            onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                            onClick={() => {
+                              setCurrentHash("");
+                              toggleMobileMenu();
+                            }}
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                              pathname ===
+                                "/services/pre-construction-planning" &&
+                              !currentHash
+                                ? "bg-btn/10 text-btn font-semibold"
+                                : "font-semibold text-btn hover:bg-btn/5"
+                            }`}
                           >
                             Overview
                           </Link>
-                          {PRE_CON_SECTIONS.map((s) => (
-                            <Link
-                              key={s.id}
-                              href={`/services/pre-construction-planning#${s.id}`}
-                              onClick={toggleMobileMenu}
-                              className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
-                            >
-                              {s.label}
-                            </Link>
-                          ))}
+                          {PRE_CON_SECTIONS.map((s) => {
+                            const href = `/services/pre-construction-planning#${s.id}`;
+                            return (
+                              <Link
+                                key={s.id}
+                                href={href}
+                                onClick={() => {
+                                  setHashFromHref(href);
+                                  toggleMobileMenu();
+                                }}
+                                className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                                  isActiveWithHash(href)
+                                    ? "bg-btn/10 text-btn font-semibold"
+                                    : "hover:bg-btn/5 hover:text-btn"
+                                }`}
+                              >
+                                {s.label}
+                              </Link>
+                            );
+                          })}
                         </div>
                       )}
                     </div>
@@ -637,7 +707,16 @@ const Navbar = () => {
                     <div className="space-y-1">
                       <button
                         onClick={() => toggleNestedSubmenu("controllers")}
-                        className="w-full flex justify-between items-center px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                        className={`w-full flex justify-between items-center px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                          [
+                            "/services/accredited-tc",
+                            "/services/24-hour-response",
+                            "/services/team-leaders",
+                            "/services/tma-operators",
+                          ].some((path) => isActive(path))
+                            ? "bg-btn/10 text-btn"
+                            : "text-btn hover:bg-btn/5"
+                        }`}
                       >
                         <span>Temporary Traffic Management Services</span>
                         <ChevronDown
@@ -653,28 +732,44 @@ const Navbar = () => {
                           <Link
                             href="/services/accredited-tc"
                             onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                              isActive("/services/accredited-tc")
+                                ? "bg-btn/10 text-btn font-semibold"
+                                : "hover:bg-btn/5 hover:text-btn"
+                            }`}
                           >
                             Accredited TC
                           </Link>
                           <Link
                             href="/services/24-hour-response"
                             onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                              isActive("/services/24-hour-response")
+                                ? "bg-btn/10 text-btn font-semibold"
+                                : "hover:bg-btn/5 hover:text-btn"
+                            }`}
                           >
                             24 Hour Response
                           </Link>
                           <Link
                             href="/services/team-leaders"
                             onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                              isActive("/services/team-leaders")
+                                ? "bg-btn/10 text-btn font-semibold"
+                                : "hover:bg-btn/5 hover:text-btn"
+                            }`}
                           >
                             Team Leaders
                           </Link>
                           <Link
                             href="/services/tma-operators"
                             onClick={toggleMobileMenu}
-                            className="block px-4 py-2 text-sm hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
+                              isActive("/services/tma-operators")
+                                ? "bg-btn/10 text-btn font-semibold"
+                                : "hover:bg-btn/5 hover:text-btn"
+                            }`}
                           >
                             TMA Operators
                           </Link>
@@ -685,7 +780,11 @@ const Navbar = () => {
                     <Link
                       href="/services/all-services"
                       onClick={toggleMobileMenu}
-                      className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
+                      className={`block px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                        pathname === "/services/all-services"
+                          ? "bg-btn/10 text-btn"
+                          : "text-btn hover:bg-btn/5"
+                      }`}
                     >
                       View All Services
                     </Link>
@@ -694,7 +793,11 @@ const Navbar = () => {
                     <Link
                       href="/gallery"
                       onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                      className={`block px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                        pathname === "/gallery"
+                          ? "bg-btn/10 text-btn"
+                          : "text-btn hover:bg-btn/5"
+                      }`}
                     >
                       Gallery
                     </Link>
@@ -703,7 +806,11 @@ const Navbar = () => {
                     <Link
                       href="/services/signage-installation"
                       onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                      className={`block px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                        isActive("/services/signage-installation")
+                          ? "bg-btn/10 text-btn"
+                          : "text-btn hover:bg-btn/5"
+                      }`}
                     >
                       Signage Installation
                     </Link>
@@ -712,7 +819,11 @@ const Navbar = () => {
                     <Link
                       href="/services/event-crowd-management"
                       onClick={toggleMobileMenu}
-                      className="block px-4 py-2 text-sm font-semibold text-btn hover:bg-btn/5 rounded-lg transition-colors"
+                      className={`block px-4 py-2 text-sm font-semibold rounded-lg transition-colors ${
+                        isActive("/services/event-crowd-management")
+                          ? "bg-btn/10 text-btn"
+                          : "text-btn hover:bg-btn/5"
+                      }`}
                     >
                       Event & Crowd Management
                     </Link>
