@@ -286,7 +286,7 @@ const Navbar = () => {
                               key={s.id}
                               href={href}
                               onClick={() => setHashFromHref(href)}
-                              className={`block px-2.5 py-1.5 rounded-lg leading-tight transition-all duration-200 ${
+                              className={`flex h-full items-center px-2.5 py-1.5 rounded-lg leading-tight transition-all duration-200 ${
                                 isLong ? "text-xs" : "text-sm"
                               } ${
                                 isActiveWithHash(href)
