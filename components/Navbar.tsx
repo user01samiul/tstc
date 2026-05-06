@@ -369,9 +369,11 @@ const Navbar = () => {
               <Link
                 href="/faqs"
                 className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
-                  isScrolled
-                    ? "text-gray-700 hover:text-btn hover:bg-gray-50"
-                    : "text-white hover:text-btn hover:bg-white/10"
+                  pathname === "/faqs"
+                    ? "text-btn bg-btn/10"
+                    : isScrolled
+                      ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                      : "text-white hover:text-btn hover:bg-white/10"
                 }`}
               >
                 FAQ
@@ -379,16 +381,22 @@ const Navbar = () => {
               <Link
                 href="/career"
                 className={`px-4 py-2.5 text-sm font-semibold transition-all duration-200 rounded-lg ${
-                  isScrolled
-                    ? "text-gray-700 hover:text-btn hover:bg-gray-50"
-                    : "text-white hover:text-btn hover:bg-white/10"
+                  pathname === "/career"
+                    ? "text-btn bg-btn/10"
+                    : isScrolled
+                      ? "text-gray-700 hover:text-btn hover:bg-gray-50"
+                      : "text-white hover:text-btn hover:bg-white/10"
                 }`}
               >
                 Career
               </Link>
               <Link
                 href="/contact"
-                className="ml-3 px-6 py-2.5 text-sm font-semibold bg-btn text-white rounded-full hover:bg-btn/90 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
+                className={`ml-3 px-6 py-2.5 text-sm font-semibold text-white rounded-full transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 ${
+                  pathname === "/contact"
+                    ? "bg-blue-700 ring-2 ring-blue-200"
+                    : "bg-btn hover:bg-btn/90"
+                }`}
               >
                 Contact Us
               </Link>
@@ -459,7 +467,11 @@ const Navbar = () => {
               <Link
                 href="/"
                 onClick={toggleMobileMenu}
-                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                className={`block px-4 py-3 text-lg rounded-lg transition-colors ${
+                  pathname === "/"
+                    ? "bg-btn/10 text-btn font-semibold"
+                    : "font-medium text-gray-800 hover:bg-btn/5 hover:text-btn"
+                }`}
               >
                 Home
               </Link>
@@ -467,7 +479,11 @@ const Navbar = () => {
               <div className="space-y-1">
                 <button
                   onClick={() => toggleSubmenu("about")}
-                  className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                  className={`w-full flex justify-between items-center px-4 py-3 text-lg rounded-lg transition-colors ${
+                    pathname?.startsWith("/about") || pathname === "/fleet"
+                      ? "bg-btn/10 text-btn font-semibold"
+                      : "font-medium text-gray-800 hover:bg-btn/5 hover:text-btn"
+                  }`}
                 >
                   <span>About Us</span>
                   <ChevronDown
@@ -519,7 +535,11 @@ const Navbar = () => {
               <div className="space-y-1">
                 <button
                   onClick={() => toggleSubmenu("services")}
-                  className="w-full flex justify-between items-center px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                  className={`w-full flex justify-between items-center px-4 py-3 text-lg rounded-lg transition-colors ${
+                    pathname?.startsWith("/services") || pathname === "/gallery"
+                      ? "bg-btn/10 text-btn font-semibold"
+                      : "font-medium text-gray-800 hover:bg-btn/5 hover:text-btn"
+                  }`}
                 >
                   <span>Services</span>
                   <ChevronDown
@@ -530,14 +550,6 @@ const Navbar = () => {
                 </button>
                 {openSubmenu === "services" && (
                   <div className="pl-4 space-y-1 mt-1">
-                    <Link
-                      href="/services"
-                      onClick={toggleMobileMenu}
-                      className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
-                    >
-                      📋 View All Services
-                    </Link>
-
                     {/* Pre Construction Planning Sub-menu */}
                     <div className="space-y-1">
                       <button
@@ -625,6 +637,14 @@ const Navbar = () => {
                       )}
                     </div>
 
+                    <Link
+                      href="/services/all-services"
+                      onClick={toggleMobileMenu}
+                      className="block px-4 py-3 text-base font-semibold bg-btn/10 text-btn hover:bg-btn hover:text-white rounded-lg transition-colors"
+                    >
+                      View All Services
+                    </Link>
+
                     {/* Gallery Link */}
                     <Link
                       href="/gallery"
@@ -664,14 +684,22 @@ const Navbar = () => {
               <Link
                 href="/faqs"
                 onClick={toggleMobileMenu}
-                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                className={`block px-4 py-3 text-lg rounded-lg transition-colors ${
+                  pathname === "/faqs"
+                    ? "bg-btn/10 text-btn font-semibold"
+                    : "font-medium text-gray-800 hover:bg-btn/5 hover:text-btn"
+                }`}
               >
                 FAQ
               </Link>
               <Link
                 href="/career"
                 onClick={toggleMobileMenu}
-                className="block px-4 py-3 text-lg font-medium text-gray-800 hover:bg-btn/5 hover:text-btn rounded-lg transition-colors"
+                className={`block px-4 py-3 text-lg rounded-lg transition-colors ${
+                  pathname === "/career"
+                    ? "bg-btn/10 text-btn font-semibold"
+                    : "font-medium text-gray-800 hover:bg-btn/5 hover:text-btn"
+                }`}
               >
                 Career
               </Link>
@@ -683,7 +711,11 @@ const Navbar = () => {
             <Link
               href="/contact"
               onClick={toggleMobileMenu}
-              className="block w-full px-6 py-3 text-base font-semibold text-center bg-btn text-white rounded-full hover:bg-btn/90 transition-colors shadow-md"
+              className={`block w-full px-6 py-3 text-base font-semibold text-center rounded-full transition-colors shadow-md ${
+                pathname === "/contact"
+                  ? "bg-blue-700 text-white ring-2 ring-blue-200"
+                  : "bg-btn text-white hover:bg-btn/90"
+              }`}
             >
               Contact Us
             </Link>
