@@ -128,7 +128,7 @@ const JobOpportunities = () => {
       <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/new_photos_May_2026/DSC05337.jpg"
+            src="/new_photos_May_2026/new/Castle Hill QMC/T&S_Edited_4771.webp"
             alt="Career Opportunities"
             fill
             className="object-cover"
@@ -225,7 +225,7 @@ const JobOpportunities = () => {
               <div className="relative animate-element order-2 lg:order-1">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
-                    src="/new_photos_May_2026/DSC05428.jpg"
+                    src="/new_photos_May_2026/new/Castle Hill QMC/T&S_Edited_4694.webp"
                     alt="Employment Opportunities"
                     fill
                     className="object-cover"
