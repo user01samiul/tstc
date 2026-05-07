@@ -241,7 +241,7 @@ const ServicesPage = () => {
             {[
               { src: "/montage/1. Home Page/Services We offer/TMP & TGS.jpeg", label: "PLANNING" },
               { src: "/DSC00949.JPG", label: "IMPLEMENTATION" },
-              { src: "/DSC02286.webp", label: "COMPLIANCE" },
+              { src: "/new_photos_May_2026/new/IMG_0829.webp", label: "COMPLIANCE" },
             ].map((img, i) => (
               <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-2xl group">
                 <Image
