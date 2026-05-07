@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaEnvelope, FaHardHat, FaMapMarkerAlt, FaPhoneAlt, FaRoad, FaTrafficLight } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import AnimatedSection from "../components/AnimatedSection";
 
 interface FormData {
@@ -71,7 +71,7 @@ const ContactUs = () => {
       <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/DSC02286.webp"
+            src="/new_photos_May_2026/DSC05337.jpg"
             alt="Contact Us"
             fill
             className="object-cover"
@@ -111,7 +111,7 @@ const ContactUs = () => {
               <div className="relative animate-element order-2 lg:order-1">
                 <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg">
                   <Image
-                    src="/DSC00844.JPG"
+                    src="/new_photos_May_2026/DSC05428.jpg"
                     alt="Contact Us"
                     fill
                     className="object-cover"
@@ -324,77 +324,6 @@ const ContactUs = () => {
         </section>
       </AnimatedSection>
 
-      {/* Services Section */}
-      <AnimatedSection direction="left">
-        <section
-          className="py-20 md:py-32 px-5 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#151623" }}
-        >
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-none tracking-tight text-white mb-8 md:mb-12 animate-element">
-              Explore Our
-              <br />
-              <span className="text-btn">Other Services</span>
-            </h2>
-
-            <div className="mb-16 md:mb-20 max-w-4xl">
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed animate-element">
-                From traffic management plans to emergency response, we provide
-                comprehensive solutions to keep your projects safe and compliant.
-                Discover how we can help you.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Traffic Management Plans",
-                  icon: <FaHardHat className="text-3xl" />,
-                  description:
-                    "Customized plans designed to ensure safety and efficiency, tailored to your project's unique requirements.",
-                },
-                {
-                  name: "Permit Applications",
-                  icon: <FaTrafficLight className="text-3xl" />,
-                  description:
-                    "Streamlined permit application services for hassle-free project compliance with councils and authorities.",
-                },
-                {
-                  name: "Equipment Hire",
-                  icon: <FaRoad className="text-3xl" />,
-                  description:
-                    "Access a wide range of high-quality traffic management equipment, including signs, barriers, and more.",
-                },
-                {
-                  name: "Emergency Response",
-                  icon: <FaPhoneAlt className="text-3xl" />,
-                  description:
-                    "Our 24/7 emergency response service addresses unexpected traffic issues with rapid deployment and expertise.",
-                },
-              ].map((service, index) => (
-                <div
-                  key={index}
-                  className="space-y-6 animate-element p-8 rounded-2xl border-2 border-dashed border-white/30 hover:border-white/50 transition-all duration-300 text-center"
-                >
-                  <div className="flex justify-center">
-                    <div className="p-5 bg-btn text-white rounded-full">
-                      {service.icon}
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-semibold text-white">
-                    {service.name}
-                  </h3>
-
-                  <p className="text-base leading-relaxed text-white/90">
-                    {service.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
     </div>
   );
 };

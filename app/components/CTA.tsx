@@ -1,6 +1,100 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { FaFileDownload, FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaFileDownload, FaPaperPlane } from "react-icons/fa";
+
+type RequestType = "aboriginal-engagement" | "capability-statement";
+type Status = "idle" | "loading" | "success" | "error";
+
+function RequestForm({
+  type,
+  buttonLabel,
+  buttonIcon,
+  buttonClass,
+  ringClass,
+  inputAccent,
+}: {
+  type: RequestType;
+  buttonLabel: string;
+  buttonIcon: React.ReactNode;
+  buttonClass: string;
+  ringClass: string;
+  inputAccent: string;
+}) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/request-document", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, type }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "Something went wrong. Please try again.");
+      }
+
+      setStatus("success");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+      setErrorMessage(
+        err instanceof Error ? err.message : "Something went wrong."
+      );
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <input
+        type="email"
+        required
+        placeholder="Enter your email address"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        disabled={status === "loading"}
+        className={`w-full px-5 py-4 rounded-full bg-white/95 text-gray-900 placeholder-gray-500 font-medium focus:outline-none focus:ring-4 ${inputAccent} transition-all duration-200 disabled:opacity-60`}
+      />
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className={`flex items-center justify-center gap-3 ${buttonClass} px-8 py-4 rounded-full font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 ${ringClass} disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100`}
+      >
+        {status === "loading" ? (
+          <>
+            <FaPaperPlane className="text-lg animate-pulse" />
+            Sending...
+          </>
+        ) : (
+          <>
+            {buttonIcon}
+            {buttonLabel}
+          </>
+        )}
+      </button>
+
+      {status === "success" && (
+        <p className="text-sm text-green-300 text-center mt-1">
+          Request received — check your inbox shortly.
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-sm text-red-300 text-center mt-1">
+          {errorMessage || "Failed to send request. Please try again."}
+        </p>
+      )}
+    </form>
+  );
+}
 
 export default function CTA() {
   return (
@@ -21,51 +115,51 @@ export default function CTA() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Card: Connect With Us Today */}
+          {/* Left Card: Aboriginal Engagement Strategy */}
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-10 text-white flex flex-col justify-between h-full animate-element hover:bg-white/15 transition-all duration-300">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Connect With Us Today
+                Request Aboriginal Engagement Strategy
               </h2>
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed mb-8">
-                Get in touch to discuss your traffic control needs with our
-                experienced team. We're ready to help you find fast, compliant,
-                and cost-effective solutions to keep your site safe and your
-                project running on time.
+                Enter your email to receive a copy of our Aboriginal Engagement
+                Strategy. We outline how T&S partners with Aboriginal and Torres
+                Strait Islander communities through inclusive employment,
+                training, and meaningful project participation.
               </p>
             </div>
-            <Link
-              href="/contact"
-              className="flex items-center justify-center gap-3 bg-btn hover:bg-btn/90 text-white px-8 py-4 rounded-full font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-btn/30"
-            >
-              <FaPhoneAlt className="text-lg" />
-              Request a Call Back
-            </Link>
+            <RequestForm
+              type="aboriginal-engagement"
+              buttonLabel="Request Strategy"
+              buttonIcon={<FaPaperPlane className="text-lg" />}
+              buttonClass="bg-btn hover:bg-btn/90 text-white"
+              ringClass="focus:ring-btn/30"
+              inputAccent="focus:ring-btn/40"
+            />
           </div>
 
-          {/* Right Card: Let T&S Manage Your Next Project */}
+          {/* Right Card: Capability Statement */}
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-10 text-white flex flex-col justify-between h-full animate-element hover:bg-white/15 transition-all duration-300">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Let T&S Manage Your Next Project
+                Request Capability Statement
               </h2>
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed mb-8">
                 Need reliable traffic management for your next project? T&S
-                offers end-to-end traffic control services. Our experienced team
-                handles custom Traffic Control Plans, council permits, and
-                certified on-site controllers. Download our capability statement
-                to learn more about how we can manage your project.
+                offers end-to-end traffic control services, custom Traffic
+                Control Plans, council permits, and certified on-site
+                controllers. Enter your email and we'll send our capability
+                statement straight to your inbox.
               </p>
             </div>
-            <Link
-              href="/T&S Capability Statement  2025.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-300"
-            >
-              <FaFileDownload className="text-lg" />
-              See the Attached Capability Statement
-            </Link>
+            <RequestForm
+              type="capability-statement"
+              buttonLabel="Request Statement"
+              buttonIcon={<FaFileDownload className="text-lg" />}
+              buttonClass="bg-white text-gray-900 hover:bg-gray-100"
+              ringClass="focus:ring-gray-300"
+              inputAccent="focus:ring-white/60"
+            />
           </div>
         </div>
       </div>
