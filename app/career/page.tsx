@@ -134,6 +134,7 @@ const JobOpportunities = () => {
             className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-black/25" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl px-5 sm:px-6 lg:px-8 pt-32 pb-20">

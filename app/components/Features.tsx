@@ -7,9 +7,9 @@ const projectSlides = [
   {
     label: "Traffic control operations",
     images: [
-      "/montage/1. Home Page/Services We offer/Accredited TC.JPG",
-      "/montage/3. Services We Offer/Acreditted TC/1.png",
-      "/montage/3. Services We Offer/Acreditted TC/3.png",
+      "/new_photos_May_2026/new/IMG_0774.webp",
+      "/new_photos_May_2026/new/IMG_0944.webp",
+      "/new_photos_May_2026/new/DSC02447.webp",
     ],
   },
   {
