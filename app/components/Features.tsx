@@ -9,7 +9,7 @@ const projectSlides = [
     images: [
       "/new_photos_May_2026/new/IMG_0774.webp",
       "/new_photos_May_2026/new/IMG_0944.webp",
-      "/new_photos_May_2026/new/DSC02447.webp",
+      "/new_photos_May_2026/new/IMG_1801.webp",
     ],
   },
   {
