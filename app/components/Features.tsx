@@ -7,9 +7,9 @@ const projectSlides = [
   {
     label: "Traffic control operations",
     images: [
-      "/new_photos_May_2026/new/IMG_0774.webp",
+      "/new_photos_May_2026/new/IMG_6736.webp",
       "/new_photos_May_2026/new/IMG_0944.webp",
-      "/new_photos_May_2026/new/IMG_1801.webp",
+      "/new_photos_May_2026/new/DSC02504.webp",
     ],
   },
   {
