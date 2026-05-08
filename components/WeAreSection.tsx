@@ -160,7 +160,7 @@ const WeAreSection = () => {
 
               {/* Right: Brand Icon - Hidden on mobile */}
               {emergencyContent.showImage && (
-                <div className="hidden lg:flex relative h-[350px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 items-center justify-center p-12">
+                <div className="flex relative h-[350px] rounded-2xl overflow-hidden items-center justify-center p-12">
                   <Image
                     src={emergencyContent.image}
                     alt={emergencyContent.imageAlt}
