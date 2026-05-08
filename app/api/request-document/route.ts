@@ -58,7 +58,7 @@ export async function POST(request: Request) {
 
     const adminMailOptions = {
       from: process.env.GMAIL_USER,
-      to: "plans@tstc.com.au",
+      to: ["Taj@tstc.com.au", "Saadat@tstc.com.au"],
       subject: meta.subject,
       text: `A new ${meta.label} request was submitted.\n\nRequester email: ${email}`,
       html: `

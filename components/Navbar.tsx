@@ -337,6 +337,7 @@ const Navbar = () => {
                         >
                           Team Leaders
                         </Link>
+                        {/* Temporarily hidden - restore to re-enable TMA Operators link
                         <Link
                           href="/services/tma-operators"
                           className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
@@ -347,6 +348,7 @@ const Navbar = () => {
                         >
                           TMA Operators
                         </Link>
+                        */}
                       </div>
                     </div>
 
@@ -762,6 +764,7 @@ const Navbar = () => {
                           >
                             Team Leaders
                           </Link>
+                          {/* Temporarily hidden - restore to re-enable TMA Operators link
                           <Link
                             href="/services/tma-operators"
                             onClick={toggleMobileMenu}
@@ -773,6 +776,7 @@ const Navbar = () => {
                           >
                             TMA Operators
                           </Link>
+                          */}
                         </div>
                       )}
                     </div>

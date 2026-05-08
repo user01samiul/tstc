@@ -155,6 +155,7 @@ const Footer = () => {
                     Team Leaders
                   </Link>
                 </li>
+                {/* Temporarily hidden - restore to re-enable TMA Operators link
                 <li>
                   <Link
                     href="/services/tma-operators"
@@ -163,6 +164,7 @@ const Footer = () => {
                     TMA Operators
                   </Link>
                 </li>
+                */}
               </ul>
               <h4 className="text-xs font-semibold text-btn uppercase tracking-wider mt-4 mb-2">
                 Gallery
